@@ -28,7 +28,7 @@ jobs:
       if: success()
       uses: actions/upload-artifact@v1
       with:
-        name: docs
+        name: dreambank
         path: dist
   deploy:
     runs-on: ubuntu-latest
@@ -39,10 +39,10 @@ jobs:
       - name: Download build
         uses: actions/download-artifact@v1
         with:
-          name: docs
+          name: dreambank
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           BRANCH: gh-pages
-          FOLDER: docs
+          FOLDER: dreambank
