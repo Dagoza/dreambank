@@ -28,7 +28,7 @@ jobs:
       if: success()
       uses: actions/upload-artifact@v1
       with:
-        name: deploy_dist
+        name: docs
         path: dist
   deploy:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
       - name: Download build
         uses: actions/download-artifact@v1
         with:
-          name: deploy_dist
+          name: docs
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
