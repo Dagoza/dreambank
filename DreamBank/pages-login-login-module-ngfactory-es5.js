@@ -1040,7 +1040,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             login: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern('[0-9]+'), _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].minLength(6)]],
             password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]
           });
-          particlesJS('particles-js', src_app_shared_const_particles_config__WEBPACK_IMPORTED_MODULE_2__["ParticlesConfig"], function () {});
+
+          if (particlesJS) {
+            particlesJS('particles-js', src_app_shared_const_particles_config__WEBPACK_IMPORTED_MODULE_2__["ParticlesConfig"], function () {});
+          }
         }
       }, {
         key: "submit",
