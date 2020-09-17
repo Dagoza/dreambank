@@ -1,0 +1,63 @@
+<mat-card class="box">
+    <mat-card-header fxLayout="column" fxLayoutAlign="space-between center">
+        <div class="full-width" fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-subtitle fxFlex="80%" fxFlexOffset="20%">
+                <span class="underline">Request</span>
+            </mat-card-subtitle>
+        </div>
+
+        <div class="full-width" fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-title fxFlex="80%" fxFlexOffset="20%">New Product</mat-card-title>
+        </div>
+
+        <div class="full-width" fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-content class='text-thin' fxFlex="80%" fxFlexOffset="20%">
+                <p>Instant payments, and a lot of withdrawal methods available</p>
+            </mat-card-content>
+        </div>
+
+    </mat-card-header>
+
+    <form class="form" [formGroup]="form">
+        <mat-card-content fxLayout="column">
+            <div class='field' fxLayout="row" fxLayoutAlign="center center">
+                <mat-label class='text-thin' fxFlex="20%">Product</mat-label>
+                <mat-form-field class="top left full-width" fxFlex="80%" appearance="outline">
+                    <mat-select name="product" formControlName="product">
+                        <mat-option *ngFor="let product of productsEnum | keyvalue" [value]="product.value">
+                          {{product.value}}
+                        </mat-option>
+                      </mat-select>
+                    <!-- <input type="text" matInput formControlName="product"> -->
+                </mat-form-field>
+            </div>
+            <div class='field' fxLayout="row" fxLayoutAlign="center center">
+                <mat-label class='text-thin' fxFlex="20%">Cellphone</mat-label>
+                <mat-form-field class="full-width" fxFlex="80%" appearance="outline">
+                    <input type="tel" matInput formControlName="cellphone">
+                    <mat-hint>Write the number you want to be conected at</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class='field' fxLayout="row" fxLayoutAlign="center center">
+                <mat-label class='text-thin' fxFlex="20%">Monthly Income</mat-label>
+                <mat-form-field class="full-width" fxFlex="80%" appearance="outline">
+                    <input type="number" matInput formControlName="monthlyIncome">
+                    <span class="currency" matSuffix>USD</span>
+                    <mat-hint>Give us an average income</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap='10px'>
+                <div fxLayout="row" fxLayoutAlign="start">
+                    <button fxFlex="80%" fxFlexOffset="20%" mat-raised-button 
+                    class="btn-block" [disabled]="form.invalid" (click)='sendRequest()'>Send</button>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <span fxFlex fxFlexOffset="20%" class='return' routerLink="/dashboard">Cancel</span>
+                </div>
+
+            </div>
+        </mat-card-content>
+    </form>
+</mat-card>

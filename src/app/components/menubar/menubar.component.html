@@ -1,0 +1,23 @@
+<mat-toolbar *ngIf="user$ | async as user">
+    <div fxLayout="row" fxLayoutAlign="end center">
+            <button fxflex="5%" mat-icon-button aria-label="Notifications">
+                <mat-icon matBadge matBadgeSize="small">notifications</mat-icon>
+            </button>
+            <button fxFlex="5%" mat-icon-button aria-label="messages">
+                <mat-icon matBadge matBadgeSize="small">mode_comment</mat-icon>
+            </button>
+            
+            <div class='options' fxFlex fxLayout="row" fxLayoutAlign="end center" [matMenuTriggerFor]="menu" aria-label="options">
+                <img id="avatar" [src]="user.avatar">
+                <span>{{user.name}}</span>
+                <mat-icon>arrow_drop_down</mat-icon>
+            </div>
+    </div>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu" xPosition="before">
+    <button (click)='logout()' mat-menu-item >
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+    </button>
+</mat-menu>

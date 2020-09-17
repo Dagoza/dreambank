@@ -1,0 +1,46 @@
+<div class="container" *ngIf="user$ | async as user" fxLayout="row" fxFlexAlign="center center">
+    
+    <table fxFlex='80%' fxFlexOffset="10%" mat-table [dataSource]="user.accounts" class="mat-elevation-z5">
+
+        <ng-container  matColumnDef="icon">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td class="icon" mat-cell *matCellDef="let account">
+                <mat-icon outlined>{{account.icon}}</mat-icon>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Type" justify="center">
+            <th mat-header-cell *matHeaderCellDef> Type </th>
+            <td mat-cell *matCellDef="let account"> {{account.type}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="AccountName">
+            <th mat-header-cell *matHeaderCellDef> AccountName </th>
+            <td mat-cell *matCellDef="let account"> {{account.id | password: 7:4}}-{{account.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let account"> {{account.status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Currency">
+            <th mat-header-cell *matHeaderCellDef> Currency </th>
+            <td mat-cell *matCellDef="let account"> {{account.currency}} </td>
+        </ng-container>
+
+        <ng-container  matColumnDef="Balance" justify="end">
+            <th class='balance' mat-header-cell *matHeaderCellDef justify="end"> Balance </th>
+            <td class='balance' mat-cell *matCellDef="let account" justify="end"> {{account.balance | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description" >
+            <td class="title" mat-cell *matHeaderCellDef colspan="6"> ALL ACCOUNTS </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="['description']"> </tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="transaction(row)"></tr>
+    </table>
+</div>

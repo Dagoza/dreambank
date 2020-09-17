@@ -1,0 +1,57 @@
+@import '../../../styles.scss';
+
+mat-toolbar{
+    background-color: $primaryColor !important;
+    color: white !important;
+    height: 100px;
+}
+
+.container{
+    width: 100%;
+    height: 100%;  
+    font-weight: 100;
+}
+
+.title{
+    font-size: 13px;
+}
+
+.subtitle{
+    margin-top: -17px;
+    font-size: 8px;
+}
+
+#avatar{
+    width: 80px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.btn-account{
+    width: 123px;
+    line-height: 25px;
+    border: 1px solid $secundaryColor !important;
+    color:white;
+    border-radius: 30px;
+    background-color: Transparent;
+    font-size: 10px; 
+    font-weight: 100;
+}
+
+.btn-account:hover{
+    transition: 0.3s;
+    background-color: $secundaryColor !important;
+}
+
+.balance{
+    border-right: 1px solid $secundaryColorTransparent;
+}
+
+.containerButtons{
+    height: 100%;
+}
+
+.containerButton{
+    width: 100%;
+    text-align: center;
+}

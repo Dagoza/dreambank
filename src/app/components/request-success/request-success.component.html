@@ -1,0 +1,27 @@
+<mat-card class="box">
+    <mat-card-header fxLayout="column" fxLayoutAlign="space-between center">
+        <div class="full-width" fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-subtitle fxFlex="80%" fxFlexOffset="20%">
+                <span class="underline">New Product</span>
+            </mat-card-subtitle>
+        </div>
+
+        <div class="full-width" fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-title fxFlex="80%" fxFlexOffset="20%">Request success</mat-card-title>
+        </div>
+
+        <div class="full-width" fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-content class='text-thin' fxFlex="80%" fxFlexOffset="20%">
+                <p>Your order has been sent successfully,
+                    <br>
+                    an advisor will contact you soon.
+                </p>
+            </mat-card-content>
+        </div>
+
+    </mat-card-header>
+        <mat-card-content fxLayout="row">
+            <button fxFlex="80%" fxFlexOffset="20%" 
+            mat-raised-button class="btn-block" (click)='toastConfirm()' routerLink="/dashboard/accountSummary">Go Home</button>
+        </mat-card-content>
+</mat-card>

@@ -1,0 +1,47 @@
+<div class="container" *ngIf="account" fxLayout="column" fxFlexAlign="center center">
+    
+    <mat-card fxLayout="row" fxFlexAlign="space-between center">
+                <span fxFlex>{{account.id | password: 7:4}} - {{account.name}}</span>
+                <mat-icon routerLink="/dashboard/accountSummary" fxFlex='5%'>exit_to_app</mat-icon>
+    </mat-card>
+
+    <table fxFlex='80%' fxFlexOffset="2%" mat-table 
+    [dataSource]="account.transactions" matSort class="mat-elevation-z5">
+
+        <ng-container  matColumnDef="Date">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+            <td mat-cell *matCellDef="let transaction">
+                {{transaction.date | date: 'short'}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Currency">
+            <th mat-header-cell *matHeaderCellDef> Currency </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Value">
+            <th mat-header-cell *matHeaderCellDef> Value </th>
+            <td mat-cell *matCellDef="let transaction" [ngClass]="{'red' : transaction.value<0}"> {{transaction.value | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Balance">
+            <th class='balance' mat-header-cell *matHeaderCellDef> Balance </th>
+            <td class='balance' mat-cell *matCellDef="let transaction"> {{getTotalToDate(transaction.date) | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description" >
+            <th mat-header-cell class="title" mat-cell *matHeaderCellDef colspan="6"> Last Transactions </th>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="['description']"> </tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

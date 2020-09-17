@@ -1,1 +1,75 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$DreamBank-primary: mat-palette($mat-indigo);
+$DreamBank-accent: mat-palette($mat-pink, A200, A100, A400);
+$DreamBank-success: mat-palette($mat-green, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$DreamBank-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$DreamBank-theme: mat-light-theme($DreamBank-primary, $DreamBank-accent, $DreamBank-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($DreamBank-theme);
+
 /* You can add global styles to this file, and also import other style files */
+$primaryColor: #0447cb;
+$primaryDarkColor: #012b5e;
+$primaryColorDisabled: #183aa838;
+$secundaryColor:  #00f1e6;
+$secundaryColorTransparent:  rgb(0, 241, 230, 0.2);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.5em 0 0.5em 0 !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: $primaryColor;
+    margin: 0px 0px 0px 0px;
+  }
+
+ .field .mat-form-field-appearance-outline .mat-form-field-outline, 
+ .mat-select-arrow,
+ .mat-select-value-text {
+    color: white;
+  }
+
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0.34375em;
+}
+
+.red-snackbar{
+    background-color: #ac4a4a;
+    color: white;
+}
+
+.success-snackbar{
+    background-color: $secundaryColor;
+    color: $primaryColor;
+}
+
+.mat-select-panel{
+    border: 1px solid $secundaryColor;
+}
+
+div#particles-js canvas.particles-js-canvas-el {
+    border-radius: 0 0 100% 100% !important;
+  }

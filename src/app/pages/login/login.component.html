@@ -1,0 +1,62 @@
+<div id="particles-js"></div>
+
+<div class="login-wrapper" fxLayout="column" fxLayoutAlign="center center">
+  <h1 fxFlexAlign="start">($ Dream Bank</h1>
+  <mat-card class="box">
+    <mat-card-header fxLayout="column" fxLayoutAlign="space-between center">
+      <div class="full-width" fxLayout="row" fxLayoutAlign="center center">
+        <mat-card-subtitle fxFlex="85%" fxFlexOffset="15%">
+          <span class="underline">Welcome back</span>
+        </mat-card-subtitle>
+      </div>
+
+      <div class="full-width" fxLayout="row" fxLayoutAlign="center center">
+        <mat-card-title fxFlex="85%" fxFlexOffset="15%">Login</mat-card-title>
+      </div>
+
+      <div class="full-width" fxLayout="row" fxLayoutAlign="center center">
+        <mat-card-content class='text-thin' fxFlex="85%" fxFlexOffset="15%">
+          <p>For your money safety, please delete all extensions</p>
+          <p>for the browser you use to log in to your wallet</p>
+        </mat-card-content>
+      </div>
+
+    </mat-card-header>
+
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+      <mat-card-content fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-label class='text-thin' fxFlex="15%">Login</mat-label>
+          <mat-form-field id="userName" class="full-width" fxFlex="85%" appearance="outline">
+            <input type="text" matInput formControlName="login">
+            <mat-icon *ngIf="f.login.valid" style="color: green" matSuffix>done</mat-icon>
+            <mat-icon *ngIf="f.login.invalid && f.login.dirty" color="error" matSuffix>clear</mat-icon>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-label class='text-thin' fxFlex="15%">Password</mat-label>
+          <mat-form-field class="full-width" fxFlex="85%" appearance="outline" color="primary">
+            <input type="password" matInput formControlName="password">
+            <div class="messagePassword" *ngIf="f.password.pristine" matSuffix>Forgot Password?</div>
+            <mat-icon *ngIf="f.password.valid" style="color: green" matSuffix>done</mat-icon>
+            <mat-icon *ngIf="f.password.invalid && f.password.dirty" color="error" matSuffix>clear</mat-icon>
+            <mat-error *ngIf="f.password.invalid && f.password.dirty">Please, enter a valid password</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <button fxFlex="85%" fxFlexOffset="15%" [disabled]="form.invalid" mat-raised-button color="primary"
+            class="btn-block">Login</button>
+        </div>
+      </mat-card-content>
+    </form>
+  </mat-card>
+  <footer class="box" fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="70%" fxLayout="column" fxLayoutAlign="center start">
+      <mat-card-title>
+        <h4>Don't have an account?</h4>
+      </mat-card-title>
+      <p><span>Register here </span> <mat-icon class="arrow">arrow_right_alt</mat-icon></p>
+    </div>
+    <button fxFlex="30%" mat-stroked-button class="btn-account">Create account</button>
+</footer>
+</div>

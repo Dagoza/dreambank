@@ -1,0 +1,71 @@
+$primaryColor: #183aa8;
+$primaryColorTransparent: #183aa817;
+$secundaryColor: #7bded6;
+
+.red {
+    color: #ac4a4a !important;
+}
+
+.container {
+    width: 90%;
+    height: 100%;
+    margin: 30px 0 30px 30px;
+    max-height: min-content;
+}
+
+.mat-row {
+    &:hover {
+        cursor: pointer;
+        background-color: #33333310;
+        box-shadow: inset 3px 0 0 0 $secundaryColor;
+        border-left: 2px solid $secundaryColor;
+    }
+}
+
+.mat-header-cell {
+    color: $primaryColor;
+}
+
+td.mat-cell {
+    color: gray;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell:not(.title) {
+    border-bottom-width: 0px;
+}
+
+td.mat-cell.balance {
+    padding-right: 24px;
+}
+
+.balance {
+    text-align: end;
+}
+
+.mat-row {
+    height: auto;
+}
+
+.mat-cell {
+    padding: 0px 10px 20px 0;
+}
+
+mat-card {
+    height: 45px;
+    transition: none !important;
+    box-shadow: none !important;
+    color: gray;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: $primaryColorTransparent;
+}
+
+mat-icon{
+    cursor: pointer;
+    font-size: 20px;
+    max-height: min-content;
+}

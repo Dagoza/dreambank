@@ -1,0 +1,43 @@
+@import '../../../styles.scss';
+
+.example-sidenav{
+margin: 0;
+padding: 0;
+width: 200px;
+background-color: $primaryDarkColor;
+position: fixed;
+height: 100%;
+overflow: auto;
+color: white;
+}
+
+.logo{
+    font-size: 40px;
+    color: $primaryColor;
+    margin-top: 20px;   
+    user-select: none; 
+}
+
+.mat-subheader{
+    font-size: 10px;
+    color: $secundaryColor !important;
+}
+
+.mat-line{
+    color: white;
+    font-size: 10px !important;
+}
+
+.router{
+    cursor: pointer;
+    height: 30px !important;
+    &:hover{
+        background-color: $secundaryColorTransparent;
+        transition: 1s;
+    }
+}
+
+.router-link-active{
+    border-left: 3px solid $secundaryColor;
+    background: linear-gradient(to right, $secundaryColorTransparent, transparent);;
+}

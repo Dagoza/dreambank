@@ -1,0 +1,31 @@
+<mat-toolbar *ngIf="user$ | async as user">
+    <div class="container" fxLayout="row wrap" fxLayoutAlign="space-around center">
+
+        <div fxFlex="60%" fxLayout="row" fxLayoutAlign="start center">
+            <img id="avatar" [src]="user.avatar">
+            <div fxLayout="column" fxLayoutAlign="center start">
+                <span class='title'>Welcome back, {{user.name.split(' ')[0]}}</span>
+                <span class='subtitle'>Your last login was {{user.lastLogin | date: 'long'}}</span>
+            </div>
+        </div>
+
+
+        <div class="balance" fxFlex="20%" fxLayout="column" fxLayoutAlign="center start">
+            <span class='title'>Total Balance</span>
+            <strong>{{balanceTotal | currency}}</strong>
+        </div>
+
+        <div class="containerButtons" fxFlex="20%" fxLayout="column" fxLayoutAlign="center center">
+            <div class="containerButton" fxFlex="30%">
+                <button routerLink="/dashboard/newProduct/request" mat-stroked-button class="btn-account">
+                    Request new product
+                </button>
+            </div>
+            <div class="containerButton" fxFlex="30%">
+                <button mat-stroked-button class="btn-account">
+                    Make a Transfer
+                </button>
+            </div>
+        </div>
+    </div>
+</mat-toolbar>

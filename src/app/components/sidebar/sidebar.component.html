@@ -1,0 +1,24 @@
+<mat-drawer #drawer class="example-sidenav" mode="side" opened>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <span class='logo'>($</span>
+  </div>
+  
+  <mat-list>
+    <div mat-subheader>ACCOUNTS</div>
+    <mat-list-item class='router' *ngFor="let account of options.accounts"
+     [routerLink]="[account.link]" routerLinkActive="router-link-active">
+      <div mat-line>{{account.name}}</div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <div mat-subheader>TRANSACTIONS</div>
+    <mat-list-item class='router' *ngFor="let transaction of options.transactions"
+    [routerLink]="[transaction.link]" routerLinkActive="router-link-active">
+      <div matRipple mat-line>{{transaction.name}}</div>
+    </mat-list-item>
+    <div mat-subheader>SERVICES</div>
+    <mat-list-item class='router' *ngFor="let service of options.services"
+    [routerLink]="[service.link]" routerLinkActive="router-link-active">
+      <div matRipple mat-line>{{service.name}}</div>    
+    </mat-list-item>
+  </mat-list>
+</mat-drawer>

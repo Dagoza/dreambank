@@ -1,0 +1,130 @@
+
+@import '../../../styles.scss';
+
+ h4{
+     padding: 0 0 0 0;
+     margin: 0 0 0 0;
+ }
+ 
+ 
+ .box {
+     width: 100%;
+     height: 100%;
+     max-width: 30%;
+     min-width: 420px;
+     margin-left: -20px;
+ }
+ 
+.form {
+     min-width: 100%;
+     max-width: 300px;
+     width: 100%;
+ }
+
+ .full-width{
+    width: 100%;
+    color: white;
+ }
+
+mat-card-header {
+     text-align: center;
+     width: 100%;
+     display: block;
+     font-weight: 700;
+ }
+ 
+mat-card-header mat-card-title {
+    font-size: 35px !important;
+    margin: 0;
+ }
+ 
+ button{
+     border-radius: 20px;
+     &:disabled{
+        background-color: $secundaryColorTransparent !important;
+     }
+ }
+
+ 
+ .text-thin {
+     text-align: center;
+     font-size: 14px;
+     color: white;
+     font-weight: 100;
+ }
+ 
+ p{
+     font-weight: 100;
+     margin-top: 0px;
+     margin-bottom: 0px;
+     font-size: 12px;
+ }
+ 
+ .underline {
+     text-align: center;
+     color: white;
+     position: relative;
+ }
+ 
+ .underline::before {
+     content: "";
+     background-color: $secundaryColor;
+     height: 3px;
+     width: 80px;
+     position: absolute;
+     border-radius: 100px;
+     left: 120%;
+     bottom: -10px;
+     margin-left: -75px;
+ }
+ 
+ mat-card-header .full-width {
+     padding-bottom: 35px;
+ }
+ 
+ mat-card{
+     background-color: transparent !important;
+     transition: none !important;
+     box-shadow: none !important;
+ }
+ 
+ .btn-block{
+     margin-top: 30px;
+     background-color: $secundaryColor;
+     max-width: 85%;
+     width: 100%;
+ }
+ 
+ mat-hint{
+     opacity: 0.3;
+     color: white !important;
+     padding-top: 12px;
+ }
+
+ .currency{
+     opacity: 0.3;
+ }
+
+ .field{
+     padding-bottom: 15px;
+ }
+
+ .return{
+     color:white;
+     cursor: pointer;
+     text-align: center;
+     font-weight: 100;
+ }
+
+ .title{
+     width: 100%;
+ }
+
+ mat-option{
+    color:white !important;
+    background-color: #1a4378 !important;
+ }
+
+ mat-option:hover{
+    background-color: #08a6b6 !important;
+ }

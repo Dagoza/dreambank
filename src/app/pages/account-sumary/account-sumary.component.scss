@@ -1,0 +1,54 @@
+@import '../../../styles.scss';
+
+.container{
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+}
+
+.mat-row{
+    &:hover{
+        cursor: pointer;
+        background-color: #33333310;
+        box-shadow: inset 3px 0 0 0 $secundaryColor;
+        border-left: 2px solid $secundaryColor;
+    }
+}
+
+.mat-header-cell{
+    color: $primaryColor;
+}
+
+td.mat-cell{
+    color: gray;
+    font-size: 10px;
+    font-weight: 100;
+}
+
+  
+td.mat-cell:not(.title), td.mat-footer-cell, th.mat-header-cell {
+    border-bottom-width: 0px;
+}
+
+td.mat-cell.balance{
+    padding-right: 24px;
+}
+
+.icon {
+    text-align: center;
+    mat-icon{
+        font-size: 20px; 
+    }
+}
+
+.balance{
+    text-align: end;
+}
+
+.mat-row {
+    height: auto;
+  }
+  
+  .mat-cell {
+    padding: 0px 8px 8px 0;
+  }
