@@ -140,13 +140,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var MatSelectModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_select__WEBPACK_IMPORTED_MODULE_1__["MatSelectModule"], [], function (_l) {
+    var MatSelectModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_select__WEBPACK_IMPORTED_MODULE_1__["MatSelectModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["Overlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["Overlay"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["ScrollStrategyOptions"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["OverlayContainer"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["OverlayPositionBuilder"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["OverlayKeyboardDispatcher"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["DOCUMENT"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["Directionality"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["ɵc"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["ɵd"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_5__["MutationObserverFactory"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_5__["MutationObserverFactory"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_select__WEBPACK_IMPORTED_MODULE_1__["MAT_SELECT_SCROLL_STRATEGY"], _angular_material_select__WEBPACK_IMPORTED_MODULE_1__["MAT_SELECT_SCROLL_STRATEGY_PROVIDER_FACTORY"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_6__["PortalModule"], _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_6__["PortalModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["PlatformModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["PlatformModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_8__["ScrollingModule"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_8__["ScrollingModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["OverlayModule"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_3__["OverlayModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_9__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_9__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_9__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_10__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_9__["MatRippleModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_9__["MatRippleModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_9__["MatPseudoCheckboxModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_9__["MatPseudoCheckboxModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_9__["MatOptionModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_9__["MatOptionModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_5__["ObserversModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_5__["ObserversModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_11__["MatFormFieldModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_11__["MatFormFieldModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_select__WEBPACK_IMPORTED_MODULE_1__["MatSelectModule"], _angular_material_select__WEBPACK_IMPORTED_MODULE_1__["MatSelectModule"], [])]);
     });
 
     var styles_MatSelect = [".mat-select{display:inline-block;width:100%;outline:0}.mat-select-trigger{display:inline-table;cursor:pointer;position:relative;box-sizing:border-box}.mat-select-disabled .mat-select-trigger{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-select-value{display:table-cell;max-width:0;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mat-select-value-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mat-select-arrow-wrapper{display:table-cell;vertical-align:middle}.mat-form-field-appearance-fill .mat-select-arrow-wrapper{transform:translateY(-50%)}.mat-form-field-appearance-outline .mat-select-arrow-wrapper{transform:translateY(-25%)}.mat-form-field-appearance-standard.mat-form-field-has-label .mat-select:not(.mat-select-empty) .mat-select-arrow-wrapper{transform:translateY(-50%)}.mat-form-field-appearance-standard .mat-select.mat-select-empty .mat-select-arrow-wrapper{transition:transform .4s cubic-bezier(.25,.8,.25,1)}._mat-animation-noopable.mat-form-field-appearance-standard .mat-select.mat-select-empty .mat-select-arrow-wrapper{transition:none}.mat-select-arrow{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid;margin:0 4px}.mat-select-panel-wrap{flex-basis:100%}.mat-select-panel{min-width:112px;max-width:280px;overflow:auto;-webkit-overflow-scrolling:touch;padding-top:0;padding-bottom:0;max-height:256px;min-width:100%;border-radius:4px}@media (-ms-high-contrast:active){.mat-select-panel{outline:solid 1px}}.mat-select-panel .mat-optgroup-label,.mat-select-panel .mat-option{font-size:inherit;line-height:3em;height:3em}.mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-flex{cursor:pointer}.mat-form-field-type-mat-select .mat-form-field-label{width:calc(100% - 18px)}.mat-select-placeholder{transition:color .4s .133s cubic-bezier(.25,.8,.25,1)}._mat-animation-noopable .mat-select-placeholder{transition:none}.mat-form-field-hide-placeholder .mat-select-placeholder{color:transparent;-webkit-text-fill-color:transparent;transition:none;display:block}"];
 
-    var RenderType_MatSelect = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatSelect = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatSelect,
       data: {
@@ -471,7 +471,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatSelectNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-select", _angular_material_select__WEBPACK_IMPORTED_MODULE_1__["MatSelect"], View_MatSelect_Host_0, {
+    var MatSelectNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-select", _angular_material_select__WEBPACK_IMPORTED_MODULE_1__["MatSelect"], View_MatSelect_Host_0, {
       disabled: "disabled",
       disableRipple: "disableRipple",
       tabIndex: "tabIndex",
@@ -708,7 +708,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_RequestProductComponent = [_request_product_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 
-    var RenderType_RequestProductComponent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
+    var RenderType_RequestProductComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
       encapsulation: 0,
       styles: styles_RequestProductComponent,
       data: {}
@@ -1561,7 +1561,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var RequestProductComponentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-request-product", _request_product_component__WEBPACK_IMPORTED_MODULE_24__["RequestProductComponent"], View_RequestProductComponent_Host_0, {}, {}, []);
+    var RequestProductComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-request-product", _request_product_component__WEBPACK_IMPORTED_MODULE_24__["RequestProductComponent"], View_RequestProductComponent_Host_0, {}, {}, []);
     /***/
 
   },
@@ -1619,13 +1619,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/forms */
     "./node_modules/@angular/forms/fesm2015/forms.js");
     /* harmony import */
 
 
-    var src_app_shared_models_products_enum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var src_app_shared_models_products_enum__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! src/app/shared/models/products-enum */
     "./src/app/shared/models/products-enum.ts");
 
@@ -1636,16 +1642,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.fb = fb;
         this.userService = userService;
         this.requestService = requestService;
-        this.productsEnum = src_app_shared_models_products_enum__WEBPACK_IMPORTED_MODULE_1__["products"];
+        this.productsEnum = src_app_shared_models_products_enum__WEBPACK_IMPORTED_MODULE_2__["products"];
       }
 
       _createClass(RequestProductComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
           this.form = this.fb.group({
-            product: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required]],
-            cellphone: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].minLength(6)]],
-            monthlyIncome: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required]]
+            product: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            cellphone: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].minLength(6)]],
+            monthlyIncome: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
           });
         }
       }, {
@@ -1793,7 +1799,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_RequestSuccessComponent = [_request_success_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 
-    var RenderType_RequestSuccessComponent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
+    var RenderType_RequestSuccessComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
       encapsulation: 0,
       styles: styles_RequestSuccessComponent,
       data: {}
@@ -1941,7 +1947,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var RequestSuccessComponentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-request-success", _request_success_component__WEBPACK_IMPORTED_MODULE_12__["RequestSuccessComponent"], View_RequestSuccessComponent_Host_0, {}, {}, []);
+    var RequestSuccessComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-request-success", _request_success_component__WEBPACK_IMPORTED_MODULE_12__["RequestSuccessComponent"], View_RequestSuccessComponent_Host_0, {}, {}, []);
     /***/
 
   },
@@ -1996,6 +2002,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "RequestSuccessComponent", function () {
       return RequestSuccessComponent;
     });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
 
     var RequestSuccessComponent = /*#__PURE__*/function () {
       function RequestSuccessComponent(snackBar) {
@@ -2045,38 +2057,44 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var src_app_components_request_product_request_product_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_components_request_product_request_product_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! src/app/components/request-product/request-product.component */
     "./src/app/components/request-product/request-product.component.ts");
     /* harmony import */
 
 
-    var src_app_components_request_success_request_success_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var src_app_components_request_success_request_success_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! src/app/components/request-success/request-success.component */
     "./src/app/components/request-success/request-success.component.ts");
     /* harmony import */
 
 
-    var src_app_shared_guards_AuthGuard_auth_guard_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var src_app_shared_guards_AuthGuard_auth_guard_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! src/app/shared/guards/AuthGuard/auth-guard.service */
     "./src/app/shared/guards/AuthGuard/auth-guard.service.ts");
     /* harmony import */
 
 
-    var _new_product_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _new_product_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ./new-product.component */
     "./src/app/pages/new-product/new-product.component.ts");
 
     var routes = [{
       path: '',
-      component: _new_product_component__WEBPACK_IMPORTED_MODULE_3__["NewProductComponent"],
-      canActivate: [src_app_shared_guards_AuthGuard_auth_guard_service__WEBPACK_IMPORTED_MODULE_2__["AuthGuardService"]],
+      component: _new_product_component__WEBPACK_IMPORTED_MODULE_4__["NewProductComponent"],
+      canActivate: [src_app_shared_guards_AuthGuard_auth_guard_service__WEBPACK_IMPORTED_MODULE_3__["AuthGuardService"]],
       children: [{
         path: 'request',
-        component: src_app_components_request_product_request_product_component__WEBPACK_IMPORTED_MODULE_0__["RequestProductComponent"]
+        component: src_app_components_request_product_request_product_component__WEBPACK_IMPORTED_MODULE_1__["RequestProductComponent"]
       }, {
         path: 'success',
-        component: src_app_components_request_success_request_success_component__WEBPACK_IMPORTED_MODULE_1__["RequestSuccessComponent"]
+        component: src_app_components_request_success_request_success_component__WEBPACK_IMPORTED_MODULE_2__["RequestSuccessComponent"]
       }]
     }];
 
@@ -2206,7 +2224,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_NewProductComponent = [_new_product_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 
-    var RenderType_NewProductComponent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
+    var RenderType_NewProductComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
       encapsulation: 0,
       styles: styles_NewProductComponent,
       data: {}
@@ -2276,7 +2294,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var NewProductComponentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-new-product", _new_product_component__WEBPACK_IMPORTED_MODULE_11__["NewProductComponent"], View_NewProductComponent_Host_0, {}, {}, []);
+    var NewProductComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-new-product", _new_product_component__WEBPACK_IMPORTED_MODULE_11__["NewProductComponent"], View_NewProductComponent_Host_0, {}, {}, []);
     /***/
 
   },
@@ -2334,7 +2352,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var src_app_shared_const_particles_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_shared_const_particles_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! src/app/shared/const/particles-config */
     "./src/app/shared/const/particles-config.ts");
 
@@ -2346,7 +2370,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(NewProductComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          particlesJS('particles-js', src_app_shared_const_particles_config__WEBPACK_IMPORTED_MODULE_0__["ParticlesConfig"], function () {});
+          particlesJS('particles-js', src_app_shared_const_particles_config__WEBPACK_IMPORTED_MODULE_1__["ParticlesConfig"], function () {});
         }
       }]);
 
@@ -2755,7 +2779,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var NewProductModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_new_product_module__WEBPACK_IMPORTED_MODULE_1__["NewProductModule"], [], function (_l) {
+    var NewProductModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_new_product_module__WEBPACK_IMPORTED_MODULE_1__["NewProductModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, [_node_modules_angular_router_router_ngfactory__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_router_router_lNgFactory"], _new_product_component_ngfactory__WEBPACK_IMPORTED_MODULE_3__["NewProductComponentNgFactory"], _components_request_product_request_product_component_ngfactory__WEBPACK_IMPORTED_MODULE_4__["RequestProductComponentNgFactory"], _components_request_success_request_success_component_ngfactory__WEBPACK_IMPORTED_MODULE_5__["RequestSuccessComponentNgFactory"], _node_modules_angular_material_snack_bar_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_6__["MatSnackBarContainerNgFactory"], _node_modules_angular_material_snack_bar_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_6__["SimpleSnackBarNgFactory"], _node_modules_angular_material_dialog_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_7__["MatDialogContainerNgFactory"], _node_modules_angular_material_datepicker_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_8__["MatDatepickerContentNgFactory"], _node_modules_angular_material_datepicker_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_8__["MatCalendarHeaderNgFactory"], _node_modules_angular_material_tooltip_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_9__["TooltipComponentNgFactory"]]], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_10__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_core__WEBPACK_IMPORTED_MODULE_0__["APP_BOOTSTRAP_LISTENER"], function (p0_0, p0_1) {
         return [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_11__["removeStyles"](p0_0, p0_1)];
       }, [_angular_common__WEBPACK_IMPORTED_MODULE_10__["DOCUMENT"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_12__["MutationObserverFactory"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_12__["MutationObserverFactory"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["ErrorStateMatcher"], _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["ErrorStateMatcher"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["ScrollStrategyOptions"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["OverlayContainer"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["OverlayPositionBuilder"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["OverlayKeyboardDispatcher"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["DOCUMENT"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_15__["Directionality"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_10__["Location"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["ɵc"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["ɵd"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_select__WEBPACK_IMPORTED_MODULE_16__["MAT_SELECT_SCROLL_STRATEGY"], _angular_material_select__WEBPACK_IMPORTED_MODULE_16__["MAT_SELECT_SCROLL_STRATEGY_PROVIDER_FACTORY"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_menu__WEBPACK_IMPORTED_MODULE_17__["MAT_MENU_SCROLL_STRATEGY"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_17__["ɵb22"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MAT_DIALOG_SCROLL_STRATEGY"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](135680, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MatDialog"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MatDialog"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_10__["Location"]], [2, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MAT_DIALOG_DEFAULT_OPTIONS"]], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MAT_DIALOG_SCROLL_STRATEGY"], [3, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MatDialog"]], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["OverlayContainer"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_19__["MatDatepickerIntl"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_19__["MatDatepickerIntl"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_19__["MAT_DATEPICKER_SCROLL_STRATEGY"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_19__["MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["DateAdapter"], _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["NativeDateAdapter"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["MAT_DATE_LOCALE"]], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_20__["Platform"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_21__["MAT_TOOLTIP_SCROLL_STRATEGY"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_21__["MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_22__["HAMMER_GESTURE_CONFIG"], _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["GestureConfig"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["MAT_HAMMER_OPTIONS"]], [2, _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["MatCommonModule"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_23__["MatPaginatorIntl"], _angular_material_paginator__WEBPACK_IMPORTED_MODULE_23__["MAT_PAGINATOR_INTL_PROVIDER_FACTORY"], [[3, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_23__["MatPaginatorIntl"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_forms__WEBPACK_IMPORTED_MODULE_24__["ɵangular_packages_forms_forms_o"], _angular_forms__WEBPACK_IMPORTED_MODULE_24__["ɵangular_packages_forms_forms_o"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_forms__WEBPACK_IMPORTED_MODULE_24__["FormBuilder"], _angular_forms__WEBPACK_IMPORTED_MODULE_24__["FormBuilder"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _shared_stateful_model_model__WEBPACK_IMPORTED_MODULE_25__["ModelFactory"], _shared_stateful_model_model__WEBPACK_IMPORTED_MODULE_25__["useModelFactory"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_common_http__WEBPACK_IMPORTED_MODULE_26__["HTTP_INTERCEPTORS"], function (p0_0, p1_0) {
@@ -2846,46 +2870,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    var RequestService = /*@__PURE__*/function () {
-      var RequestService = /*#__PURE__*/function () {
-        function RequestService(http, router) {
-          _classCallCheck(this, RequestService);
+    var RequestService = /*#__PURE__*/function () {
+      function RequestService(http, router) {
+        _classCallCheck(this, RequestService);
 
-          this.http = http;
-          this.router = router;
-          this.uri = 'http://localhost:1000/api';
+        this.http = http;
+        this.router = router;
+        this.uri = 'http://localhost:1000/api';
+      }
+
+      _createClass(RequestService, [{
+        key: "requestNewProduct",
+        value: function requestNewProduct(identity, product, cellphone, monthly) {
+          var _this = this;
+
+          this.http.post(this.uri + '/request/product', {
+            identity: identity,
+            product: product,
+            cellphone: cellphone,
+            monthly: monthly
+          }).subscribe(function () {
+            _this.router.navigate(['/dashboard/newProduct/success']);
+          });
         }
+      }]);
 
-        _createClass(RequestService, [{
-          key: "requestNewProduct",
-          value: function requestNewProduct(identity, product, cellphone, monthly) {
-            var _this = this;
-
-            this.http.post(this.uri + '/request/product', {
-              identity: identity,
-              product: product,
-              cellphone: cellphone,
-              monthly: monthly
-            }).subscribe(function () {
-              _this.router.navigate(['/dashboard/newProduct/success']);
-            });
-          }
-        }]);
-
-        return RequestService;
-      }();
-
-      RequestService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
-        factory: function RequestService_Factory() {
-          return new RequestService(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]));
-        },
-        token: RequestService,
-        providedIn: "root"
-      });
       return RequestService;
     }();
-    /***/
 
+    RequestService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      factory: function RequestService_Factory() {
+        return new RequestService(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]));
+      },
+      token: RequestService,
+      providedIn: "root"
+    });
+    /***/
   },
 
   /***/
@@ -2908,13 +2928,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return products;
     });
 
-    var products = /*@__PURE__*/function (products) {
+    var products;
+
+    (function (products) {
       products["CREDIT"] = "Agile Credit";
       products["CARD"] = "Credit Card";
       products["SAVING"] = "Savings";
       products["LEASING"] = "Home Leasing";
-      return products;
-    }({});
+    })(products || (products = {}));
     /***/
 
   }

@@ -1,3 +1,35 @@
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -5,6 +37,3525 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-dashboard-dashboard-module-ngfactory"], {
+  /***/
+  "./node_modules/@angular/cdk/esm2015/accordion.js":
+  /*!********************************************************!*\
+    !*** ./node_modules/@angular/cdk/esm2015/accordion.js ***!
+    \********************************************************/
+
+  /*! exports provided: CdkAccordionItem, CdkAccordion, CdkAccordionModule */
+
+  /***/
+  function node_modulesAngularCdkEsm2015AccordionJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkAccordionItem", function () {
+      return CdkAccordionItem;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkAccordion", function () {
+      return CdkAccordion;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkAccordionModule", function () {
+      return CdkAccordionModule;
+    });
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/cdk/collections */
+    "./node_modules/@angular/cdk/esm2015/collections.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Used to generate unique ID for each accordion.
+     * @type {?}
+     */
+
+
+    var nextId = 0;
+    /**
+     * Directive whose purpose is to manage the expanded state of CdkAccordionItem children.
+     */
+
+    var CdkAccordion = /*#__PURE__*/function () {
+      function CdkAccordion() {
+        _classCallCheck(this, CdkAccordion);
+
+        /**
+         * Emits when the state of the accordion changes
+         */
+        this._stateChanges = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        /**
+         * Stream that emits true/false when openAll/closeAll is triggered.
+         */
+
+        this._openCloseAllActions = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        /**
+         * A readonly id value to use for unique selection coordination.
+         */
+
+        this.id = "cdk-accordion-".concat(nextId++);
+        this._multi = false;
+      }
+      /**
+       * Whether the accordion should allow multiple expanded accordion items simultaneously.
+       * @return {?}
+       */
+
+
+      _createClass(CdkAccordion, [{
+        key: "openAll",
+
+        /**
+         * Opens all enabled accordion items in an accordion where multi is enabled.
+         * @return {?}
+         */
+        value: function openAll() {
+          this._openCloseAll(true);
+        }
+        /**
+         * Closes all enabled accordion items in an accordion where multi is enabled.
+         * @return {?}
+         */
+
+      }, {
+        key: "closeAll",
+        value: function closeAll() {
+          this._openCloseAll(false);
+        }
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnChanges",
+        value: function ngOnChanges(changes) {
+          this._stateChanges.next(changes);
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._stateChanges.complete();
+        }
+        /**
+         * @private
+         * @param {?} expanded
+         * @return {?}
+         */
+
+      }, {
+        key: "_openCloseAll",
+        value: function _openCloseAll(expanded) {
+          if (this.multi) {
+            this._openCloseAllActions.next(expanded);
+          }
+        }
+      }, {
+        key: "multi",
+        get: function get() {
+          return this._multi;
+        }
+        /**
+         * @param {?} multi
+         * @return {?}
+         */
+        ,
+        set: function set(multi) {
+          this._multi = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceBooleanProperty"])(multi);
+        }
+      }]);
+
+      return CdkAccordion;
+    }();
+
+    CdkAccordion.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+      args: [{
+        selector: 'cdk-accordion, [cdkAccordion]',
+        exportAs: 'cdkAccordion'
+      }]
+    }];
+    CdkAccordion.propDecorators = {
+      multi: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Used to generate unique ID for each accordion item.
+     * @type {?}
+     */
+
+    var nextId$1 = 0;
+    var ɵ0 = undefined;
+    /**
+     * An basic directive expected to be extended and decorated as a component.  Sets up all
+     * events and attributes needed to be managed by a CdkAccordion parent.
+     */
+
+    var CdkAccordionItem = /*#__PURE__*/function () {
+      /**
+       * @param {?} accordion
+       * @param {?} _changeDetectorRef
+       * @param {?} _expansionDispatcher
+       */
+      function CdkAccordionItem(accordion, _changeDetectorRef, _expansionDispatcher) {
+        var _this = this;
+
+        _classCallCheck(this, CdkAccordionItem);
+
+        this.accordion = accordion;
+        this._changeDetectorRef = _changeDetectorRef;
+        this._expansionDispatcher = _expansionDispatcher;
+        /**
+         * Subscription to openAll/closeAll events.
+         */
+
+        this._openCloseAllSubscription = rxjs__WEBPACK_IMPORTED_MODULE_2__["Subscription"].EMPTY;
+        /**
+         * Event emitted every time the AccordionItem is closed.
+         */
+
+        this.closed = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        /**
+         * Event emitted every time the AccordionItem is opened.
+         */
+
+        this.opened = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        /**
+         * Event emitted when the AccordionItem is destroyed.
+         */
+
+        this.destroyed = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        /**
+         * Emits whenever the expanded state of the accordion changes.
+         * Primarily used to facilitate two-way binding.
+         * \@docs-private
+         */
+
+        this.expandedChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        /**
+         * The unique AccordionItem id.
+         */
+
+        this.id = "cdk-accordion-child-".concat(nextId$1++);
+        this._expanded = false;
+        this._disabled = false;
+        /**
+         * Unregister function for _expansionDispatcher.
+         */
+
+        this._removeUniqueSelectionListener =
+        /**
+        * @return {?}
+        */
+        function () {};
+
+        this._removeUniqueSelectionListener = _expansionDispatcher.listen(
+        /**
+        * @param {?} id
+        * @param {?} accordionId
+        * @return {?}
+        */
+        function (id, accordionId) {
+          if (_this.accordion && !_this.accordion.multi && _this.accordion.id === accordionId && _this.id !== id) {
+            _this.expanded = false;
+          }
+        }); // When an accordion item is hosted in an accordion, subscribe to open/close events.
+
+        if (this.accordion) {
+          this._openCloseAllSubscription = this._subscribeToOpenCloseAllActions();
+        }
+      }
+      /**
+       * Whether the AccordionItem is expanded.
+       * @return {?}
+       */
+
+
+      _createClass(CdkAccordionItem, [{
+        key: "ngOnDestroy",
+
+        /**
+         * Emits an event for the accordion item being destroyed.
+         * @return {?}
+         */
+        value: function ngOnDestroy() {
+          this.opened.complete();
+          this.closed.complete();
+          this.destroyed.emit();
+          this.destroyed.complete();
+
+          this._removeUniqueSelectionListener();
+
+          this._openCloseAllSubscription.unsubscribe();
+        }
+        /**
+         * Toggles the expanded state of the accordion item.
+         * @return {?}
+         */
+
+      }, {
+        key: "toggle",
+        value: function toggle() {
+          if (!this.disabled) {
+            this.expanded = !this.expanded;
+          }
+        }
+        /**
+         * Sets the expanded state of the accordion item to false.
+         * @return {?}
+         */
+
+      }, {
+        key: "close",
+        value: function close() {
+          if (!this.disabled) {
+            this.expanded = false;
+          }
+        }
+        /**
+         * Sets the expanded state of the accordion item to true.
+         * @return {?}
+         */
+
+      }, {
+        key: "open",
+        value: function open() {
+          if (!this.disabled) {
+            this.expanded = true;
+          }
+        }
+        /**
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_subscribeToOpenCloseAllActions",
+        value: function _subscribeToOpenCloseAllActions() {
+          var _this2 = this;
+
+          return this.accordion._openCloseAllActions.subscribe(
+          /**
+          * @param {?} expanded
+          * @return {?}
+          */
+          function (expanded) {
+            // Only change expanded state if item is enabled
+            if (!_this2.disabled) {
+              _this2.expanded = expanded;
+            }
+          });
+        }
+      }, {
+        key: "expanded",
+        get: function get() {
+          return this._expanded;
+        }
+        /**
+         * @param {?} expanded
+         * @return {?}
+         */
+        ,
+        set: function set(expanded) {
+          expanded = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceBooleanProperty"])(expanded); // Only emit events and update the internal value if the value changes.
+
+          if (this._expanded !== expanded) {
+            this._expanded = expanded;
+            this.expandedChange.emit(expanded);
+
+            if (expanded) {
+              this.opened.emit();
+              /**
+               * In the unique selection dispatcher, the id parameter is the id of the CdkAccordionItem,
+               * the name value is the id of the accordion.
+               * @type {?}
+               */
+
+              var accordionId = this.accordion ? this.accordion.id : this.id;
+
+              this._expansionDispatcher.notify(this.id, accordionId);
+            } else {
+              this.closed.emit();
+            } // Ensures that the animation will run when the value is set outside of an `@Input`.
+            // This includes cases like the open, close and toggle methods.
+
+
+            this._changeDetectorRef.markForCheck();
+          }
+        }
+        /**
+         * Whether the AccordionItem is disabled.
+         * @return {?}
+         */
+
+      }, {
+        key: "disabled",
+        get: function get() {
+          return this._disabled;
+        }
+        /**
+         * @param {?} disabled
+         * @return {?}
+         */
+        ,
+        set: function set(disabled) {
+          this._disabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceBooleanProperty"])(disabled);
+        }
+      }]);
+
+      return CdkAccordionItem;
+    }();
+
+    CdkAccordionItem.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+      args: [{
+        selector: 'cdk-accordion-item, [cdkAccordionItem]',
+        exportAs: 'cdkAccordionItem',
+        providers: [// Provide CdkAccordion as undefined to prevent nested accordion items from registering
+        // to the same accordion.
+        {
+          provide: CdkAccordion,
+          useValue: ɵ0
+        }]
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkAccordionItem.ctorParameters = function () {
+      return [{
+        type: CdkAccordion,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["SkipSelf"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_3__["UniqueSelectionDispatcher"]
+      }];
+    };
+
+    CdkAccordionItem.propDecorators = {
+      closed: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"]
+      }],
+      opened: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"]
+      }],
+      destroyed: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"]
+      }],
+      expandedChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"]
+      }],
+      expanded: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+      }],
+      disabled: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var CdkAccordionModule = function CdkAccordionModule() {
+      _classCallCheck(this, CdkAccordionModule);
+    };
+
+    CdkAccordionModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+      args: [{
+        exports: [CdkAccordion, CdkAccordionItem],
+        declarations: [CdkAccordion, CdkAccordionItem]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=accordion.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/cdk/esm2015/stepper.js":
+  /*!******************************************************!*\
+    !*** ./node_modules/@angular/cdk/esm2015/stepper.js ***!
+    \******************************************************/
+
+  /*! exports provided: StepperSelectionEvent, STEP_STATE, STEPPER_GLOBAL_OPTIONS, MAT_STEPPER_GLOBAL_OPTIONS, CdkStep, CdkStepper, CdkStepLabel, CdkStepperNext, CdkStepperPrevious, CdkStepperModule, CdkStepHeader */
+
+  /***/
+  function node_modulesAngularCdkEsm2015StepperJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "StepperSelectionEvent", function () {
+      return StepperSelectionEvent;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "STEP_STATE", function () {
+      return STEP_STATE;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "STEPPER_GLOBAL_OPTIONS", function () {
+      return STEPPER_GLOBAL_OPTIONS;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_STEPPER_GLOBAL_OPTIONS", function () {
+      return MAT_STEPPER_GLOBAL_OPTIONS;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkStep", function () {
+      return CdkStep;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkStepper", function () {
+      return CdkStepper;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkStepLabel", function () {
+      return CdkStepLabel;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkStepperNext", function () {
+      return CdkStepperNext;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkStepperPrevious", function () {
+      return CdkStepperPrevious;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkStepperModule", function () {
+      return CdkStepperModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkStepHeader", function () {
+      return CdkStepHeader;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/cdk/bidi */
+    "./node_modules/@angular/cdk/esm2015/bidi.js");
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/cdk/keycodes */
+    "./node_modules/@angular/cdk/esm2015/keycodes.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+
+    var CdkStepHeader = /*#__PURE__*/function () {
+      /**
+       * @param {?} _elementRef
+       */
+      function CdkStepHeader(_elementRef) {
+        _classCallCheck(this, CdkStepHeader);
+
+        this._elementRef = _elementRef;
+      }
+      /**
+       * Focuses the step header.
+       * @return {?}
+       */
+
+
+      _createClass(CdkStepHeader, [{
+        key: "focus",
+        value: function focus() {
+          this._elementRef.nativeElement.focus();
+        }
+      }]);
+
+      return CdkStepHeader;
+    }();
+
+    CdkStepHeader.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: '[cdkStepHeader]',
+        host: {
+          'role': 'tab'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkStepHeader.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+
+    var CdkStepLabel =
+    /**
+     * @param {?} template
+     */
+    function CdkStepLabel(
+    /** @docs-private */
+    template) {
+      _classCallCheck(this, CdkStepLabel);
+
+      this.template = template;
+    };
+
+    CdkStepLabel.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: '[cdkStepLabel]'
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkStepLabel.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Used to generate unique ID for each stepper component.
+     * @type {?}
+     */
+
+
+    var nextId = 0;
+    /**
+     * Change event emitted on selection changes.
+     */
+
+    var StepperSelectionEvent = function StepperSelectionEvent() {
+      _classCallCheck(this, StepperSelectionEvent);
+    };
+    /**
+     * Enum to represent the different states of the steps.
+     * @type {?}
+     */
+
+
+    var STEP_STATE = {
+      NUMBER: 'number',
+      EDIT: 'edit',
+      DONE: 'done',
+      ERROR: 'error'
+    };
+    /**
+     * InjectionToken that can be used to specify the global stepper options.
+     * @type {?}
+     */
+
+    var STEPPER_GLOBAL_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('STEPPER_GLOBAL_OPTIONS');
+    /**
+     * InjectionToken that can be used to specify the global stepper options.
+     * @deprecated Use `STEPPER_GLOBAL_OPTIONS` instead.
+     * \@breaking-change 8.0.0.
+     * @type {?}
+     */
+
+    var MAT_STEPPER_GLOBAL_OPTIONS = STEPPER_GLOBAL_OPTIONS;
+
+    var CdkStep = /*#__PURE__*/function () {
+      /**
+       * \@breaking-change 8.0.0 remove the `?` after `stepperOptions`
+       * @param {?} _stepper
+       * @param {?=} stepperOptions
+       */
+      function CdkStep(_stepper, stepperOptions) {
+        _classCallCheck(this, CdkStep);
+
+        this._stepper = _stepper;
+        /**
+         * Whether user has seen the expanded step content or not.
+         */
+
+        this.interacted = false;
+        this._editable = true;
+        this._optional = false;
+        this._completedOverride = null;
+        this._customError = null;
+        this._stepperOptions = stepperOptions ? stepperOptions : {};
+        this._displayDefaultIndicatorType = this._stepperOptions.displayDefaultIndicatorType !== false;
+        this._showError = !!this._stepperOptions.showError;
+      }
+      /**
+       * Whether the user can return to this step once it has been marked as completed.
+       * @return {?}
+       */
+
+
+      _createClass(CdkStep, [{
+        key: "_getDefaultCompleted",
+
+        /**
+         * @private
+         * @return {?}
+         */
+        value: function _getDefaultCompleted() {
+          return this.stepControl ? this.stepControl.valid && this.interacted : this.interacted;
+        }
+        /**
+         * Whether step has an error.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getDefaultError",
+
+        /**
+         * @private
+         * @return {?}
+         */
+        value: function _getDefaultError() {
+          return this.stepControl && this.stepControl.invalid && this.interacted;
+        }
+        /**
+         * Selects this step component.
+         * @return {?}
+         */
+
+      }, {
+        key: "select",
+        value: function select() {
+          this._stepper.selected = this;
+        }
+        /**
+         * Resets the step to its initial state. Note that this includes resetting form data.
+         * @return {?}
+         */
+
+      }, {
+        key: "reset",
+        value: function reset() {
+          this.interacted = false;
+
+          if (this._completedOverride != null) {
+            this._completedOverride = false;
+          }
+
+          if (this._customError != null) {
+            this._customError = false;
+          }
+
+          if (this.stepControl) {
+            this.stepControl.reset();
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnChanges",
+        value: function ngOnChanges() {
+          // Since basically all inputs of the MatStep get proxied through the view down to the
+          // underlying MatStepHeader, we have to make sure that change detection runs correctly.
+          this._stepper._stateChanged();
+        }
+      }, {
+        key: "editable",
+        get: function get() {
+          return this._editable;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._editable = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * Whether the completion of step is optional.
+         * @return {?}
+         */
+
+      }, {
+        key: "optional",
+        get: function get() {
+          return this._optional;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._optional = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * Whether step is marked as completed.
+         * @return {?}
+         */
+
+      }, {
+        key: "completed",
+        get: function get() {
+          return this._completedOverride == null ? this._getDefaultCompleted() : this._completedOverride;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._completedOverride = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceBooleanProperty"])(value);
+        }
+      }, {
+        key: "hasError",
+        get: function get() {
+          return this._customError == null ? this._getDefaultError() : this._customError;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._customError = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceBooleanProperty"])(value);
+        }
+      }]);
+
+      return CdkStep;
+    }();
+
+    CdkStep.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'cdk-step',
+        exportAs: 'cdkStep',
+        template: '<ng-template><ng-content></ng-content></ng-template>',
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkStep.ctorParameters = function () {
+      return [{
+        type: CdkStepper,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            return CdkStepper;
+          })]
+        }]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [STEPPER_GLOBAL_OPTIONS]
+        }]
+      }];
+    };
+
+    CdkStep.propDecorators = {
+      stepLabel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"],
+        args: [CdkStepLabel, {
+          "static": false
+        }]
+      }],
+      content: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"], {
+          "static": true
+        }]
+      }],
+      stepControl: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      label: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      errorMessage: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      ariaLabel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['aria-label']
+      }],
+      ariaLabelledby: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['aria-labelledby']
+      }],
+      state: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      editable: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      optional: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      completed: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      hasError: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+
+    var CdkStepper = /*#__PURE__*/function () {
+      /**
+       * @param {?} _dir
+       * @param {?} _changeDetectorRef
+       * @param {?=} _elementRef
+       * @param {?=} _document
+       */
+      function CdkStepper(_dir, _changeDetectorRef, _elementRef, _document) {
+        _classCallCheck(this, CdkStepper);
+
+        this._dir = _dir;
+        this._changeDetectorRef = _changeDetectorRef;
+        this._elementRef = _elementRef;
+        /**
+         * Emits when the component is destroyed.
+         */
+
+        this._destroyed = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
+        this._linear = false;
+        this._selectedIndex = 0;
+        /**
+         * Event emitted when the selected step has changed.
+         */
+
+        this.selectionChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this._orientation = 'horizontal';
+        this._groupId = nextId++;
+        this._document = _document;
+      }
+      /**
+       * The list of step components that the stepper is holding.
+       * @return {?}
+       */
+
+
+      _createClass(CdkStepper, [{
+        key: "ngAfterViewInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngAfterViewInit() {
+          var _this3 = this;
+
+          // Note that while the step headers are content children by default, any components that
+          // extend this one might have them as view chidren. We initialize the keyboard handling in
+          // AfterViewInit so we're guaranteed for both view and content children to be defined.
+          this._keyManager = new _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["FocusKeyManager"](this._stepHeader).withWrap().withVerticalOrientation(this._orientation === 'vertical');
+          (this._dir ?
+          /** @type {?} */
+          this._dir.change : Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])()).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["startWith"])(this._layoutDirection()), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @param {?} direction
+          * @return {?}
+          */
+          function (direction) {
+            return _this3._keyManager.withHorizontalOrientation(direction);
+          });
+
+          this._keyManager.updateActiveItemIndex(this._selectedIndex);
+
+          this.steps.changes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            if (!_this3.selected) {
+              _this3._selectedIndex = Math.max(_this3._selectedIndex - 1, 0);
+            }
+          });
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._destroyed.next();
+
+          this._destroyed.complete();
+        }
+        /**
+         * Selects and focuses the next step in list.
+         * @return {?}
+         */
+
+      }, {
+        key: "next",
+        value: function next() {
+          this.selectedIndex = Math.min(this._selectedIndex + 1, this.steps.length - 1);
+        }
+        /**
+         * Selects and focuses the previous step in list.
+         * @return {?}
+         */
+
+      }, {
+        key: "previous",
+        value: function previous() {
+          this.selectedIndex = Math.max(this._selectedIndex - 1, 0);
+        }
+        /**
+         * Resets the stepper to its initial state. Note that this includes clearing form data.
+         * @return {?}
+         */
+
+      }, {
+        key: "reset",
+        value: function reset() {
+          this._updateSelectedItemIndex(0);
+
+          this.steps.forEach(
+          /**
+          * @param {?} step
+          * @return {?}
+          */
+          function (step) {
+            return step.reset();
+          });
+
+          this._stateChanged();
+        }
+        /**
+         * Returns a unique id for each step label element.
+         * @param {?} i
+         * @return {?}
+         */
+
+      }, {
+        key: "_getStepLabelId",
+        value: function _getStepLabelId(i) {
+          return "cdk-step-label-".concat(this._groupId, "-").concat(i);
+        }
+        /**
+         * Returns unique id for each step content element.
+         * @param {?} i
+         * @return {?}
+         */
+
+      }, {
+        key: "_getStepContentId",
+        value: function _getStepContentId(i) {
+          return "cdk-step-content-".concat(this._groupId, "-").concat(i);
+        }
+        /**
+         * Marks the component to be change detected.
+         * @return {?}
+         */
+
+      }, {
+        key: "_stateChanged",
+        value: function _stateChanged() {
+          this._changeDetectorRef.markForCheck();
+        }
+        /**
+         * Returns position state of the step with the given index.
+         * @param {?} index
+         * @return {?}
+         */
+
+      }, {
+        key: "_getAnimationDirection",
+        value: function _getAnimationDirection(index) {
+          /** @type {?} */
+          var position = index - this._selectedIndex;
+
+          if (position < 0) {
+            return this._layoutDirection() === 'rtl' ? 'next' : 'previous';
+          } else if (position > 0) {
+            return this._layoutDirection() === 'rtl' ? 'previous' : 'next';
+          }
+
+          return 'current';
+        }
+        /**
+         * Returns the type of icon to be displayed.
+         * @param {?} index
+         * @param {?=} state
+         * @return {?}
+         */
+
+      }, {
+        key: "_getIndicatorType",
+        value: function _getIndicatorType(index) {
+          var state = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : STEP_STATE.NUMBER;
+
+          /** @type {?} */
+          var step = this.steps.toArray()[index];
+          /** @type {?} */
+
+          var isCurrentStep = this._isCurrentStep(index);
+
+          return step._displayDefaultIndicatorType ? this._getDefaultIndicatorLogic(step, isCurrentStep) : this._getGuidelineLogic(step, isCurrentStep, state);
+        }
+        /**
+         * @private
+         * @param {?} step
+         * @param {?} isCurrentStep
+         * @return {?}
+         */
+
+      }, {
+        key: "_getDefaultIndicatorLogic",
+        value: function _getDefaultIndicatorLogic(step, isCurrentStep) {
+          if (step._showError && step.hasError && !isCurrentStep) {
+            return STEP_STATE.ERROR;
+          } else if (!step.completed || isCurrentStep) {
+            return STEP_STATE.NUMBER;
+          } else {
+            return step.editable ? STEP_STATE.EDIT : STEP_STATE.DONE;
+          }
+        }
+        /**
+         * @private
+         * @param {?} step
+         * @param {?} isCurrentStep
+         * @param {?=} state
+         * @return {?}
+         */
+
+      }, {
+        key: "_getGuidelineLogic",
+        value: function _getGuidelineLogic(step, isCurrentStep) {
+          var state = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : STEP_STATE.NUMBER;
+
+          if (step._showError && step.hasError && !isCurrentStep) {
+            return STEP_STATE.ERROR;
+          } else if (step.completed && !isCurrentStep) {
+            return STEP_STATE.DONE;
+          } else if (step.completed && isCurrentStep) {
+            return state;
+          } else if (step.editable && isCurrentStep) {
+            return STEP_STATE.EDIT;
+          } else {
+            return state;
+          }
+        }
+        /**
+         * @private
+         * @param {?} index
+         * @return {?}
+         */
+
+      }, {
+        key: "_isCurrentStep",
+        value: function _isCurrentStep(index) {
+          return this._selectedIndex === index;
+        }
+        /**
+         * Returns the index of the currently-focused step header.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getFocusIndex",
+        value: function _getFocusIndex() {
+          return this._keyManager ? this._keyManager.activeItemIndex : this._selectedIndex;
+        }
+        /**
+         * @private
+         * @param {?} newIndex
+         * @return {?}
+         */
+
+      }, {
+        key: "_updateSelectedItemIndex",
+        value: function _updateSelectedItemIndex(newIndex) {
+          /** @type {?} */
+          var stepsArray = this.steps.toArray();
+          this.selectionChange.emit({
+            selectedIndex: newIndex,
+            previouslySelectedIndex: this._selectedIndex,
+            selectedStep: stepsArray[newIndex],
+            previouslySelectedStep: stepsArray[this._selectedIndex]
+          }); // If focus is inside the stepper, move it to the next header, otherwise it may become
+          // lost when the active step content is hidden. We can't be more granular with the check
+          // (e.g. checking whether focus is inside the active step), because we don't have a
+          // reference to the elements that are rendering out the content.
+
+          this._containsFocus() ? this._keyManager.setActiveItem(newIndex) : this._keyManager.updateActiveItemIndex(newIndex);
+          this._selectedIndex = newIndex;
+
+          this._stateChanged();
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onKeydown",
+        value: function _onKeydown(event) {
+          /** @type {?} */
+          var hasModifier = Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["hasModifierKey"])(event);
+          /** @type {?} */
+
+          var keyCode = event.keyCode;
+          /** @type {?} */
+
+          var manager = this._keyManager;
+
+          if (manager.activeItemIndex != null && !hasModifier && (keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["SPACE"] || keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["ENTER"])) {
+            this.selectedIndex = manager.activeItemIndex;
+            event.preventDefault();
+          } else if (keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["HOME"]) {
+            manager.setFirstItemActive();
+            event.preventDefault();
+          } else if (keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_4__["END"]) {
+            manager.setLastItemActive();
+            event.preventDefault();
+          } else {
+            manager.onKeydown(event);
+          }
+        }
+        /**
+         * @private
+         * @param {?} index
+         * @return {?}
+         */
+
+      }, {
+        key: "_anyControlsInvalidOrPending",
+        value: function _anyControlsInvalidOrPending(index) {
+          /** @type {?} */
+          var steps = this.steps.toArray();
+          steps[this._selectedIndex].interacted = true;
+
+          if (this._linear && index >= 0) {
+            return steps.slice(0, index).some(
+            /**
+            * @param {?} step
+            * @return {?}
+            */
+            function (step) {
+              /** @type {?} */
+              var control = step.stepControl;
+              /** @type {?} */
+
+              var isIncomplete = control ? control.invalid || control.pending || !step.interacted : !step.completed;
+              return isIncomplete && !step.optional && !step._completedOverride;
+            });
+          }
+
+          return false;
+        }
+        /**
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_layoutDirection",
+        value: function _layoutDirection() {
+          return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
+        }
+        /**
+         * Checks whether the stepper contains the focused element.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_containsFocus",
+        value: function _containsFocus() {
+          if (!this._document || !this._elementRef) {
+            return false;
+          }
+          /** @type {?} */
+
+
+          var stepperElement = this._elementRef.nativeElement;
+          /** @type {?} */
+
+          var focusedElement = this._document.activeElement;
+          return stepperElement === focusedElement || stepperElement.contains(focusedElement);
+        }
+      }, {
+        key: "steps",
+        get: function get() {
+          return this._steps;
+        }
+        /**
+         * Whether the validity of previous steps should be checked or not.
+         * @return {?}
+         */
+
+      }, {
+        key: "linear",
+        get: function get() {
+          return this._linear;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._linear = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * The index of the selected step.
+         * @return {?}
+         */
+
+      }, {
+        key: "selectedIndex",
+        get: function get() {
+          return this._selectedIndex;
+        }
+        /**
+         * @param {?} index
+         * @return {?}
+         */
+        ,
+        set: function set(index) {
+          /** @type {?} */
+          var newIndex = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceNumberProperty"])(index);
+
+          if (this.steps) {
+            // Ensure that the index can't be out of bounds.
+            if (newIndex < 0 || newIndex > this.steps.length - 1) {
+              throw Error('cdkStepper: Cannot assign out-of-bounds value to `selectedIndex`.');
+            }
+
+            if (this._selectedIndex != newIndex && !this._anyControlsInvalidOrPending(newIndex) && (newIndex >= this._selectedIndex || this.steps.toArray()[newIndex].editable)) {
+              this._updateSelectedItemIndex(index);
+            }
+          } else {
+            this._selectedIndex = newIndex;
+          }
+        }
+        /**
+         * The step that is selected.
+         * @return {?}
+         */
+
+      }, {
+        key: "selected",
+        get: function get() {
+          // @breaking-change 8.0.0 Change return type to `CdkStep | undefined`.
+          return this.steps ? this.steps.toArray()[this.selectedIndex] :
+          /** @type {?} */
+          undefined;
+        }
+        /**
+         * @param {?} step
+         * @return {?}
+         */
+        ,
+        set: function set(step) {
+          this.selectedIndex = this.steps ? this.steps.toArray().indexOf(step) : -1;
+        }
+      }]);
+
+      return CdkStepper;
+    }();
+
+    CdkStepper.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: '[cdkStepper]',
+        exportAs: 'cdkStepper'
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkStepper.ctorParameters = function () {
+      return [{
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"]]
+        }]
+      }];
+    };
+
+    CdkStepper.propDecorators = {
+      _steps: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+        args: [CdkStep]
+      }],
+      _stepHeader: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+        args: [CdkStepHeader]
+      }],
+      linear: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      selectedIndex: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      selected: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      selectionChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Button that moves to the next step in a stepper workflow.
+     */
+
+    var CdkStepperNext = /*#__PURE__*/function () {
+      /**
+       * @param {?} _stepper
+       */
+      function CdkStepperNext(_stepper) {
+        _classCallCheck(this, CdkStepperNext);
+
+        this._stepper = _stepper;
+        /**
+         * Type of the next button. Defaults to "submit" if not specified.
+         */
+
+        this.type = 'submit';
+      } // We have to use a `HostListener` here in order to support both Ivy and ViewEngine.
+      // In Ivy the `host` bindings will be merged when this class is extended, whereas in
+      // ViewEngine they're overwritten.
+      // TODO(crisbeto): we move this back into `host` once Ivy is turned on by default.
+      // tslint:disable-next-line:no-host-decorator-in-concrete
+
+      /**
+       * @return {?}
+       */
+
+
+      _createClass(CdkStepperNext, [{
+        key: "_handleClick",
+        value: function _handleClick() {
+          this._stepper.next();
+        }
+      }]);
+
+      return CdkStepperNext;
+    }();
+
+    CdkStepperNext.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'button[cdkStepperNext]',
+        host: {
+          '[type]': 'type'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkStepperNext.ctorParameters = function () {
+      return [{
+        type: CdkStepper
+      }];
+    };
+
+    CdkStepperNext.propDecorators = {
+      type: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      _handleClick: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+        args: ['click']
+      }]
+    };
+    /**
+     * Button that moves to the previous step in a stepper workflow.
+     */
+
+    var CdkStepperPrevious = /*#__PURE__*/function () {
+      /**
+       * @param {?} _stepper
+       */
+      function CdkStepperPrevious(_stepper) {
+        _classCallCheck(this, CdkStepperPrevious);
+
+        this._stepper = _stepper;
+        /**
+         * Type of the previous button. Defaults to "button" if not specified.
+         */
+
+        this.type = 'button';
+      } // We have to use a `HostListener` here in order to support both Ivy and ViewEngine.
+      // In Ivy the `host` bindings will be merged when this class is extended, whereas in
+      // ViewEngine they're overwritten.
+      // TODO(crisbeto): we move this back into `host` once Ivy is turned on by default.
+      // tslint:disable-next-line:no-host-decorator-in-concrete
+
+      /**
+       * @return {?}
+       */
+
+
+      _createClass(CdkStepperPrevious, [{
+        key: "_handleClick",
+        value: function _handleClick() {
+          this._stepper.previous();
+        }
+      }]);
+
+      return CdkStepperPrevious;
+    }();
+
+    CdkStepperPrevious.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'button[cdkStepperPrevious]',
+        host: {
+          '[type]': 'type'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkStepperPrevious.ctorParameters = function () {
+      return [{
+        type: CdkStepper
+      }];
+    };
+
+    CdkStepperPrevious.propDecorators = {
+      type: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      _handleClick: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+        args: ['click']
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var CdkStepperModule = function CdkStepperModule() {
+      _classCallCheck(this, CdkStepperModule);
+    };
+
+    CdkStepperModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+      args: [{
+        imports: [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]],
+        exports: [CdkStep, CdkStepper, CdkStepHeader, CdkStepLabel, CdkStepperNext, CdkStepperPrevious],
+        declarations: [CdkStep, CdkStepper, CdkStepHeader, CdkStepLabel, CdkStepperNext, CdkStepperPrevious]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=stepper.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/cdk/esm2015/tree.js":
+  /*!***************************************************!*\
+    !*** ./node_modules/@angular/cdk/esm2015/tree.js ***!
+    \***************************************************/
+
+  /*! exports provided: BaseTreeControl, FlatTreeControl, NestedTreeControl, CdkNestedTreeNode, CdkTreeNodeOutletContext, CdkTreeNodeDef, CdkTreeNodePadding, CDK_TREE_NODE_OUTLET_NODE, CdkTreeNodeOutlet, CdkTree, CdkTreeNode, getTreeNoValidDataSourceError, getTreeMultipleDefaultNodeDefsError, getTreeMissingMatchingNodeDefError, getTreeControlMissingError, getTreeControlFunctionsMissingError, CdkTreeModule, CdkTreeNodeToggle */
+
+  /***/
+  function node_modulesAngularCdkEsm2015TreeJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "BaseTreeControl", function () {
+      return BaseTreeControl;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "FlatTreeControl", function () {
+      return FlatTreeControl;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "NestedTreeControl", function () {
+      return NestedTreeControl;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkNestedTreeNode", function () {
+      return CdkNestedTreeNode;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkTreeNodeOutletContext", function () {
+      return CdkTreeNodeOutletContext;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkTreeNodeDef", function () {
+      return CdkTreeNodeDef;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkTreeNodePadding", function () {
+      return CdkTreeNodePadding;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CDK_TREE_NODE_OUTLET_NODE", function () {
+      return CDK_TREE_NODE_OUTLET_NODE;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkTreeNodeOutlet", function () {
+      return CdkTreeNodeOutlet;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkTree", function () {
+      return CdkTree;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkTreeNode", function () {
+      return CdkTreeNode;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getTreeNoValidDataSourceError", function () {
+      return getTreeNoValidDataSourceError;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getTreeMultipleDefaultNodeDefsError", function () {
+      return getTreeMultipleDefaultNodeDefsError;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getTreeMissingMatchingNodeDefError", function () {
+      return getTreeMissingMatchingNodeDefError;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getTreeControlMissingError", function () {
+      return getTreeControlMissingError;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getTreeControlFunctionsMissingError", function () {
+      return getTreeControlFunctionsMissingError;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkTreeModule", function () {
+      return CdkTreeModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CdkTreeNodeToggle", function () {
+      return CdkTreeNodeToggle;
+    });
+    /* harmony import */
+
+
+    var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/cdk/collections */
+    "./node_modules/@angular/cdk/esm2015/collections.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/cdk/bidi */
+    "./node_modules/@angular/cdk/esm2015/bidi.js");
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Base tree control. It has basic toggle/expand/collapse operations on a single data node.
+     * @abstract
+     * @template T
+     */
+
+
+    var BaseTreeControl = /*#__PURE__*/function () {
+      function BaseTreeControl() {
+        _classCallCheck(this, BaseTreeControl);
+
+        /**
+         * A selection model with multi-selection to track expansion status.
+         */
+        this.expansionModel = new _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__["SelectionModel"](true);
+      }
+      /**
+       * Toggles one single data node's expanded/collapsed state.
+       * @param {?} dataNode
+       * @return {?}
+       */
+
+
+      _createClass(BaseTreeControl, [{
+        key: "toggle",
+        value: function toggle(dataNode) {
+          this.expansionModel.toggle(dataNode);
+        }
+        /**
+         * Expands one single data node.
+         * @param {?} dataNode
+         * @return {?}
+         */
+
+      }, {
+        key: "expand",
+        value: function expand(dataNode) {
+          this.expansionModel.select(dataNode);
+        }
+        /**
+         * Collapses one single data node.
+         * @param {?} dataNode
+         * @return {?}
+         */
+
+      }, {
+        key: "collapse",
+        value: function collapse(dataNode) {
+          this.expansionModel.deselect(dataNode);
+        }
+        /**
+         * Whether a given data node is expanded or not. Returns true if the data node is expanded.
+         * @param {?} dataNode
+         * @return {?}
+         */
+
+      }, {
+        key: "isExpanded",
+        value: function isExpanded(dataNode) {
+          return this.expansionModel.isSelected(dataNode);
+        }
+        /**
+         * Toggles a subtree rooted at `node` recursively.
+         * @param {?} dataNode
+         * @return {?}
+         */
+
+      }, {
+        key: "toggleDescendants",
+        value: function toggleDescendants(dataNode) {
+          this.expansionModel.isSelected(dataNode) ? this.collapseDescendants(dataNode) : this.expandDescendants(dataNode);
+        }
+        /**
+         * Collapse all dataNodes in the tree.
+         * @return {?}
+         */
+
+      }, {
+        key: "collapseAll",
+        value: function collapseAll() {
+          this.expansionModel.clear();
+        }
+        /**
+         * Expands a subtree rooted at given data node recursively.
+         * @param {?} dataNode
+         * @return {?}
+         */
+
+      }, {
+        key: "expandDescendants",
+        value: function expandDescendants(dataNode) {
+          var _this$expansionModel;
+
+          /** @type {?} */
+          var toBeProcessed = [dataNode];
+          toBeProcessed.push.apply(toBeProcessed, _toConsumableArray(this.getDescendants(dataNode)));
+
+          (_this$expansionModel = this.expansionModel).select.apply(_this$expansionModel, toBeProcessed);
+        }
+        /**
+         * Collapses a subtree rooted at given data node recursively.
+         * @param {?} dataNode
+         * @return {?}
+         */
+
+      }, {
+        key: "collapseDescendants",
+        value: function collapseDescendants(dataNode) {
+          var _this$expansionModel2;
+
+          /** @type {?} */
+          var toBeProcessed = [dataNode];
+          toBeProcessed.push.apply(toBeProcessed, _toConsumableArray(this.getDescendants(dataNode)));
+
+          (_this$expansionModel2 = this.expansionModel).deselect.apply(_this$expansionModel2, toBeProcessed);
+        }
+      }]);
+
+      return BaseTreeControl;
+    }();
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Flat tree control. Able to expand/collapse a subtree recursively for flattened tree.
+     * @template T
+     */
+
+
+    var FlatTreeControl = /*#__PURE__*/function (_BaseTreeControl) {
+      _inherits(FlatTreeControl, _BaseTreeControl);
+
+      var _super = _createSuper(FlatTreeControl);
+
+      /**
+       * Construct with flat tree data node functions getLevel and isExpandable.
+       * @param {?} getLevel
+       * @param {?} isExpandable
+       */
+      function FlatTreeControl(getLevel, isExpandable) {
+        var _this4;
+
+        _classCallCheck(this, FlatTreeControl);
+
+        _this4 = _super.call(this);
+        _this4.getLevel = getLevel;
+        _this4.isExpandable = isExpandable;
+        return _this4;
+      }
+      /**
+       * Gets a list of the data node's subtree of descendent data nodes.
+       *
+       * To make this working, the `dataNodes` of the TreeControl must be flattened tree nodes
+       * with correct levels.
+       * @param {?} dataNode
+       * @return {?}
+       */
+
+
+      _createClass(FlatTreeControl, [{
+        key: "getDescendants",
+        value: function getDescendants(dataNode) {
+          /** @type {?} */
+          var startIndex = this.dataNodes.indexOf(dataNode);
+          /** @type {?} */
+
+          var results = []; // Goes through flattened tree nodes in the `dataNodes` array, and get all descendants.
+          // The level of descendants of a tree node must be greater than the level of the given
+          // tree node.
+          // If we reach a node whose level is equal to the level of the tree node, we hit a sibling.
+          // If we reach a node whose level is greater than the level of the tree node, we hit a
+          // sibling of an ancestor.
+
+          for (var i = startIndex + 1; i < this.dataNodes.length && this.getLevel(dataNode) < this.getLevel(this.dataNodes[i]); i++) {
+            results.push(this.dataNodes[i]);
+          }
+
+          return results;
+        }
+        /**
+         * Expands all data nodes in the tree.
+         *
+         * To make this working, the `dataNodes` variable of the TreeControl must be set to all flattened
+         * data nodes of the tree.
+         * @return {?}
+         */
+
+      }, {
+        key: "expandAll",
+        value: function expandAll() {
+          var _this$expansionModel3;
+
+          (_this$expansionModel3 = this.expansionModel).select.apply(_this$expansionModel3, _toConsumableArray(this.dataNodes));
+        }
+      }]);
+
+      return FlatTreeControl;
+    }(BaseTreeControl);
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Nested tree control. Able to expand/collapse a subtree recursively for NestedNode type.
+     * @template T
+     */
+
+
+    var NestedTreeControl = /*#__PURE__*/function (_BaseTreeControl2) {
+      _inherits(NestedTreeControl, _BaseTreeControl2);
+
+      var _super2 = _createSuper(NestedTreeControl);
+
+      /**
+       * Construct with nested tree function getChildren.
+       * @param {?} getChildren
+       */
+      function NestedTreeControl(getChildren) {
+        var _this5;
+
+        _classCallCheck(this, NestedTreeControl);
+
+        _this5 = _super2.call(this);
+        _this5.getChildren = getChildren;
+        return _this5;
+      }
+      /**
+       * Expands all dataNodes in the tree.
+       *
+       * To make this working, the `dataNodes` variable of the TreeControl must be set to all root level
+       * data nodes of the tree.
+       * @return {?}
+       */
+
+
+      _createClass(NestedTreeControl, [{
+        key: "expandAll",
+        value: function expandAll() {
+          var _this6 = this,
+              _this$expansionModel4;
+
+          this.expansionModel.clear();
+          /** @type {?} */
+
+          var allNodes = this.dataNodes.reduce(
+          /**
+          * @param {?} accumulator
+          * @param {?} dataNode
+          * @return {?}
+          */
+          function (accumulator, dataNode) {
+            return [].concat(_toConsumableArray(accumulator), _toConsumableArray(_this6.getDescendants(dataNode)), [dataNode]);
+          }, []);
+
+          (_this$expansionModel4 = this.expansionModel).select.apply(_this$expansionModel4, _toConsumableArray(allNodes));
+        }
+        /**
+         * Gets a list of descendant dataNodes of a subtree rooted at given data node recursively.
+         * @param {?} dataNode
+         * @return {?}
+         */
+
+      }, {
+        key: "getDescendants",
+        value: function getDescendants(dataNode) {
+          /** @type {?} */
+          var descendants = [];
+
+          this._getDescendants(descendants, dataNode); // Remove the node itself
+
+
+          return descendants.splice(1);
+        }
+        /**
+         * A helper function to get descendants recursively.
+         * @protected
+         * @param {?} descendants
+         * @param {?} dataNode
+         * @return {?}
+         */
+
+      }, {
+        key: "_getDescendants",
+        value: function _getDescendants(descendants, dataNode) {
+          var _this7 = this;
+
+          descendants.push(dataNode);
+          /** @type {?} */
+
+          var childrenNodes = this.getChildren(dataNode);
+
+          if (Array.isArray(childrenNodes)) {
+            childrenNodes.forEach(
+            /**
+            * @param {?} child
+            * @return {?}
+            */
+            function (child) {
+              return _this7._getDescendants(descendants, child);
+            });
+          } else if (childrenNodes instanceof rxjs__WEBPACK_IMPORTED_MODULE_1__["Observable"]) {
+            // TypeScript as of version 3.5 doesn't seem to treat `Boolean` like a function that
+            // returns a `boolean` specifically in the context of `filter`, so we manually clarify that.
+            childrenNodes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(
+            /** @type {?} */
+            Boolean)).subscribe(
+            /**
+            * @param {?} children
+            * @return {?}
+            */
+            function (children) {
+              var _iterator = _createForOfIteratorHelper(children),
+                  _step;
+
+              try {
+                for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                  var child = _step.value;
+
+                  _this7._getDescendants(descendants, child);
+                }
+              } catch (err) {
+                _iterator.e(err);
+              } finally {
+                _iterator.f();
+              }
+            });
+          }
+        }
+      }]);
+
+      return NestedTreeControl;
+    }(BaseTreeControl);
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Injection token used to provide a `CdkTreeNode` to its outlet.
+     * Used primarily to avoid circular imports.
+     * \@docs-private
+     * @type {?}
+     */
+
+
+    var CDK_TREE_NODE_OUTLET_NODE = new _angular_core__WEBPACK_IMPORTED_MODULE_3__["InjectionToken"]('CDK_TREE_NODE_OUTLET_NODE');
+    /**
+     * Outlet for nested CdkNode. Put `[cdkTreeNodeOutlet]` on a tag to place children dataNodes
+     * inside the outlet.
+     */
+
+    var CdkTreeNodeOutlet =
+    /**
+     * @param {?} viewContainer
+     * @param {?=} _node
+     */
+    function CdkTreeNodeOutlet(viewContainer, _node) {
+      _classCallCheck(this, CdkTreeNodeOutlet);
+
+      this.viewContainer = viewContainer;
+      this._node = _node;
+    };
+
+    CdkTreeNodeOutlet.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
+      args: [{
+        selector: '[cdkTreeNodeOutlet]'
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkTreeNodeOutlet.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewContainerRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
+          args: [CDK_TREE_NODE_OUTLET_NODE]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
+        }]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Context provided to the tree node component.
+     * @template T
+     */
+
+
+    var CdkTreeNodeOutletContext =
+    /**
+     * @param {?} data
+     */
+    function CdkTreeNodeOutletContext(data) {
+      _classCallCheck(this, CdkTreeNodeOutletContext);
+
+      this.$implicit = data;
+    };
+    /**
+     * Data node definition for the CdkTree.
+     * Captures the node's template and a when predicate that describes when this node should be used.
+     * @template T
+     */
+
+
+    var CdkTreeNodeDef =
+    /**
+     * \@docs-private
+     * @param {?} template
+     */
+    function CdkTreeNodeDef(template) {
+      _classCallCheck(this, CdkTreeNodeDef);
+
+      this.template = template;
+    };
+
+    CdkTreeNodeDef.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
+      args: [{
+        selector: '[cdkTreeNodeDef]',
+        inputs: ['when: cdkTreeNodeDefWhen']
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkTreeNodeDef.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["TemplateRef"]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Returns an error to be thrown when there is no usable data.
+     * \@docs-private
+     * @return {?}
+     */
+
+
+    function getTreeNoValidDataSourceError() {
+      return Error("A valid data source must be provided.");
+    }
+    /**
+     * Returns an error to be thrown when there are multiple nodes that are missing a when function.
+     * \@docs-private
+     * @return {?}
+     */
+
+
+    function getTreeMultipleDefaultNodeDefsError() {
+      return Error("There can only be one default row without a when predicate function.");
+    }
+    /**
+     * Returns an error to be thrown when there are no matching node defs for a particular set of data.
+     * \@docs-private
+     * @return {?}
+     */
+
+
+    function getTreeMissingMatchingNodeDefError() {
+      return Error("Could not find a matching node definition for the provided node data.");
+    }
+    /**
+     * Returns an error to be thrown when there are tree control.
+     * \@docs-private
+     * @return {?}
+     */
+
+
+    function getTreeControlMissingError() {
+      return Error("Could not find a tree control for the tree.");
+    }
+    /**
+     * Returns an error to be thrown when tree control did not implement functions for flat/nested node.
+     * \@docs-private
+     * @return {?}
+     */
+
+
+    function getTreeControlFunctionsMissingError() {
+      return Error("Could not find functions for nested/flat tree in tree control.");
+    }
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * CDK tree component that connects with a data source to retrieve data of type `T` and renders
+     * dataNodes with hierarchy. Updates the dataNodes when new data is provided by the data source.
+     * @template T
+     */
+
+
+    var CdkTree = /*#__PURE__*/function () {
+      /**
+       * @param {?} _differs
+       * @param {?} _changeDetectorRef
+       */
+      function CdkTree(_differs, _changeDetectorRef) {
+        _classCallCheck(this, CdkTree);
+
+        this._differs = _differs;
+        this._changeDetectorRef = _changeDetectorRef;
+        /**
+         * Subject that emits when the component has been destroyed.
+         */
+
+        this._onDestroy = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        /**
+         * Level of nodes
+         */
+
+        this._levels = new Map(); // TODO(tinayuangao): Setup a listener for scrolling, emit the calculated view to viewChange.
+        //     Remove the MAX_VALUE in viewChange
+
+        /**
+         * Stream containing the latest information on what rows are being displayed on screen.
+         * Can be used by the data source to as a heuristic of what data should be provided.
+         */
+
+        this.viewChange = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]({
+          start: 0,
+          end: Number.MAX_VALUE
+        });
+      }
+      /**
+       * Provides a stream containing the latest data array to render. Influenced by the tree's
+       * stream of view window (what dataNodes are currently on screen).
+       * Data source can be an observable of data array, or a data array to render.
+       * @return {?}
+       */
+
+
+      _createClass(CdkTree, [{
+        key: "ngOnInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngOnInit() {
+          this._dataDiffer = this._differs.find([]).create(this.trackBy);
+
+          if (!this.treeControl) {
+            throw getTreeControlMissingError();
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._nodeOutlet.viewContainer.clear();
+
+          this._onDestroy.next();
+
+          this._onDestroy.complete();
+
+          if (this._dataSource && typeof
+          /** @type {?} */
+          this._dataSource.disconnect === 'function') {
+            /** @type {?} */
+            this.dataSource.disconnect(this);
+          }
+
+          if (this._dataSubscription) {
+            this._dataSubscription.unsubscribe();
+
+            this._dataSubscription = null;
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngAfterContentChecked",
+        value: function ngAfterContentChecked() {
+          /** @type {?} */
+          var defaultNodeDefs = this._nodeDefs.filter(
+          /**
+          * @param {?} def
+          * @return {?}
+          */
+          function (def) {
+            return !def.when;
+          });
+
+          if (defaultNodeDefs.length > 1) {
+            throw getTreeMultipleDefaultNodeDefsError();
+          }
+
+          this._defaultNodeDef = defaultNodeDefs[0];
+
+          if (this.dataSource && this._nodeDefs && !this._dataSubscription) {
+            this._observeRenderChanges();
+          }
+        } // TODO(tinayuangao): Work on keyboard traversal and actions, make sure it's working for RTL
+        //     and nested trees.
+
+        /**
+         * Switch to the provided data source by resetting the data and unsubscribing from the current
+         * render change subscription if one exists. If the data source is null, interpret this by
+         * clearing the node outlet. Otherwise start listening for new data.
+         * @private
+         * @param {?} dataSource
+         * @return {?}
+         */
+
+      }, {
+        key: "_switchDataSource",
+        value: function _switchDataSource(dataSource) {
+          if (this._dataSource && typeof
+          /** @type {?} */
+          this._dataSource.disconnect === 'function') {
+            /** @type {?} */
+            this.dataSource.disconnect(this);
+          }
+
+          if (this._dataSubscription) {
+            this._dataSubscription.unsubscribe();
+
+            this._dataSubscription = null;
+          } // Remove the all dataNodes if there is now no data source
+
+
+          if (!dataSource) {
+            this._nodeOutlet.viewContainer.clear();
+          }
+
+          this._dataSource = dataSource;
+
+          if (this._nodeDefs) {
+            this._observeRenderChanges();
+          }
+        }
+        /**
+         * Set up a subscription for the data provided by the data source.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_observeRenderChanges",
+        value: function _observeRenderChanges() {
+          var _this8 = this;
+
+          /** @type {?} */
+          var dataStream;
+
+          if (Object(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__["isDataSource"])(this._dataSource)) {
+            dataStream = this._dataSource.connect(this);
+          } else if (this._dataSource instanceof rxjs__WEBPACK_IMPORTED_MODULE_1__["Observable"]) {
+            dataStream = this._dataSource;
+          } else if (Array.isArray(this._dataSource)) {
+            dataStream = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(this._dataSource);
+          }
+
+          if (dataStream) {
+            this._dataSubscription = dataStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this._onDestroy)).subscribe(
+            /**
+            * @param {?} data
+            * @return {?}
+            */
+            function (data) {
+              return _this8.renderNodeChanges(data);
+            });
+          } else {
+            throw getTreeNoValidDataSourceError();
+          }
+        }
+        /**
+         * Check for changes made in the data and render each change (node added/removed/moved).
+         * @param {?} data
+         * @param {?=} dataDiffer
+         * @param {?=} viewContainer
+         * @param {?=} parentData
+         * @return {?}
+         */
+
+      }, {
+        key: "renderNodeChanges",
+        value: function renderNodeChanges(data) {
+          var _this9 = this;
+
+          var dataDiffer = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this._dataDiffer;
+          var viewContainer = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this._nodeOutlet.viewContainer;
+          var parentData = arguments.length > 3 ? arguments[3] : undefined;
+
+          /** @type {?} */
+          var changes = dataDiffer.diff(data);
+
+          if (!changes) {
+            return;
+          }
+
+          changes.forEachOperation(
+          /**
+          * @param {?} item
+          * @param {?} adjustedPreviousIndex
+          * @param {?} currentIndex
+          * @return {?}
+          */
+          function (item, adjustedPreviousIndex, currentIndex) {
+            if (item.previousIndex == null) {
+              _this9.insertNode(data[
+              /** @type {?} */
+              currentIndex],
+              /** @type {?} */
+              currentIndex, viewContainer, parentData);
+            } else if (currentIndex == null) {
+              viewContainer.remove(
+              /** @type {?} */
+              adjustedPreviousIndex);
+
+              _this9._levels["delete"](item.item);
+            } else {
+              /** @type {?} */
+              var view = viewContainer.get(
+              /** @type {?} */
+              adjustedPreviousIndex);
+              viewContainer.move(
+              /** @type {?} */
+              view, currentIndex);
+            }
+          });
+
+          this._changeDetectorRef.detectChanges();
+        }
+        /**
+         * Finds the matching node definition that should be used for this node data. If there is only
+         * one node definition, it is returned. Otherwise, find the node definition that has a when
+         * predicate that returns true with the data. If none return true, return the default node
+         * definition.
+         * @param {?} data
+         * @param {?} i
+         * @return {?}
+         */
+
+      }, {
+        key: "_getNodeDef",
+        value: function _getNodeDef(data, i) {
+          if (this._nodeDefs.length === 1) {
+            return this._nodeDefs.first;
+          }
+          /** @type {?} */
+
+
+          var nodeDef = this._nodeDefs.find(
+          /**
+          * @param {?} def
+          * @return {?}
+          */
+          function (def) {
+            return def.when && def.when(i, data);
+          }) || this._defaultNodeDef;
+
+          if (!nodeDef) {
+            throw getTreeMissingMatchingNodeDefError();
+          }
+
+          return nodeDef;
+        }
+        /**
+         * Create the embedded view for the data node template and place it in the correct index location
+         * within the data node view container.
+         * @param {?} nodeData
+         * @param {?} index
+         * @param {?=} viewContainer
+         * @param {?=} parentData
+         * @return {?}
+         */
+
+      }, {
+        key: "insertNode",
+        value: function insertNode(nodeData, index, viewContainer, parentData) {
+          /** @type {?} */
+          var node = this._getNodeDef(nodeData, index); // Node context that will be provided to created embedded view
+
+          /** @type {?} */
+
+
+          var context = new CdkTreeNodeOutletContext(nodeData); // If the tree is flat tree, then use the `getLevel` function in flat tree control
+          // Otherwise, use the level of parent node.
+
+          if (this.treeControl.getLevel) {
+            context.level = this.treeControl.getLevel(nodeData);
+          } else if (typeof parentData !== 'undefined' && this._levels.has(parentData)) {
+            context.level =
+            /** @type {?} */
+            this._levels.get(parentData) + 1;
+          } else {
+            context.level = 0;
+          }
+
+          this._levels.set(nodeData, context.level); // Use default tree nodeOutlet, or nested node's nodeOutlet
+
+          /** @type {?} */
+
+
+          var container = viewContainer ? viewContainer : this._nodeOutlet.viewContainer;
+          container.createEmbeddedView(node.template, context, index); // Set the data to just created `CdkTreeNode`.
+          // The `CdkTreeNode` created from `createEmbeddedView` will be saved in static variable
+          //     `mostRecentTreeNode`. We get it from static variable and pass the node data to it.
+
+          if (CdkTreeNode.mostRecentTreeNode) {
+            CdkTreeNode.mostRecentTreeNode.data = nodeData;
+          }
+        }
+      }, {
+        key: "dataSource",
+        get: function get() {
+          return this._dataSource;
+        }
+        /**
+         * @param {?} dataSource
+         * @return {?}
+         */
+        ,
+        set: function set(dataSource) {
+          if (this._dataSource !== dataSource) {
+            this._switchDataSource(dataSource);
+          }
+        }
+      }]);
+
+      return CdkTree;
+    }();
+
+    CdkTree.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"],
+      args: [{
+        selector: 'cdk-tree',
+        exportAs: 'cdkTree',
+        template: "<ng-container cdkTreeNodeOutlet></ng-container>",
+        host: {
+          'class': 'cdk-tree',
+          'role': 'tree'
+        },
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewEncapsulation"].None,
+        // The "OnPush" status for the `CdkTree` component is effectively a noop, so we are removing it.
+        // The view for `CdkTree` consists entirely of templates declared in other views. As they are
+        // declared elsewhere, they are checked when their declaration points are checked.
+        // tslint:disable-next-line:validate-decorators
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectionStrategy"].Default
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkTree.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"]
+      }];
+    };
+
+    CdkTree.propDecorators = {
+      dataSource: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      treeControl: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      trackBy: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      _nodeOutlet: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"],
+        args: [CdkTreeNodeOutlet, {
+          "static": true
+        }]
+      }],
+      _nodeDefs: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ContentChildren"],
+        args: [CdkTreeNodeDef]
+      }]
+    };
+    /**
+     * Tree node for CdkTree. It contains the data in the tree node.
+     * @template T
+     */
+
+    var CdkTreeNode = /*#__PURE__*/function () {
+      /**
+       * @param {?} _elementRef
+       * @param {?} _tree
+       */
+      function CdkTreeNode(_elementRef, _tree) {
+        _classCallCheck(this, CdkTreeNode);
+
+        this._elementRef = _elementRef;
+        this._tree = _tree;
+        /**
+         * Subject that emits when the component has been destroyed.
+         */
+
+        this._destroyed = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        /**
+         * Emits when the node's data has changed.
+         */
+
+        this._dataChanges = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        /**
+         * The role of the node should be 'group' if it's an internal node,
+         * and 'treeitem' if it's a leaf node.
+         */
+
+        this.role = 'treeitem';
+        CdkTreeNode.mostRecentTreeNode =
+        /** @type {?} */
+        this;
+      }
+      /**
+       * The tree node's data.
+       * @return {?}
+       */
+
+
+      _createClass(CdkTreeNode, [{
+        key: "ngOnDestroy",
+
+        /**
+         * @return {?}
+         */
+        value: function ngOnDestroy() {
+          // If this is the last tree node being destroyed,
+          // clear out the reference to avoid leaking memory.
+          if (CdkTreeNode.mostRecentTreeNode === this) {
+            CdkTreeNode.mostRecentTreeNode = null;
+          }
+
+          this._dataChanges.complete();
+
+          this._destroyed.next();
+
+          this._destroyed.complete();
+        }
+        /**
+         * Focuses the menu item. Implements for FocusableOption.
+         * @return {?}
+         */
+
+      }, {
+        key: "focus",
+        value: function focus() {
+          this._elementRef.nativeElement.focus();
+        }
+        /**
+         * @protected
+         * @return {?}
+         */
+
+      }, {
+        key: "_setRoleFromData",
+        value: function _setRoleFromData() {
+          var _this10 = this;
+
+          if (this._tree.treeControl.isExpandable) {
+            this.role = this._tree.treeControl.isExpandable(this._data) ? 'group' : 'treeitem';
+          } else {
+            if (!this._tree.treeControl.getChildren) {
+              throw getTreeControlFunctionsMissingError();
+            }
+            /** @type {?} */
+
+
+            var childrenNodes = this._tree.treeControl.getChildren(this._data);
+
+            if (Array.isArray(childrenNodes)) {
+              this._setRoleFromChildren(
+              /** @type {?} */
+              childrenNodes);
+            } else if (childrenNodes instanceof rxjs__WEBPACK_IMPORTED_MODULE_1__["Observable"]) {
+              childrenNodes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this._destroyed)).subscribe(
+              /**
+              * @param {?} children
+              * @return {?}
+              */
+              function (children) {
+                return _this10._setRoleFromChildren(children);
+              });
+            }
+          }
+        }
+        /**
+         * @protected
+         * @param {?} children
+         * @return {?}
+         */
+
+      }, {
+        key: "_setRoleFromChildren",
+        value: function _setRoleFromChildren(children) {
+          this.role = children && children.length ? 'group' : 'treeitem';
+        }
+      }, {
+        key: "data",
+        get: function get() {
+          return this._data;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          if (value !== this._data) {
+            this._data = value;
+
+            this._setRoleFromData();
+
+            this._dataChanges.next();
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "isExpanded",
+        get: function get() {
+          return this._tree.treeControl.isExpanded(this._data);
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "level",
+        get: function get() {
+          return this._tree.treeControl.getLevel ? this._tree.treeControl.getLevel(this._data) : 0;
+        }
+      }]);
+
+      return CdkTreeNode;
+    }();
+    /**
+     * The most recently created `CdkTreeNode`. We save it in static variable so we can retrieve it
+     * in `CdkTree` and set the data to it.
+     */
+
+
+    CdkTreeNode.mostRecentTreeNode = null;
+    CdkTreeNode.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
+      args: [{
+        selector: 'cdk-tree-node',
+        exportAs: 'cdkTreeNode',
+        host: {
+          '[attr.aria-expanded]': 'isExpanded',
+          '[attr.aria-level]': 'role === "treeitem" ? level : null',
+          '[attr.role]': 'role',
+          'class': 'cdk-tree-node'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkTreeNode.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"]
+      }, {
+        type: CdkTree
+      }];
+    };
+
+    CdkTreeNode.propDecorators = {
+      role: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Nested node is a child of `<cdk-tree>`. It works with nested tree.
+     * By using `cdk-nested-tree-node` component in tree node template, children of the parent node will
+     * be added in the `cdkTreeNodeOutlet` in tree node template.
+     * For example:
+     *   ```html
+     *   <cdk-nested-tree-node>
+     *     {{node.name}}
+     *     <ng-template cdkTreeNodeOutlet></ng-template>
+     *   </cdk-nested-tree-node>
+     *   ```
+     * The children of node will be automatically added to `cdkTreeNodeOutlet`, the result dom will be
+     * like this:
+     *   ```html
+     *   <cdk-nested-tree-node>
+     *     {{node.name}}
+     *      <cdk-nested-tree-node>{{child1.name}}</cdk-nested-tree-node>
+     *      <cdk-nested-tree-node>{{child2.name}}</cdk-nested-tree-node>
+     *   </cdk-nested-tree-node>
+     *   ```
+     * @template T
+     */
+
+    var CdkNestedTreeNode = /*#__PURE__*/function (_CdkTreeNode) {
+      _inherits(CdkNestedTreeNode, _CdkTreeNode);
+
+      var _super3 = _createSuper(CdkNestedTreeNode);
+
+      /**
+       * @param {?} _elementRef
+       * @param {?} _tree
+       * @param {?} _differs
+       */
+      function CdkNestedTreeNode(_elementRef, _tree, _differs) {
+        var _this11;
+
+        _classCallCheck(this, CdkNestedTreeNode);
+
+        _this11 = _super3.call(this, _elementRef, _tree);
+        _this11._elementRef = _elementRef;
+        _this11._tree = _tree;
+        _this11._differs = _differs;
+        return _this11;
+      }
+      /**
+       * @return {?}
+       */
+
+
+      _createClass(CdkNestedTreeNode, [{
+        key: "ngAfterContentInit",
+        value: function ngAfterContentInit() {
+          var _this12 = this;
+
+          this._dataDiffer = this._differs.find([]).create(this._tree.trackBy);
+
+          if (!this._tree.treeControl.getChildren) {
+            throw getTreeControlFunctionsMissingError();
+          }
+          /** @type {?} */
+
+
+          var childrenNodes = this._tree.treeControl.getChildren(this.data);
+
+          if (Array.isArray(childrenNodes)) {
+            this.updateChildrenNodes(
+            /** @type {?} */
+            childrenNodes);
+          } else if (childrenNodes instanceof rxjs__WEBPACK_IMPORTED_MODULE_1__["Observable"]) {
+            childrenNodes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this._destroyed)).subscribe(
+            /**
+            * @param {?} result
+            * @return {?}
+            */
+            function (result) {
+              return _this12.updateChildrenNodes(result);
+            });
+          }
+
+          this.nodeOutlet.changes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this12.updateChildrenNodes();
+          });
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._clear();
+
+          _get(_getPrototypeOf(CdkNestedTreeNode.prototype), "ngOnDestroy", this).call(this);
+        }
+        /**
+         * Add children dataNodes to the NodeOutlet
+         * @protected
+         * @param {?=} children
+         * @return {?}
+         */
+
+      }, {
+        key: "updateChildrenNodes",
+        value: function updateChildrenNodes(children) {
+          /** @type {?} */
+          var outlet = this._getNodeOutlet();
+
+          if (children) {
+            this._children = children;
+          }
+
+          if (outlet && this._children) {
+            /** @type {?} */
+            var viewContainer = outlet.viewContainer;
+
+            this._tree.renderNodeChanges(this._children, this._dataDiffer, viewContainer, this._data);
+          } else {
+            // Reset the data differ if there's no children nodes displayed
+            this._dataDiffer.diff([]);
+          }
+        }
+        /**
+         * Clear the children dataNodes.
+         * @protected
+         * @return {?}
+         */
+
+      }, {
+        key: "_clear",
+        value: function _clear() {
+          /** @type {?} */
+          var outlet = this._getNodeOutlet();
+
+          if (outlet) {
+            outlet.viewContainer.clear();
+
+            this._dataDiffer.diff([]);
+          }
+        }
+        /**
+         * Gets the outlet for the current node.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_getNodeOutlet",
+        value: function _getNodeOutlet() {
+          var _this13 = this;
+
+          /** @type {?} */
+          var outlets = this.nodeOutlet; // Note that since we use `descendants: true` on the query, we have to ensure
+          // that we don't pick up the outlet of a child node by accident.
+
+          return outlets && outlets.find(
+          /**
+          * @param {?} outlet
+          * @return {?}
+          */
+          function (outlet) {
+            return !outlet._node || outlet._node === _this13;
+          });
+        }
+      }]);
+
+      return CdkNestedTreeNode;
+    }(CdkTreeNode);
+
+    CdkNestedTreeNode.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
+      args: [{
+        selector: 'cdk-nested-tree-node',
+        exportAs: 'cdkNestedTreeNode',
+        host: {
+          '[attr.aria-expanded]': 'isExpanded',
+          '[attr.role]': 'role',
+          'class': 'cdk-tree-node cdk-nested-tree-node'
+        },
+        providers: [{
+          provide: CdkTreeNode,
+          useExisting: CdkNestedTreeNode
+        }, {
+          provide: CDK_TREE_NODE_OUTLET_NODE,
+          useExisting: CdkNestedTreeNode
+        }]
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkNestedTreeNode.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"]
+      }, {
+        type: CdkTree
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["IterableDiffers"]
+      }];
+    };
+
+    CdkNestedTreeNode.propDecorators = {
+      nodeOutlet: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ContentChildren"],
+        args: [CdkTreeNodeOutlet, {
+          // We need to use `descendants: true`, because Ivy will no longer match
+          // indirect descendants if it's left as false.
+          descendants: true
+        }]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Regex used to split a string on its CSS units.
+     * @type {?}
+     */
+
+    var cssUnitPattern = /([A-Za-z%]+)$/;
+    /**
+     * Indent for the children tree dataNodes.
+     * This directive will add left-padding to the node to show hierarchy.
+     * @template T
+     */
+
+    var CdkTreeNodePadding = /*#__PURE__*/function () {
+      /**
+       * @param {?} _treeNode
+       * @param {?} _tree
+       * @param {?} _renderer
+       * @param {?} _element
+       * @param {?} _dir
+       */
+      function CdkTreeNodePadding(_treeNode, _tree, _renderer, _element, _dir) {
+        var _this14 = this;
+
+        _classCallCheck(this, CdkTreeNodePadding);
+
+        this._treeNode = _treeNode;
+        this._tree = _tree;
+        this._renderer = _renderer;
+        this._element = _element;
+        this._dir = _dir;
+        /**
+         * Subject that emits when the component has been destroyed.
+         */
+
+        this._destroyed = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        /**
+         * CSS units used for the indentation value.
+         */
+
+        this.indentUnits = 'px';
+        this._indent = 40;
+
+        this._setPadding();
+
+        if (_dir) {
+          _dir.change.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this14._setPadding(true);
+          });
+        } // In Ivy the indentation binding might be set before the tree node's data has been added,
+        // which means that we'll miss the first render. We have to subscribe to changes in the
+        // data to ensure that everything is up to date.
+
+
+        _treeNode._dataChanges.subscribe(
+        /**
+        * @return {?}
+        */
+        function () {
+          return _this14._setPadding();
+        });
+      }
+      /**
+       * The level of depth of the tree node. The padding will be `level * indent` pixels.
+       * @return {?}
+       */
+
+
+      _createClass(CdkTreeNodePadding, [{
+        key: "ngOnDestroy",
+
+        /**
+         * @return {?}
+         */
+        value: function ngOnDestroy() {
+          this._destroyed.next();
+
+          this._destroyed.complete();
+        }
+        /**
+         * The padding indent value for the tree node. Returns a string with px numbers if not null.
+         * @return {?}
+         */
+
+      }, {
+        key: "_paddingIndent",
+        value: function _paddingIndent() {
+          /** @type {?} */
+          var nodeLevel = this._treeNode.data && this._tree.treeControl.getLevel ? this._tree.treeControl.getLevel(this._treeNode.data) : null;
+          /** @type {?} */
+
+          var level = this._level == null ? nodeLevel : this._level;
+          return typeof level === 'number' ? "".concat(level * this._indent).concat(this.indentUnits) : null;
+        }
+        /**
+         * @param {?=} forceChange
+         * @return {?}
+         */
+
+      }, {
+        key: "_setPadding",
+        value: function _setPadding() {
+          var forceChange = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+          /** @type {?} */
+          var padding = this._paddingIndent();
+
+          if (padding !== this._currentPadding || forceChange) {
+            /** @type {?} */
+            var element = this._element.nativeElement;
+            /** @type {?} */
+
+            var paddingProp = this._dir && this._dir.value === 'rtl' ? 'paddingRight' : 'paddingLeft';
+            /** @type {?} */
+
+            var resetProp = paddingProp === 'paddingLeft' ? 'paddingRight' : 'paddingLeft';
+
+            this._renderer.setStyle(element, paddingProp, padding);
+
+            this._renderer.setStyle(element, resetProp, null);
+
+            this._currentPadding = padding;
+          }
+        }
+      }, {
+        key: "level",
+        get: function get() {
+          return this._level;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          // Set to null as the fallback value so that _setPadding can fall back to the node level if the
+          // consumer set the directive as `cdkTreeNodePadding=""`. We still want to take this value if
+          // they set 0 explicitly.
+          this._level =
+          /** @type {?} */
+          Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceNumberProperty"])(value, null);
+
+          this._setPadding();
+        }
+        /**
+         * The indent for each level. Can be a number or a CSS string.
+         * Default number 40px from material design menu sub-menu spec.
+         * @return {?}
+         */
+
+      }, {
+        key: "indent",
+        get: function get() {
+          return this._indent;
+        }
+        /**
+         * @param {?} indent
+         * @return {?}
+         */
+        ,
+        set: function set(indent) {
+          /** @type {?} */
+          var value = indent;
+          /** @type {?} */
+
+          var units = 'px';
+
+          if (typeof indent === 'string') {
+            /** @type {?} */
+            var parts = indent.split(cssUnitPattern);
+            value = parts[0];
+            units = parts[1] || units;
+          }
+
+          this.indentUnits = units;
+          this._indent = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceNumberProperty"])(value);
+
+          this._setPadding();
+        }
+      }]);
+
+      return CdkTreeNodePadding;
+    }();
+
+    CdkTreeNodePadding.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
+      args: [{
+        selector: '[cdkTreeNodePadding]'
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkTreeNodePadding.ctorParameters = function () {
+      return [{
+        type: CdkTreeNode
+      }, {
+        type: CdkTree
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Renderer2"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
+        }]
+      }];
+    };
+
+    CdkTreeNodePadding.propDecorators = {
+      level: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"],
+        args: ['cdkTreeNodePadding']
+      }],
+      indent: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"],
+        args: ['cdkTreeNodePaddingIndent']
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Node toggle to expand/collapse the node.
+     * @template T
+     */
+
+    var CdkTreeNodeToggle = /*#__PURE__*/function () {
+      /**
+       * @param {?} _tree
+       * @param {?} _treeNode
+       */
+      function CdkTreeNodeToggle(_tree, _treeNode) {
+        _classCallCheck(this, CdkTreeNodeToggle);
+
+        this._tree = _tree;
+        this._treeNode = _treeNode;
+        this._recursive = false;
+      }
+      /**
+       * Whether expand/collapse the node recursively.
+       * @return {?}
+       */
+
+
+      _createClass(CdkTreeNodeToggle, [{
+        key: "_toggle",
+        // We have to use a `HostListener` here in order to support both Ivy and ViewEngine.
+        // In Ivy the `host` bindings will be merged when this class is extended, whereas in
+        // ViewEngine they're overwritten.
+        // TODO(crisbeto): we move this back into `host` once Ivy is turned on by default.
+        // tslint:disable-next-line:no-host-decorator-in-concrete
+
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+        value: function _toggle(event) {
+          this.recursive ? this._tree.treeControl.toggleDescendants(this._treeNode.data) : this._tree.treeControl.toggle(this._treeNode.data);
+          event.stopPropagation();
+        }
+      }, {
+        key: "recursive",
+        get: function get() {
+          return this._recursive;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._recursive = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_5__["coerceBooleanProperty"])(value);
+        }
+      }]);
+
+      return CdkTreeNodeToggle;
+    }();
+
+    CdkTreeNodeToggle.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
+      args: [{
+        selector: '[cdkTreeNodeToggle]'
+      }]
+    }];
+    /** @nocollapse */
+
+    CdkTreeNodeToggle.ctorParameters = function () {
+      return [{
+        type: CdkTree
+      }, {
+        type: CdkTreeNode
+      }];
+    };
+
+    CdkTreeNodeToggle.propDecorators = {
+      recursive: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"],
+        args: ['cdkTreeNodeToggleRecursive']
+      }],
+      _toggle: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["HostListener"],
+        args: ['click', ['$event']]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /** @type {?} */
+
+    var EXPORTED_DECLARATIONS = [CdkNestedTreeNode, CdkTreeNodeDef, CdkTreeNodePadding, CdkTreeNodeToggle, CdkTree, CdkTreeNode, CdkTreeNodeOutlet];
+
+    var CdkTreeModule = function CdkTreeModule() {
+      _classCallCheck(this, CdkTreeModule);
+    };
+
+    CdkTreeModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"],
+      args: [{
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["CommonModule"]],
+        exports: EXPORTED_DECLARATIONS,
+        declarations: EXPORTED_DECLARATIONS,
+        providers: [_angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_6__["FocusMonitor"], CdkTreeNodeDef]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=tree.js.map
+
+    /***/
+  },
+
   /***/
   "./node_modules/@angular/material/core/typings/index.ngfactory.js":
   /*!************************************************************************!*\
@@ -182,37 +3733,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var MatCommonModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatCommonModule"], [], function (_l) {
+    var MatCommonModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatCommonModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["HAMMER_LOADER"]]])]);
     });
 
-    var NativeDateModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["NativeDateModule"], [], function (_l) {
+    var NativeDateModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["NativeDateModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["DateAdapter"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["NativeDateAdapter"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MAT_DATE_LOCALE"]], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["NativeDateModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["NativeDateModule"], [])]);
     });
 
-    var MatNativeDateModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatNativeDateModule"], [], function (_l) {
+    var MatNativeDateModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatNativeDateModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["DateAdapter"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["NativeDateAdapter"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MAT_DATE_LOCALE"]], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["NativeDateModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["NativeDateModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatNativeDateModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatNativeDateModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](256, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MAT_DATE_FORMATS"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MAT_NATIVE_DATE_FORMATS"], [])]);
     });
 
-    var MatLineModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLineModule"], [], function (_l) {
+    var MatLineModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLineModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLineModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLineModule"], [])]);
     });
 
-    var MatOptionModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatOptionModule"], [], function (_l) {
+    var MatOptionModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatOptionModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_5__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatRippleModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatRippleModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatPseudoCheckboxModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatPseudoCheckboxModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatOptionModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatOptionModule"], [])]);
     });
 
-    var MatRippleModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatRippleModule"], [], function (_l) {
+    var MatRippleModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatRippleModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatRippleModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatRippleModule"], [])]);
     });
 
-    var MatPseudoCheckboxModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatPseudoCheckboxModule"], [], function (_l) {
+    var MatPseudoCheckboxModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatPseudoCheckboxModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatPseudoCheckboxModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatPseudoCheckboxModule"], [])]);
     });
 
     var styles_MatOption = [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:0;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}@media (-ms-high-contrast:active){.mat-option{margin:0 1px}.mat-option.mat-active{border:solid 1px currentColor;margin:0}}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}@media (-ms-high-contrast:active){.mat-option .mat-option-ripple{opacity:.5}}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}"];
 
-    var RenderType_MatOption = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatOption = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatOption,
       data: {}
@@ -300,7 +3851,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatOptionNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-option", _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatOption"], View_MatOption_Host_0, {
+    var MatOptionNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-option", _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatOption"], View_MatOption_Host_0, {
       value: "value",
       id: "id",
       disabled: "disabled"
@@ -310,7 +3861,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_MatOptgroup = [".mat-optgroup-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup-label[disabled]{cursor:default}[dir=rtl] .mat-optgroup-label{text-align:right}.mat-optgroup-label .mat-icon{margin-right:16px;vertical-align:middle}.mat-optgroup-label .mat-icon svg{vertical-align:top}[dir=rtl] .mat-optgroup-label .mat-icon{margin-left:16px;margin-right:0}"];
 
-    var RenderType_MatOptgroup = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatOptgroup = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatOptgroup,
       data: {}
@@ -341,14 +3892,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatOptgroupNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-optgroup", _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatOptgroup"], View_MatOptgroup_Host_0, {
+    var MatOptgroupNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-optgroup", _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatOptgroup"], View_MatOptgroup_Host_0, {
       disabled: "disabled",
       label: "label"
     }, {}, ["*", "mat-option, ng-container"]);
 
     var styles_MatPseudoCheckbox = [".mat-pseudo-checkbox{width:16px;height:16px;border:2px solid;border-radius:2px;cursor:pointer;display:inline-block;vertical-align:middle;box-sizing:border-box;position:relative;flex-shrink:0;transition:border-color 90ms cubic-bezier(0,0,.2,.1),background-color 90ms cubic-bezier(0,0,.2,.1)}.mat-pseudo-checkbox::after{position:absolute;opacity:0;content:'';border-bottom:2px solid currentColor;transition:opacity 90ms cubic-bezier(0,0,.2,.1)}.mat-pseudo-checkbox.mat-pseudo-checkbox-checked,.mat-pseudo-checkbox.mat-pseudo-checkbox-indeterminate{border-color:transparent}._mat-animation-noopable.mat-pseudo-checkbox{transition:none;animation:none}._mat-animation-noopable.mat-pseudo-checkbox::after{transition:none}.mat-pseudo-checkbox-disabled{cursor:default}.mat-pseudo-checkbox-indeterminate::after{top:5px;left:1px;width:10px;opacity:1;border-radius:2px}.mat-pseudo-checkbox-checked::after{top:2.4px;left:1px;width:8px;height:3px;border-left:2px solid currentColor;transform:rotate(-45deg);opacity:1;box-sizing:content-box}"];
 
-    var RenderType_MatPseudoCheckbox = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatPseudoCheckbox = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatPseudoCheckbox,
       data: {}
@@ -371,7 +3922,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatPseudoCheckboxNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-pseudo-checkbox", _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatPseudoCheckbox"], View_MatPseudoCheckbox_Host_0, {
+    var MatPseudoCheckboxNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-pseudo-checkbox", _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatPseudoCheckbox"], View_MatPseudoCheckbox_Host_0, {
       state: "state",
       disabled: "disabled"
     }, {}, []);
@@ -466,13 +4017,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var MatDividerModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_divider__WEBPACK_IMPORTED_MODULE_1__["MatDividerModule"], [], function (_l) {
+    var MatDividerModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_divider__WEBPACK_IMPORTED_MODULE_1__["MatDividerModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_divider__WEBPACK_IMPORTED_MODULE_1__["MatDividerModule"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_1__["MatDividerModule"], [])]);
     });
 
     var styles_MatDivider = [".mat-divider{display:block;margin:0;border-top-width:1px;border-top-style:solid}.mat-divider.mat-divider-vertical{border-top:0;border-right-width:1px;border-right-style:solid}.mat-divider.mat-divider-inset{margin-left:80px}[dir=rtl] .mat-divider.mat-divider-inset{margin-left:auto;margin-right:80px}"];
 
-    var RenderType_MatDivider = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatDivider = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatDivider,
       data: {}
@@ -496,10 +4047,18608 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatDividerNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-divider", _angular_material_divider__WEBPACK_IMPORTED_MODULE_1__["MatDivider"], View_MatDivider_Host_0, {
+    var MatDividerNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-divider", _angular_material_divider__WEBPACK_IMPORTED_MODULE_1__["MatDivider"], View_MatDivider_Host_0, {
       vertical: "vertical",
       inset: "inset"
     }, {}, []);
+    /***/
+
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/autocomplete.js":
+  /*!****************************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/autocomplete.js ***!
+    \****************************************************************/
+
+  /*! exports provided: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS_FACTORY, MatAutocompleteSelectedEvent, MAT_AUTOCOMPLETE_DEFAULT_OPTIONS, MatAutocomplete, MatAutocompleteModule, MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY, getMatAutocompleteMissingPanelError, AUTOCOMPLETE_OPTION_HEIGHT, AUTOCOMPLETE_PANEL_HEIGHT, MAT_AUTOCOMPLETE_SCROLL_STRATEGY, MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER, MAT_AUTOCOMPLETE_VALUE_ACCESSOR, MatAutocompleteTrigger, MatAutocompleteOrigin */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015AutocompleteJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_DEFAULT_OPTIONS_FACTORY", function () {
+      return MAT_AUTOCOMPLETE_DEFAULT_OPTIONS_FACTORY;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAutocompleteSelectedEvent", function () {
+      return MatAutocompleteSelectedEvent;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_DEFAULT_OPTIONS", function () {
+      return MAT_AUTOCOMPLETE_DEFAULT_OPTIONS;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAutocomplete", function () {
+      return MatAutocomplete;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAutocompleteModule", function () {
+      return MatAutocompleteModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY", function () {
+      return MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatAutocompleteMissingPanelError", function () {
+      return getMatAutocompleteMissingPanelError;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AUTOCOMPLETE_OPTION_HEIGHT", function () {
+      return AUTOCOMPLETE_OPTION_HEIGHT;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AUTOCOMPLETE_PANEL_HEIGHT", function () {
+      return AUTOCOMPLETE_PANEL_HEIGHT;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_SCROLL_STRATEGY", function () {
+      return MAT_AUTOCOMPLETE_SCROLL_STRATEGY;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER", function () {
+      return MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_VALUE_ACCESSOR", function () {
+      return MAT_AUTOCOMPLETE_VALUE_ACCESSOR;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAutocompleteTrigger", function () {
+      return MatAutocompleteTrigger;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAutocompleteOrigin", function () {
+      return MatAutocompleteOrigin;
+    });
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/cdk/bidi */
+    "./node_modules/@angular/cdk/esm2015/bidi.js");
+    /* harmony import */
+
+
+    var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/cdk/keycodes */
+    "./node_modules/@angular/cdk/esm2015/keycodes.js");
+    /* harmony import */
+
+
+    var _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/cdk/overlay */
+    "./node_modules/@angular/cdk/esm2015/overlay.js");
+    /* harmony import */
+
+
+    var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/cdk/platform */
+    "./node_modules/@angular/cdk/esm2015/platform.js");
+    /* harmony import */
+
+
+    var _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/cdk/portal */
+    "./node_modules/@angular/cdk/esm2015/portal.js");
+    /* harmony import */
+
+
+    var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @angular/cdk/scrolling */
+    "./node_modules/@angular/cdk/esm2015/scrolling.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! @angular/material/form-field */
+    "./node_modules/@angular/material/esm2015/form-field.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Autocomplete IDs need to be unique across components, so this counter exists outside of
+     * the component definition.
+     * @type {?}
+     */
+
+
+    var _uniqueAutocompleteIdCounter = 0;
+    /**
+     * Event object that is emitted when an autocomplete option is selected.
+     */
+
+    var MatAutocompleteSelectedEvent =
+    /**
+     * @param {?} source
+     * @param {?} option
+     */
+    function MatAutocompleteSelectedEvent(source, option) {
+      _classCallCheck(this, MatAutocompleteSelectedEvent);
+
+      this.source = source;
+      this.option = option;
+    }; // Boilerplate for applying mixins to MatAutocomplete.
+
+    /**
+     * \@docs-private
+     */
+
+
+    var MatAutocompleteBase = function MatAutocompleteBase() {
+      _classCallCheck(this, MatAutocompleteBase);
+    };
+    /** @type {?} */
+
+
+    var _MatAutocompleteMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinDisableRipple"])(MatAutocompleteBase);
+    /**
+     * Injection token to be used to override the default options for `mat-autocomplete`.
+     * @type {?}
+     */
+
+
+    var MAT_AUTOCOMPLETE_DEFAULT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["InjectionToken"]('mat-autocomplete-default-options', {
+      providedIn: 'root',
+      factory: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS_FACTORY
+    });
+    /**
+     * \@docs-private
+     * @return {?}
+     */
+
+    function MAT_AUTOCOMPLETE_DEFAULT_OPTIONS_FACTORY() {
+      return {
+        autoActiveFirstOption: false
+      };
+    }
+
+    var MatAutocomplete = /*#__PURE__*/function (_MatAutocompleteMixin) {
+      _inherits(MatAutocomplete, _MatAutocompleteMixin);
+
+      var _super4 = _createSuper(MatAutocomplete);
+
+      /**
+       * @param {?} _changeDetectorRef
+       * @param {?} _elementRef
+       * @param {?} defaults
+       */
+      function MatAutocomplete(_changeDetectorRef, _elementRef, defaults) {
+        var _this15;
+
+        _classCallCheck(this, MatAutocomplete);
+
+        _this15 = _super4.call(this);
+        _this15._changeDetectorRef = _changeDetectorRef;
+        _this15._elementRef = _elementRef;
+        /**
+         * Whether the autocomplete panel should be visible, depending on option length.
+         */
+
+        _this15.showPanel = false;
+        _this15._isOpen = false;
+        /**
+         * Function that maps an option's control value to its display value in the trigger.
+         */
+
+        _this15.displayWith = null;
+        /**
+         * Event that is emitted whenever an option from the list is selected.
+         */
+
+        _this15.optionSelected = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["EventEmitter"]();
+        /**
+         * Event that is emitted when the autocomplete panel is opened.
+         */
+
+        _this15.opened = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["EventEmitter"]();
+        /**
+         * Event that is emitted when the autocomplete panel is closed.
+         */
+
+        _this15.closed = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["EventEmitter"]();
+        _this15._classList = {};
+        /**
+         * Unique ID to be used by autocomplete trigger's "aria-owns" property.
+         */
+
+        _this15.id = "mat-autocomplete-".concat(_uniqueAutocompleteIdCounter++);
+        _this15._autoActiveFirstOption = !!defaults.autoActiveFirstOption;
+        return _this15;
+      }
+      /**
+       * Whether the autocomplete panel is open.
+       * @return {?}
+       */
+
+
+      _createClass(MatAutocomplete, [{
+        key: "ngAfterContentInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngAfterContentInit() {
+          this._keyManager = new _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__["ActiveDescendantKeyManager"](this.options).withWrap(); // Set the initial visibility state.
+
+          this._setVisibility();
+        }
+        /**
+         * Sets the panel scrollTop. This allows us to manually scroll to display options
+         * above or below the fold, as they are not actually being focused when active.
+         * @param {?} scrollTop
+         * @return {?}
+         */
+
+      }, {
+        key: "_setScrollTop",
+        value: function _setScrollTop(scrollTop) {
+          if (this.panel) {
+            this.panel.nativeElement.scrollTop = scrollTop;
+          }
+        }
+        /**
+         * Returns the panel's scrollTop.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getScrollTop",
+        value: function _getScrollTop() {
+          return this.panel ? this.panel.nativeElement.scrollTop : 0;
+        }
+        /**
+         * Panel should hide itself when the option list is empty.
+         * @return {?}
+         */
+
+      }, {
+        key: "_setVisibility",
+        value: function _setVisibility() {
+          this.showPanel = !!this.options.length;
+
+          this._setVisibilityClasses(this._classList);
+
+          this._changeDetectorRef.markForCheck();
+        }
+        /**
+         * Emits the `select` event.
+         * @param {?} option
+         * @return {?}
+         */
+
+      }, {
+        key: "_emitSelectEvent",
+        value: function _emitSelectEvent(option) {
+          /** @type {?} */
+          var event = new MatAutocompleteSelectedEvent(this, option);
+          this.optionSelected.emit(event);
+        }
+        /**
+         * Sets the autocomplete visibility classes on a classlist based on the panel is visible.
+         * @private
+         * @param {?} classList
+         * @return {?}
+         */
+
+      }, {
+        key: "_setVisibilityClasses",
+        value: function _setVisibilityClasses(classList) {
+          classList['mat-autocomplete-visible'] = this.showPanel;
+          classList['mat-autocomplete-hidden'] = !this.showPanel;
+        }
+      }, {
+        key: "isOpen",
+        get: function get() {
+          return this._isOpen && this.showPanel;
+        }
+        /**
+         * Whether the first option should be highlighted when the autocomplete panel is opened.
+         * Can be configured globally through the `MAT_AUTOCOMPLETE_DEFAULT_OPTIONS` token.
+         * @return {?}
+         */
+
+      }, {
+        key: "autoActiveFirstOption",
+        get: function get() {
+          return this._autoActiveFirstOption;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._autoActiveFirstOption = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_1__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * Takes classes set on the host mat-autocomplete element and applies them to the panel
+         * inside the overlay container to allow for easy styling.
+         * @param {?} value
+         * @return {?}
+         */
+
+      }, {
+        key: "classList",
+        set: function set(value) {
+          if (value && value.length) {
+            this._classList = value.split(' ').reduce(
+            /**
+            * @param {?} classList
+            * @param {?} className
+            * @return {?}
+            */
+            function (classList, className) {
+              classList[className.trim()] = true;
+              return classList;
+            },
+            /** @type {?} */
+            {});
+          } else {
+            this._classList = {};
+          }
+
+          this._setVisibilityClasses(this._classList);
+
+          this._elementRef.nativeElement.className = '';
+        }
+      }]);
+
+      return MatAutocomplete;
+    }(_MatAutocompleteMixinBase);
+
+    MatAutocomplete.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"],
+      args: [{
+        selector: 'mat-autocomplete',
+        template: "<ng-template><div class=\"mat-autocomplete-panel\" role=\"listbox\" [id]=\"id\" [ngClass]=\"_classList\" #panel><ng-content></ng-content></div></ng-template>",
+        styles: [".mat-autocomplete-panel{min-width:112px;max-width:280px;overflow:auto;-webkit-overflow-scrolling:touch;visibility:hidden;max-width:none;max-height:256px;position:relative;width:100%;border-bottom-left-radius:4px;border-bottom-right-radius:4px}.mat-autocomplete-panel.mat-autocomplete-visible{visibility:visible}.mat-autocomplete-panel.mat-autocomplete-hidden{visibility:hidden}.mat-autocomplete-panel-above .mat-autocomplete-panel{border-radius:0;border-top-left-radius:4px;border-top-right-radius:4px}.mat-autocomplete-panel .mat-divider-horizontal{margin-top:-1px}@media (-ms-high-contrast:active){.mat-autocomplete-panel{outline:solid 1px}}"],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ChangeDetectionStrategy"].OnPush,
+        exportAs: 'matAutocomplete',
+        inputs: ['disableRipple'],
+        host: {
+          'class': 'mat-autocomplete'
+        },
+        providers: [{
+          provide: _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MAT_OPTION_PARENT_COMPONENT"],
+          useExisting: MatAutocomplete
+        }]
+      }]
+    }];
+    /** @nocollapse */
+
+    MatAutocomplete.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ChangeDetectorRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"],
+          args: [MAT_AUTOCOMPLETE_DEFAULT_OPTIONS]
+        }]
+      }];
+    };
+
+    MatAutocomplete.propDecorators = {
+      template: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"],
+        args: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["TemplateRef"], {
+          "static": true
+        }]
+      }],
+      panel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"],
+        args: ['panel', {
+          "static": false
+        }]
+      }],
+      options: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ContentChildren"],
+        args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatOption"], {
+          descendants: true
+        }]
+      }],
+      optionGroups: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ContentChildren"],
+        args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatOptgroup"]]
+      }],
+      displayWith: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"]
+      }],
+      autoActiveFirstOption: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"]
+      }],
+      panelWidth: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"]
+      }],
+      optionSelected: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Output"]
+      }],
+      opened: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Output"]
+      }],
+      closed: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Output"]
+      }],
+      classList: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"],
+        args: ['class']
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Directive applied to an element to make it usable
+     * as a connection point for an autocomplete panel.
+     */
+
+    var MatAutocompleteOrigin =
+    /**
+     * @param {?} elementRef
+     */
+    function MatAutocompleteOrigin(elementRef) {
+      _classCallCheck(this, MatAutocompleteOrigin);
+
+      this.elementRef = elementRef;
+    };
+
+    MatAutocompleteOrigin.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Directive"],
+      args: [{
+        selector: '[matAutocompleteOrigin]',
+        exportAs: 'matAutocompleteOrigin'
+      }]
+    }];
+    /** @nocollapse */
+
+    MatAutocompleteOrigin.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * The height of each autocomplete option.
+     * @type {?}
+     */
+
+
+    var AUTOCOMPLETE_OPTION_HEIGHT = 48;
+    /**
+     * The total height of the autocomplete panel.
+     * @type {?}
+     */
+
+    var AUTOCOMPLETE_PANEL_HEIGHT = 256;
+    /**
+     * Injection token that determines the scroll handling while the autocomplete panel is open.
+     * @type {?}
+     */
+
+    var MAT_AUTOCOMPLETE_SCROLL_STRATEGY = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["InjectionToken"]('mat-autocomplete-scroll-strategy');
+    /**
+     * \@docs-private
+     * @param {?} overlay
+     * @return {?}
+     */
+
+    function MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY(overlay) {
+      return (
+        /**
+        * @return {?}
+        */
+        function () {
+          return overlay.scrollStrategies.reposition();
+        }
+      );
+    }
+    /**
+     * \@docs-private
+     * @type {?}
+     */
+
+
+    var MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER = {
+      provide: MAT_AUTOCOMPLETE_SCROLL_STRATEGY,
+      deps: [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["Overlay"]],
+      useFactory: MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY
+    };
+    /**
+     * Provider that allows the autocomplete to register as a ControlValueAccessor.
+     * \@docs-private
+     * @type {?}
+     */
+
+    var MAT_AUTOCOMPLETE_VALUE_ACCESSOR = {
+      provide: _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NG_VALUE_ACCESSOR"],
+      useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["forwardRef"])(
+      /**
+      * @return {?}
+      */
+      function () {
+        return MatAutocompleteTrigger;
+      }),
+      multi: true
+    };
+    /**
+     * Creates an error to be thrown when attempting to use an autocomplete trigger without a panel.
+     * \@docs-private
+     * @return {?}
+     */
+
+    function getMatAutocompleteMissingPanelError() {
+      return Error('Attempting to open an undefined instance of `mat-autocomplete`. ' + 'Make sure that the id passed to the `matAutocomplete` is correct and that ' + 'you\'re attempting to open it after the ngAfterContentInit hook.');
+    }
+
+    var MatAutocompleteTrigger = /*#__PURE__*/function () {
+      /**
+       * @param {?} _element
+       * @param {?} _overlay
+       * @param {?} _viewContainerRef
+       * @param {?} _zone
+       * @param {?} _changeDetectorRef
+       * @param {?} scrollStrategy
+       * @param {?} _dir
+       * @param {?} _formField
+       * @param {?} _document
+       * @param {?=} _viewportRuler
+       */
+      function MatAutocompleteTrigger(_element, _overlay, _viewContainerRef, _zone, _changeDetectorRef, scrollStrategy, _dir, _formField, _document, _viewportRuler) {
+        var _this16 = this;
+
+        _classCallCheck(this, MatAutocompleteTrigger);
+
+        this._element = _element;
+        this._overlay = _overlay;
+        this._viewContainerRef = _viewContainerRef;
+        this._zone = _zone;
+        this._changeDetectorRef = _changeDetectorRef;
+        this._dir = _dir;
+        this._formField = _formField;
+        this._document = _document;
+        this._viewportRuler = _viewportRuler;
+        this._componentDestroyed = false;
+        this._autocompleteDisabled = false;
+        /**
+         * Whether or not the label state is being overridden.
+         */
+
+        this._manuallyFloatingLabel = false;
+        /**
+         * Subscription to viewport size changes.
+         */
+
+        this._viewportSubscription = rxjs__WEBPACK_IMPORTED_MODULE_13__["Subscription"].EMPTY;
+        /**
+         * Whether the autocomplete can open the next time it is focused. Used to prevent a focused,
+         * closed autocomplete from being reopened if the user switches to another browser tab and then
+         * comes back.
+         */
+
+        this._canOpenOnNextFocus = true;
+        /**
+         * Stream of keyboard events that can close the panel.
+         */
+
+        this._closeKeyEventStream = new rxjs__WEBPACK_IMPORTED_MODULE_13__["Subject"]();
+        /**
+         * Event handler for when the window is blurred. Needs to be an
+         * arrow function in order to preserve the context.
+         */
+
+        this._windowBlurHandler =
+        /**
+        * @return {?}
+        */
+        function () {
+          // If the user blurred the window while the autocomplete is focused, it means that it'll be
+          // refocused when they come back. In this case we want to skip the first focus event, if the
+          // pane was closed, in order to avoid reopening it unintentionally.
+          _this16._canOpenOnNextFocus = _this16._document.activeElement !== _this16._element.nativeElement || _this16.panelOpen;
+        };
+        /**
+         * `View -> model callback called when value changes`
+         */
+
+
+        this._onChange =
+        /**
+        * @return {?}
+        */
+        function () {};
+        /**
+         * `View -> model callback called when autocomplete has been touched`
+         */
+
+
+        this._onTouched =
+        /**
+        * @return {?}
+        */
+        function () {};
+        /**
+         * Position of the autocomplete panel relative to the trigger element. A position of `auto`
+         * will render the panel underneath the trigger if there is enough space for it to fit in
+         * the viewport, otherwise the panel will be shown above it. If the position is set to
+         * `above` or `below`, the panel will always be shown above or below the trigger. no matter
+         * whether it fits completely in the viewport.
+         */
+
+
+        this.position = 'auto';
+        /**
+         * `autocomplete` attribute to be set on the input element.
+         * \@docs-private
+         */
+
+        this.autocompleteAttribute = 'off';
+        this._overlayAttached = false;
+        /**
+         * Stream of autocomplete option selections.
+         */
+
+        this.optionSelections =
+        /** @type {?} */
+        Object(rxjs__WEBPACK_IMPORTED_MODULE_13__["defer"])(
+        /**
+        * @return {?}
+        */
+        function () {
+          if (_this16.autocomplete && _this16.autocomplete.options) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_13__["merge"]).apply(void 0, _toConsumableArray(_this16.autocomplete.options.map(
+            /**
+            * @param {?} option
+            * @return {?}
+            */
+            function (option) {
+              return option.onSelectionChange;
+            })));
+          } // If there are any subscribers before `ngAfterViewInit`, the `autocomplete` will be undefined.
+          // Return a stream that we'll replace with the real one once everything is in place.
+
+
+          return _this16._zone.onStable.asObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["switchMap"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this16.optionSelections;
+          }));
+        });
+        this._scrollStrategy = scrollStrategy;
+      }
+      /**
+       * Whether the autocomplete is disabled. When disabled, the element will
+       * act as a regular input and the user won't be able to open the panel.
+       * @return {?}
+       */
+
+
+      _createClass(MatAutocompleteTrigger, [{
+        key: "ngAfterViewInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngAfterViewInit() {
+          var _this17 = this;
+
+          if (typeof window !== 'undefined') {
+            this._zone.runOutsideAngular(
+            /**
+            * @return {?}
+            */
+            function () {
+              window.addEventListener('blur', _this17._windowBlurHandler);
+            });
+
+            if (Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["_supportsShadowDom"])()) {
+              /** @type {?} */
+              var element = this._element.nativeElement;
+              /** @type {?} */
+
+              var rootNode = element.getRootNode ? element.getRootNode() : null; // We need to take the `ShadowRoot` off of `window`, because the built-in types are
+              // incorrect. See https://github.com/Microsoft/TypeScript/issues/27929.
+
+              this._isInsideShadowRoot = rootNode instanceof
+              /** @type {?} */
+              window.ShadowRoot;
+            }
+          }
+        }
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnChanges",
+        value: function ngOnChanges(changes) {
+          if (changes['position'] && this._positionStrategy) {
+            this._setStrategyPositions(this._positionStrategy);
+
+            if (this.panelOpen) {
+              /** @type {?} */
+              this._overlayRef.updatePosition();
+            }
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          if (typeof window !== 'undefined') {
+            window.removeEventListener('blur', this._windowBlurHandler);
+          }
+
+          this._viewportSubscription.unsubscribe();
+
+          this._componentDestroyed = true;
+
+          this._destroyPanel();
+
+          this._closeKeyEventStream.complete();
+        }
+        /**
+         * Whether or not the autocomplete panel is open.
+         * @return {?}
+         */
+
+      }, {
+        key: "openPanel",
+
+        /**
+         * Opens the autocomplete suggestion panel.
+         * @return {?}
+         */
+        value: function openPanel() {
+          this._attachOverlay();
+
+          this._floatLabel();
+        }
+        /**
+         * Closes the autocomplete suggestion panel.
+         * @return {?}
+         */
+
+      }, {
+        key: "closePanel",
+        value: function closePanel() {
+          this._resetLabel();
+
+          if (!this._overlayAttached) {
+            return;
+          }
+
+          if (this.panelOpen) {
+            // Only emit if the panel was visible.
+            this.autocomplete.closed.emit();
+          }
+
+          this.autocomplete._isOpen = this._overlayAttached = false;
+
+          if (this._overlayRef && this._overlayRef.hasAttached()) {
+            this._overlayRef.detach();
+
+            this._closingActionsSubscription.unsubscribe();
+          } // Note that in some cases this can end up being called after the component is destroyed.
+          // Add a check to ensure that we don't try to run change detection on a destroyed view.
+
+
+          if (!this._componentDestroyed) {
+            // We need to trigger change detection manually, because
+            // `fromEvent` doesn't seem to do it at the proper time.
+            // This ensures that the label is reset when the
+            // user clicks outside.
+            this._changeDetectorRef.detectChanges();
+          }
+        }
+        /**
+         * Updates the position of the autocomplete suggestion panel to ensure that it fits all options
+         * within the viewport.
+         * @return {?}
+         */
+
+      }, {
+        key: "updatePosition",
+        value: function updatePosition() {
+          if (this._overlayAttached) {
+            /** @type {?} */
+            this._overlayRef.updatePosition();
+          }
+        }
+        /**
+         * A stream of actions that should close the autocomplete panel, including
+         * when an option is selected, on blur, and when TAB is pressed.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getOutsideClickStream",
+
+        /**
+         * Stream of clicks outside of the autocomplete panel.
+         * @private
+         * @return {?}
+         */
+        value: function _getOutsideClickStream() {
+          var _this18 = this;
+
+          return Object(rxjs__WEBPACK_IMPORTED_MODULE_13__["merge"])(
+          /** @type {?} */
+          Object(rxjs__WEBPACK_IMPORTED_MODULE_13__["fromEvent"])(this._document, 'click'),
+          /** @type {?} */
+          Object(rxjs__WEBPACK_IMPORTED_MODULE_13__["fromEvent"])(this._document, 'touchend')).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["filter"])(
+          /**
+          * @param {?} event
+          * @return {?}
+          */
+          function (event) {
+            // If we're in the Shadow DOM, the event target will be the shadow root, so we have to
+            // fall back to check the first element in the path of the click event.
+
+            /** @type {?} */
+            var clickTarget =
+            /** @type {?} */
+            _this18._isInsideShadowRoot && event.composedPath ? event.composedPath()[0] : event.target;
+            /** @type {?} */
+
+            var formField = _this18._formField ? _this18._formField._elementRef.nativeElement : null;
+            return _this18._overlayAttached && clickTarget !== _this18._element.nativeElement && (!formField || !formField.contains(clickTarget)) && !!_this18._overlayRef && !_this18._overlayRef.overlayElement.contains(clickTarget);
+          }));
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+
+      }, {
+        key: "writeValue",
+        value: function writeValue(value) {
+          var _this19 = this;
+
+          Promise.resolve(null).then(
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this19._setTriggerValue(value);
+          });
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} fn
+         * @return {?}
+         */
+
+      }, {
+        key: "registerOnChange",
+        value: function registerOnChange(fn) {
+          this._onChange = fn;
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} fn
+         * @return {?}
+         */
+
+      }, {
+        key: "registerOnTouched",
+        value: function registerOnTouched(fn) {
+          this._onTouched = fn;
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} isDisabled
+         * @return {?}
+         */
+
+      }, {
+        key: "setDisabledState",
+        value: function setDisabledState(isDisabled) {
+          this._element.nativeElement.disabled = isDisabled;
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_handleKeydown",
+        value: function _handleKeydown(event) {
+          /** @type {?} */
+          var keyCode = event.keyCode; // Prevent the default action on all escape key presses. This is here primarily to bring IE
+          // in line with other browsers. By default, pressing escape on IE will cause it to revert
+          // the input value to the one that it had on focus, however it won't dispatch any events
+          // which means that the model value will be out of sync with the view.
+
+          if (keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_5__["ESCAPE"]) {
+            event.preventDefault();
+          }
+
+          if (this.activeOption && keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_5__["ENTER"] && this.panelOpen) {
+            this.activeOption._selectViaInteraction();
+
+            this._resetActiveItem();
+
+            event.preventDefault();
+          } else if (this.autocomplete) {
+            /** @type {?} */
+            var prevActiveItem = this.autocomplete._keyManager.activeItem;
+            /** @type {?} */
+
+            var isArrowKey = keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_5__["UP_ARROW"] || keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_5__["DOWN_ARROW"];
+
+            if (this.panelOpen || keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_5__["TAB"]) {
+              this.autocomplete._keyManager.onKeydown(event);
+            } else if (isArrowKey && this._canOpen()) {
+              this.openPanel();
+            }
+
+            if (isArrowKey || this.autocomplete._keyManager.activeItem !== prevActiveItem) {
+              this._scrollToOption();
+            }
+          }
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_handleInput",
+        value: function _handleInput(event) {
+          /** @type {?} */
+          var target =
+          /** @type {?} */
+          event.target;
+          /** @type {?} */
+
+          var value = target.value; // Based on `NumberValueAccessor` from forms.
+
+          if (target.type === 'number') {
+            value = value == '' ? null : parseFloat(value);
+          } // If the input has a placeholder, IE will fire the `input` event on page load,
+          // focus and blur, in addition to when the user actually changed the value. To
+          // filter out all of the extra events, we save the value on focus and between
+          // `input` events, and we check whether it changed.
+          // See: https://connect.microsoft.com/IE/feedback/details/885747/
+
+
+          if (this._previousValue !== value) {
+            this._previousValue = value;
+
+            this._onChange(value);
+
+            if (this._canOpen() && this._document.activeElement === event.target) {
+              this.openPanel();
+            }
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_handleFocus",
+        value: function _handleFocus() {
+          if (!this._canOpenOnNextFocus) {
+            this._canOpenOnNextFocus = true;
+          } else if (this._canOpen()) {
+            this._previousValue = this._element.nativeElement.value;
+
+            this._attachOverlay();
+
+            this._floatLabel(true);
+          }
+        }
+        /**
+         * In "auto" mode, the label will animate down as soon as focus is lost.
+         * This causes the value to jump when selecting an option with the mouse.
+         * This method manually floats the label until the panel can be closed.
+         * @private
+         * @param {?=} shouldAnimate Whether the label should be animated when it is floated.
+         * @return {?}
+         */
+
+      }, {
+        key: "_floatLabel",
+        value: function _floatLabel() {
+          var shouldAnimate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+          if (this._formField && this._formField.floatLabel === 'auto') {
+            if (shouldAnimate) {
+              this._formField._animateAndLockLabel();
+            } else {
+              this._formField.floatLabel = 'always';
+            }
+
+            this._manuallyFloatingLabel = true;
+          }
+        }
+        /**
+         * If the label has been manually elevated, return it to its normal state.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_resetLabel",
+        value: function _resetLabel() {
+          if (this._manuallyFloatingLabel) {
+            this._formField.floatLabel = 'auto';
+            this._manuallyFloatingLabel = false;
+          }
+        }
+        /**
+         * Given that we are not actually focusing active options, we must manually adjust scroll
+         * to reveal options below the fold. First, we find the offset of the option from the top
+         * of the panel. If that offset is below the fold, the new scrollTop will be the offset -
+         * the panel height + the option height, so the active option will be just visible at the
+         * bottom of the panel. If that offset is above the top of the visible panel, the new scrollTop
+         * will become the offset. If that offset is visible within the panel already, the scrollTop is
+         * not adjusted.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_scrollToOption",
+        value: function _scrollToOption() {
+          /** @type {?} */
+          var index = this.autocomplete._keyManager.activeItemIndex || 0;
+          /** @type {?} */
+
+          var labelCount = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["_countGroupLabelsBeforeOption"])(index, this.autocomplete.options, this.autocomplete.optionGroups);
+
+          if (index === 0 && labelCount === 1) {
+            // If we've got one group label before the option and we're at the top option,
+            // scroll the list to the top. This is better UX than scrolling the list to the
+            // top of the option, because it allows the user to read the top group's label.
+            this.autocomplete._setScrollTop(0);
+          } else {
+            /** @type {?} */
+            var newScrollPosition = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["_getOptionScrollPosition"])(index + labelCount, AUTOCOMPLETE_OPTION_HEIGHT, this.autocomplete._getScrollTop(), AUTOCOMPLETE_PANEL_HEIGHT);
+
+            this.autocomplete._setScrollTop(newScrollPosition);
+          }
+        }
+        /**
+         * This method listens to a stream of panel closing actions and resets the
+         * stream every time the option list changes.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_subscribeToClosingActions",
+        value: function _subscribeToClosingActions() {
+          var _this20 = this;
+
+          /** @type {?} */
+          var firstStable = this._zone.onStable.asObservable().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["take"])(1));
+          /** @type {?} */
+
+
+          var optionChanges = this.autocomplete.options.changes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["tap"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this20._positionStrategy.reapplyLastPosition();
+          }), // Defer emitting to the stream until the next tick, because changing
+          // bindings in here will cause "changed after checked" errors.
+          Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["delay"])(0)); // When the zone is stable initially, and when the option list changes...
+
+          return Object(rxjs__WEBPACK_IMPORTED_MODULE_13__["merge"])(firstStable, optionChanges).pipe( // create a new stream of panelClosingActions, replacing any previous streams
+          // that were created, and flatten it so our stream only emits closing events...
+          Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["switchMap"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            /** @type {?} */
+            var wasOpen = _this20.panelOpen;
+
+            _this20._resetActiveItem();
+
+            _this20.autocomplete._setVisibility();
+
+            if (_this20.panelOpen) {
+              /** @type {?} */
+              _this20._overlayRef.updatePosition(); // If the `panelOpen` state changed, we need to make sure to emit the `opened`
+              // event, because we may not have emitted it when the panel was attached. This
+              // can happen if the users opens the panel and there are no options, but the
+              // options come in slightly later or as a result of the value changing.
+
+
+              if (wasOpen !== _this20.panelOpen) {
+                _this20.autocomplete.opened.emit();
+              }
+            }
+
+            return _this20.panelClosingActions;
+          }), // when the first closing event occurs...
+          Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["take"])(1)) // set the value, close the panel, and complete.
+          .subscribe(
+          /**
+          * @param {?} event
+          * @return {?}
+          */
+          function (event) {
+            return _this20._setValueAndClose(event);
+          });
+        }
+        /**
+         * Destroys the autocomplete suggestion panel.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_destroyPanel",
+        value: function _destroyPanel() {
+          if (this._overlayRef) {
+            this.closePanel();
+
+            this._overlayRef.dispose();
+
+            this._overlayRef = null;
+          }
+        }
+        /**
+         * @private
+         * @param {?} value
+         * @return {?}
+         */
+
+      }, {
+        key: "_setTriggerValue",
+        value: function _setTriggerValue(value) {
+          /** @type {?} */
+          var toDisplay = this.autocomplete && this.autocomplete.displayWith ? this.autocomplete.displayWith(value) : value; // Simply falling back to an empty string if the display value is falsy does not work properly.
+          // The display value can also be the number zero and shouldn't fall back to an empty string.
+
+          /** @type {?} */
+
+          var inputValue = toDisplay != null ? toDisplay : ''; // If it's used within a `MatFormField`, we should set it through the property so it can go
+          // through change detection.
+
+          if (this._formField) {
+            this._formField._control.value = inputValue;
+          } else {
+            this._element.nativeElement.value = inputValue;
+          }
+
+          this._previousValue = inputValue;
+        }
+        /**
+         * This method closes the panel, and if a value is specified, also sets the associated
+         * control to that value. It will also mark the control as dirty if this interaction
+         * stemmed from the user.
+         * @private
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_setValueAndClose",
+        value: function _setValueAndClose(event) {
+          if (event && event.source) {
+            this._clearPreviousSelectedOption(event.source);
+
+            this._setTriggerValue(event.source.value);
+
+            this._onChange(event.source.value);
+
+            this._element.nativeElement.focus();
+
+            this.autocomplete._emitSelectEvent(event.source);
+          }
+
+          this.closePanel();
+        }
+        /**
+         * Clear any previous selected option and emit a selection change event for this option
+         * @private
+         * @param {?} skip
+         * @return {?}
+         */
+
+      }, {
+        key: "_clearPreviousSelectedOption",
+        value: function _clearPreviousSelectedOption(skip) {
+          this.autocomplete.options.forEach(
+          /**
+          * @param {?} option
+          * @return {?}
+          */
+          function (option) {
+            if (option != skip && option.selected) {
+              option.deselect();
+            }
+          });
+        }
+        /**
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_attachOverlay",
+        value: function _attachOverlay() {
+          var _this21 = this;
+
+          if (!this.autocomplete) {
+            throw getMatAutocompleteMissingPanelError();
+          }
+          /** @type {?} */
+
+
+          var overlayRef = this._overlayRef;
+
+          if (!overlayRef) {
+            this._portal = new _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_8__["TemplatePortal"](this.autocomplete.template, this._viewContainerRef);
+            overlayRef = this._overlay.create(this._getOverlayConfig());
+            this._overlayRef = overlayRef; // Use the `keydownEvents` in order to take advantage of
+            // the overlay event targeting provided by the CDK overlay.
+
+            overlayRef.keydownEvents().subscribe(
+            /**
+            * @param {?} event
+            * @return {?}
+            */
+            function (event) {
+              // Close when pressing ESCAPE or ALT + UP_ARROW, based on the a11y guidelines.
+              // See: https://www.w3.org/TR/wai-aria-practices-1.1/#textbox-keyboard-interaction
+              if (event.keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_5__["ESCAPE"] || event.keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_5__["UP_ARROW"] && event.altKey) {
+                _this21._resetActiveItem();
+
+                _this21._closeKeyEventStream.next(); // We need to stop propagation, otherwise the event will eventually
+                // reach the input itself and cause the overlay to be reopened.
+
+
+                event.stopPropagation();
+                event.preventDefault();
+              }
+            });
+
+            if (this._viewportRuler) {
+              this._viewportSubscription = this._viewportRuler.change().subscribe(
+              /**
+              * @return {?}
+              */
+              function () {
+                if (_this21.panelOpen && overlayRef) {
+                  overlayRef.updateSize({
+                    width: _this21._getPanelWidth()
+                  });
+                }
+              });
+            }
+          } else {
+            // Update the trigger, panel width and direction, in case anything has changed.
+            this._positionStrategy.setOrigin(this._getConnectedElement());
+
+            overlayRef.updateSize({
+              width: this._getPanelWidth()
+            });
+          }
+
+          if (overlayRef && !overlayRef.hasAttached()) {
+            overlayRef.attach(this._portal);
+            this._closingActionsSubscription = this._subscribeToClosingActions();
+          }
+          /** @type {?} */
+
+
+          var wasOpen = this.panelOpen;
+
+          this.autocomplete._setVisibility();
+
+          this.autocomplete._isOpen = this._overlayAttached = true; // We need to do an extra `panelOpen` check in here, because the
+          // autocomplete won't be shown if there are no options.
+
+          if (this.panelOpen && wasOpen !== this.panelOpen) {
+            this.autocomplete.opened.emit();
+          }
+        }
+        /**
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_getOverlayConfig",
+        value: function _getOverlayConfig() {
+          return new _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["OverlayConfig"]({
+            positionStrategy: this._getOverlayPosition(),
+            scrollStrategy: this._scrollStrategy(),
+            width: this._getPanelWidth(),
+            direction: this._dir
+          });
+        }
+        /**
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_getOverlayPosition",
+        value: function _getOverlayPosition() {
+          /** @type {?} */
+          var strategy = this._overlay.position().flexibleConnectedTo(this._getConnectedElement()).withFlexibleDimensions(false).withPush(false);
+
+          this._setStrategyPositions(strategy);
+
+          this._positionStrategy = strategy;
+          return strategy;
+        }
+        /**
+         * Sets the positions on a position strategy based on the directive's input state.
+         * @private
+         * @param {?} positionStrategy
+         * @return {?}
+         */
+
+      }, {
+        key: "_setStrategyPositions",
+        value: function _setStrategyPositions(positionStrategy) {
+          /** @type {?} */
+          var belowPosition = {
+            originX: 'start',
+            originY: 'bottom',
+            overlayX: 'start',
+            overlayY: 'top'
+          };
+          /** @type {?} */
+
+          var abovePosition = {
+            originX: 'start',
+            originY: 'top',
+            overlayX: 'start',
+            overlayY: 'bottom',
+            // The overlay edge connected to the trigger should have squared corners, while
+            // the opposite end has rounded corners. We apply a CSS class to swap the
+            // border-radius based on the overlay position.
+            panelClass: 'mat-autocomplete-panel-above'
+          };
+          /** @type {?} */
+
+          var positions;
+
+          if (this.position === 'above') {
+            positions = [abovePosition];
+          } else if (this.position === 'below') {
+            positions = [belowPosition];
+          } else {
+            positions = [belowPosition, abovePosition];
+          }
+
+          positionStrategy.withPositions(positions);
+        }
+        /**
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_getConnectedElement",
+        value: function _getConnectedElement() {
+          if (this.connectedTo) {
+            return this.connectedTo.elementRef;
+          }
+
+          return this._formField ? this._formField.getConnectedOverlayOrigin() : this._element;
+        }
+        /**
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_getPanelWidth",
+        value: function _getPanelWidth() {
+          return this.autocomplete.panelWidth || this._getHostWidth();
+        }
+        /**
+         * Returns the width of the input element, so the panel width can match it.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_getHostWidth",
+        value: function _getHostWidth() {
+          return this._getConnectedElement().nativeElement.getBoundingClientRect().width;
+        }
+        /**
+         * Resets the active item to -1 so arrow events will activate the
+         * correct options, or to 0 if the consumer opted into it.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_resetActiveItem",
+        value: function _resetActiveItem() {
+          this.autocomplete._keyManager.setActiveItem(this.autocomplete.autoActiveFirstOption ? 0 : -1);
+        }
+        /**
+         * Determines whether the panel can be opened.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_canOpen",
+        value: function _canOpen() {
+          /** @type {?} */
+          var element = this._element.nativeElement;
+          return !element.readOnly && !element.disabled && !this._autocompleteDisabled;
+        }
+      }, {
+        key: "autocompleteDisabled",
+        get: function get() {
+          return this._autocompleteDisabled;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._autocompleteDisabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_1__["coerceBooleanProperty"])(value);
+        }
+      }, {
+        key: "panelOpen",
+        get: function get() {
+          return this._overlayAttached && this.autocomplete.showPanel;
+        }
+      }, {
+        key: "panelClosingActions",
+        get: function get() {
+          var _this22 = this;
+
+          return Object(rxjs__WEBPACK_IMPORTED_MODULE_13__["merge"])(this.optionSelections, this.autocomplete._keyManager.tabOut.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["filter"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this22._overlayAttached;
+          })), this._closeKeyEventStream, this._getOutsideClickStream(), this._overlayRef ? this._overlayRef.detachments().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["filter"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this22._overlayAttached;
+          })) : Object(rxjs__WEBPACK_IMPORTED_MODULE_13__["of"])()).pipe( // Normalize the output so we return a consistent type.
+          Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_14__["map"])(
+          /**
+          * @param {?} event
+          * @return {?}
+          */
+          function (event) {
+            return event instanceof _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatOptionSelectionChange"] ? event : null;
+          }));
+        }
+        /**
+         * The currently active option, coerced to MatOption type.
+         * @return {?}
+         */
+
+      }, {
+        key: "activeOption",
+        get: function get() {
+          if (this.autocomplete && this.autocomplete._keyManager) {
+            return this.autocomplete._keyManager.activeItem;
+          }
+
+          return null;
+        }
+      }]);
+
+      return MatAutocompleteTrigger;
+    }();
+
+    MatAutocompleteTrigger.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Directive"],
+      args: [{
+        selector: "input[matAutocomplete], textarea[matAutocomplete]",
+        host: {
+          'class': 'mat-autocomplete-trigger',
+          '[attr.autocomplete]': 'autocompleteAttribute',
+          '[attr.role]': 'autocompleteDisabled ? null : "combobox"',
+          '[attr.aria-autocomplete]': 'autocompleteDisabled ? null : "list"',
+          '[attr.aria-activedescendant]': '(panelOpen && activeOption) ? activeOption.id : null',
+          '[attr.aria-expanded]': 'autocompleteDisabled ? null : panelOpen.toString()',
+          '[attr.aria-owns]': '(autocompleteDisabled || !panelOpen) ? null : autocomplete?.id',
+          '[attr.aria-haspopup]': '!autocompleteDisabled',
+          // Note: we use `focusin`, as opposed to `focus`, in order to open the panel
+          // a little earlier. This avoids issues where IE delays the focusing of the input.
+          '(focusin)': '_handleFocus()',
+          '(blur)': '_onTouched()',
+          '(input)': '_handleInput($event)',
+          '(keydown)': '_handleKeydown($event)'
+        },
+        exportAs: 'matAutocompleteTrigger',
+        providers: [MAT_AUTOCOMPLETE_VALUE_ACCESSOR]
+      }]
+    }];
+    /** @nocollapse */
+
+    MatAutocompleteTrigger.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"]
+      }, {
+        type: _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["Overlay"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewContainerRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgZone"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ChangeDetectorRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"],
+          args: [MAT_AUTOCOMPLETE_SCROLL_STRATEGY]
+        }]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"]
+        }]
+      }, {
+        type: _angular_material_form_field__WEBPACK_IMPORTED_MODULE_12__["MatFormField"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Host"]
+        }]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"],
+          args: [_angular_common__WEBPACK_IMPORTED_MODULE_10__["DOCUMENT"]]
+        }]
+      }, {
+        type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"]
+      }];
+    };
+
+    MatAutocompleteTrigger.propDecorators = {
+      autocomplete: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"],
+        args: ['matAutocomplete']
+      }],
+      position: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"],
+        args: ['matAutocompletePosition']
+      }],
+      connectedTo: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"],
+        args: ['matAutocompleteConnectedTo']
+      }],
+      autocompleteAttribute: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"],
+        args: ['autocomplete']
+      }],
+      autocompleteDisabled: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"],
+        args: ['matAutocompleteDisabled']
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var MatAutocompleteModule = function MatAutocompleteModule() {
+      _classCallCheck(this, MatAutocompleteModule);
+    };
+
+    MatAutocompleteModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"],
+      args: [{
+        imports: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatOptionModule"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["OverlayModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["CommonModule"]],
+        exports: [MatAutocomplete, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatOptionModule"], MatAutocompleteTrigger, MatAutocompleteOrigin, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"]],
+        declarations: [MatAutocomplete, MatAutocompleteTrigger, MatAutocompleteOrigin],
+        providers: [MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=autocomplete.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/bottom-sheet.js":
+  /*!****************************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/bottom-sheet.js ***!
+    \****************************************************************/
+
+  /*! exports provided: MatBottomSheetModule, MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatBottomSheet, MAT_BOTTOM_SHEET_DATA, MatBottomSheetConfig, MatBottomSheetContainer, matBottomSheetAnimations, MatBottomSheetRef */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015BottomSheetJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBottomSheetModule", function () {
+      return MatBottomSheetModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_BOTTOM_SHEET_DEFAULT_OPTIONS", function () {
+      return MAT_BOTTOM_SHEET_DEFAULT_OPTIONS;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBottomSheet", function () {
+      return MatBottomSheet;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_BOTTOM_SHEET_DATA", function () {
+      return MAT_BOTTOM_SHEET_DATA;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBottomSheetConfig", function () {
+      return MatBottomSheetConfig;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBottomSheetContainer", function () {
+      return MatBottomSheetContainer;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matBottomSheetAnimations", function () {
+      return matBottomSheetAnimations;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBottomSheetRef", function () {
+      return MatBottomSheetRef;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/animations */
+    "./node_modules/@angular/animations/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/cdk/portal */
+    "./node_modules/@angular/cdk/esm2015/portal.js");
+    /* harmony import */
+
+
+    var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/cdk/layout */
+    "./node_modules/@angular/cdk/esm2015/layout.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/cdk/overlay */
+    "./node_modules/@angular/cdk/esm2015/overlay.js");
+    /* harmony import */
+
+
+    var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/cdk/keycodes */
+    "./node_modules/@angular/cdk/esm2015/keycodes.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @angular/cdk/bidi */
+    "./node_modules/@angular/cdk/esm2015/bidi.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Injection token that can be used to access the data that was passed in to a bottom sheet.
+     * @type {?}
+     */
+
+
+    var MAT_BOTTOM_SHEET_DATA = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MatBottomSheetData');
+    /**
+     * Configuration used when opening a bottom sheet.
+     * @template D
+     */
+
+    var MatBottomSheetConfig = function MatBottomSheetConfig() {
+      _classCallCheck(this, MatBottomSheetConfig);
+
+      /**
+       * Data being injected into the child component.
+       */
+      this.data = null;
+      /**
+       * Whether the bottom sheet has a backdrop.
+       */
+
+      this.hasBackdrop = true;
+      /**
+       * Whether the user can use escape or clicking outside to close the bottom sheet.
+       */
+
+      this.disableClose = false;
+      /**
+       * Aria label to assign to the bottom sheet element.
+       */
+
+      this.ariaLabel = null;
+      /**
+       * Whether the bottom sheet should close when the user goes backwards/forwards in history.
+       * Note that this usually doesn't include clicking on links (unless the user is using
+       * the `HashLocationStrategy`).
+       */
+
+      this.closeOnNavigation = true; // Note that this is disabled by default, because while the a11y recommendations are to focus
+      // the first focusable element, doing so prevents screen readers from reading out the
+      // rest of the bottom sheet content.
+
+      /**
+       * Whether the bottom sheet should focus the first focusable element on open.
+       */
+
+      this.autoFocus = false;
+      /**
+       * Whether the bottom sheet should restore focus to the
+       * previously-focused element, after it's closed.
+       */
+
+      this.restoreFocus = true;
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Animations used by the Material bottom sheet.
+     * @type {?}
+     */
+
+
+    var matBottomSheetAnimations = {
+      /**
+       * Animation that shows and hides a bottom sheet.
+       */
+      bottomSheetState: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('state', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('void, hidden', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
+        transform: 'translateY(100%)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('visible', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
+        transform: 'translateY(0%)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('visible => void, visible => hidden', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])("".concat(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["AnimationDurations"].COMPLEX, " ").concat(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["AnimationCurves"].ACCELERATION_CURVE))), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('void => visible', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])("".concat(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["AnimationDurations"].EXITING, " ").concat(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["AnimationCurves"].DECELERATION_CURVE)))])
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    // TODO(crisbeto): consolidate some logic between this, MatDialog and MatSnackBar
+
+    /**
+     * Internal component that wraps user-provided bottom sheet content.
+     * \@docs-private
+     */
+
+    var MatBottomSheetContainer = /*#__PURE__*/function (_angular_cdk_portal__) {
+      _inherits(MatBottomSheetContainer, _angular_cdk_portal__);
+
+      var _super5 = _createSuper(MatBottomSheetContainer);
+
+      /**
+       * @param {?} _elementRef
+       * @param {?} _changeDetectorRef
+       * @param {?} _focusTrapFactory
+       * @param {?} breakpointObserver
+       * @param {?} document
+       * @param {?} bottomSheetConfig
+       */
+      function MatBottomSheetContainer(_elementRef, _changeDetectorRef, _focusTrapFactory, breakpointObserver, document, bottomSheetConfig) {
+        var _this23;
+
+        _classCallCheck(this, MatBottomSheetContainer);
+
+        _this23 = _super5.call(this);
+        _this23._elementRef = _elementRef;
+        _this23._changeDetectorRef = _changeDetectorRef;
+        _this23._focusTrapFactory = _focusTrapFactory;
+        _this23.bottomSheetConfig = bottomSheetConfig;
+        /**
+         * The state of the bottom sheet animations.
+         */
+
+        _this23._animationState = 'void';
+        /**
+         * Emits whenever the state of the animation changes.
+         */
+
+        _this23._animationStateChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Element that was focused before the bottom sheet was opened.
+         */
+
+        _this23._elementFocusedBeforeOpened = null;
+        _this23._document = document;
+        _this23._breakpointSubscription = breakpointObserver.observe([_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_4__["Breakpoints"].Medium, _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_4__["Breakpoints"].Large, _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_4__["Breakpoints"].XLarge]).subscribe(
+        /**
+        * @return {?}
+        */
+        function () {
+          _this23._toggleClass('mat-bottom-sheet-container-medium', breakpointObserver.isMatched(_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_4__["Breakpoints"].Medium));
+
+          _this23._toggleClass('mat-bottom-sheet-container-large', breakpointObserver.isMatched(_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_4__["Breakpoints"].Large));
+
+          _this23._toggleClass('mat-bottom-sheet-container-xlarge', breakpointObserver.isMatched(_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_4__["Breakpoints"].XLarge));
+        });
+        return _this23;
+      }
+      /**
+       * Attach a component portal as content to this bottom sheet container.
+       * @template T
+       * @param {?} portal
+       * @return {?}
+       */
+
+
+      _createClass(MatBottomSheetContainer, [{
+        key: "attachComponentPortal",
+        value: function attachComponentPortal(portal) {
+          this._validatePortalAttached();
+
+          this._setPanelClass();
+
+          this._savePreviouslyFocusedElement();
+
+          return this._portalOutlet.attachComponentPortal(portal);
+        }
+        /**
+         * Attach a template portal as content to this bottom sheet container.
+         * @template C
+         * @param {?} portal
+         * @return {?}
+         */
+
+      }, {
+        key: "attachTemplatePortal",
+        value: function attachTemplatePortal(portal) {
+          this._validatePortalAttached();
+
+          this._setPanelClass();
+
+          this._savePreviouslyFocusedElement();
+
+          return this._portalOutlet.attachTemplatePortal(portal);
+        }
+        /**
+         * Begin animation of bottom sheet entrance into view.
+         * @return {?}
+         */
+
+      }, {
+        key: "enter",
+        value: function enter() {
+          if (!this._destroyed) {
+            this._animationState = 'visible';
+
+            this._changeDetectorRef.detectChanges();
+          }
+        }
+        /**
+         * Begin animation of the bottom sheet exiting from view.
+         * @return {?}
+         */
+
+      }, {
+        key: "exit",
+        value: function exit() {
+          if (!this._destroyed) {
+            this._animationState = 'hidden';
+
+            this._changeDetectorRef.markForCheck();
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._breakpointSubscription.unsubscribe();
+
+          this._destroyed = true;
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onAnimationDone",
+        value: function _onAnimationDone(event) {
+          if (event.toState === 'hidden') {
+            this._restoreFocus();
+          } else if (event.toState === 'visible') {
+            this._trapFocus();
+          }
+
+          this._animationStateChanged.emit(event);
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onAnimationStart",
+        value: function _onAnimationStart(event) {
+          this._animationStateChanged.emit(event);
+        }
+        /**
+         * @private
+         * @param {?} cssClass
+         * @param {?} add
+         * @return {?}
+         */
+
+      }, {
+        key: "_toggleClass",
+        value: function _toggleClass(cssClass, add) {
+          /** @type {?} */
+          var classList = this._elementRef.nativeElement.classList;
+          add ? classList.add(cssClass) : classList.remove(cssClass);
+        }
+        /**
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_validatePortalAttached",
+        value: function _validatePortalAttached() {
+          if (this._portalOutlet.hasAttached()) {
+            throw Error('Attempting to attach bottom sheet content after content is already attached');
+          }
+        }
+        /**
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_setPanelClass",
+        value: function _setPanelClass() {
+          /** @type {?} */
+          var element = this._elementRef.nativeElement;
+          /** @type {?} */
+
+          var panelClass = this.bottomSheetConfig.panelClass;
+
+          if (Array.isArray(panelClass)) {
+            // Note that we can't use a spread here, because IE doesn't support multiple arguments.
+            panelClass.forEach(
+            /**
+            * @param {?} cssClass
+            * @return {?}
+            */
+            function (cssClass) {
+              return element.classList.add(cssClass);
+            });
+          } else if (panelClass) {
+            element.classList.add(panelClass);
+          }
+        }
+        /**
+         * Moves the focus inside the focus trap.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_trapFocus",
+        value: function _trapFocus() {
+          /** @type {?} */
+          var element = this._elementRef.nativeElement;
+
+          if (!this._focusTrap) {
+            this._focusTrap = this._focusTrapFactory.create(element);
+          }
+
+          if (this.bottomSheetConfig.autoFocus) {
+            this._focusTrap.focusInitialElementWhenReady();
+          } else {
+            /** @type {?} */
+            var activeElement = this._document.activeElement; // Otherwise ensure that focus is on the container. It's possible that a different
+            // component tried to move focus while the open animation was running. See:
+            // https://github.com/angular/components/issues/16215. Note that we only want to do this
+            // if the focus isn't inside the bottom sheet already, because it's possible that the
+            // consumer turned off `autoFocus` in order to move focus themselves.
+
+            if (activeElement !== element && !element.contains(activeElement)) {
+              element.focus();
+            }
+          }
+        }
+        /**
+         * Restores focus to the element that was focused before the bottom sheet was opened.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_restoreFocus",
+        value: function _restoreFocus() {
+          /** @type {?} */
+          var toFocus = this._elementFocusedBeforeOpened; // We need the extra check, because IE can set the `activeElement` to null in some cases.
+
+          if (this.bottomSheetConfig.restoreFocus && toFocus && typeof toFocus.focus === 'function') {
+            toFocus.focus();
+          }
+
+          if (this._focusTrap) {
+            this._focusTrap.destroy();
+          }
+        }
+        /**
+         * Saves a reference to the element that was focused before the bottom sheet was opened.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_savePreviouslyFocusedElement",
+        value: function _savePreviouslyFocusedElement() {
+          var _this24 = this;
+
+          this._elementFocusedBeforeOpened =
+          /** @type {?} */
+          this._document.activeElement; // The `focus` method isn't available during server-side rendering.
+
+          if (this._elementRef.nativeElement.focus) {
+            Promise.resolve().then(
+            /**
+            * @return {?}
+            */
+            function () {
+              return _this24._elementRef.nativeElement.focus();
+            });
+          }
+        }
+      }]);
+
+      return MatBottomSheetContainer;
+    }(_angular_cdk_portal__WEBPACK_IMPORTED_MODULE_3__["BasePortalOutlet"]);
+
+    MatBottomSheetContainer.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-bottom-sheet-container',
+        template: "<ng-template cdkPortalOutlet></ng-template>",
+        styles: [".mat-bottom-sheet-container{padding:8px 16px;min-width:100vw;box-sizing:border-box;display:block;outline:0;max-height:80vh;overflow:auto}@media (-ms-high-contrast:active){.mat-bottom-sheet-container{outline:1px solid}}.mat-bottom-sheet-container-large,.mat-bottom-sheet-container-medium,.mat-bottom-sheet-container-xlarge{border-top-left-radius:4px;border-top-right-radius:4px}.mat-bottom-sheet-container-medium{min-width:384px;max-width:calc(100vw - 128px)}.mat-bottom-sheet-container-large{min-width:512px;max-width:calc(100vw - 256px)}.mat-bottom-sheet-container-xlarge{min-width:576px;max-width:calc(100vw - 384px)}"],
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        animations: [matBottomSheetAnimations.bottomSheetState],
+        host: {
+          'class': 'mat-bottom-sheet-container',
+          'tabindex': '-1',
+          'role': 'dialog',
+          'aria-modal': 'true',
+          '[attr.aria-label]': 'bottomSheetConfig?.ariaLabel',
+          '[@state]': '_animationState',
+          '(@state.start)': '_onAnimationStart($event)',
+          '(@state.done)': '_onAnimationDone($event)'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    MatBottomSheetContainer.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_6__["FocusTrapFactory"]
+      }, {
+        type: _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_4__["BreakpointObserver"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"]]
+        }]
+      }, {
+        type: MatBottomSheetConfig
+      }];
+    };
+
+    MatBottomSheetContainer.propDecorators = {
+      _portalOutlet: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: [_angular_cdk_portal__WEBPACK_IMPORTED_MODULE_3__["CdkPortalOutlet"], {
+          "static": true
+        }]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var MatBottomSheetModule = function MatBottomSheetModule() {
+      _classCallCheck(this, MatBottomSheetModule);
+    };
+
+    MatBottomSheetModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+      args: [{
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_7__["OverlayModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"], _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_3__["PortalModule"]],
+        exports: [MatBottomSheetContainer, _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]],
+        declarations: [MatBottomSheetContainer],
+        entryComponents: [MatBottomSheetContainer]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Reference to a bottom sheet dispatched from the bottom sheet service.
+     * @template T, R
+     */
+
+    var MatBottomSheetRef = /*#__PURE__*/function () {
+      /**
+       * @param {?} containerInstance
+       * @param {?} _overlayRef
+       * @param {?=} _location
+       */
+      function MatBottomSheetRef(containerInstance, _overlayRef, // @breaking-change 8.0.0 `_location` parameter to be removed.
+      _location) {
+        var _this25 = this;
+
+        _classCallCheck(this, MatBottomSheetRef);
+
+        this._overlayRef = _overlayRef;
+        /**
+         * Subject for notifying the user that the bottom sheet has been dismissed.
+         */
+
+        this._afterDismissed = new rxjs__WEBPACK_IMPORTED_MODULE_9__["Subject"]();
+        /**
+         * Subject for notifying the user that the bottom sheet has opened and appeared.
+         */
+
+        this._afterOpened = new rxjs__WEBPACK_IMPORTED_MODULE_9__["Subject"]();
+        this.containerInstance = containerInstance;
+        this.disableClose = containerInstance.bottomSheetConfig.disableClose; // Emit when opening animation completes
+
+        containerInstance._animationStateChanged.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["filter"])(
+        /**
+        * @param {?} event
+        * @return {?}
+        */
+        function (event) {
+          return event.phaseName === 'done' && event.toState === 'visible';
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(1)).subscribe(
+        /**
+        * @return {?}
+        */
+        function () {
+          _this25._afterOpened.next();
+
+          _this25._afterOpened.complete();
+        }); // Dispose overlay when closing animation is complete
+
+
+        containerInstance._animationStateChanged.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["filter"])(
+        /**
+        * @param {?} event
+        * @return {?}
+        */
+        function (event) {
+          return event.phaseName === 'done' && event.toState === 'hidden';
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(1)).subscribe(
+        /**
+        * @return {?}
+        */
+        function () {
+          clearTimeout(_this25._closeFallbackTimeout);
+
+          _overlayRef.dispose();
+        });
+
+        _overlayRef.detachments().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(1)).subscribe(
+        /**
+        * @return {?}
+        */
+        function () {
+          _this25._afterDismissed.next(_this25._result);
+
+          _this25._afterDismissed.complete();
+        });
+
+        Object(rxjs__WEBPACK_IMPORTED_MODULE_9__["merge"])(_overlayRef.backdropClick(), _overlayRef.keydownEvents().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["filter"])(
+        /**
+        * @param {?} event
+        * @return {?}
+        */
+        function (event) {
+          return event.keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_8__["ESCAPE"];
+        }))).subscribe(
+        /**
+        * @param {?} event
+        * @return {?}
+        */
+        function (event) {
+          if (!_this25.disableClose && (event.type !== 'keydown' || !Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_8__["hasModifierKey"])(
+          /** @type {?} */
+          event))) {
+            event.preventDefault();
+
+            _this25.dismiss();
+          }
+        });
+      }
+      /**
+       * Dismisses the bottom sheet.
+       * @param {?=} result Data to be passed back to the bottom sheet opener.
+       * @return {?}
+       */
+
+
+      _createClass(MatBottomSheetRef, [{
+        key: "dismiss",
+        value: function dismiss(result) {
+          var _this26 = this;
+
+          if (!this._afterDismissed.closed) {
+            // Transition the backdrop in parallel to the bottom sheet.
+            this.containerInstance._animationStateChanged.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["filter"])(
+            /**
+            * @param {?} event
+            * @return {?}
+            */
+            function (event) {
+              return event.phaseName === 'start';
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_10__["take"])(1)).subscribe(
+            /**
+            * @param {?} event
+            * @return {?}
+            */
+            function (event) {
+              // The logic that disposes of the overlay depends on the exit animation completing, however
+              // it isn't guaranteed if the parent view is destroyed while it's running. Add a fallback
+              // timeout which will clean everything up if the animation hasn't fired within the specified
+              // amount of time plus 100ms. We don't need to run this outside the NgZone, because for the
+              // vast majority of cases the timeout will have been cleared before it has fired.
+              _this26._closeFallbackTimeout = setTimeout(
+              /**
+              * @return {?}
+              */
+              function () {
+                _this26._overlayRef.dispose();
+              }, event.totalTime + 100);
+
+              _this26._overlayRef.detachBackdrop();
+            });
+
+            this._result = result;
+            this.containerInstance.exit();
+          }
+        }
+        /**
+         * Gets an observable that is notified when the bottom sheet is finished closing.
+         * @return {?}
+         */
+
+      }, {
+        key: "afterDismissed",
+        value: function afterDismissed() {
+          return this._afterDismissed.asObservable();
+        }
+        /**
+         * Gets an observable that is notified when the bottom sheet has opened and appeared.
+         * @return {?}
+         */
+
+      }, {
+        key: "afterOpened",
+        value: function afterOpened() {
+          return this._afterOpened.asObservable();
+        }
+        /**
+         * Gets an observable that emits when the overlay's backdrop has been clicked.
+         * @return {?}
+         */
+
+      }, {
+        key: "backdropClick",
+        value: function backdropClick() {
+          return this._overlayRef.backdropClick();
+        }
+        /**
+         * Gets an observable that emits when keydown events are targeted on the overlay.
+         * @return {?}
+         */
+
+      }, {
+        key: "keydownEvents",
+        value: function keydownEvents() {
+          return this._overlayRef.keydownEvents();
+        }
+      }]);
+
+      return MatBottomSheetRef;
+    }();
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Injection token that can be used to specify default bottom sheet options.
+     * @type {?}
+     */
+
+
+    var MAT_BOTTOM_SHEET_DEFAULT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-bottom-sheet-default-options');
+    /**
+     * Service to trigger Material Design bottom sheets.
+     */
+
+    var MatBottomSheet = /*#__PURE__*/function () {
+      /**
+       * @param {?} _overlay
+       * @param {?} _injector
+       * @param {?} _parentBottomSheet
+       * @param {?=} _location
+       * @param {?=} _defaultOptions
+       */
+      function MatBottomSheet(_overlay, _injector, _parentBottomSheet, _location, _defaultOptions) {
+        _classCallCheck(this, MatBottomSheet);
+
+        this._overlay = _overlay;
+        this._injector = _injector;
+        this._parentBottomSheet = _parentBottomSheet;
+        this._location = _location;
+        this._defaultOptions = _defaultOptions;
+        this._bottomSheetRefAtThisLevel = null;
+      }
+      /**
+       * Reference to the currently opened bottom sheet.
+       * @return {?}
+       */
+
+
+      _createClass(MatBottomSheet, [{
+        key: "open",
+
+        /**
+         * @template T, D, R
+         * @param {?} componentOrTemplateRef
+         * @param {?=} config
+         * @return {?}
+         */
+        value: function open(componentOrTemplateRef, config) {
+          var _this27 = this;
+
+          /** @type {?} */
+          var _config = _applyConfigDefaults(this._defaultOptions || new MatBottomSheetConfig(), config);
+          /** @type {?} */
+
+
+          var overlayRef = this._createOverlay(_config);
+          /** @type {?} */
+
+
+          var container = this._attachContainer(overlayRef, _config);
+          /** @type {?} */
+
+
+          var ref = new MatBottomSheetRef(container, overlayRef, this._location);
+
+          if (componentOrTemplateRef instanceof _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]) {
+            container.attachTemplatePortal(new _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_3__["TemplatePortal"](componentOrTemplateRef,
+            /** @type {?} */
+            null,
+            /** @type {?} */
+            {
+              $implicit: _config.data,
+              bottomSheetRef: ref
+            }));
+          } else {
+            /** @type {?} */
+            var portal = new _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_3__["ComponentPortal"](componentOrTemplateRef, undefined, this._createInjector(_config, ref));
+            /** @type {?} */
+
+            var contentRef = container.attachComponentPortal(portal);
+            ref.instance = contentRef.instance;
+          } // When the bottom sheet is dismissed, clear the reference to it.
+
+
+          ref.afterDismissed().subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            // Clear the bottom sheet ref if it hasn't already been replaced by a newer one.
+            if (_this27._openedBottomSheetRef == ref) {
+              _this27._openedBottomSheetRef = null;
+            }
+          });
+
+          if (this._openedBottomSheetRef) {
+            // If a bottom sheet is already in view, dismiss it and enter the
+            // new bottom sheet after exit animation is complete.
+            this._openedBottomSheetRef.afterDismissed().subscribe(
+            /**
+            * @return {?}
+            */
+            function () {
+              return ref.containerInstance.enter();
+            });
+
+            this._openedBottomSheetRef.dismiss();
+          } else {
+            // If no bottom sheet is in view, enter the new bottom sheet.
+            ref.containerInstance.enter();
+          }
+
+          this._openedBottomSheetRef = ref;
+          return ref;
+        }
+        /**
+         * Dismisses the currently-visible bottom sheet.
+         * @return {?}
+         */
+
+      }, {
+        key: "dismiss",
+        value: function dismiss() {
+          if (this._openedBottomSheetRef) {
+            this._openedBottomSheetRef.dismiss();
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          if (this._bottomSheetRefAtThisLevel) {
+            this._bottomSheetRefAtThisLevel.dismiss();
+          }
+        }
+        /**
+         * Attaches the bottom sheet container component to the overlay.
+         * @private
+         * @param {?} overlayRef
+         * @param {?} config
+         * @return {?}
+         */
+
+      }, {
+        key: "_attachContainer",
+        value: function _attachContainer(overlayRef, config) {
+          /** @type {?} */
+          var userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
+          /** @type {?} */
+
+          var injector = new _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_3__["PortalInjector"](userInjector || this._injector, new WeakMap([[MatBottomSheetConfig, config]]));
+          /** @type {?} */
+
+          var containerPortal = new _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_3__["ComponentPortal"](MatBottomSheetContainer, config.viewContainerRef, injector);
+          /** @type {?} */
+
+          var containerRef = overlayRef.attach(containerPortal);
+          return containerRef.instance;
+        }
+        /**
+         * Creates a new overlay and places it in the correct location.
+         * @private
+         * @param {?} config The user-specified bottom sheet config.
+         * @return {?}
+         */
+
+      }, {
+        key: "_createOverlay",
+        value: function _createOverlay(config) {
+          /** @type {?} */
+          var overlayConfig = new _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_7__["OverlayConfig"]({
+            direction: config.direction,
+            hasBackdrop: config.hasBackdrop,
+            disposeOnNavigation: config.closeOnNavigation,
+            maxWidth: '100%',
+            scrollStrategy: config.scrollStrategy || this._overlay.scrollStrategies.block(),
+            positionStrategy: this._overlay.position().global().centerHorizontally().bottom('0')
+          });
+
+          if (config.backdropClass) {
+            overlayConfig.backdropClass = config.backdropClass;
+          }
+
+          return this._overlay.create(overlayConfig);
+        }
+        /**
+         * Creates an injector to be used inside of a bottom sheet component.
+         * @private
+         * @template T
+         * @param {?} config Config that was used to create the bottom sheet.
+         * @param {?} bottomSheetRef Reference to the bottom sheet.
+         * @return {?}
+         */
+
+      }, {
+        key: "_createInjector",
+        value: function _createInjector(config, bottomSheetRef) {
+          /** @type {?} */
+          var userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
+          /** @type {?} */
+
+          var injectionTokens = new WeakMap([[MatBottomSheetRef, bottomSheetRef], [MAT_BOTTOM_SHEET_DATA, config.data]]);
+
+          if (config.direction && (!userInjector || !userInjector.get(_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_11__["Directionality"], null))) {
+            injectionTokens.set(_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_11__["Directionality"], {
+              value: config.direction,
+              change: Object(rxjs__WEBPACK_IMPORTED_MODULE_9__["of"])()
+            });
+          }
+
+          return new _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_3__["PortalInjector"](userInjector || this._injector, injectionTokens);
+        }
+      }, {
+        key: "_openedBottomSheetRef",
+        get: function get() {
+          /** @type {?} */
+          var parent = this._parentBottomSheet;
+          return parent ? parent._openedBottomSheetRef : this._bottomSheetRefAtThisLevel;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          if (this._parentBottomSheet) {
+            this._parentBottomSheet._openedBottomSheetRef = value;
+          } else {
+            this._bottomSheetRefAtThisLevel = value;
+          }
+        }
+      }]);
+
+      return MatBottomSheet;
+    }();
+
+    MatBottomSheet.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+      args: [{
+        providedIn: MatBottomSheetModule
+      }]
+    }];
+    /** @nocollapse */
+
+    MatBottomSheet.ctorParameters = function () {
+      return [{
+        type: _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_7__["Overlay"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"]
+      }, {
+        type: MatBottomSheet,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["SkipSelf"]
+        }]
+      }, {
+        type: _angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: MatBottomSheetConfig,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [MAT_BOTTOM_SHEET_DEFAULT_OPTIONS]
+        }]
+      }];
+    };
+    /** @nocollapse */
+
+
+    MatBottomSheet.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({
+      factory: function MatBottomSheet_Factory() {
+        return new MatBottomSheet(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_7__["Overlay"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["INJECTOR"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(MatBottomSheet, 12), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"], 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, 8));
+      },
+      token: MatBottomSheet,
+      providedIn: MatBottomSheetModule
+    });
+    /**
+     * Applies default options to the bottom sheet config.
+     * @param {?} defaults Object containing the default values to which to fall back.
+     * @param {?=} config The configuration to which the defaults will be applied.
+     * @return {?} The new configuration object with defaults applied.
+     */
+
+    function _applyConfigDefaults(defaults, config) {
+      return Object.assign({}, defaults, config);
+    }
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=bottom-sheet.js.map
+
+    /***/
+
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/button-toggle.js":
+  /*!*****************************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/button-toggle.js ***!
+    \*****************************************************************/
+
+  /*! exports provided: MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS, MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR, MatButtonToggleGroupMultiple, MatButtonToggleChange, MatButtonToggleGroup, MatButtonToggle, MatButtonToggleModule */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015ButtonToggleJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS", function () {
+      return MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR", function () {
+      return MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonToggleGroupMultiple", function () {
+      return MatButtonToggleGroupMultiple;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonToggleChange", function () {
+      return MatButtonToggleChange;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonToggleGroup", function () {
+      return MatButtonToggleGroup;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonToggle", function () {
+      return MatButtonToggle;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonToggleModule", function () {
+      return MatButtonToggleModule;
+    });
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/cdk/collections */
+    "./node_modules/@angular/cdk/esm2015/collections.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Injection token that can be used to configure the
+     * default options for all button toggles within an app.
+     * @type {?}
+     */
+
+
+    var MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_3__["InjectionToken"]('MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS');
+    /**
+     * Provider Expression that allows mat-button-toggle-group to register as a ControlValueAccessor.
+     * This allows it to support [(ngModel)].
+     * \@docs-private
+     * @type {?}
+     */
+
+    var MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR = {
+      provide: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NG_VALUE_ACCESSOR"],
+      useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["forwardRef"])(
+      /**
+      * @return {?}
+      */
+      function () {
+        return MatButtonToggleGroup;
+      }),
+      multi: true
+    };
+    /**
+     * @deprecated Use `MatButtonToggleGroup` instead.
+     * \@breaking-change 8.0.0
+     */
+
+    var MatButtonToggleGroupMultiple = function MatButtonToggleGroupMultiple() {
+      _classCallCheck(this, MatButtonToggleGroupMultiple);
+    };
+    /** @type {?} */
+
+
+    var _uniqueIdCounter = 0;
+    /**
+     * Change event object emitted by MatButtonToggle.
+     */
+
+    var MatButtonToggleChange =
+    /**
+     * @param {?} source
+     * @param {?} value
+     */
+    function MatButtonToggleChange(source, value) {
+      _classCallCheck(this, MatButtonToggleChange);
+
+      this.source = source;
+      this.value = value;
+    };
+    /**
+     * Exclusive selection button toggle group that behaves like a radio-button group.
+     */
+
+
+    var MatButtonToggleGroup = /*#__PURE__*/function () {
+      /**
+       * @param {?} _changeDetector
+       * @param {?=} defaultOptions
+       */
+      function MatButtonToggleGroup(_changeDetector, defaultOptions) {
+        _classCallCheck(this, MatButtonToggleGroup);
+
+        this._changeDetector = _changeDetector;
+        this._vertical = false;
+        this._multiple = false;
+        this._disabled = false;
+        /**
+         * The method to be called in order to update ngModel.
+         * Now `ngModel` binding is not supported in multiple selection mode.
+         */
+
+        this._controlValueAccessorChangeFn =
+        /**
+        * @return {?}
+        */
+        function () {};
+        /**
+         * onTouch function registered via registerOnTouch (ControlValueAccessor).
+         */
+
+
+        this._onTouched =
+        /**
+        * @return {?}
+        */
+        function () {};
+
+        this._name = "mat-button-toggle-group-".concat(_uniqueIdCounter++);
+        /**
+         * Event that emits whenever the value of the group changes.
+         * Used to facilitate two-way data binding.
+         * \@docs-private
+         */
+
+        this.valueChange = new _angular_core__WEBPACK_IMPORTED_MODULE_3__["EventEmitter"]();
+        /**
+         * Event emitted when the group's value changes.
+         */
+
+        this.change = new _angular_core__WEBPACK_IMPORTED_MODULE_3__["EventEmitter"]();
+        this.appearance = defaultOptions && defaultOptions.appearance ? defaultOptions.appearance : 'standard';
+      }
+      /**
+       * `name` attribute for the underlying `input` element.
+       * @return {?}
+       */
+
+
+      _createClass(MatButtonToggleGroup, [{
+        key: "ngOnInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngOnInit() {
+          this._selectionModel = new _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_2__["SelectionModel"](this.multiple, undefined, false);
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngAfterContentInit",
+        value: function ngAfterContentInit() {
+          var _this$_selectionModel;
+
+          (_this$_selectionModel = this._selectionModel).select.apply(_this$_selectionModel, _toConsumableArray(this._buttonToggles.filter(
+          /**
+          * @param {?} toggle
+          * @return {?}
+          */
+          function (toggle) {
+            return toggle.checked;
+          })));
+        }
+        /**
+         * Sets the model value. Implemented as part of ControlValueAccessor.
+         * @param {?} value Value to be set to the model.
+         * @return {?}
+         */
+
+      }, {
+        key: "writeValue",
+        value: function writeValue(value) {
+          this.value = value;
+
+          this._changeDetector.markForCheck();
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} fn
+         * @return {?}
+         */
+
+      }, {
+        key: "registerOnChange",
+        value: function registerOnChange(fn) {
+          this._controlValueAccessorChangeFn = fn;
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} fn
+         * @return {?}
+         */
+
+      }, {
+        key: "registerOnTouched",
+        value: function registerOnTouched(fn) {
+          this._onTouched = fn;
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} isDisabled
+         * @return {?}
+         */
+
+      }, {
+        key: "setDisabledState",
+        value: function setDisabledState(isDisabled) {
+          this.disabled = isDisabled;
+        }
+        /**
+         * Dispatch change event with current selection and group value.
+         * @return {?}
+         */
+
+      }, {
+        key: "_emitChangeEvent",
+        value: function _emitChangeEvent() {
+          /** @type {?} */
+          var selected = this.selected;
+          /** @type {?} */
+
+          var source = Array.isArray(selected) ? selected[selected.length - 1] : selected;
+          /** @type {?} */
+
+          var event = new MatButtonToggleChange(
+          /** @type {?} */
+          source, this.value);
+
+          this._controlValueAccessorChangeFn(event.value);
+
+          this.change.emit(event);
+        }
+        /**
+         * Syncs a button toggle's selected state with the model value.
+         * @param {?} toggle Toggle to be synced.
+         * @param {?} select Whether the toggle should be selected.
+         * @param {?=} isUserInput Whether the change was a result of a user interaction.
+         * @param {?=} deferEvents Whether to defer emitting the change events.
+         * @return {?}
+         */
+
+      }, {
+        key: "_syncButtonToggle",
+        value: function _syncButtonToggle(toggle, select) {
+          var isUserInput = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+          var deferEvents = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+          // Deselect the currently-selected toggle, if we're in single-selection
+          // mode and the button being toggled isn't selected at the moment.
+          if (!this.multiple && this.selected && !toggle.checked) {
+            /** @type {?} */
+            this.selected.checked = false;
+          }
+
+          if (this._selectionModel) {
+            if (select) {
+              this._selectionModel.select(toggle);
+            } else {
+              this._selectionModel.deselect(toggle);
+            }
+          } else {
+            deferEvents = true;
+          } // We need to defer in some cases in order to avoid "changed after checked errors", however
+          // the side-effect is that we may end up updating the model value out of sequence in others
+          // The `deferEvents` flag allows us to decide whether to do it on a case-by-case basis.
+
+
+          if (deferEvents) {} else {
+            this._updateModelValue(isUserInput);
+          }
+        }
+        /**
+         * Checks whether a button toggle is selected.
+         * @param {?} toggle
+         * @return {?}
+         */
+
+      }, {
+        key: "_isSelected",
+        value: function _isSelected(toggle) {
+          return this._selectionModel && this._selectionModel.isSelected(toggle);
+        }
+        /**
+         * Determines whether a button toggle should be checked on init.
+         * @param {?} toggle
+         * @return {?}
+         */
+
+      }, {
+        key: "_isPrechecked",
+        value: function _isPrechecked(toggle) {
+          if (typeof this._rawValue === 'undefined') {
+            return false;
+          }
+
+          if (this.multiple && Array.isArray(this._rawValue)) {
+            return this._rawValue.some(
+            /**
+            * @param {?} value
+            * @return {?}
+            */
+            function (value) {
+              return toggle.value != null && value === toggle.value;
+            });
+          }
+
+          return toggle.value === this._rawValue;
+        }
+        /**
+         * Updates the selection state of the toggles in the group based on a value.
+         * @private
+         * @param {?} value
+         * @return {?}
+         */
+
+      }, {
+        key: "_setSelectionByValue",
+        value: function _setSelectionByValue(value) {
+          var _this28 = this;
+
+          this._rawValue = value;
+
+          if (!this._buttonToggles) {
+            return;
+          }
+
+          if (this.multiple && value) {
+            if (!Array.isArray(value)) {
+              throw Error('Value must be an array in multiple-selection mode.');
+            }
+
+            this._clearSelection();
+
+            value.forEach(
+            /**
+            * @param {?} currentValue
+            * @return {?}
+            */
+            function (currentValue) {
+              return _this28._selectValue(currentValue);
+            });
+          } else {
+            this._clearSelection();
+
+            this._selectValue(value);
+          }
+        }
+        /**
+         * Clears the selected toggles.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_clearSelection",
+        value: function _clearSelection() {
+          this._selectionModel.clear();
+
+          this._buttonToggles.forEach(
+          /**
+          * @param {?} toggle
+          * @return {?}
+          */
+          function (toggle) {
+            return toggle.checked = false;
+          });
+        }
+        /**
+         * Selects a value if there's a toggle that corresponds to it.
+         * @private
+         * @param {?} value
+         * @return {?}
+         */
+
+      }, {
+        key: "_selectValue",
+        value: function _selectValue(value) {
+          /** @type {?} */
+          var correspondingOption = this._buttonToggles.find(
+          /**
+          * @param {?} toggle
+          * @return {?}
+          */
+          function (toggle) {
+            return toggle.value != null && toggle.value === value;
+          });
+
+          if (correspondingOption) {
+            correspondingOption.checked = true;
+
+            this._selectionModel.select(correspondingOption);
+          }
+        }
+        /**
+         * Syncs up the group's value with the model and emits the change event.
+         * @private
+         * @param {?} isUserInput
+         * @return {?}
+         */
+
+      }, {
+        key: "_updateModelValue",
+        value: function _updateModelValue(isUserInput) {
+          // Only emit the change event for user input.
+          if (isUserInput) {
+            this._emitChangeEvent();
+          } // Note: we emit this one no matter whether it was a user interaction, because
+          // it is used by Angular to sync up the two-way data binding.
+
+
+          this.valueChange.emit(this.value);
+        }
+      }, {
+        key: "name",
+        get: function get() {
+          return this._name;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          var _this29 = this;
+
+          this._name = value;
+
+          if (this._buttonToggles) {
+            this._buttonToggles.forEach(
+            /**
+            * @param {?} toggle
+            * @return {?}
+            */
+            function (toggle) {
+              toggle.name = _this29._name;
+
+              toggle._markForCheck();
+            });
+          }
+        }
+        /**
+         * Whether the toggle group is vertical.
+         * @return {?}
+         */
+
+      }, {
+        key: "vertical",
+        get: function get() {
+          return this._vertical;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._vertical = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_1__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * Value of the toggle group.
+         * @return {?}
+         */
+
+      }, {
+        key: "value",
+        get: function get() {
+          /** @type {?} */
+          var selected = this._selectionModel ? this._selectionModel.selected : [];
+
+          if (this.multiple) {
+            return selected.map(
+            /**
+            * @param {?} toggle
+            * @return {?}
+            */
+            function (toggle) {
+              return toggle.value;
+            });
+          }
+
+          return selected[0] ? selected[0].value : undefined;
+        }
+        /**
+         * @param {?} newValue
+         * @return {?}
+         */
+        ,
+        set: function set(newValue) {
+          this._setSelectionByValue(newValue);
+
+          this.valueChange.emit(this.value);
+        }
+        /**
+         * Selected button toggles in the group.
+         * @return {?}
+         */
+
+      }, {
+        key: "selected",
+        get: function get() {
+          /** @type {?} */
+          var selected = this._selectionModel ? this._selectionModel.selected : [];
+          return this.multiple ? selected : selected[0] || null;
+        }
+        /**
+         * Whether multiple button toggles can be selected.
+         * @return {?}
+         */
+
+      }, {
+        key: "multiple",
+        get: function get() {
+          return this._multiple;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._multiple = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_1__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * Whether multiple button toggle group is disabled.
+         * @return {?}
+         */
+
+      }, {
+        key: "disabled",
+        get: function get() {
+          return this._disabled;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._disabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_1__["coerceBooleanProperty"])(value);
+
+          if (this._buttonToggles) {
+            this._buttonToggles.forEach(
+            /**
+            * @param {?} toggle
+            * @return {?}
+            */
+            function (toggle) {
+              return toggle._markForCheck();
+            });
+          }
+        }
+      }]);
+
+      return MatButtonToggleGroup;
+    }();
+
+    MatButtonToggleGroup.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Directive"],
+      args: [{
+        selector: 'mat-button-toggle-group',
+        providers: [MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR, {
+          provide: MatButtonToggleGroupMultiple,
+          useExisting: MatButtonToggleGroup
+        }],
+        host: {
+          'role': 'group',
+          'class': 'mat-button-toggle-group',
+          '[attr.aria-disabled]': 'disabled',
+          '[class.mat-button-toggle-vertical]': 'vertical',
+          '[class.mat-button-toggle-group-appearance-standard]': 'appearance === "standard"'
+        },
+        exportAs: 'matButtonToggleGroup'
+      }]
+    }];
+    /** @nocollapse */
+
+    MatButtonToggleGroup.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
+          args: [MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS]
+        }]
+      }];
+    };
+
+    MatButtonToggleGroup.propDecorators = {
+      _buttonToggles: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ContentChildren"],
+        args: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["forwardRef"])(
+        /**
+        * @return {?}
+        */
+        function () {
+          return MatButtonToggle;
+        })]
+      }],
+      appearance: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      name: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      vertical: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      value: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      valueChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Output"]
+      }],
+      multiple: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      disabled: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      change: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Output"]
+      }]
+    }; // Boilerplate for applying mixins to the MatButtonToggle class.
+
+    /**
+     * \@docs-private
+     */
+
+    var MatButtonToggleBase = function MatButtonToggleBase() {
+      _classCallCheck(this, MatButtonToggleBase);
+    };
+    /** @type {?} */
+
+
+    var _MatButtonToggleMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_5__["mixinDisableRipple"])(MatButtonToggleBase);
+    /**
+     * Single button inside of a toggle group.
+     */
+
+
+    var MatButtonToggle = /*#__PURE__*/function (_MatButtonToggleMixin) {
+      _inherits(MatButtonToggle, _MatButtonToggleMixin);
+
+      var _super6 = _createSuper(MatButtonToggle);
+
+      /**
+       * @param {?} toggleGroup
+       * @param {?} _changeDetectorRef
+       * @param {?} _elementRef
+       * @param {?} _focusMonitor
+       * @param {?} defaultTabIndex
+       * @param {?=} defaultOptions
+       */
+      function MatButtonToggle(toggleGroup, _changeDetectorRef, _elementRef, _focusMonitor, // @breaking-change 8.0.0 `defaultTabIndex` to be made a required parameter.
+      defaultTabIndex, defaultOptions) {
+        var _this30;
+
+        _classCallCheck(this, MatButtonToggle);
+
+        _this30 = _super6.call(this);
+        _this30._changeDetectorRef = _changeDetectorRef;
+        _this30._elementRef = _elementRef;
+        _this30._focusMonitor = _focusMonitor;
+        _this30._isSingleSelector = false;
+        _this30._checked = false;
+        /**
+         * Users can specify the `aria-labelledby` attribute which will be forwarded to the input element
+         */
+
+        _this30.ariaLabelledby = null;
+        _this30._disabled = false;
+        /**
+         * Event emitted when the group value changes.
+         */
+
+        _this30.change = new _angular_core__WEBPACK_IMPORTED_MODULE_3__["EventEmitter"]();
+        /** @type {?} */
+
+        var parsedTabIndex = Number(defaultTabIndex);
+        _this30.tabIndex = parsedTabIndex || parsedTabIndex === 0 ? parsedTabIndex : null;
+        _this30.buttonToggleGroup = toggleGroup;
+        _this30.appearance = defaultOptions && defaultOptions.appearance ? defaultOptions.appearance : 'standard';
+        return _this30;
+      }
+      /**
+       * Unique ID for the underlying `button` element.
+       * @return {?}
+       */
+
+
+      _createClass(MatButtonToggle, [{
+        key: "ngOnInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngOnInit() {
+          this._isSingleSelector = this.buttonToggleGroup && !this.buttonToggleGroup.multiple;
+          this._type = this._isSingleSelector ? 'radio' : 'checkbox';
+          this.id = this.id || "mat-button-toggle-".concat(_uniqueIdCounter++);
+
+          if (this._isSingleSelector) {
+            this.name = this.buttonToggleGroup.name;
+          }
+
+          if (this.buttonToggleGroup && this.buttonToggleGroup._isPrechecked(this)) {
+            this.checked = true;
+          }
+
+          this._focusMonitor.monitor(this._elementRef, true);
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          /** @type {?} */
+          var group = this.buttonToggleGroup;
+
+          this._focusMonitor.stopMonitoring(this._elementRef); // Remove the toggle from the selection once it's destroyed. Needs to happen
+          // on the next tick in order to avoid "changed after checked" errors.
+
+
+          if (group && group._isSelected(this)) {
+            group._syncButtonToggle(this, false, false, true);
+          }
+        }
+        /**
+         * Focuses the button.
+         * @param {?=} options
+         * @return {?}
+         */
+
+      }, {
+        key: "focus",
+        value: function focus(options) {
+          this._buttonElement.nativeElement.focus(options);
+        }
+        /**
+         * Checks the button toggle due to an interaction with the underlying native button.
+         * @return {?}
+         */
+
+      }, {
+        key: "_onButtonClick",
+        value: function _onButtonClick() {
+          /** @type {?} */
+          var newChecked = this._isSingleSelector ? true : !this._checked;
+
+          if (newChecked !== this._checked) {
+            this._checked = newChecked;
+
+            if (this.buttonToggleGroup) {
+              this.buttonToggleGroup._syncButtonToggle(this, this._checked, true);
+
+              this.buttonToggleGroup._onTouched();
+            }
+          } // Emit a change event when it's the single selector
+
+
+          this.change.emit(new MatButtonToggleChange(this, this.value));
+        }
+        /**
+         * Marks the button toggle as needing checking for change detection.
+         * This method is exposed because the parent button toggle group will directly
+         * update bound properties of the radio button.
+         * @return {?}
+         */
+
+      }, {
+        key: "_markForCheck",
+        value: function _markForCheck() {
+          // When the group value changes, the button will not be notified.
+          // Use `markForCheck` to explicit update button toggle's status.
+          this._changeDetectorRef.markForCheck();
+        }
+      }, {
+        key: "buttonId",
+        get: function get() {
+          return "".concat(this.id, "-button");
+        }
+        /**
+         * The appearance style of the button.
+         * @return {?}
+         */
+
+      }, {
+        key: "appearance",
+        get: function get() {
+          return this.buttonToggleGroup ? this.buttonToggleGroup.appearance : this._appearance;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._appearance = value;
+        }
+        /**
+         * Whether the button is checked.
+         * @return {?}
+         */
+
+      }, {
+        key: "checked",
+        get: function get() {
+          return this.buttonToggleGroup ? this.buttonToggleGroup._isSelected(this) : this._checked;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          /** @type {?} */
+          var newValue = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_1__["coerceBooleanProperty"])(value);
+
+          if (newValue !== this._checked) {
+            this._checked = newValue;
+
+            if (this.buttonToggleGroup) {
+              this.buttonToggleGroup._syncButtonToggle(this, this._checked);
+            }
+
+            this._changeDetectorRef.markForCheck();
+          }
+        }
+        /**
+         * Whether the button is disabled.
+         * @return {?}
+         */
+
+      }, {
+        key: "disabled",
+        get: function get() {
+          return this._disabled || this.buttonToggleGroup && this.buttonToggleGroup.disabled;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._disabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_1__["coerceBooleanProperty"])(value);
+        }
+      }]);
+
+      return MatButtonToggle;
+    }(_MatButtonToggleMixinBase);
+
+    MatButtonToggle.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"],
+      args: [{
+        selector: 'mat-button-toggle',
+        template: "<button #button class=\"mat-button-toggle-button\" type=\"button\" [id]=\"buttonId\" [attr.tabindex]=\"disabled ? -1 : tabIndex\" [attr.aria-pressed]=\"checked\" [disabled]=\"disabled || null\" [attr.name]=\"name || null\" [attr.aria-label]=\"ariaLabel\" [attr.aria-labelledby]=\"ariaLabelledby\" (click)=\"_onButtonClick()\"><div class=\"mat-button-toggle-label-content\"><ng-content></ng-content></div></button><div class=\"mat-button-toggle-focus-overlay\"></div><div class=\"mat-button-toggle-ripple\" matRipple [matRippleTrigger]=\"button\" [matRippleDisabled]=\"this.disableRipple || this.disabled\"></div>",
+        styles: [".mat-button-toggle-group,.mat-button-toggle-standalone{position:relative;display:inline-flex;flex-direction:row;white-space:nowrap;overflow:hidden;border-radius:2px;-webkit-tap-highlight-color:transparent}@media (-ms-high-contrast:active){.mat-button-toggle-group,.mat-button-toggle-standalone{outline:solid 1px}}.mat-button-toggle-group-appearance-standard,.mat-button-toggle-standalone.mat-button-toggle-appearance-standard{border-radius:4px}@media (-ms-high-contrast:active){.mat-button-toggle-group-appearance-standard,.mat-button-toggle-standalone.mat-button-toggle-appearance-standard{outline:0}}.mat-button-toggle-vertical{flex-direction:column}.mat-button-toggle-vertical .mat-button-toggle-label-content{display:block}.mat-button-toggle{white-space:nowrap;position:relative}.mat-button-toggle .mat-icon svg{vertical-align:top}.mat-button-toggle.cdk-keyboard-focused .mat-button-toggle-focus-overlay{opacity:1}@media (-ms-high-contrast:active){.mat-button-toggle.cdk-keyboard-focused .mat-button-toggle-focus-overlay{opacity:.5}}.mat-button-toggle-appearance-standard:not(.mat-button-toggle-disabled):hover .mat-button-toggle-focus-overlay{opacity:.04}.mat-button-toggle-appearance-standard.cdk-keyboard-focused:not(.mat-button-toggle-disabled) .mat-button-toggle-focus-overlay{opacity:.12}@media (-ms-high-contrast:active){.mat-button-toggle-appearance-standard.cdk-keyboard-focused:not(.mat-button-toggle-disabled) .mat-button-toggle-focus-overlay{opacity:.5}}@media (hover:none){.mat-button-toggle-appearance-standard:not(.mat-button-toggle-disabled):hover .mat-button-toggle-focus-overlay{display:none}}.mat-button-toggle-label-content{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;display:inline-block;line-height:36px;padding:0 16px;position:relative}.mat-button-toggle-appearance-standard .mat-button-toggle-label-content{line-height:48px;padding:0 12px}.mat-button-toggle-label-content>*{vertical-align:middle}.mat-button-toggle-focus-overlay{border-radius:inherit;pointer-events:none;opacity:0;top:0;left:0;right:0;bottom:0;position:absolute}.mat-button-toggle-checked .mat-button-toggle-focus-overlay{border-bottom:solid 36px}@media (-ms-high-contrast:active){.mat-button-toggle-checked .mat-button-toggle-focus-overlay{opacity:.5;height:0}}@media (-ms-high-contrast:active){.mat-button-toggle-checked.mat-button-toggle-appearance-standard .mat-button-toggle-focus-overlay{border-bottom:solid 48px}}.mat-button-toggle .mat-button-toggle-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-button-toggle-button{border:0;background:0 0;color:inherit;padding:0;margin:0;font:inherit;outline:0;width:100%;cursor:pointer}.mat-button-toggle-disabled .mat-button-toggle-button{cursor:default}.mat-button-toggle-button::-moz-focus-inner{border:0}"],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewEncapsulation"].None,
+        exportAs: 'matButtonToggle',
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectionStrategy"].OnPush,
+        inputs: ['disableRipple'],
+        host: {
+          '[class.mat-button-toggle-standalone]': '!buttonToggleGroup',
+          '[class.mat-button-toggle-checked]': 'checked',
+          '[class.mat-button-toggle-disabled]': 'disabled',
+          '[class.mat-button-toggle-appearance-standard]': 'appearance === "standard"',
+          'class': 'mat-button-toggle',
+          // Always reset the tabindex to -1 so it doesn't conflict with the one on the `button`,
+          // but can still receive focus from things like cdkFocusInitial.
+          '[attr.tabindex]': '-1',
+          '[attr.id]': 'id',
+          '[attr.name]': 'null',
+          '(focus)': 'focus()'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    MatButtonToggle.ctorParameters = function () {
+      return [{
+        type: MatButtonToggleGroup,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectorRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"]
+      }, {
+        type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__["FocusMonitor"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Attribute"],
+          args: ['tabindex']
+        }]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
+          args: [MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS]
+        }]
+      }];
+    };
+
+    MatButtonToggle.propDecorators = {
+      ariaLabel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"],
+        args: ['aria-label']
+      }],
+      ariaLabelledby: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"],
+        args: ['aria-labelledby']
+      }],
+      _buttonElement: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"],
+        args: ['button', {
+          "static": false
+        }]
+      }],
+      id: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      name: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      value: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      tabIndex: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      appearance: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      checked: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      disabled: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      change: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Output"]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var MatButtonToggleModule = function MatButtonToggleModule() {
+      _classCallCheck(this, MatButtonToggleModule);
+    };
+
+    MatButtonToggleModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"],
+      args: [{
+        imports: [_angular_material_core__WEBPACK_IMPORTED_MODULE_5__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_5__["MatRippleModule"]],
+        exports: [_angular_material_core__WEBPACK_IMPORTED_MODULE_5__["MatCommonModule"], MatButtonToggleGroup, MatButtonToggle],
+        declarations: [MatButtonToggleGroup, MatButtonToggle]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=button-toggle.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/checkbox.js":
+  /*!************************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/checkbox.js ***!
+    \************************************************************/
+
+  /*! exports provided: MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR, TransitionCheckState, MatCheckboxChange, MatCheckbox, MAT_CHECKBOX_CLICK_ACTION, _MatCheckboxRequiredValidatorModule, MatCheckboxModule, MAT_CHECKBOX_REQUIRED_VALIDATOR, MatCheckboxRequiredValidator */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015CheckboxJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR", function () {
+      return MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "TransitionCheckState", function () {
+      return TransitionCheckState;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCheckboxChange", function () {
+      return MatCheckboxChange;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCheckbox", function () {
+      return MatCheckbox;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_CHECKBOX_CLICK_ACTION", function () {
+      return MAT_CHECKBOX_CLICK_ACTION;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatCheckboxRequiredValidatorModule", function () {
+      return _MatCheckboxRequiredValidatorModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCheckboxModule", function () {
+      return MatCheckboxModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_CHECKBOX_REQUIRED_VALIDATOR", function () {
+      return MAT_CHECKBOX_REQUIRED_VALIDATOR;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCheckboxRequiredValidator", function () {
+      return MatCheckboxRequiredValidator;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/platform-browser/animations */
+    "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/cdk/observers */
+    "./node_modules/@angular/cdk/esm2015/observers.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Injection token that can be used to specify the checkbox click behavior.
+     * @type {?}
+     */
+
+
+    var MAT_CHECKBOX_CLICK_ACTION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-checkbox-click-action');
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    // Increasing integer for generating unique ids for checkbox components.
+
+    /** @type {?} */
+
+    var nextUniqueId = 0;
+    /**
+     * Provider Expression that allows mat-checkbox to register as a ControlValueAccessor.
+     * This allows it to support [(ngModel)].
+     * \@docs-private
+     * @type {?}
+     */
+
+    var MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR = {
+      provide: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALUE_ACCESSOR"],
+      useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(
+      /**
+      * @return {?}
+      */
+      function () {
+        return MatCheckbox;
+      }),
+      multi: true
+    };
+    /** @enum {number} */
+
+    var TransitionCheckState = {
+      /** The initial state of the component before any user interaction. */
+      Init: 0,
+
+      /** The state representing the component when it's becoming checked. */
+      Checked: 1,
+
+      /** The state representing the component when it's becoming unchecked. */
+      Unchecked: 2,
+
+      /** The state representing the component when it's becoming indeterminate. */
+      Indeterminate: 3
+    };
+    TransitionCheckState[TransitionCheckState.Init] = 'Init';
+    TransitionCheckState[TransitionCheckState.Checked] = 'Checked';
+    TransitionCheckState[TransitionCheckState.Unchecked] = 'Unchecked';
+    TransitionCheckState[TransitionCheckState.Indeterminate] = 'Indeterminate';
+    /**
+     * Change event object emitted by MatCheckbox.
+     */
+
+    var MatCheckboxChange = function MatCheckboxChange() {
+      _classCallCheck(this, MatCheckboxChange);
+    }; // Boilerplate for applying mixins to MatCheckbox.
+
+    /**
+     * \@docs-private
+     */
+
+
+    var MatCheckboxBase =
+    /**
+     * @param {?} _elementRef
+     */
+    function MatCheckboxBase(_elementRef) {
+      _classCallCheck(this, MatCheckboxBase);
+
+      this._elementRef = _elementRef;
+    };
+    /** @type {?} */
+
+
+    var _MatCheckboxMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_4__["mixinTabIndex"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_4__["mixinColor"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_4__["mixinDisableRipple"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_4__["mixinDisabled"])(MatCheckboxBase)), 'accent'));
+    /**
+     * A material design checkbox component. Supports all of the functionality of an HTML5 checkbox,
+     * and exposes a similar API. A MatCheckbox can be either checked, unchecked, indeterminate, or
+     * disabled. Note that all additional accessibility attributes are taken care of by the component,
+     * so there is no need to provide them yourself. However, if you want to omit a label and still
+     * have the checkbox be accessible, you may supply an [aria-label] input.
+     * See: https://material.io/design/components/selection-controls.html
+     */
+
+
+    var MatCheckbox = /*#__PURE__*/function (_MatCheckboxMixinBase2) {
+      _inherits(MatCheckbox, _MatCheckboxMixinBase2);
+
+      var _super7 = _createSuper(MatCheckbox);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} _changeDetectorRef
+       * @param {?} _focusMonitor
+       * @param {?} _ngZone
+       * @param {?} tabIndex
+       * @param {?} _clickAction
+       * @param {?=} _animationMode
+       */
+      function MatCheckbox(elementRef, _changeDetectorRef, _focusMonitor, _ngZone, tabIndex, _clickAction, _animationMode) {
+        var _this31;
+
+        _classCallCheck(this, MatCheckbox);
+
+        _this31 = _super7.call(this, elementRef);
+        _this31._changeDetectorRef = _changeDetectorRef;
+        _this31._focusMonitor = _focusMonitor;
+        _this31._ngZone = _ngZone;
+        _this31._clickAction = _clickAction;
+        _this31._animationMode = _animationMode;
+        /**
+         * Attached to the aria-label attribute of the host element. In most cases, aria-labelledby will
+         * take precedence so this may be omitted.
+         */
+
+        _this31.ariaLabel = '';
+        /**
+         * Users can specify the `aria-labelledby` attribute which will be forwarded to the input element
+         */
+
+        _this31.ariaLabelledby = null;
+        _this31._uniqueId = "mat-checkbox-".concat(++nextUniqueId);
+        /**
+         * A unique id for the checkbox input. If none is supplied, it will be auto-generated.
+         */
+
+        _this31.id = _this31._uniqueId;
+        /**
+         * Whether the label should appear after or before the checkbox. Defaults to 'after'
+         */
+
+        _this31.labelPosition = 'after';
+        /**
+         * Name value will be applied to the input element if present
+         */
+
+        _this31.name = null;
+        /**
+         * Event emitted when the checkbox's `checked` value changes.
+         */
+
+        _this31.change = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when the checkbox's `indeterminate` value changes.
+         */
+
+        _this31.indeterminateChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Called when the checkbox is blurred. Needed to properly implement ControlValueAccessor.
+         * \@docs-private
+         */
+
+        _this31._onTouched =
+        /**
+        * @return {?}
+        */
+        function () {};
+
+        _this31._currentAnimationClass = '';
+        _this31._currentCheckState = TransitionCheckState.Init;
+
+        _this31._controlValueAccessorChangeFn =
+        /**
+        * @return {?}
+        */
+        function () {};
+
+        _this31._checked = false;
+        _this31._disabled = false;
+        _this31._indeterminate = false;
+        _this31.tabIndex = parseInt(tabIndex) || 0;
+
+        _this31._focusMonitor.monitor(elementRef, true).subscribe(
+        /**
+        * @param {?} focusOrigin
+        * @return {?}
+        */
+        function (focusOrigin) {
+          if (!focusOrigin) {
+            // When a focused element becomes disabled, the browser *immediately* fires a blur event.
+            // Angular does not expect events to be raised during change detection, so any state change
+            // (such as a form control's 'ng-touched') will cause a changed-after-checked error.
+            // See https://github.com/angular/angular/issues/17793. To work around this, we defer
+            // telling the form control it has been touched until the next tick.
+            Promise.resolve().then(
+            /**
+            * @return {?}
+            */
+            function () {
+              _this31._onTouched();
+
+              _changeDetectorRef.markForCheck();
+            });
+          }
+        });
+
+        return _this31;
+      }
+      /**
+       * Returns the unique id for the visual hidden input.
+       * @return {?}
+       */
+
+
+      _createClass(MatCheckbox, [{
+        key: "ngAfterViewChecked",
+        // TODO: Delete next major revision.
+
+        /**
+         * @return {?}
+         */
+        value: function ngAfterViewChecked() {}
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._focusMonitor.stopMonitoring(this._elementRef);
+        }
+        /**
+         * Whether the checkbox is checked.
+         * @return {?}
+         */
+
+      }, {
+        key: "_isRippleDisabled",
+
+        /**
+         * @return {?}
+         */
+        value: function _isRippleDisabled() {
+          return this.disableRipple || this.disabled;
+        }
+        /**
+         * Method being called whenever the label text changes.
+         * @return {?}
+         */
+
+      }, {
+        key: "_onLabelTextChange",
+        value: function _onLabelTextChange() {
+          // Since the event of the `cdkObserveContent` directive runs outside of the zone, the checkbox
+          // component will be only marked for check, but no actual change detection runs automatically.
+          // Instead of going back into the zone in order to trigger a change detection which causes
+          // *all* components to be checked (if explicitly marked or not using OnPush), we only trigger
+          // an explicit change detection for the checkbox view and its children.
+          this._changeDetectorRef.detectChanges();
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+
+      }, {
+        key: "writeValue",
+        value: function writeValue(value) {
+          this.checked = !!value;
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} fn
+         * @return {?}
+         */
+
+      }, {
+        key: "registerOnChange",
+        value: function registerOnChange(fn) {
+          this._controlValueAccessorChangeFn = fn;
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} fn
+         * @return {?}
+         */
+
+      }, {
+        key: "registerOnTouched",
+        value: function registerOnTouched(fn) {
+          this._onTouched = fn;
+        } // Implemented as part of ControlValueAccessor.
+
+        /**
+         * @param {?} isDisabled
+         * @return {?}
+         */
+
+      }, {
+        key: "setDisabledState",
+        value: function setDisabledState(isDisabled) {
+          this.disabled = isDisabled;
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_getAriaChecked",
+        value: function _getAriaChecked() {
+          return this.checked ? 'true' : this.indeterminate ? 'mixed' : 'false';
+        }
+        /**
+         * @private
+         * @param {?} newState
+         * @return {?}
+         */
+
+      }, {
+        key: "_transitionCheckState",
+        value: function _transitionCheckState(newState) {
+          /** @type {?} */
+          var oldState = this._currentCheckState;
+          /** @type {?} */
+
+          var element = this._elementRef.nativeElement;
+
+          if (oldState === newState) {
+            return;
+          }
+
+          if (this._currentAnimationClass.length > 0) {
+            element.classList.remove(this._currentAnimationClass);
+          }
+
+          this._currentAnimationClass = this._getAnimationClassForCheckStateTransition(oldState, newState);
+          this._currentCheckState = newState;
+
+          if (this._currentAnimationClass.length > 0) {
+            element.classList.add(this._currentAnimationClass); // Remove the animation class to avoid animation when the checkbox is moved between containers
+
+            /** @type {?} */
+
+            var animationClass = this._currentAnimationClass;
+
+            this._ngZone.runOutsideAngular(
+            /**
+            * @return {?}
+            */
+            function () {
+              setTimeout(
+              /**
+              * @return {?}
+              */
+              function () {
+                element.classList.remove(animationClass);
+              }, 1000);
+            });
+          }
+        }
+        /**
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_emitChangeEvent",
+        value: function _emitChangeEvent() {
+          /** @type {?} */
+          var event = new MatCheckboxChange();
+          event.source = this;
+          event.checked = this.checked;
+
+          this._controlValueAccessorChangeFn(this.checked);
+
+          this.change.emit(event);
+        }
+        /**
+         * Toggles the `checked` state of the checkbox.
+         * @return {?}
+         */
+
+      }, {
+        key: "toggle",
+        value: function toggle() {
+          this.checked = !this.checked;
+        }
+        /**
+         * Event handler for checkbox input element.
+         * Toggles checked state if element is not disabled.
+         * Do not toggle on (change) event since IE doesn't fire change event when
+         *   indeterminate checkbox is clicked.
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onInputClick",
+        value: function _onInputClick(event) {
+          var _this32 = this;
+
+          // We have to stop propagation for click events on the visual hidden input element.
+          // By default, when a user clicks on a label element, a generated click event will be
+          // dispatched on the associated input element. Since we are using a label element as our
+          // root container, the click event on the `checkbox` will be executed twice.
+          // The real click event will bubble up, and the generated click event also tries to bubble up.
+          // This will lead to multiple click events.
+          // Preventing bubbling for the second event will solve that issue.
+          event.stopPropagation(); // If resetIndeterminate is false, and the current state is indeterminate, do nothing on click
+
+          if (!this.disabled && this._clickAction !== 'noop') {
+            // When user manually click on the checkbox, `indeterminate` is set to false.
+            if (this.indeterminate && this._clickAction !== 'check') {
+              Promise.resolve().then(
+              /**
+              * @return {?}
+              */
+              function () {
+                _this32._indeterminate = false;
+
+                _this32.indeterminateChange.emit(_this32._indeterminate);
+              });
+            }
+
+            this.toggle();
+
+            this._transitionCheckState(this._checked ? TransitionCheckState.Checked : TransitionCheckState.Unchecked); // Emit our custom change event if the native input emitted one.
+            // It is important to only emit it, if the native input triggered one, because
+            // we don't want to trigger a change event, when the `checked` variable changes for example.
+
+
+            this._emitChangeEvent();
+          } else if (!this.disabled && this._clickAction === 'noop') {
+            // Reset native input when clicked with noop. The native checkbox becomes checked after
+            // click, reset it to be align with `checked` value of `mat-checkbox`.
+            this._inputElement.nativeElement.checked = this.checked;
+            this._inputElement.nativeElement.indeterminate = this.indeterminate;
+          }
+        }
+        /**
+         * Focuses the checkbox.
+         * @param {?=} origin
+         * @param {?=} options
+         * @return {?}
+         */
+
+      }, {
+        key: "focus",
+        value: function focus() {
+          var origin = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'keyboard';
+          var options = arguments.length > 1 ? arguments[1] : undefined;
+
+          this._focusMonitor.focusVia(this._inputElement, origin, options);
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onInteractionEvent",
+        value: function _onInteractionEvent(event) {
+          // We always have to stop propagation on the change event.
+          // Otherwise the change event, from the input element, will bubble up and
+          // emit its event object to the `change` output.
+          event.stopPropagation();
+        }
+        /**
+         * @private
+         * @param {?} oldState
+         * @param {?} newState
+         * @return {?}
+         */
+
+      }, {
+        key: "_getAnimationClassForCheckStateTransition",
+        value: function _getAnimationClassForCheckStateTransition(oldState, newState) {
+          // Don't transition if animations are disabled.
+          if (this._animationMode === 'NoopAnimations') {
+            return '';
+          }
+          /** @type {?} */
+
+
+          var animSuffix = '';
+
+          switch (oldState) {
+            case TransitionCheckState.Init:
+              // Handle edge case where user interacts with checkbox that does not have [(ngModel)] or
+              // [checked] bound to it.
+              if (newState === TransitionCheckState.Checked) {
+                animSuffix = 'unchecked-checked';
+              } else if (newState == TransitionCheckState.Indeterminate) {
+                animSuffix = 'unchecked-indeterminate';
+              } else {
+                return '';
+              }
+
+              break;
+
+            case TransitionCheckState.Unchecked:
+              animSuffix = newState === TransitionCheckState.Checked ? 'unchecked-checked' : 'unchecked-indeterminate';
+              break;
+
+            case TransitionCheckState.Checked:
+              animSuffix = newState === TransitionCheckState.Unchecked ? 'checked-unchecked' : 'checked-indeterminate';
+              break;
+
+            case TransitionCheckState.Indeterminate:
+              animSuffix = newState === TransitionCheckState.Checked ? 'indeterminate-checked' : 'indeterminate-unchecked';
+              break;
+          }
+
+          return "mat-checkbox-anim-".concat(animSuffix);
+        }
+      }, {
+        key: "inputId",
+        get: function get() {
+          return "".concat(this.id || this._uniqueId, "-input");
+        }
+        /**
+         * Whether the checkbox is required.
+         * @return {?}
+         */
+
+      }, {
+        key: "required",
+        get: function get() {
+          return this._required;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._required = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceBooleanProperty"])(value);
+        }
+      }, {
+        key: "checked",
+        get: function get() {
+          return this._checked;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          if (value != this.checked) {
+            this._checked = value;
+
+            this._changeDetectorRef.markForCheck();
+          }
+        }
+        /**
+         * Whether the checkbox is disabled. This fully overrides the implementation provided by
+         * mixinDisabled, but the mixin is still required because mixinTabIndex requires it.
+         * @return {?}
+         */
+
+      }, {
+        key: "disabled",
+        get: function get() {
+          return this._disabled;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          /** @type {?} */
+          var newValue = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceBooleanProperty"])(value);
+
+          if (newValue !== this.disabled) {
+            this._disabled = newValue;
+
+            this._changeDetectorRef.markForCheck();
+          }
+        }
+        /**
+         * Whether the checkbox is indeterminate. This is also known as "mixed" mode and can be used to
+         * represent a checkbox with three states, e.g. a checkbox that represents a nested list of
+         * checkable items. Note that whenever checkbox is manually clicked, indeterminate is immediately
+         * set to false.
+         * @return {?}
+         */
+
+      }, {
+        key: "indeterminate",
+        get: function get() {
+          return this._indeterminate;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          /** @type {?} */
+          var changed = value != this._indeterminate;
+          this._indeterminate = value;
+
+          if (changed) {
+            if (this._indeterminate) {
+              this._transitionCheckState(TransitionCheckState.Indeterminate);
+            } else {
+              this._transitionCheckState(this.checked ? TransitionCheckState.Checked : TransitionCheckState.Unchecked);
+            }
+
+            this.indeterminateChange.emit(this._indeterminate);
+          }
+        }
+      }]);
+
+      return MatCheckbox;
+    }(_MatCheckboxMixinBase);
+
+    MatCheckbox.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-checkbox',
+        template: "<label [attr.for]=\"inputId\" class=\"mat-checkbox-layout\" #label><div class=\"mat-checkbox-inner-container\" [class.mat-checkbox-inner-container-no-side-margin]=\"!checkboxLabel.textContent || !checkboxLabel.textContent.trim()\"><input #input class=\"mat-checkbox-input cdk-visually-hidden\" type=\"checkbox\" [id]=\"inputId\" [required]=\"required\" [checked]=\"checked\" [attr.value]=\"value\" [disabled]=\"disabled\" [attr.name]=\"name\" [tabIndex]=\"tabIndex\" [indeterminate]=\"indeterminate\" [attr.aria-label]=\"ariaLabel || null\" [attr.aria-labelledby]=\"ariaLabelledby\" [attr.aria-checked]=\"_getAriaChecked()\" (change)=\"_onInteractionEvent($event)\" (click)=\"_onInputClick($event)\"><div matRipple class=\"mat-checkbox-ripple\" [matRippleTrigger]=\"label\" [matRippleDisabled]=\"_isRippleDisabled()\" [matRippleRadius]=\"20\" [matRippleCentered]=\"true\" [matRippleAnimation]=\"{enterDuration: 150}\"><div class=\"mat-ripple-element mat-checkbox-persistent-ripple\"></div></div><div class=\"mat-checkbox-frame\"></div><div class=\"mat-checkbox-background\"><svg version=\"1.1\" focusable=\"false\" class=\"mat-checkbox-checkmark\" viewBox=\"0 0 24 24\" xml:space=\"preserve\"><path class=\"mat-checkbox-checkmark-path\" fill=\"none\" stroke=\"white\" d=\"M4.1,12.7 9,17.6 20.3,6.3\"/></svg><div class=\"mat-checkbox-mixedmark\"></div></div></div><span class=\"mat-checkbox-label\" #checkboxLabel (cdkObserveContent)=\"_onLabelTextChange()\"><span style=\"display:none\">&nbsp;</span><ng-content></ng-content></span></label>",
+        styles: ["@keyframes mat-checkbox-fade-in-background{0%{opacity:0}50%{opacity:1}}@keyframes mat-checkbox-fade-out-background{0%,50%{opacity:1}100%{opacity:0}}@keyframes mat-checkbox-unchecked-checked-checkmark-path{0%,50%{stroke-dashoffset:22.91026}50%{animation-timing-function:cubic-bezier(0,0,.2,.1)}100%{stroke-dashoffset:0}}@keyframes mat-checkbox-unchecked-indeterminate-mixedmark{0%,68.2%{transform:scaleX(0)}68.2%{animation-timing-function:cubic-bezier(0,0,0,1)}100%{transform:scaleX(1)}}@keyframes mat-checkbox-checked-unchecked-checkmark-path{from{animation-timing-function:cubic-bezier(.4,0,1,1);stroke-dashoffset:0}to{stroke-dashoffset:-22.91026}}@keyframes mat-checkbox-checked-indeterminate-checkmark{from{animation-timing-function:cubic-bezier(0,0,.2,.1);opacity:1;transform:rotate(0)}to{opacity:0;transform:rotate(45deg)}}@keyframes mat-checkbox-indeterminate-checked-checkmark{from{animation-timing-function:cubic-bezier(.14,0,0,1);opacity:0;transform:rotate(45deg)}to{opacity:1;transform:rotate(360deg)}}@keyframes mat-checkbox-checked-indeterminate-mixedmark{from{animation-timing-function:cubic-bezier(0,0,.2,.1);opacity:0;transform:rotate(-45deg)}to{opacity:1;transform:rotate(0)}}@keyframes mat-checkbox-indeterminate-checked-mixedmark{from{animation-timing-function:cubic-bezier(.14,0,0,1);opacity:1;transform:rotate(0)}to{opacity:0;transform:rotate(315deg)}}@keyframes mat-checkbox-indeterminate-unchecked-mixedmark{0%{animation-timing-function:linear;opacity:1;transform:scaleX(1)}100%,32.8%{opacity:0;transform:scaleX(0)}}.mat-checkbox-background,.mat-checkbox-frame{top:0;left:0;right:0;bottom:0;position:absolute;border-radius:2px;box-sizing:border-box;pointer-events:none}.mat-checkbox{transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);cursor:pointer;-webkit-tap-highlight-color:transparent}._mat-animation-noopable.mat-checkbox{transition:none;animation:none}.mat-checkbox .mat-ripple-element:not(.mat-checkbox-persistent-ripple){opacity:.16}.mat-checkbox-layout{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:inherit;align-items:baseline;vertical-align:middle;display:inline-flex;white-space:nowrap}.mat-checkbox-label{-webkit-user-select:auto;-moz-user-select:auto;-ms-user-select:auto;user-select:auto}.mat-checkbox-inner-container{display:inline-block;height:16px;line-height:0;margin:auto;margin-right:8px;order:0;position:relative;vertical-align:middle;white-space:nowrap;width:16px;flex-shrink:0}[dir=rtl] .mat-checkbox-inner-container{margin-left:8px;margin-right:auto}.mat-checkbox-inner-container-no-side-margin{margin-left:0;margin-right:0}.mat-checkbox-frame{background-color:transparent;transition:border-color 90ms cubic-bezier(0,0,.2,.1);border-width:2px;border-style:solid}._mat-animation-noopable .mat-checkbox-frame{transition:none}@media (-ms-high-contrast:active){.mat-checkbox.cdk-keyboard-focused .mat-checkbox-frame{border-style:dotted}}.mat-checkbox-background{align-items:center;display:inline-flex;justify-content:center;transition:background-color 90ms cubic-bezier(0,0,.2,.1),opacity 90ms cubic-bezier(0,0,.2,.1)}._mat-animation-noopable .mat-checkbox-background{transition:none}.mat-checkbox-persistent-ripple{width:100%;height:100%;transform:none}.mat-checkbox-inner-container:hover .mat-checkbox-persistent-ripple{opacity:.04}.mat-checkbox.cdk-keyboard-focused .mat-checkbox-persistent-ripple{opacity:.12}.mat-checkbox-persistent-ripple,.mat-checkbox.mat-checkbox-disabled .mat-checkbox-inner-container:hover .mat-checkbox-persistent-ripple{opacity:0}@media (hover:none){.mat-checkbox-inner-container:hover .mat-checkbox-persistent-ripple{display:none}}.mat-checkbox-checkmark{top:0;left:0;right:0;bottom:0;position:absolute;width:100%}.mat-checkbox-checkmark-path{stroke-dashoffset:22.91026;stroke-dasharray:22.91026;stroke-width:2.13333px}.mat-checkbox-mixedmark{width:calc(100% - 6px);height:2px;opacity:0;transform:scaleX(0) rotate(0);border-radius:2px}@media (-ms-high-contrast:active){.mat-checkbox-mixedmark{height:0;border-top:solid 2px;margin-top:2px}}.mat-checkbox-label-before .mat-checkbox-inner-container{order:1;margin-left:8px;margin-right:auto}[dir=rtl] .mat-checkbox-label-before .mat-checkbox-inner-container{margin-left:auto;margin-right:8px}.mat-checkbox-checked .mat-checkbox-checkmark{opacity:1}.mat-checkbox-checked .mat-checkbox-checkmark-path{stroke-dashoffset:0}.mat-checkbox-checked .mat-checkbox-mixedmark{transform:scaleX(1) rotate(-45deg)}.mat-checkbox-indeterminate .mat-checkbox-checkmark{opacity:0;transform:rotate(45deg)}.mat-checkbox-indeterminate .mat-checkbox-checkmark-path{stroke-dashoffset:0}.mat-checkbox-indeterminate .mat-checkbox-mixedmark{opacity:1;transform:scaleX(1) rotate(0)}.mat-checkbox-unchecked .mat-checkbox-background{background-color:transparent}.mat-checkbox-disabled{cursor:default}.mat-checkbox-anim-unchecked-checked .mat-checkbox-background{animation:180ms linear 0s mat-checkbox-fade-in-background}.mat-checkbox-anim-unchecked-checked .mat-checkbox-checkmark-path{animation:180ms linear 0s mat-checkbox-unchecked-checked-checkmark-path}.mat-checkbox-anim-unchecked-indeterminate .mat-checkbox-background{animation:180ms linear 0s mat-checkbox-fade-in-background}.mat-checkbox-anim-unchecked-indeterminate .mat-checkbox-mixedmark{animation:90ms linear 0s mat-checkbox-unchecked-indeterminate-mixedmark}.mat-checkbox-anim-checked-unchecked .mat-checkbox-background{animation:180ms linear 0s mat-checkbox-fade-out-background}.mat-checkbox-anim-checked-unchecked .mat-checkbox-checkmark-path{animation:90ms linear 0s mat-checkbox-checked-unchecked-checkmark-path}.mat-checkbox-anim-checked-indeterminate .mat-checkbox-checkmark{animation:90ms linear 0s mat-checkbox-checked-indeterminate-checkmark}.mat-checkbox-anim-checked-indeterminate .mat-checkbox-mixedmark{animation:90ms linear 0s mat-checkbox-checked-indeterminate-mixedmark}.mat-checkbox-anim-indeterminate-checked .mat-checkbox-checkmark{animation:.5s linear 0s mat-checkbox-indeterminate-checked-checkmark}.mat-checkbox-anim-indeterminate-checked .mat-checkbox-mixedmark{animation:.5s linear 0s mat-checkbox-indeterminate-checked-mixedmark}.mat-checkbox-anim-indeterminate-unchecked .mat-checkbox-background{animation:180ms linear 0s mat-checkbox-fade-out-background}.mat-checkbox-anim-indeterminate-unchecked .mat-checkbox-mixedmark{animation:.3s linear 0s mat-checkbox-indeterminate-unchecked-mixedmark}.mat-checkbox-input{bottom:0;left:50%}.mat-checkbox .mat-checkbox-ripple{position:absolute;left:calc(50% - 20px);top:calc(50% - 20px);height:40px;width:40px;z-index:1;pointer-events:none}"],
+        exportAs: 'matCheckbox',
+        host: {
+          'class': 'mat-checkbox',
+          '[id]': 'id',
+          '[attr.tabindex]': 'null',
+          '[class.mat-checkbox-indeterminate]': 'indeterminate',
+          '[class.mat-checkbox-checked]': 'checked',
+          '[class.mat-checkbox-disabled]': 'disabled',
+          '[class.mat-checkbox-label-before]': 'labelPosition == "before"',
+          '[class._mat-animation-noopable]': "_animationMode === 'NoopAnimations'"
+        },
+        providers: [MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR],
+        inputs: ['disableRipple', 'color', 'tabIndex'],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
+      }]
+    }];
+    /** @nocollapse */
+
+    MatCheckbox.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["FocusMonitor"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Attribute"],
+          args: ['tabindex']
+        }]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [MAT_CHECKBOX_CLICK_ACTION]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+
+    MatCheckbox.propDecorators = {
+      ariaLabel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['aria-label']
+      }],
+      ariaLabelledby: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['aria-labelledby']
+      }],
+      id: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      required: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      labelPosition: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      name: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      change: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      indeterminateChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      value: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      _inputElement: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['input', {
+          "static": false
+        }]
+      }],
+      ripple: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatRipple"], {
+          "static": false
+        }]
+      }],
+      checked: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      disabled: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      indeterminate: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /** @type {?} */
+
+    var MAT_CHECKBOX_REQUIRED_VALIDATOR = {
+      provide: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NG_VALIDATORS"],
+      useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(
+      /**
+      * @return {?}
+      */
+      function () {
+        return MatCheckboxRequiredValidator;
+      }),
+      multi: true
+    };
+    /**
+     * Validator for Material checkbox's required attribute in template-driven checkbox.
+     * Current CheckboxRequiredValidator only work with `input type=checkbox` and does not
+     * work with `mat-checkbox`.
+     */
+
+    var MatCheckboxRequiredValidator = /*#__PURE__*/function (_angular_forms__WEBPA) {
+      _inherits(MatCheckboxRequiredValidator, _angular_forms__WEBPA);
+
+      var _super8 = _createSuper(MatCheckboxRequiredValidator);
+
+      function MatCheckboxRequiredValidator() {
+        _classCallCheck(this, MatCheckboxRequiredValidator);
+
+        return _super8.apply(this, arguments);
+      }
+
+      return MatCheckboxRequiredValidator;
+    }(_angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"]);
+
+    MatCheckboxRequiredValidator.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: "mat-checkbox[required][formControlName],\n             mat-checkbox[required][formControl], mat-checkbox[required][ngModel]",
+        providers: [MAT_CHECKBOX_REQUIRED_VALIDATOR]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * This module is used by both original and MDC-based checkbox implementations.
+     */
+    // tslint:disable-next-line:class-name
+
+    var _MatCheckboxRequiredValidatorModule = function _MatCheckboxRequiredValidatorModule() {
+      _classCallCheck(this, _MatCheckboxRequiredValidatorModule);
+    };
+
+    _MatCheckboxRequiredValidatorModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+      args: [{
+        exports: [MatCheckboxRequiredValidator],
+        declarations: [MatCheckboxRequiredValidator]
+      }]
+    }];
+
+    var MatCheckboxModule = function MatCheckboxModule() {
+      _classCallCheck(this, MatCheckboxModule);
+    };
+
+    MatCheckboxModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+      args: [{
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["CommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatRippleModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_6__["ObserversModule"], _MatCheckboxRequiredValidatorModule],
+        exports: [MatCheckbox, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], _MatCheckboxRequiredValidatorModule],
+        declarations: [MatCheckbox]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=checkbox.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/expansion.js":
+  /*!*************************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/expansion.js ***!
+    \*************************************************************/
+
+  /*! exports provided: MatExpansionModule, MatAccordion, MAT_ACCORDION, MAT_EXPANSION_PANEL_DEFAULT_OPTIONS, MatExpansionPanel, MatExpansionPanelActionRow, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelTitle, MatExpansionPanelContent, EXPANSION_PANEL_ANIMATION_TIMING, matExpansionAnimations */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015ExpansionJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionModule", function () {
+      return MatExpansionModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAccordion", function () {
+      return MatAccordion;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_ACCORDION", function () {
+      return MAT_ACCORDION;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_EXPANSION_PANEL_DEFAULT_OPTIONS", function () {
+      return MAT_EXPANSION_PANEL_DEFAULT_OPTIONS;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanel", function () {
+      return MatExpansionPanel;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanelActionRow", function () {
+      return MatExpansionPanelActionRow;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanelHeader", function () {
+      return MatExpansionPanelHeader;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanelDescription", function () {
+      return MatExpansionPanelDescription;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanelTitle", function () {
+      return MatExpansionPanelTitle;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanelContent", function () {
+      return MatExpansionPanelContent;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "EXPANSION_PANEL_ANIMATION_TIMING", function () {
+      return EXPANSION_PANEL_ANIMATION_TIMING;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matExpansionAnimations", function () {
+      return matExpansionAnimations;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/animations */
+    "./node_modules/@angular/animations/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_cdk_accordion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/cdk/accordion */
+    "./node_modules/@angular/cdk/esm2015/accordion.js");
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/cdk/collections */
+    "./node_modules/@angular/cdk/esm2015/collections.js");
+    /* harmony import */
+
+
+    var _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/cdk/portal */
+    "./node_modules/@angular/cdk/esm2015/portal.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/platform-browser/animations */
+    "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @angular/cdk/keycodes */
+    "./node_modules/@angular/cdk/esm2015/keycodes.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Token used to provide a `MatAccordion` to `MatExpansionPanel`.
+     * Used primarily to avoid circular imports between `MatAccordion` and `MatExpansionPanel`.
+     * @type {?}
+     */
+
+
+    var MAT_ACCORDION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_ACCORDION');
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Time and timing curve for expansion panel animations.
+     * @type {?}
+     */
+
+    var EXPANSION_PANEL_ANIMATION_TIMING = '225ms cubic-bezier(0.4,0.0,0.2,1)';
+    /**
+     * Animations used by the Material expansion panel.
+     *
+     * A bug in angular animation's `state` when ViewContainers are moved using ViewContainerRef.move()
+     * causes the animation state of moved components to become `void` upon exit, and not update again
+     * upon reentry into the DOM.  This can lead a to situation for the expansion panel where the state
+     * of the panel is `expanded` or `collapsed` but the animation state is `void`.
+     *
+     * To correctly handle animating to the next state, we animate between `void` and `collapsed` which
+     * are defined to have the same styles. Since angular animates from the current styles to the
+     * destination state's style definition, in situations where we are moving from `void`'s styles to
+     * `collapsed` this acts a noop since no style values change.
+     *
+     * In the case where angular's animation state is out of sync with the expansion panel's state, the
+     * expansion panel being `expanded` and angular animations being `void`, the animation from the
+     * `expanded`'s effective styles (though in a `void` animation state) to the collapsed state will
+     * occur as expected.
+     *
+     * Angular Bug: https://github.com/angular/angular/issues/18847
+     *
+     * \@docs-private
+     * @type {?}
+     */
+
+    var matExpansionAnimations = {
+      /**
+       * Animation that rotates the indicator arrow.
+       */
+      indicatorRotate: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('indicatorRotate', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('collapsed, void', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
+        transform: 'rotate(0deg)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('expanded', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
+        transform: 'rotate(180deg)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('expanded <=> collapsed, void => collapsed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])(EXPANSION_PANEL_ANIMATION_TIMING))]),
+
+      /**
+       * Animation that expands and collapses the panel header height.
+       */
+      expansionHeaderHeight: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('expansionHeight', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('collapsed, void', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
+        height: '{{collapsedHeight}}'
+      }), {
+        params: {
+          collapsedHeight: '48px'
+        }
+      }), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('expanded', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
+        height: '{{expandedHeight}}'
+      }), {
+        params: {
+          expandedHeight: '64px'
+        }
+      }), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('expanded <=> collapsed, void => collapsed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["group"])([Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["query"])('@indicatorRotate', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animateChild"])(), {
+        optional: true
+      }), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])(EXPANSION_PANEL_ANIMATION_TIMING)]))]),
+
+      /**
+       * Animation that expands and collapses the panel content.
+       */
+      bodyExpansion: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('bodyExpansion', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('collapsed, void', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
+        height: '0px',
+        visibility: 'hidden'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('expanded', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({
+        height: '*',
+        visibility: 'visible'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('expanded <=> collapsed, void => collapsed', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])(EXPANSION_PANEL_ANIMATION_TIMING))])
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Expansion panel content that will be rendered lazily
+     * after the panel is opened for the first time.
+     */
+
+    var MatExpansionPanelContent =
+    /**
+     * @param {?} _template
+     */
+    function MatExpansionPanelContent(_template) {
+      _classCallCheck(this, MatExpansionPanelContent);
+
+      this._template = _template;
+    };
+
+    MatExpansionPanelContent.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'ng-template[matExpansionPanelContent]'
+      }]
+    }];
+    /** @nocollapse */
+
+    MatExpansionPanelContent.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Counter for generating unique element ids.
+     * @type {?}
+     */
+
+
+    var uniqueId = 0;
+    /**
+     * Injection token that can be used to configure the defalt
+     * options for the expansion panel component.
+     * @type {?}
+     */
+
+    var MAT_EXPANSION_PANEL_DEFAULT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_EXPANSION_PANEL_DEFAULT_OPTIONS');
+    var ɵ0 = undefined;
+    /**
+     * `<mat-expansion-panel>`
+     *
+     * This component can be used as a single element to show expandable content, or as one of
+     * multiple children of an element with the MatAccordion directive attached.
+     */
+
+    var MatExpansionPanel = /*#__PURE__*/function (_angular_cdk_accordio) {
+      _inherits(MatExpansionPanel, _angular_cdk_accordio);
+
+      var _super9 = _createSuper(MatExpansionPanel);
+
+      /**
+       * @param {?} accordion
+       * @param {?} _changeDetectorRef
+       * @param {?} _uniqueSelectionDispatcher
+       * @param {?} _viewContainerRef
+       * @param {?} _document
+       * @param {?} _animationMode
+       * @param {?=} defaultOptions
+       */
+      function MatExpansionPanel(accordion, _changeDetectorRef, _uniqueSelectionDispatcher, _viewContainerRef, _document, _animationMode, defaultOptions) {
+        var _this33;
+
+        _classCallCheck(this, MatExpansionPanel);
+
+        _this33 = _super9.call(this, accordion, _changeDetectorRef, _uniqueSelectionDispatcher);
+        _this33._viewContainerRef = _viewContainerRef;
+        _this33._animationMode = _animationMode;
+        _this33._hideToggle = false;
+        /**
+         * An event emitted after the body's expansion animation happens.
+         */
+
+        _this33.afterExpand = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * An event emitted after the body's collapse animation happens.
+         */
+
+        _this33.afterCollapse = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Stream that emits for changes in `\@Input` properties.
+         */
+
+        _this33._inputChanges = new rxjs__WEBPACK_IMPORTED_MODULE_8__["Subject"]();
+        /**
+         * ID for the associated header element. Used for a11y labelling.
+         */
+
+        _this33._headerId = "mat-expansion-panel-header-".concat(uniqueId++);
+        /**
+         * Stream of body animation done events.
+         */
+
+        _this33._bodyAnimationDone = new rxjs__WEBPACK_IMPORTED_MODULE_8__["Subject"]();
+        _this33.accordion = accordion;
+        _this33._document = _document; // We need a Subject with distinctUntilChanged, because the `done` event
+        // fires twice on some browsers. See https://github.com/angular/angular/issues/24084
+
+        _this33._bodyAnimationDone.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["distinctUntilChanged"])(
+        /**
+        * @param {?} x
+        * @param {?} y
+        * @return {?}
+        */
+        function (x, y) {
+          return x.fromState === y.fromState && x.toState === y.toState;
+        })).subscribe(
+        /**
+        * @param {?} event
+        * @return {?}
+        */
+        function (event) {
+          if (event.fromState !== 'void') {
+            if (event.toState === 'expanded') {
+              _this33.afterExpand.emit();
+            } else if (event.toState === 'collapsed') {
+              _this33.afterCollapse.emit();
+            }
+          }
+        });
+
+        if (defaultOptions) {
+          _this33.hideToggle = defaultOptions.hideToggle;
+        }
+
+        return _this33;
+      }
+      /**
+       * Whether the toggle indicator should be hidden.
+       * @return {?}
+       */
+
+
+      _createClass(MatExpansionPanel, [{
+        key: "_hasSpacing",
+
+        /**
+         * Determines whether the expansion panel should have spacing between it and its siblings.
+         * @return {?}
+         */
+        value: function _hasSpacing() {
+          if (this.accordion) {
+            // We don't need to subscribe to the `stateChanges` of the parent accordion because each time
+            // the [displayMode] input changes, the change detection will also cover the host bindings
+            // of this expansion panel.
+            return (this.expanded ? this.accordion.displayMode : this._getExpandedState()) === 'default';
+          }
+
+          return false;
+        }
+        /**
+         * Gets the expanded state string.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getExpandedState",
+        value: function _getExpandedState() {
+          return this.expanded ? 'expanded' : 'collapsed';
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngAfterContentInit",
+        value: function ngAfterContentInit() {
+          var _this34 = this;
+
+          if (this._lazyContent) {
+            // Render the content as soon as the panel becomes open.
+            this.opened.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["startWith"])(
+            /** @type {?} */
+            null), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["filter"])(
+            /**
+            * @return {?}
+            */
+            function () {
+              return _this34.expanded && !_this34._portal;
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["take"])(1)).subscribe(
+            /**
+            * @return {?}
+            */
+            function () {
+              _this34._portal = new _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_5__["TemplatePortal"](_this34._lazyContent._template, _this34._viewContainerRef);
+            });
+          }
+        }
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnChanges",
+        value: function ngOnChanges(changes) {
+          this._inputChanges.next(changes);
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          _get(_getPrototypeOf(MatExpansionPanel.prototype), "ngOnDestroy", this).call(this);
+
+          this._bodyAnimationDone.complete();
+
+          this._inputChanges.complete();
+        }
+        /**
+         * Checks whether the expansion panel's content contains the currently-focused element.
+         * @return {?}
+         */
+
+      }, {
+        key: "_containsFocus",
+        value: function _containsFocus() {
+          if (this._body) {
+            /** @type {?} */
+            var focusedElement = this._document.activeElement;
+            /** @type {?} */
+
+            var bodyElement = this._body.nativeElement;
+            return focusedElement === bodyElement || bodyElement.contains(focusedElement);
+          }
+
+          return false;
+        }
+      }, {
+        key: "hideToggle",
+        get: function get() {
+          return this._hideToggle || this.accordion && this.accordion.hideToggle;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._hideToggle = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * The position of the expansion indicator.
+         * @return {?}
+         */
+
+      }, {
+        key: "togglePosition",
+        get: function get() {
+          return this._togglePosition || this.accordion && this.accordion.togglePosition;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._togglePosition = value;
+        }
+      }]);
+
+      return MatExpansionPanel;
+    }(_angular_cdk_accordion__WEBPACK_IMPORTED_MODULE_2__["CdkAccordionItem"]);
+
+    MatExpansionPanel.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        styles: [".mat-expansion-panel{box-sizing:content-box;display:block;margin:0;border-radius:4px;overflow:hidden;transition:margin 225ms cubic-bezier(.4,0,.2,1),box-shadow 280ms cubic-bezier(.4,0,.2,1)}.mat-accordion .mat-expansion-panel:not(.mat-expanded),.mat-accordion .mat-expansion-panel:not(.mat-expansion-panel-spacing){border-radius:0}.mat-accordion .mat-expansion-panel:first-of-type{border-top-right-radius:4px;border-top-left-radius:4px}.mat-accordion .mat-expansion-panel:last-of-type{border-bottom-right-radius:4px;border-bottom-left-radius:4px}@media (-ms-high-contrast:active){.mat-expansion-panel{outline:solid 1px}}.mat-expansion-panel._mat-animation-noopable,.mat-expansion-panel.ng-animate-disabled,.ng-animate-disabled .mat-expansion-panel{transition:none}.mat-expansion-panel-content{display:flex;flex-direction:column;overflow:visible}.mat-expansion-panel-body{padding:0 24px 16px}.mat-expansion-panel-spacing{margin:16px 0}.mat-accordion>.mat-expansion-panel-spacing:first-child,.mat-accordion>:first-child:not(.mat-expansion-panel) .mat-expansion-panel-spacing{margin-top:0}.mat-accordion>.mat-expansion-panel-spacing:last-child,.mat-accordion>:last-child:not(.mat-expansion-panel) .mat-expansion-panel-spacing{margin-bottom:0}.mat-action-row{border-top-style:solid;border-top-width:1px;display:flex;flex-direction:row;justify-content:flex-end;padding:16px 8px 16px 24px}.mat-action-row button.mat-button-base{margin-left:8px}[dir=rtl] .mat-action-row button.mat-button-base{margin-left:0;margin-right:8px}"],
+        selector: 'mat-expansion-panel',
+        exportAs: 'matExpansionPanel',
+        template: "<ng-content select=\"mat-expansion-panel-header\"></ng-content><div class=\"mat-expansion-panel-content\" role=\"region\" [@bodyExpansion]=\"_getExpandedState()\" (@bodyExpansion.done)=\"_bodyAnimationDone.next($event)\" [attr.aria-labelledby]=\"_headerId\" [id]=\"id\" #body><div class=\"mat-expansion-panel-body\"><ng-content></ng-content><ng-template [cdkPortalOutlet]=\"_portal\"></ng-template></div><ng-content select=\"mat-action-row\"></ng-content></div>",
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+        inputs: ['disabled', 'expanded'],
+        outputs: ['opened', 'closed', 'expandedChange'],
+        animations: [matExpansionAnimations.bodyExpansion],
+        providers: [// Provide MatAccordion as undefined to prevent nested expansion panels from registering
+        // to the same accordion.
+        {
+          provide: MAT_ACCORDION,
+          useValue: ɵ0
+        }],
+        host: {
+          'class': 'mat-expansion-panel',
+          '[class.mat-expanded]': 'expanded',
+          '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"',
+          '[class.mat-expansion-panel-spacing]': '_hasSpacing()'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    MatExpansionPanel.ctorParameters = function () {
+      return [{
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["SkipSelf"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [MAT_ACCORDION]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_4__["UniqueSelectionDispatcher"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"]]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [MAT_EXPANSION_PANEL_DEFAULT_OPTIONS]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }];
+    };
+
+    MatExpansionPanel.propDecorators = {
+      hideToggle: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      togglePosition: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      afterExpand: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      afterCollapse: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      _lazyContent: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"],
+        args: [MatExpansionPanelContent, {
+          "static": false
+        }]
+      }],
+      _body: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['body', {
+          "static": false
+        }]
+      }]
+    };
+
+    var MatExpansionPanelActionRow = function MatExpansionPanelActionRow() {
+      _classCallCheck(this, MatExpansionPanelActionRow);
+    };
+
+    MatExpansionPanelActionRow.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'mat-action-row',
+        host: {
+          "class": 'mat-action-row'
+        }
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * `<mat-expansion-panel-header>`
+     *
+     * This component corresponds to the header element of an `<mat-expansion-panel>`.
+     */
+
+    var MatExpansionPanelHeader = /*#__PURE__*/function () {
+      /**
+       * @param {?} panel
+       * @param {?} _element
+       * @param {?} _focusMonitor
+       * @param {?} _changeDetectorRef
+       * @param {?=} defaultOptions
+       */
+      function MatExpansionPanelHeader(panel, _element, _focusMonitor, _changeDetectorRef, defaultOptions) {
+        var _this35 = this;
+
+        _classCallCheck(this, MatExpansionPanelHeader);
+
+        this.panel = panel;
+        this._element = _element;
+        this._focusMonitor = _focusMonitor;
+        this._changeDetectorRef = _changeDetectorRef;
+        this._parentChangeSubscription = rxjs__WEBPACK_IMPORTED_MODULE_8__["Subscription"].EMPTY;
+        /**
+         * Whether Angular animations in the panel header should be disabled.
+         */
+
+        this._animationsDisabled = true;
+        /** @type {?} */
+
+        var accordionHideToggleChange = panel.accordion ? panel.accordion._stateChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["filter"])(
+        /**
+        * @param {?} changes
+        * @return {?}
+        */
+        function (changes) {
+          return !!(changes['hideToggle'] || changes['togglePosition']);
+        })) : rxjs__WEBPACK_IMPORTED_MODULE_8__["EMPTY"]; // Since the toggle state depends on an @Input on the panel, we
+        // need to subscribe and trigger change detection manually.
+
+        this._parentChangeSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_8__["merge"])(panel.opened, panel.closed, accordionHideToggleChange, panel._inputChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["filter"])(
+        /**
+        * @param {?} changes
+        * @return {?}
+        */
+        function (changes) {
+          return !!(changes['hideToggle'] || changes['disabled'] || changes['togglePosition']);
+        }))).subscribe(
+        /**
+        * @return {?}
+        */
+        function () {
+          return _this35._changeDetectorRef.markForCheck();
+        }); // Avoids focus being lost if the panel contained the focused element and was closed.
+
+        panel.closed.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["filter"])(
+        /**
+        * @return {?}
+        */
+        function () {
+          return panel._containsFocus();
+        })).subscribe(
+        /**
+        * @return {?}
+        */
+        function () {
+          return _focusMonitor.focusVia(_element, 'program');
+        });
+
+        _focusMonitor.monitor(_element).subscribe(
+        /**
+        * @param {?} origin
+        * @return {?}
+        */
+        function (origin) {
+          if (origin && panel.accordion) {
+            panel.accordion._handleHeaderFocus(_this35);
+          }
+        });
+
+        if (defaultOptions) {
+          this.expandedHeight = defaultOptions.expandedHeight;
+          this.collapsedHeight = defaultOptions.collapsedHeight;
+        }
+      }
+      /**
+       * @return {?}
+       */
+
+
+      _createClass(MatExpansionPanelHeader, [{
+        key: "_animationStarted",
+        value: function _animationStarted() {
+          // Currently the `expansionHeight` animation has a `void => collapsed` transition which is
+          // there to work around a bug in Angular (see #13088), however this introduces a different
+          // issue. The new transition will cause the header to animate in on init (see #16067), if the
+          // consumer has set a header height that is different from the default one. We work around it
+          // by disabling animations on the header and re-enabling them after the first animation has run.
+          // Note that Angular dispatches animation events even if animations are disabled. Ideally this
+          // wouldn't be necessary if we remove the `void => collapsed` transition, but we have to wait
+          // for https://github.com/angular/angular/issues/18847 to be resolved.
+          this._animationsDisabled = false;
+        }
+        /**
+         * Whether the associated panel is disabled. Implemented as a part of `FocusableOption`.
+         * \@docs-private
+         * @return {?}
+         */
+
+      }, {
+        key: "_toggle",
+
+        /**
+         * Toggles the expanded state of the panel.
+         * @return {?}
+         */
+        value: function _toggle() {
+          this.panel.toggle();
+        }
+        /**
+         * Gets whether the panel is expanded.
+         * @return {?}
+         */
+
+      }, {
+        key: "_isExpanded",
+        value: function _isExpanded() {
+          return this.panel.expanded;
+        }
+        /**
+         * Gets the expanded state string of the panel.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getExpandedState",
+        value: function _getExpandedState() {
+          return this.panel._getExpandedState();
+        }
+        /**
+         * Gets the panel id.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getPanelId",
+        value: function _getPanelId() {
+          return this.panel.id;
+        }
+        /**
+         * Gets the toggle position for the header.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getTogglePosition",
+        value: function _getTogglePosition() {
+          return this.panel.togglePosition;
+        }
+        /**
+         * Gets whether the expand indicator should be shown.
+         * @return {?}
+         */
+
+      }, {
+        key: "_showToggle",
+        value: function _showToggle() {
+          return !this.panel.hideToggle && !this.panel.disabled;
+        }
+        /**
+         * Handle keydown event calling to toggle() if appropriate.
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_keydown",
+        value: function _keydown(event) {
+          switch (event.keyCode) {
+            // Toggle for space and enter keys.
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["SPACE"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["ENTER"]:
+              if (!Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["hasModifierKey"])(event)) {
+                event.preventDefault();
+
+                this._toggle();
+              }
+
+              break;
+
+            default:
+              if (this.panel.accordion) {
+                this.panel.accordion._handleHeaderKeydown(event);
+              }
+
+              return;
+          }
+        }
+        /**
+         * Focuses the panel header. Implemented as a part of `FocusableOption`.
+         * \@docs-private
+         * @param {?=} origin Origin of the action that triggered the focus.
+         * @param {?=} options
+         * @return {?}
+         */
+
+      }, {
+        key: "focus",
+        value: function focus() {
+          var origin = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'program';
+          var options = arguments.length > 1 ? arguments[1] : undefined;
+
+          this._focusMonitor.focusVia(this._element, origin, options);
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._parentChangeSubscription.unsubscribe();
+
+          this._focusMonitor.stopMonitoring(this._element);
+        }
+      }, {
+        key: "disabled",
+        get: function get() {
+          return this.panel.disabled;
+        }
+      }]);
+
+      return MatExpansionPanelHeader;
+    }();
+
+    MatExpansionPanelHeader.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-expansion-panel-header',
+        styles: [".mat-expansion-panel-header{display:flex;flex-direction:row;align-items:center;padding:0 24px;border-radius:inherit}.mat-expansion-panel-header:focus,.mat-expansion-panel-header:hover{outline:0}.mat-expansion-panel-header.mat-expanded:focus,.mat-expansion-panel-header.mat-expanded:hover{background:inherit}.mat-expansion-panel-header:not([aria-disabled=true]){cursor:pointer}.mat-expansion-panel-header.mat-expansion-toggle-indicator-before{flex-direction:row-reverse}.mat-expansion-panel-header.mat-expansion-toggle-indicator-before .mat-expansion-indicator{margin:0 16px 0 0}[dir=rtl] .mat-expansion-panel-header.mat-expansion-toggle-indicator-before .mat-expansion-indicator{margin:0 0 0 16px}.mat-content{display:flex;flex:1;flex-direction:row;overflow:hidden}.mat-expansion-panel-header-description,.mat-expansion-panel-header-title{display:flex;flex-grow:1;margin-right:16px}[dir=rtl] .mat-expansion-panel-header-description,[dir=rtl] .mat-expansion-panel-header-title{margin-right:0;margin-left:16px}.mat-expansion-panel-header-description{flex-grow:2}.mat-expansion-indicator::after{border-style:solid;border-width:0 2px 2px 0;content:'';display:inline-block;padding:3px;transform:rotate(45deg);vertical-align:middle}"],
+        template: "<span class=\"mat-content\"><ng-content select=\"mat-panel-title\"></ng-content><ng-content select=\"mat-panel-description\"></ng-content><ng-content></ng-content></span><span [@indicatorRotate]=\"_getExpandedState()\" *ngIf=\"_showToggle()\" class=\"mat-expansion-indicator\"></span>",
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+        animations: [matExpansionAnimations.indicatorRotate, matExpansionAnimations.expansionHeaderHeight],
+        host: {
+          'class': 'mat-expansion-panel-header',
+          'role': 'button',
+          '[attr.id]': 'panel._headerId',
+          '[attr.tabindex]': 'disabled ? -1 : 0',
+          '[attr.aria-controls]': '_getPanelId()',
+          '[attr.aria-expanded]': '_isExpanded()',
+          '[attr.aria-disabled]': 'panel.disabled',
+          '[class.mat-expanded]': '_isExpanded()',
+          '[class.mat-expansion-toggle-indicator-after]': "_getTogglePosition() === 'after'",
+          '[class.mat-expansion-toggle-indicator-before]': "_getTogglePosition() === 'before'",
+          '(click)': '_toggle()',
+          '(keydown)': '_keydown($event)',
+          '[@.disabled]': '_animationsDisabled',
+          '(@expansionHeight.start)': '_animationStarted()',
+          '[@expansionHeight]': "{\n        value: _getExpandedState(),\n        params: {\n          collapsedHeight: collapsedHeight,\n          expandedHeight: expandedHeight\n        }\n    }"
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    MatExpansionPanelHeader.ctorParameters = function () {
+      return [{
+        type: MatExpansionPanel,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Host"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_10__["FocusMonitor"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [MAT_EXPANSION_PANEL_DEFAULT_OPTIONS]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }];
+    };
+
+    MatExpansionPanelHeader.propDecorators = {
+      expandedHeight: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      collapsedHeight: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+    /**
+     * `<mat-panel-description>`
+     *
+     * This directive is to be used inside of the MatExpansionPanelHeader component.
+     */
+
+    var MatExpansionPanelDescription = function MatExpansionPanelDescription() {
+      _classCallCheck(this, MatExpansionPanelDescription);
+    };
+
+    MatExpansionPanelDescription.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'mat-panel-description',
+        host: {
+          "class": 'mat-expansion-panel-header-description'
+        }
+      }]
+    }];
+    /**
+     * `<mat-panel-title>`
+     *
+     * This directive is to be used inside of the MatExpansionPanelHeader component.
+     */
+
+    var MatExpansionPanelTitle = function MatExpansionPanelTitle() {
+      _classCallCheck(this, MatExpansionPanelTitle);
+    };
+
+    MatExpansionPanelTitle.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'mat-panel-title',
+        host: {
+          "class": 'mat-expansion-panel-header-title'
+        }
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Directive for a Material Design Accordion.
+     */
+
+    var MatAccordion = /*#__PURE__*/function (_angular_cdk_accordio2) {
+      _inherits(MatAccordion, _angular_cdk_accordio2);
+
+      var _super10 = _createSuper(MatAccordion);
+
+      function MatAccordion() {
+        var _this36;
+
+        _classCallCheck(this, MatAccordion);
+
+        _this36 = _super10.apply(this, arguments);
+        _this36._hideToggle = false;
+        /**
+         * Display mode used for all expansion panels in the accordion. Currently two display
+         * modes exist:
+         *  default - a gutter-like spacing is placed around any expanded panel, placing the expanded
+         *     panel at a different elevation from the rest of the accordion.
+         *  flat - no spacing is placed around expanded panels, showing all panels at the same
+         *     elevation.
+         */
+
+        _this36.displayMode = 'default';
+        /**
+         * The position of the expansion indicator.
+         */
+
+        _this36.togglePosition = 'after';
+        return _this36;
+      }
+      /**
+       * Whether the expansion indicator should be hidden.
+       * @return {?}
+       */
+
+
+      _createClass(MatAccordion, [{
+        key: "ngAfterContentInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngAfterContentInit() {
+          this._keyManager = new _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_10__["FocusKeyManager"](this._headers).withWrap();
+        }
+        /**
+         * Handles keyboard events coming in from the panel headers.
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_handleHeaderKeydown",
+        value: function _handleHeaderKeydown(event) {
+          var keyCode = event.keyCode;
+          /** @type {?} */
+
+          var manager = this._keyManager;
+
+          if (keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["HOME"]) {
+            if (!Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["hasModifierKey"])(event)) {
+              manager.setFirstItemActive();
+              event.preventDefault();
+            }
+          } else if (keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["END"]) {
+            if (!Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["hasModifierKey"])(event)) {
+              manager.setLastItemActive();
+              event.preventDefault();
+            }
+          } else {
+            this._keyManager.onKeydown(event);
+          }
+        }
+        /**
+         * @param {?} header
+         * @return {?}
+         */
+
+      }, {
+        key: "_handleHeaderFocus",
+        value: function _handleHeaderFocus(header) {
+          this._keyManager.updateActiveItem(header);
+        }
+      }, {
+        key: "hideToggle",
+        get: function get() {
+          return this._hideToggle;
+        }
+        /**
+         * @param {?} show
+         * @return {?}
+         */
+        ,
+        set: function set(show) {
+          this._hideToggle = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceBooleanProperty"])(show);
+        }
+      }]);
+
+      return MatAccordion;
+    }(_angular_cdk_accordion__WEBPACK_IMPORTED_MODULE_2__["CdkAccordion"]);
+
+    MatAccordion.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'mat-accordion',
+        exportAs: 'matAccordion',
+        inputs: ['multi'],
+        providers: [{
+          provide: MAT_ACCORDION,
+          useExisting: MatAccordion
+        }],
+        host: {
+          "class": 'mat-accordion'
+        }
+      }]
+    }];
+    MatAccordion.propDecorators = {
+      _headers: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+        args: [MatExpansionPanelHeader, {
+          descendants: true
+        }]
+      }],
+      hideToggle: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      displayMode: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      togglePosition: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var MatExpansionModule = function MatExpansionModule() {
+      _classCallCheck(this, MatExpansionModule);
+    };
+
+    MatExpansionModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+      args: [{
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"], _angular_cdk_accordion__WEBPACK_IMPORTED_MODULE_2__["CdkAccordionModule"], _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_5__["PortalModule"]],
+        exports: [MatAccordion, MatExpansionPanel, MatExpansionPanelActionRow, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription, MatExpansionPanelContent],
+        declarations: [MatAccordion, MatExpansionPanel, MatExpansionPanelActionRow, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelDescription, MatExpansionPanelContent]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=expansion.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/material.js":
+  /*!************************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/material.js ***!
+    \************************************************************/
+
+  /*! exports provided: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS_FACTORY, MatAutocompleteSelectedEvent, MAT_AUTOCOMPLETE_DEFAULT_OPTIONS, MatAutocomplete, MatAutocompleteModule, MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY, getMatAutocompleteMissingPanelError, AUTOCOMPLETE_OPTION_HEIGHT, AUTOCOMPLETE_PANEL_HEIGHT, MAT_AUTOCOMPLETE_SCROLL_STRATEGY, MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER, MAT_AUTOCOMPLETE_VALUE_ACCESSOR, MatAutocompleteTrigger, MatAutocompleteOrigin, MatBadgeModule, MatBadge, MatBottomSheetModule, MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatBottomSheet, MAT_BOTTOM_SHEET_DATA, MatBottomSheetConfig, MatBottomSheetContainer, matBottomSheetAnimations, MatBottomSheetRef, MatButtonModule, MatButton, MatAnchor, MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS, MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR, MatButtonToggleGroupMultiple, MatButtonToggleChange, MatButtonToggleGroup, MatButtonToggle, MatButtonToggleModule, MatCardContent, MatCardTitle, MatCardSubtitle, MatCardActions, MatCardFooter, MatCardImage, MatCardSmImage, MatCardMdImage, MatCardLgImage, MatCardXlImage, MatCardAvatar, MatCard, MatCardHeader, MatCardTitleGroup, MatCardModule, MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR, TransitionCheckState, MatCheckboxChange, MatCheckbox, MAT_CHECKBOX_CLICK_ACTION, _MatCheckboxRequiredValidatorModule, MatCheckboxModule, MAT_CHECKBOX_REQUIRED_VALIDATOR, MatCheckboxRequiredValidator, MatChipsModule, MatChipListChange, MatChipList, MatChipSelectionChange, MatChipAvatar, MatChipTrailingIcon, MatChip, MatChipRemove, MatChipInput, MAT_CHIPS_DEFAULT_OPTIONS, ɵa1, VERSION, AnimationCurves, AnimationDurations, MatCommonModule, MATERIAL_SANITY_CHECKS, mixinDisabled, mixinColor, mixinDisableRipple, mixinTabIndex, mixinErrorState, mixinInitialized, NativeDateModule, MatNativeDateModule, MAT_DATE_LOCALE_FACTORY, MAT_DATE_LOCALE, MAT_DATE_LOCALE_PROVIDER, DateAdapter, MAT_DATE_FORMATS, NativeDateAdapter, MAT_NATIVE_DATE_FORMATS, ShowOnDirtyErrorStateMatcher, ErrorStateMatcher, MAT_HAMMER_OPTIONS, GestureConfig, setLines, MatLine, MatLineSetter, MatLineModule, MatOptionModule, _countGroupLabelsBeforeOption, _getOptionScrollPosition, MatOptionSelectionChange, MAT_OPTION_PARENT_COMPONENT, MatOption, MatOptgroup, MAT_LABEL_GLOBAL_OPTIONS, MatRippleModule, MAT_RIPPLE_GLOBAL_OPTIONS, MatRipple, RippleState, RippleRef, defaultRippleAnimationConfig, RippleRenderer, MatPseudoCheckboxModule, MatPseudoCheckbox, JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MatMultiYearView, yearsPerPage, yearsPerRow, MatDatepickerModule, MatCalendarHeader, MatCalendar, MatCalendarCell, MatCalendarBody, MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY, MAT_DATEPICKER_SCROLL_STRATEGY, MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER, MatDatepickerContent, MatDatepicker, matDatepickerAnimations, MAT_DATEPICKER_VALUE_ACCESSOR, MAT_DATEPICKER_VALIDATORS, MatDatepickerInputEvent, MatDatepickerInput, MatDatepickerIntl, MatDatepickerToggleIcon, MatDatepickerToggle, MatMonthView, MatYearView, MatDialogModule, MAT_DIALOG_SCROLL_STRATEGY_FACTORY, MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MAT_DIALOG_SCROLL_STRATEGY, MAT_DIALOG_SCROLL_STRATEGY_PROVIDER, MatDialog, throwMatDialogContentAlreadyAttachedError, MatDialogContainer, MatDialogClose, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogConfig, MatDialogRef, matDialogAnimations, MatDivider, MatDividerModule, MatExpansionModule, MatAccordion, MAT_ACCORDION, MAT_EXPANSION_PANEL_DEFAULT_OPTIONS, MatExpansionPanel, MatExpansionPanelActionRow, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelTitle, MatExpansionPanelContent, EXPANSION_PANEL_ANIMATION_TIMING, matExpansionAnimations, MatFormFieldModule, MatError, MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormField, MatFormFieldControl, getMatFormFieldPlaceholderConflictError, getMatFormFieldDuplicatedHintError, getMatFormFieldMissingControlError, MatHint, MatPlaceholder, MatPrefix, MatSuffix, MatLabel, matFormFieldAnimations, ɵa11, MatGridListModule, MatGridList, MatGridTile, MatGridTileText, MatGridAvatarCssMatStyler, MatGridTileHeaderCssMatStyler, MatGridTileFooterCssMatStyler, MatIconModule, MAT_ICON_LOCATION_FACTORY, MAT_ICON_LOCATION, MatIcon, getMatIconNameNotFoundError, getMatIconNoHttpProviderError, getMatIconFailedToSanitizeUrlError, getMatIconFailedToSanitizeLiteralError, ICON_REGISTRY_PROVIDER_FACTORY, MatIconRegistry, ICON_REGISTRY_PROVIDER, MatTextareaAutosize, MatInput, getMatInputUnsupportedTypeError, MatInputModule, MAT_INPUT_VALUE_ACCESSOR, MatListModule, MatNavList, MatList, MatListAvatarCssMatStyler, MatListIconCssMatStyler, MatListSubheaderCssMatStyler, MatListItem, MAT_SELECTION_LIST_VALUE_ACCESSOR, MatSelectionListChange, MatListOption, MatSelectionList, ɵa22, ɵb22, ɵc22, MatMenu, MAT_MENU_DEFAULT_OPTIONS, _MatMenu, _MatMenuBase, MatMenuItem, MatMenuTrigger, MAT_MENU_SCROLL_STRATEGY, MAT_MENU_PANEL, _MatMenuDirectivesModule, MatMenuModule, matMenuAnimations, fadeInItems, transformMenu, MatMenuContent, MatPaginatorModule, PageEvent, MatPaginator, MAT_PAGINATOR_INTL_PROVIDER_FACTORY, MatPaginatorIntl, MAT_PAGINATOR_INTL_PROVIDER, MatProgressBarModule, MAT_PROGRESS_BAR_LOCATION_FACTORY, MAT_PROGRESS_BAR_LOCATION, MatProgressBar, MatProgressSpinner, MatSpinner, MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_FACTORY, MatProgressSpinnerModule, MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS_FACTORY, MAT_RADIO_DEFAULT_OPTIONS, MAT_RADIO_GROUP_CONTROL_VALUE_ACCESSOR, MatRadioChange, MatRadioGroup, MatRadioButton, MatSelectModule, MAT_SELECT_SCROLL_STRATEGY_PROVIDER_FACTORY, SELECT_PANEL_MAX_HEIGHT, SELECT_PANEL_PADDING_X, SELECT_PANEL_INDENT_PADDING_X, SELECT_ITEM_HEIGHT_EM, SELECT_MULTIPLE_PANEL_PADDING_X, SELECT_PANEL_VIEWPORT_PADDING, MAT_SELECT_SCROLL_STRATEGY, MAT_SELECT_SCROLL_STRATEGY_PROVIDER, MatSelectChange, MatSelectTrigger, MatSelect, matSelectAnimations, transformPanel, fadeInContent, MatSidenavModule, throwMatDuplicatedDrawerError, MAT_DRAWER_DEFAULT_AUTOSIZE_FACTORY, MAT_DRAWER_DEFAULT_AUTOSIZE, MatDrawerContent, MatDrawer, MatDrawerContainer, MatSidenavContent, MatSidenav, MatSidenavContainer, matDrawerAnimations, _MatSlideToggleRequiredValidatorModule, MatSlideToggleModule, MAT_SLIDE_TOGGLE_VALUE_ACCESSOR, MatSlideToggleChange, MatSlideToggle, MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MAT_SLIDE_TOGGLE_REQUIRED_VALIDATOR, MatSlideToggleRequiredValidator, MatSliderModule, MAT_SLIDER_VALUE_ACCESSOR, MatSliderChange, MatSlider, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS_FACTORY, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBar, MatSnackBarContainer, MAT_SNACK_BAR_DATA, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar, matSnackBarAnimations, MatSortModule, MatSortHeader, MAT_SORT_HEADER_INTL_PROVIDER_FACTORY, MatSortHeaderIntl, MAT_SORT_HEADER_INTL_PROVIDER, MatSort, matSortAnimations, MatStepperModule, MatStepLabel, MatStep, MatStepper, MatHorizontalStepper, MatVerticalStepper, MatStepperNext, MatStepperPrevious, MatStepHeader, MAT_STEPPER_INTL_PROVIDER_FACTORY, MatStepperIntl, MAT_STEPPER_INTL_PROVIDER, matStepperAnimations, MatStepperIcon, MatTableModule, MatCellDef, MatHeaderCellDef, MatFooterCellDef, MatColumnDef, MatHeaderCell, MatFooterCell, MatCell, MatTable, MatHeaderRowDef, MatFooterRowDef, MatRowDef, MatHeaderRow, MatFooterRow, MatRow, MatTableDataSource, MatTextColumn, ɵa24, ɵb24, MatTabsModule, MatInkBar, _MAT_INK_BAR_POSITIONER, MatTabBody, _MatTabBodyBase, MatTabBodyPortal, MatTabHeader, _MatTabHeaderBase, MatTabLabelWrapper, MatTab, MatTabLabel, MatTabNav, MatTabLink, _MatTabNavBase, _MatTabLinkBase, MatTabContent, MatTabChangeEvent, MAT_TABS_CONFIG, _MatTabGroupBase, MatTabGroup, matTabsAnimations, MatToolbarModule, throwToolbarMixedModesError, MatToolbarRow, MatToolbar, MatTooltipModule, getMatTooltipInvalidPositionError, MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY, MAT_TOOLTIP_DEFAULT_OPTIONS_FACTORY, SCROLL_THROTTLE_MS, TOOLTIP_PANEL_CLASS, MAT_TOOLTIP_SCROLL_STRATEGY, MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER, MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltip, TooltipComponent, matTooltipAnimations, MatTreeNode, MatTreeNodeDef, MatNestedTreeNode, MatTreeNodePadding, MatTree, MatTreeModule, MatTreeNodeToggle, MatTreeNodeOutlet, MatTreeFlattener, MatTreeFlatDataSource, MatTreeNestedDataSource */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015MaterialJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony import */
+
+
+    var _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/material/autocomplete */
+    "./node_modules/@angular/material/esm2015/autocomplete.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_DEFAULT_OPTIONS_FACTORY", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MAT_AUTOCOMPLETE_DEFAULT_OPTIONS_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAutocompleteSelectedEvent", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MatAutocompleteSelectedEvent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_DEFAULT_OPTIONS", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MAT_AUTOCOMPLETE_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAutocomplete", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MatAutocomplete"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAutocompleteModule", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MatAutocompleteModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatAutocompleteMissingPanelError", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["getMatAutocompleteMissingPanelError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AUTOCOMPLETE_OPTION_HEIGHT", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["AUTOCOMPLETE_OPTION_HEIGHT"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AUTOCOMPLETE_PANEL_HEIGHT", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["AUTOCOMPLETE_PANEL_HEIGHT"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_SCROLL_STRATEGY", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MAT_AUTOCOMPLETE_SCROLL_STRATEGY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_AUTOCOMPLETE_VALUE_ACCESSOR", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MAT_AUTOCOMPLETE_VALUE_ACCESSOR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAutocompleteTrigger", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MatAutocompleteTrigger"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAutocompleteOrigin", function () {
+      return _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_0__["MatAutocompleteOrigin"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_badge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/material/badge */
+    "./node_modules/@angular/material/esm2015/badge.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBadgeModule", function () {
+      return _angular_material_badge__WEBPACK_IMPORTED_MODULE_1__["MatBadgeModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBadge", function () {
+      return _angular_material_badge__WEBPACK_IMPORTED_MODULE_1__["MatBadge"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/material/bottom-sheet */
+    "./node_modules/@angular/material/esm2015/bottom-sheet.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBottomSheetModule", function () {
+      return _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["MatBottomSheetModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_BOTTOM_SHEET_DEFAULT_OPTIONS", function () {
+      return _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["MAT_BOTTOM_SHEET_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBottomSheet", function () {
+      return _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["MatBottomSheet"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_BOTTOM_SHEET_DATA", function () {
+      return _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["MAT_BOTTOM_SHEET_DATA"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBottomSheetConfig", function () {
+      return _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["MatBottomSheetConfig"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBottomSheetContainer", function () {
+      return _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["MatBottomSheetContainer"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matBottomSheetAnimations", function () {
+      return _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["matBottomSheetAnimations"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatBottomSheetRef", function () {
+      return _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_2__["MatBottomSheetRef"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/material/button */
+    "./node_modules/@angular/material/esm2015/button.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonModule", function () {
+      return _angular_material_button__WEBPACK_IMPORTED_MODULE_3__["MatButtonModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButton", function () {
+      return _angular_material_button__WEBPACK_IMPORTED_MODULE_3__["MatButton"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAnchor", function () {
+      return _angular_material_button__WEBPACK_IMPORTED_MODULE_3__["MatAnchor"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/material/button-toggle */
+    "./node_modules/@angular/material/esm2015/button-toggle.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS", function () {
+      return _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_4__["MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR", function () {
+      return _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_4__["MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonToggleGroupMultiple", function () {
+      return _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_4__["MatButtonToggleGroupMultiple"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonToggleChange", function () {
+      return _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_4__["MatButtonToggleChange"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonToggleGroup", function () {
+      return _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_4__["MatButtonToggleGroup"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonToggle", function () {
+      return _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_4__["MatButtonToggle"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatButtonToggleModule", function () {
+      return _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_4__["MatButtonToggleModule"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_card__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/material/card */
+    "./node_modules/@angular/material/esm2015/card.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardContent", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardContent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardTitle", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardTitle"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardSubtitle", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardSubtitle"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardActions", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardActions"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardFooter", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardFooter"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardImage", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardImage"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardSmImage", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardSmImage"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardMdImage", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardMdImage"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardLgImage", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardLgImage"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardXlImage", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardXlImage"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardAvatar", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardAvatar"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCard", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCard"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardHeader", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardHeader"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardTitleGroup", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardTitleGroup"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCardModule", function () {
+      return _angular_material_card__WEBPACK_IMPORTED_MODULE_5__["MatCardModule"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/material/checkbox */
+    "./node_modules/@angular/material/esm2015/checkbox.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR", function () {
+      return _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_6__["MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "TransitionCheckState", function () {
+      return _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_6__["TransitionCheckState"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCheckboxChange", function () {
+      return _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_6__["MatCheckboxChange"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCheckbox", function () {
+      return _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_6__["MatCheckbox"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_CHECKBOX_CLICK_ACTION", function () {
+      return _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_6__["MAT_CHECKBOX_CLICK_ACTION"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatCheckboxRequiredValidatorModule", function () {
+      return _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_6__["_MatCheckboxRequiredValidatorModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCheckboxModule", function () {
+      return _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_6__["MatCheckboxModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_CHECKBOX_REQUIRED_VALIDATOR", function () {
+      return _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_6__["MAT_CHECKBOX_REQUIRED_VALIDATOR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCheckboxRequiredValidator", function () {
+      return _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_6__["MatCheckboxRequiredValidator"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/material/chips */
+    "./node_modules/@angular/material/esm2015/chips.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatChipsModule", function () {
+      return _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__["MatChipsModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatChipListChange", function () {
+      return _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__["MatChipListChange"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatChipList", function () {
+      return _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__["MatChipList"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatChipSelectionChange", function () {
+      return _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__["MatChipSelectionChange"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatChipAvatar", function () {
+      return _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__["MatChipAvatar"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatChipTrailingIcon", function () {
+      return _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__["MatChipTrailingIcon"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatChip", function () {
+      return _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__["MatChip"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatChipRemove", function () {
+      return _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__["MatChipRemove"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatChipInput", function () {
+      return _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__["MatChipInput"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_CHIPS_DEFAULT_OPTIONS", function () {
+      return _angular_material_chips__WEBPACK_IMPORTED_MODULE_7__["MAT_CHIPS_DEFAULT_OPTIONS"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ɵa1", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["ɵa1"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "VERSION", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["VERSION"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AnimationCurves", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["AnimationCurves"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AnimationDurations", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["AnimationDurations"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCommonModule", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatCommonModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MATERIAL_SANITY_CHECKS", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MATERIAL_SANITY_CHECKS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "mixinDisabled", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["mixinDisabled"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "mixinColor", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["mixinColor"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "mixinDisableRipple", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["mixinDisableRipple"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "mixinTabIndex", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["mixinTabIndex"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "mixinErrorState", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["mixinErrorState"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "mixinInitialized", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["mixinInitialized"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "NativeDateModule", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["NativeDateModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatNativeDateModule", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatNativeDateModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE_FACTORY", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAT_DATE_LOCALE_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAT_DATE_LOCALE"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE_PROVIDER", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAT_DATE_LOCALE_PROVIDER"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DateAdapter", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["DateAdapter"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DATE_FORMATS", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAT_DATE_FORMATS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "NativeDateAdapter", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["NativeDateAdapter"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_NATIVE_DATE_FORMATS", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAT_NATIVE_DATE_FORMATS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ShowOnDirtyErrorStateMatcher", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["ShowOnDirtyErrorStateMatcher"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ErrorStateMatcher", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["ErrorStateMatcher"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_HAMMER_OPTIONS", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAT_HAMMER_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "GestureConfig", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["GestureConfig"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "setLines", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["setLines"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatLine", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatLine"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatLineSetter", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatLineSetter"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatLineModule", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatLineModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatOptionModule", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatOptionModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_countGroupLabelsBeforeOption", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["_countGroupLabelsBeforeOption"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_getOptionScrollPosition", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["_getOptionScrollPosition"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatOptionSelectionChange", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatOptionSelectionChange"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_OPTION_PARENT_COMPONENT", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAT_OPTION_PARENT_COMPONENT"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatOption", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatOption"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatOptgroup", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatOptgroup"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_LABEL_GLOBAL_OPTIONS", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAT_LABEL_GLOBAL_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatRippleModule", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatRippleModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_RIPPLE_GLOBAL_OPTIONS", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAT_RIPPLE_GLOBAL_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatRipple", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatRipple"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "RippleState", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["RippleState"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "RippleRef", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["RippleRef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "defaultRippleAnimationConfig", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["defaultRippleAnimationConfig"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "RippleRenderer", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["RippleRenderer"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatPseudoCheckboxModule", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatPseudoCheckboxModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatPseudoCheckbox", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatPseudoCheckbox"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "JAN", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["JAN"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "FEB", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["FEB"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAR", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "APR", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["APR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAY", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MAY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "JUN", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["JUN"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "JUL", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["JUL"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AUG", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["AUG"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SEP", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["SEP"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "OCT", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["OCT"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "NOV", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["NOV"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DEC", function () {
+      return _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["DEC"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @angular/material/datepicker */
+    "./node_modules/@angular/material/esm2015/datepicker.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatMultiYearView", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatMultiYearView"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "yearsPerPage", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["yearsPerPage"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "yearsPerRow", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["yearsPerRow"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDatepickerModule", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatDatepickerModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCalendarHeader", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatCalendarHeader"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCalendar", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatCalendar"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCalendarCell", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatCalendarCell"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCalendarBody", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatCalendarBody"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DATEPICKER_SCROLL_STRATEGY", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MAT_DATEPICKER_SCROLL_STRATEGY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDatepickerContent", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatDatepickerContent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDatepicker", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatDatepicker"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matDatepickerAnimations", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["matDatepickerAnimations"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DATEPICKER_VALUE_ACCESSOR", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MAT_DATEPICKER_VALUE_ACCESSOR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DATEPICKER_VALIDATORS", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MAT_DATEPICKER_VALIDATORS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDatepickerInputEvent", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatDatepickerInputEvent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDatepickerInput", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatDatepickerInput"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDatepickerIntl", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatDatepickerIntl"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDatepickerToggleIcon", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatDatepickerToggleIcon"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDatepickerToggle", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatDatepickerToggle"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatMonthView", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatMonthView"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatYearView", function () {
+      return _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_9__["MatYearView"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/material/dialog */
+    "./node_modules/@angular/material/esm2015/dialog.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDialogModule", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DIALOG_SCROLL_STRATEGY_FACTORY", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MAT_DIALOG_SCROLL_STRATEGY_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DIALOG_DATA", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MAT_DIALOG_DATA"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DIALOG_DEFAULT_OPTIONS", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MAT_DIALOG_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DIALOG_SCROLL_STRATEGY", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MAT_DIALOG_SCROLL_STRATEGY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DIALOG_SCROLL_STRATEGY_PROVIDER", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MAT_DIALOG_SCROLL_STRATEGY_PROVIDER"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDialog", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialog"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "throwMatDialogContentAlreadyAttachedError", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["throwMatDialogContentAlreadyAttachedError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDialogContainer", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogContainer"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDialogClose", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogClose"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDialogTitle", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogTitle"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDialogContent", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogContent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDialogActions", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogActions"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDialogConfig", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogConfig"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDialogRef", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogRef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matDialogAnimations", function () {
+      return _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["matDialogAnimations"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @angular/material/divider */
+    "./node_modules/@angular/material/esm2015/divider.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDivider", function () {
+      return _angular_material_divider__WEBPACK_IMPORTED_MODULE_11__["MatDivider"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDividerModule", function () {
+      return _angular_material_divider__WEBPACK_IMPORTED_MODULE_11__["MatDividerModule"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! @angular/material/expansion */
+    "./node_modules/@angular/material/esm2015/expansion.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionModule", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["MatExpansionModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatAccordion", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["MatAccordion"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_ACCORDION", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["MAT_ACCORDION"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_EXPANSION_PANEL_DEFAULT_OPTIONS", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["MAT_EXPANSION_PANEL_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanel", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["MatExpansionPanel"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanelActionRow", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["MatExpansionPanelActionRow"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanelHeader", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["MatExpansionPanelHeader"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanelDescription", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["MatExpansionPanelDescription"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanelTitle", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["MatExpansionPanelTitle"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatExpansionPanelContent", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["MatExpansionPanelContent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "EXPANSION_PANEL_ANIMATION_TIMING", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["EXPANSION_PANEL_ANIMATION_TIMING"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matExpansionAnimations", function () {
+      return _angular_material_expansion__WEBPACK_IMPORTED_MODULE_12__["matExpansionAnimations"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! @angular/material/form-field */
+    "./node_modules/@angular/material/esm2015/form-field.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatFormFieldModule", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatFormFieldModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatError", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_FORM_FIELD_DEFAULT_OPTIONS", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MAT_FORM_FIELD_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatFormField", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatFormField"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatFormFieldControl", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatFormFieldControl"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatFormFieldPlaceholderConflictError", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["getMatFormFieldPlaceholderConflictError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatFormFieldDuplicatedHintError", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["getMatFormFieldDuplicatedHintError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatFormFieldMissingControlError", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["getMatFormFieldMissingControlError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatHint", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatHint"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatPlaceholder", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatPlaceholder"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatPrefix", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatPrefix"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSuffix", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatSuffix"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatLabel", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatLabel"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matFormFieldAnimations", function () {
+      return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["matFormFieldAnimations"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! @angular/material/grid-list */
+    "./node_modules/@angular/material/esm2015/grid-list.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ɵa11", function () {
+      return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["ɵa11"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatGridListModule", function () {
+      return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["MatGridListModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatGridList", function () {
+      return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["MatGridList"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatGridTile", function () {
+      return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["MatGridTile"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatGridTileText", function () {
+      return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["MatGridTileText"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatGridAvatarCssMatStyler", function () {
+      return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["MatGridAvatarCssMatStyler"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatGridTileHeaderCssMatStyler", function () {
+      return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["MatGridTileHeaderCssMatStyler"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatGridTileFooterCssMatStyler", function () {
+      return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["MatGridTileFooterCssMatStyler"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! @angular/material/icon */
+    "./node_modules/@angular/material/esm2015/icon.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatIconModule", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["MatIconModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_ICON_LOCATION_FACTORY", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["MAT_ICON_LOCATION_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_ICON_LOCATION", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["MAT_ICON_LOCATION"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatIcon", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["MatIcon"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatIconNameNotFoundError", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["getMatIconNameNotFoundError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatIconNoHttpProviderError", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["getMatIconNoHttpProviderError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatIconFailedToSanitizeUrlError", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["getMatIconFailedToSanitizeUrlError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatIconFailedToSanitizeLiteralError", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["getMatIconFailedToSanitizeLiteralError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ICON_REGISTRY_PROVIDER_FACTORY", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["ICON_REGISTRY_PROVIDER_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatIconRegistry", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["MatIconRegistry"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ICON_REGISTRY_PROVIDER", function () {
+      return _angular_material_icon__WEBPACK_IMPORTED_MODULE_15__["ICON_REGISTRY_PROVIDER"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_input__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! @angular/material/input */
+    "./node_modules/@angular/material/esm2015/input.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTextareaAutosize", function () {
+      return _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatTextareaAutosize"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatInput", function () {
+      return _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInput"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatInputUnsupportedTypeError", function () {
+      return _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["getMatInputUnsupportedTypeError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatInputModule", function () {
+      return _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInputModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_INPUT_VALUE_ACCESSOR", function () {
+      return _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MAT_INPUT_VALUE_ACCESSOR"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_list__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    /*! @angular/material/list */
+    "./node_modules/@angular/material/esm2015/list.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatListModule", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MatListModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatNavList", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MatNavList"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatList", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MatList"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatListAvatarCssMatStyler", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MatListAvatarCssMatStyler"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatListIconCssMatStyler", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MatListIconCssMatStyler"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatListSubheaderCssMatStyler", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MatListSubheaderCssMatStyler"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatListItem", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MatListItem"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SELECTION_LIST_VALUE_ACCESSOR", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MAT_SELECTION_LIST_VALUE_ACCESSOR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSelectionListChange", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MatSelectionListChange"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatListOption", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MatListOption"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSelectionList", function () {
+      return _angular_material_list__WEBPACK_IMPORTED_MODULE_17__["MatSelectionList"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    /*! @angular/material/menu */
+    "./node_modules/@angular/material/esm2015/menu.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ɵa22", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["ɵa22"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ɵb22", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["ɵb22"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ɵc22", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["ɵc22"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatMenu", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["MatMenu"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_MENU_DEFAULT_OPTIONS", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["MAT_MENU_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatMenu", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["_MatMenu"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatMenuBase", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["_MatMenuBase"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatMenuItem", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["MatMenuItem"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatMenuTrigger", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["MatMenuTrigger"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_MENU_SCROLL_STRATEGY", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["MAT_MENU_SCROLL_STRATEGY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_MENU_PANEL", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["MAT_MENU_PANEL"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatMenuDirectivesModule", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["_MatMenuDirectivesModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatMenuModule", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["MatMenuModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matMenuAnimations", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["matMenuAnimations"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "fadeInItems", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["fadeInItems"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "transformMenu", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["transformMenu"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatMenuContent", function () {
+      return _angular_material_menu__WEBPACK_IMPORTED_MODULE_18__["MatMenuContent"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    /*! @angular/material/paginator */
+    "./node_modules/@angular/material/esm2015/paginator.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatPaginatorModule", function () {
+      return _angular_material_paginator__WEBPACK_IMPORTED_MODULE_19__["MatPaginatorModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PageEvent", function () {
+      return _angular_material_paginator__WEBPACK_IMPORTED_MODULE_19__["PageEvent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatPaginator", function () {
+      return _angular_material_paginator__WEBPACK_IMPORTED_MODULE_19__["MatPaginator"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_PAGINATOR_INTL_PROVIDER_FACTORY", function () {
+      return _angular_material_paginator__WEBPACK_IMPORTED_MODULE_19__["MAT_PAGINATOR_INTL_PROVIDER_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatPaginatorIntl", function () {
+      return _angular_material_paginator__WEBPACK_IMPORTED_MODULE_19__["MatPaginatorIntl"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_PAGINATOR_INTL_PROVIDER", function () {
+      return _angular_material_paginator__WEBPACK_IMPORTED_MODULE_19__["MAT_PAGINATOR_INTL_PROVIDER"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    /*! @angular/material/progress-bar */
+    "./node_modules/@angular/material/esm2015/progress-bar.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatProgressBarModule", function () {
+      return _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_20__["MatProgressBarModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_PROGRESS_BAR_LOCATION_FACTORY", function () {
+      return _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_20__["MAT_PROGRESS_BAR_LOCATION_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_PROGRESS_BAR_LOCATION", function () {
+      return _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_20__["MAT_PROGRESS_BAR_LOCATION"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatProgressBar", function () {
+      return _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_20__["MatProgressBar"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+    /*! @angular/material/progress-spinner */
+    "./node_modules/@angular/material/esm2015/progress-spinner.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatProgressSpinner", function () {
+      return _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_21__["MatProgressSpinner"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSpinner", function () {
+      return _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_21__["MatSpinner"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS", function () {
+      return _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_21__["MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_FACTORY", function () {
+      return _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_21__["MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatProgressSpinnerModule", function () {
+      return _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_21__["MatProgressSpinnerModule"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_radio__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
+    /*! @angular/material/radio */
+    "./node_modules/@angular/material/esm2015/radio.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatRadioModule", function () {
+      return _angular_material_radio__WEBPACK_IMPORTED_MODULE_22__["MatRadioModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_RADIO_DEFAULT_OPTIONS_FACTORY", function () {
+      return _angular_material_radio__WEBPACK_IMPORTED_MODULE_22__["MAT_RADIO_DEFAULT_OPTIONS_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_RADIO_DEFAULT_OPTIONS", function () {
+      return _angular_material_radio__WEBPACK_IMPORTED_MODULE_22__["MAT_RADIO_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_RADIO_GROUP_CONTROL_VALUE_ACCESSOR", function () {
+      return _angular_material_radio__WEBPACK_IMPORTED_MODULE_22__["MAT_RADIO_GROUP_CONTROL_VALUE_ACCESSOR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatRadioChange", function () {
+      return _angular_material_radio__WEBPACK_IMPORTED_MODULE_22__["MatRadioChange"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatRadioGroup", function () {
+      return _angular_material_radio__WEBPACK_IMPORTED_MODULE_22__["MatRadioGroup"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatRadioButton", function () {
+      return _angular_material_radio__WEBPACK_IMPORTED_MODULE_22__["MatRadioButton"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_select__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
+    /*! @angular/material/select */
+    "./node_modules/@angular/material/esm2015/select.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSelectModule", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["MatSelectModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SELECT_SCROLL_STRATEGY_PROVIDER_FACTORY", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["MAT_SELECT_SCROLL_STRATEGY_PROVIDER_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SELECT_PANEL_MAX_HEIGHT", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["SELECT_PANEL_MAX_HEIGHT"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SELECT_PANEL_PADDING_X", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["SELECT_PANEL_PADDING_X"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SELECT_PANEL_INDENT_PADDING_X", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["SELECT_PANEL_INDENT_PADDING_X"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SELECT_ITEM_HEIGHT_EM", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["SELECT_ITEM_HEIGHT_EM"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SELECT_MULTIPLE_PANEL_PADDING_X", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["SELECT_MULTIPLE_PANEL_PADDING_X"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SELECT_PANEL_VIEWPORT_PADDING", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["SELECT_PANEL_VIEWPORT_PADDING"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SELECT_SCROLL_STRATEGY", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["MAT_SELECT_SCROLL_STRATEGY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SELECT_SCROLL_STRATEGY_PROVIDER", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["MAT_SELECT_SCROLL_STRATEGY_PROVIDER"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSelectChange", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["MatSelectChange"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSelectTrigger", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["MatSelectTrigger"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSelect", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["MatSelect"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matSelectAnimations", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["matSelectAnimations"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "transformPanel", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["transformPanel"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "fadeInContent", function () {
+      return _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["fadeInContent"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
+    /*! @angular/material/sidenav */
+    "./node_modules/@angular/material/esm2015/sidenav.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSidenavModule", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["MatSidenavModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "throwMatDuplicatedDrawerError", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["throwMatDuplicatedDrawerError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DRAWER_DEFAULT_AUTOSIZE_FACTORY", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["MAT_DRAWER_DEFAULT_AUTOSIZE_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_DRAWER_DEFAULT_AUTOSIZE", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["MAT_DRAWER_DEFAULT_AUTOSIZE"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDrawerContent", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["MatDrawerContent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDrawer", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["MatDrawer"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatDrawerContainer", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["MatDrawerContainer"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSidenavContent", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["MatSidenavContent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSidenav", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["MatSidenav"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSidenavContainer", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["MatSidenavContainer"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matDrawerAnimations", function () {
+      return _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_24__["matDrawerAnimations"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
+    /*! @angular/material/slide-toggle */
+    "./node_modules/@angular/material/esm2015/slide-toggle.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatSlideToggleRequiredValidatorModule", function () {
+      return _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_25__["_MatSlideToggleRequiredValidatorModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSlideToggleModule", function () {
+      return _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_25__["MatSlideToggleModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SLIDE_TOGGLE_VALUE_ACCESSOR", function () {
+      return _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_25__["MAT_SLIDE_TOGGLE_VALUE_ACCESSOR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSlideToggleChange", function () {
+      return _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_25__["MatSlideToggleChange"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSlideToggle", function () {
+      return _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_25__["MatSlideToggle"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS", function () {
+      return _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_25__["MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SLIDE_TOGGLE_REQUIRED_VALIDATOR", function () {
+      return _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_25__["MAT_SLIDE_TOGGLE_REQUIRED_VALIDATOR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSlideToggleRequiredValidator", function () {
+      return _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_25__["MatSlideToggleRequiredValidator"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_slider__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
+    /*! @angular/material/slider */
+    "./node_modules/@angular/material/esm2015/slider.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSliderModule", function () {
+      return _angular_material_slider__WEBPACK_IMPORTED_MODULE_26__["MatSliderModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SLIDER_VALUE_ACCESSOR", function () {
+      return _angular_material_slider__WEBPACK_IMPORTED_MODULE_26__["MAT_SLIDER_VALUE_ACCESSOR"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSliderChange", function () {
+      return _angular_material_slider__WEBPACK_IMPORTED_MODULE_26__["MatSliderChange"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSlider", function () {
+      return _angular_material_slider__WEBPACK_IMPORTED_MODULE_26__["MatSlider"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(
+    /*! @angular/material/snack-bar */
+    "./node_modules/@angular/material/esm2015/snack-bar.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSnackBarModule", function () {
+      return _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__["MatSnackBarModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SNACK_BAR_DEFAULT_OPTIONS_FACTORY", function () {
+      return _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__["MAT_SNACK_BAR_DEFAULT_OPTIONS_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SNACK_BAR_DEFAULT_OPTIONS", function () {
+      return _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__["MAT_SNACK_BAR_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSnackBar", function () {
+      return _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__["MatSnackBar"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSnackBarContainer", function () {
+      return _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__["MatSnackBarContainer"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SNACK_BAR_DATA", function () {
+      return _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__["MAT_SNACK_BAR_DATA"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSnackBarConfig", function () {
+      return _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__["MatSnackBarConfig"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSnackBarRef", function () {
+      return _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__["MatSnackBarRef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SimpleSnackBar", function () {
+      return _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__["SimpleSnackBar"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matSnackBarAnimations", function () {
+      return _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_27__["matSnackBarAnimations"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_sort__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(
+    /*! @angular/material/sort */
+    "./node_modules/@angular/material/esm2015/sort.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSortModule", function () {
+      return _angular_material_sort__WEBPACK_IMPORTED_MODULE_28__["MatSortModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSortHeader", function () {
+      return _angular_material_sort__WEBPACK_IMPORTED_MODULE_28__["MatSortHeader"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SORT_HEADER_INTL_PROVIDER_FACTORY", function () {
+      return _angular_material_sort__WEBPACK_IMPORTED_MODULE_28__["MAT_SORT_HEADER_INTL_PROVIDER_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSortHeaderIntl", function () {
+      return _angular_material_sort__WEBPACK_IMPORTED_MODULE_28__["MatSortHeaderIntl"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SORT_HEADER_INTL_PROVIDER", function () {
+      return _angular_material_sort__WEBPACK_IMPORTED_MODULE_28__["MAT_SORT_HEADER_INTL_PROVIDER"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSort", function () {
+      return _angular_material_sort__WEBPACK_IMPORTED_MODULE_28__["MatSort"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matSortAnimations", function () {
+      return _angular_material_sort__WEBPACK_IMPORTED_MODULE_28__["matSortAnimations"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(
+    /*! @angular/material/stepper */
+    "./node_modules/@angular/material/esm2015/stepper.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepperModule", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatStepperModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepLabel", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatStepLabel"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStep", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatStep"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepper", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatStepper"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatHorizontalStepper", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatHorizontalStepper"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatVerticalStepper", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatVerticalStepper"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepperNext", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatStepperNext"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepperPrevious", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatStepperPrevious"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepHeader", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatStepHeader"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_STEPPER_INTL_PROVIDER_FACTORY", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MAT_STEPPER_INTL_PROVIDER_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepperIntl", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatStepperIntl"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_STEPPER_INTL_PROVIDER", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MAT_STEPPER_INTL_PROVIDER"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matStepperAnimations", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["matStepperAnimations"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepperIcon", function () {
+      return _angular_material_stepper__WEBPACK_IMPORTED_MODULE_29__["MatStepperIcon"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_table__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(
+    /*! @angular/material/table */
+    "./node_modules/@angular/material/esm2015/table.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTableModule", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatTableModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCellDef", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatCellDef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatHeaderCellDef", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatHeaderCellDef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatFooterCellDef", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatFooterCellDef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatColumnDef", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatColumnDef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatHeaderCell", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatHeaderCell"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatFooterCell", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatFooterCell"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatCell", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatCell"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTable", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatTable"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatHeaderRowDef", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatHeaderRowDef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatFooterRowDef", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatFooterRowDef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatRowDef", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatRowDef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatHeaderRow", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatHeaderRow"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatFooterRow", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatFooterRow"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatRow", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatRow"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTableDataSource", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatTableDataSource"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTextColumn", function () {
+      return _angular_material_table__WEBPACK_IMPORTED_MODULE_30__["MatTextColumn"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(
+    /*! @angular/material/tabs */
+    "./node_modules/@angular/material/esm2015/tabs.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ɵa24", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["ɵa24"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ɵb24", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["ɵb24"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabsModule", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabsModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatInkBar", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatInkBar"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MAT_INK_BAR_POSITIONER", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["_MAT_INK_BAR_POSITIONER"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabBody", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabBody"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatTabBodyBase", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["_MatTabBodyBase"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabBodyPortal", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabBodyPortal"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabHeader", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabHeader"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatTabHeaderBase", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["_MatTabHeaderBase"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabLabelWrapper", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabLabelWrapper"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTab", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTab"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabLabel", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabLabel"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabNav", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabNav"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabLink", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabLink"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatTabNavBase", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["_MatTabNavBase"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatTabLinkBase", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["_MatTabLinkBase"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabContent", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabContent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabChangeEvent", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabChangeEvent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_TABS_CONFIG", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MAT_TABS_CONFIG"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatTabGroupBase", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["_MatTabGroupBase"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabGroup", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["MatTabGroup"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matTabsAnimations", function () {
+      return _angular_material_tabs__WEBPACK_IMPORTED_MODULE_31__["matTabsAnimations"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(
+    /*! @angular/material/toolbar */
+    "./node_modules/@angular/material/esm2015/toolbar.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatToolbarModule", function () {
+      return _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_32__["MatToolbarModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "throwToolbarMixedModesError", function () {
+      return _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_32__["throwToolbarMixedModesError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatToolbarRow", function () {
+      return _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_32__["MatToolbarRow"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatToolbar", function () {
+      return _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_32__["MatToolbar"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(
+    /*! @angular/material/tooltip */
+    "./node_modules/@angular/material/esm2015/tooltip.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTooltipModule", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["MatTooltipModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "getMatTooltipInvalidPositionError", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["getMatTooltipInvalidPositionError"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_TOOLTIP_DEFAULT_OPTIONS_FACTORY", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["MAT_TOOLTIP_DEFAULT_OPTIONS_FACTORY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SCROLL_THROTTLE_MS", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["SCROLL_THROTTLE_MS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "TOOLTIP_PANEL_CLASS", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["TOOLTIP_PANEL_CLASS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_TOOLTIP_SCROLL_STRATEGY", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["MAT_TOOLTIP_SCROLL_STRATEGY"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_TOOLTIP_DEFAULT_OPTIONS", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["MAT_TOOLTIP_DEFAULT_OPTIONS"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTooltip", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["MatTooltip"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "TooltipComponent", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["TooltipComponent"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matTooltipAnimations", function () {
+      return _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_33__["matTooltipAnimations"];
+    });
+    /* harmony import */
+
+
+    var _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(
+    /*! @angular/material/tree */
+    "./node_modules/@angular/material/esm2015/tree.js");
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNode", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatTreeNode"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNodeDef", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatTreeNodeDef"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatNestedTreeNode", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatNestedTreeNode"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNodePadding", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatTreeNodePadding"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTree", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatTree"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeModule", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatTreeModule"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNodeToggle", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatTreeNodeToggle"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNodeOutlet", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatTreeNodeOutlet"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeFlattener", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatTreeFlattener"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeFlatDataSource", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatTreeFlatDataSource"];
+    });
+    /* harmony reexport (safe) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNestedDataSource", function () {
+      return _angular_material_tree__WEBPACK_IMPORTED_MODULE_34__["MatTreeNestedDataSource"];
+    });
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=material.js.map
+
+    /***/
+
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/progress-bar.js":
+  /*!****************************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/progress-bar.js ***!
+    \****************************************************************/
+
+  /*! exports provided: MatProgressBarModule, MAT_PROGRESS_BAR_LOCATION_FACTORY, MAT_PROGRESS_BAR_LOCATION, MatProgressBar */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015ProgressBarJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatProgressBarModule", function () {
+      return MatProgressBarModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_PROGRESS_BAR_LOCATION_FACTORY", function () {
+      return MAT_PROGRESS_BAR_LOCATION_FACTORY;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_PROGRESS_BAR_LOCATION", function () {
+      return MAT_PROGRESS_BAR_LOCATION;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatProgressBar", function () {
+      return MatProgressBar;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/platform-browser/animations */
+    "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    // Boilerplate for applying mixins to MatProgressBar.
+
+    /**
+     * \@docs-private
+     */
+
+
+    var MatProgressBarBase =
+    /**
+     * @param {?} _elementRef
+     */
+    function MatProgressBarBase(_elementRef) {
+      _classCallCheck(this, MatProgressBarBase);
+
+      this._elementRef = _elementRef;
+    };
+    /** @type {?} */
+
+
+    var _MatProgressBarMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_4__["mixinColor"])(MatProgressBarBase, 'primary');
+    /**
+     * Injection token used to provide the current location to `MatProgressBar`.
+     * Used to handle server-side rendering and to stub out during unit tests.
+     * \@docs-private
+     * @type {?}
+     */
+
+
+    var MAT_PROGRESS_BAR_LOCATION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-progress-bar-location', {
+      providedIn: 'root',
+      factory: MAT_PROGRESS_BAR_LOCATION_FACTORY
+    });
+    /**
+     * \@docs-private
+     * @return {?}
+     */
+
+    function MAT_PROGRESS_BAR_LOCATION_FACTORY() {
+      /** @type {?} */
+      var _document = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_5__["DOCUMENT"]);
+      /** @type {?} */
+
+
+      var _location = _document ? _document.location : null;
+
+      return {
+        // Note that this needs to be a function, rather than a property, because Angular
+        // will only resolve it once, but we want the current path on each call.
+        getPathname:
+        /**
+        * @return {?}
+        */
+        function getPathname() {
+          return _location ? _location.pathname + _location.search : '';
+        }
+      };
+    }
+    /**
+     * Counter used to generate unique IDs for progress bars.
+     * @type {?}
+     */
+
+
+    var progressbarId = 0;
+    /**
+     * `<mat-progress-bar>` component.
+     */
+
+    var MatProgressBar = /*#__PURE__*/function (_MatProgressBarMixinB) {
+      _inherits(MatProgressBar, _MatProgressBarMixinB);
+
+      var _super11 = _createSuper(MatProgressBar);
+
+      /**
+       * @param {?} _elementRef
+       * @param {?} _ngZone
+       * @param {?=} _animationMode
+       * @param {?=} location
+       */
+      function MatProgressBar(_elementRef, _ngZone, _animationMode,
+      /**
+       * @deprecated `location` parameter to be made required.
+       * @breaking-change 8.0.0
+       */
+      location) {
+        var _this37;
+
+        _classCallCheck(this, MatProgressBar);
+
+        _this37 = _super11.call(this, _elementRef);
+        _this37._elementRef = _elementRef;
+        _this37._ngZone = _ngZone;
+        _this37._animationMode = _animationMode;
+        /**
+         * Flag that indicates whether NoopAnimations mode is set to true.
+         */
+
+        _this37._isNoopAnimation = false;
+        _this37._value = 0;
+        _this37._bufferValue = 0;
+        /**
+         * Event emitted when animation of the primary progress bar completes. This event will not
+         * be emitted when animations are disabled, nor will it be emitted for modes with continuous
+         * animations (indeterminate and query).
+         */
+
+        _this37.animationEnd = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Reference to animation end subscription to be unsubscribed on destroy.
+         */
+
+        _this37._animationEndSubscription = rxjs__WEBPACK_IMPORTED_MODULE_1__["Subscription"].EMPTY;
+        /**
+         * Mode of the progress bar.
+         *
+         * Input must be one of these values: determinate, indeterminate, buffer, query, defaults to
+         * 'determinate'.
+         * Mirrored to mode attribute.
+         */
+
+        _this37.mode = 'determinate';
+        /**
+         * ID of the progress bar.
+         */
+
+        _this37.progressbarId = "mat-progress-bar-".concat(progressbarId++); // We need to prefix the SVG reference with the current path, otherwise they won't work
+        // in Safari if the page has a `<base>` tag. Note that we need quotes inside the `url()`,
+        // because named route URLs can contain parentheses (see #12338). Also we don't use since
+        // we can't tell the difference between whether
+        // the consumer is using the hash location strategy or not, because `Location` normalizes
+        // both `/#/foo/bar` and `/foo/bar` to the same thing.
+
+        /** @type {?} */
+
+        var path = location ? location.getPathname().split('#')[0] : '';
+        _this37._rectangleFillValue = "url('".concat(path, "#").concat(_this37.progressbarId, "')");
+        _this37._isNoopAnimation = _animationMode === 'NoopAnimations';
+        return _this37;
+      }
+      /**
+       * Value of the progress bar. Defaults to zero. Mirrored to aria-valuenow.
+       * @return {?}
+       */
+
+
+      _createClass(MatProgressBar, [{
+        key: "_primaryTransform",
+
+        /**
+         * Gets the current transform value for the progress bar's primary indicator.
+         * @return {?}
+         */
+        value: function _primaryTransform() {
+          /** @type {?} */
+          var scale = this.value / 100;
+          return {
+            transform: "scaleX(".concat(scale, ")")
+          };
+        }
+        /**
+         * Gets the current transform value for the progress bar's buffer indicator. Only used if the
+         * progress mode is set to buffer, otherwise returns an undefined, causing no transformation.
+         * @return {?}
+         */
+
+      }, {
+        key: "_bufferTransform",
+        value: function _bufferTransform() {
+          if (this.mode === 'buffer') {
+            /** @type {?} */
+            var scale = this.bufferValue / 100;
+            return {
+              transform: "scaleX(".concat(scale, ")")
+            };
+          }
+
+          return undefined;
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngAfterViewInit",
+        value: function ngAfterViewInit() {
+          var _this38 = this;
+
+          if (!this._isNoopAnimation) {
+            // Run outside angular so change detection didn't get triggered on every transition end
+            // instead only on the animation that we care about (primary value bar's transitionend)
+            this._ngZone.runOutsideAngular(
+            /**
+            * @return {?}
+            */
+            function () {
+              /** @type {?} */
+              var element = _this38._primaryValueBar.nativeElement;
+              _this38._animationEndSubscription =
+              /** @type {?} */
+              Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["fromEvent"])(element, 'transitionend').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(
+              /**
+              * @param {?} e
+              * @return {?}
+              */
+              function (e) {
+                return e.target === element;
+              })).subscribe(
+              /**
+              * @return {?}
+              */
+              function () {
+                return _this38._ngZone.run(
+                /**
+                * @return {?}
+                */
+                function () {
+                  return _this38._emitAnimationEnd();
+                });
+              });
+            });
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._animationEndSubscription.unsubscribe();
+        }
+        /**
+         * Emit an animationEnd event if in determinate or buffer mode.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_emitAnimationEnd",
+        value: function _emitAnimationEnd() {
+          if (this.mode === 'determinate' || this.mode === 'buffer') {
+            this.animationEnd.next({
+              value: this.value
+            });
+          }
+        }
+      }, {
+        key: "value",
+        get: function get() {
+          return this._value;
+        }
+        /**
+         * @param {?} v
+         * @return {?}
+         */
+        ,
+        set: function set(v) {
+          this._value = clamp(v || 0); // When noop animation is set to true, trigger animationEnd directly.
+
+          if (this._isNoopAnimation) {
+            this._emitAnimationEnd();
+          }
+        }
+        /**
+         * Buffer value of the progress bar. Defaults to zero.
+         * @return {?}
+         */
+
+      }, {
+        key: "bufferValue",
+        get: function get() {
+          return this._bufferValue;
+        }
+        /**
+         * @param {?} v
+         * @return {?}
+         */
+        ,
+        set: function set(v) {
+          this._bufferValue = clamp(v || 0);
+        }
+      }]);
+
+      return MatProgressBar;
+    }(_MatProgressBarMixinBase);
+
+    MatProgressBar.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-progress-bar',
+        exportAs: 'matProgressBar',
+        host: {
+          'role': 'progressbar',
+          'aria-valuemin': '0',
+          'aria-valuemax': '100',
+          '[attr.aria-valuenow]': '(mode === "indeterminate" || mode === "query") ? null : value',
+          '[attr.mode]': 'mode',
+          'class': 'mat-progress-bar',
+          '[class._mat-animation-noopable]': '_isNoopAnimation'
+        },
+        inputs: ['color'],
+        template: "<svg width=\"100%\" height=\"4\" focusable=\"false\" class=\"mat-progress-bar-background mat-progress-bar-element\"><defs><pattern [id]=\"progressbarId\" x=\"4\" y=\"0\" width=\"8\" height=\"4\" patternUnits=\"userSpaceOnUse\"><circle cx=\"2\" cy=\"2\" r=\"2\"/></pattern></defs><rect [attr.fill]=\"_rectangleFillValue\" width=\"100%\" height=\"100%\"/></svg><div class=\"mat-progress-bar-buffer mat-progress-bar-element\" [ngStyle]=\"_bufferTransform()\"></div><div class=\"mat-progress-bar-primary mat-progress-bar-fill mat-progress-bar-element\" [ngStyle]=\"_primaryTransform()\" #primaryValueBar></div><div class=\"mat-progress-bar-secondary mat-progress-bar-fill mat-progress-bar-element\"></div>",
+        styles: [".mat-progress-bar{display:block;height:4px;overflow:hidden;position:relative;transition:opacity 250ms linear;width:100%}._mat-animation-noopable.mat-progress-bar{transition:none;animation:none}.mat-progress-bar .mat-progress-bar-element,.mat-progress-bar .mat-progress-bar-fill::after{height:100%;position:absolute;width:100%}.mat-progress-bar .mat-progress-bar-background{width:calc(100% + 10px)}@media (-ms-high-contrast:active){.mat-progress-bar .mat-progress-bar-background{display:none}}.mat-progress-bar .mat-progress-bar-buffer{transform-origin:top left;transition:transform 250ms ease}@media (-ms-high-contrast:active){.mat-progress-bar .mat-progress-bar-buffer{border-top:solid 5px;opacity:.5}}.mat-progress-bar .mat-progress-bar-secondary{display:none}.mat-progress-bar .mat-progress-bar-fill{animation:none;transform-origin:top left;transition:transform 250ms ease}@media (-ms-high-contrast:active){.mat-progress-bar .mat-progress-bar-fill{border-top:solid 4px}}.mat-progress-bar .mat-progress-bar-fill::after{animation:none;content:'';display:inline-block;left:0}.mat-progress-bar[dir=rtl],[dir=rtl] .mat-progress-bar{transform:rotateY(180deg)}.mat-progress-bar[mode=query]{transform:rotateZ(180deg)}.mat-progress-bar[mode=query][dir=rtl],[dir=rtl] .mat-progress-bar[mode=query]{transform:rotateZ(180deg) rotateY(180deg)}.mat-progress-bar[mode=indeterminate] .mat-progress-bar-fill,.mat-progress-bar[mode=query] .mat-progress-bar-fill{transition:none}.mat-progress-bar[mode=indeterminate] .mat-progress-bar-primary,.mat-progress-bar[mode=query] .mat-progress-bar-primary{-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:mat-progress-bar-primary-indeterminate-translate 2s infinite linear;left:-145.166611%}.mat-progress-bar[mode=indeterminate] .mat-progress-bar-primary.mat-progress-bar-fill::after,.mat-progress-bar[mode=query] .mat-progress-bar-primary.mat-progress-bar-fill::after{-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:mat-progress-bar-primary-indeterminate-scale 2s infinite linear}.mat-progress-bar[mode=indeterminate] .mat-progress-bar-secondary,.mat-progress-bar[mode=query] .mat-progress-bar-secondary{-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:mat-progress-bar-secondary-indeterminate-translate 2s infinite linear;left:-54.888891%;display:block}.mat-progress-bar[mode=indeterminate] .mat-progress-bar-secondary.mat-progress-bar-fill::after,.mat-progress-bar[mode=query] .mat-progress-bar-secondary.mat-progress-bar-fill::after{-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:mat-progress-bar-secondary-indeterminate-scale 2s infinite linear}.mat-progress-bar[mode=buffer] .mat-progress-bar-background{-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:mat-progress-bar-background-scroll 250ms infinite linear;display:block}.mat-progress-bar._mat-animation-noopable .mat-progress-bar-background,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-buffer,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-fill,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-fill::after,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-primary,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-primary.mat-progress-bar-fill::after,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-secondary,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-secondary.mat-progress-bar-fill::after{animation:none;transition:none}@keyframes mat-progress-bar-primary-indeterminate-translate{0%{transform:translateX(0)}20%{animation-timing-function:cubic-bezier(.5,0,.70173,.49582);transform:translateX(0)}59.15%{animation-timing-function:cubic-bezier(.30244,.38135,.55,.95635);transform:translateX(83.67142%)}100%{transform:translateX(200.61106%)}}@keyframes mat-progress-bar-primary-indeterminate-scale{0%{transform:scaleX(.08)}36.65%{animation-timing-function:cubic-bezier(.33473,.12482,.78584,1);transform:scaleX(.08)}69.15%{animation-timing-function:cubic-bezier(.06,.11,.6,1);transform:scaleX(.66148)}100%{transform:scaleX(.08)}}@keyframes mat-progress-bar-secondary-indeterminate-translate{0%{animation-timing-function:cubic-bezier(.15,0,.51506,.40969);transform:translateX(0)}25%{animation-timing-function:cubic-bezier(.31033,.28406,.8,.73371);transform:translateX(37.65191%)}48.35%{animation-timing-function:cubic-bezier(.4,.62704,.6,.90203);transform:translateX(84.38617%)}100%{transform:translateX(160.27778%)}}@keyframes mat-progress-bar-secondary-indeterminate-scale{0%{animation-timing-function:cubic-bezier(.15,0,.51506,.40969);transform:scaleX(.08)}19.15%{animation-timing-function:cubic-bezier(.31033,.28406,.8,.73371);transform:scaleX(.4571)}44.15%{animation-timing-function:cubic-bezier(.4,.62704,.6,.90203);transform:scaleX(.72796)}100%{transform:scaleX(.08)}}@keyframes mat-progress-bar-background-scroll{to{transform:translateX(-8px)}}"],
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
+      }]
+    }];
+    /** @nocollapse */
+
+    MatProgressBar.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [MAT_PROGRESS_BAR_LOCATION]
+        }]
+      }];
+    };
+
+    MatProgressBar.propDecorators = {
+      value: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      bufferValue: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      _primaryValueBar: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['primaryValueBar', {
+          "static": false
+        }]
+      }],
+      animationEnd: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      mode: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+    /**
+     * Clamps a value to be between two numbers, by default 0 and 100.
+     * @param {?} v
+     * @param {?=} min
+     * @param {?=} max
+     * @return {?}
+     */
+
+    function clamp(v) {
+      var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 100;
+      return Math.max(min, Math.min(max, v));
+    }
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+
+    var MatProgressBarModule = function MatProgressBarModule() {
+      _classCallCheck(this, MatProgressBarModule);
+    };
+
+    MatProgressBarModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+      args: [{
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"]],
+        exports: [MatProgressBar, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"]],
+        declarations: [MatProgressBar]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=progress-bar.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/progress-spinner.js":
+  /*!********************************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/progress-spinner.js ***!
+    \********************************************************************/
+
+  /*! exports provided: MatProgressSpinner, MatSpinner, MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_FACTORY, MatProgressSpinnerModule */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015ProgressSpinnerJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatProgressSpinner", function () {
+      return MatProgressSpinner;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSpinner", function () {
+      return MatSpinner;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS", function () {
+      return MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_FACTORY", function () {
+      return MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_FACTORY;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatProgressSpinnerModule", function () {
+      return MatProgressSpinnerModule;
+    });
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/cdk/platform */
+    "./node_modules/@angular/cdk/esm2015/platform.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/platform-browser/animations */
+    "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Base reference size of the spinner.
+     * \@docs-private
+     * @type {?}
+     */
+
+
+    var BASE_SIZE = 100;
+    /**
+     * Base reference stroke width of the spinner.
+     * \@docs-private
+     * @type {?}
+     */
+
+    var BASE_STROKE_WIDTH = 10; // Boilerplate for applying mixins to MatProgressSpinner.
+
+    /**
+     * \@docs-private
+     */
+
+    var MatProgressSpinnerBase =
+    /**
+     * @param {?} _elementRef
+     */
+    function MatProgressSpinnerBase(_elementRef) {
+      _classCallCheck(this, MatProgressSpinnerBase);
+
+      this._elementRef = _elementRef;
+    };
+    /** @type {?} */
+
+
+    var _MatProgressSpinnerMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_4__["mixinColor"])(MatProgressSpinnerBase, 'primary');
+    /**
+     * Injection token to be used to override the default options for `mat-progress-spinner`.
+     * @type {?}
+     */
+
+
+    var MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_3__["InjectionToken"]('mat-progress-spinner-default-options', {
+      providedIn: 'root',
+      factory: MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_FACTORY
+    });
+    /**
+     * \@docs-private
+     * @return {?}
+     */
+
+    function MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_FACTORY() {
+      return {
+        diameter: BASE_SIZE
+      };
+    } // .0001 percentage difference is necessary in order to avoid unwanted animation frames
+    // for example because the animation duration is 4 seconds, .1% accounts to 4ms
+    // which are enough to see the flicker described in
+    // https://github.com/angular/components/issues/8984
+
+    /** @type {?} */
+
+
+    var INDETERMINATE_ANIMATION_TEMPLATE = "\n @keyframes mat-progress-spinner-stroke-rotate-DIAMETER {\n    0%      { stroke-dashoffset: START_VALUE;  transform: rotate(0); }\n    12.5%   { stroke-dashoffset: END_VALUE;    transform: rotate(0); }\n    12.5001%  { stroke-dashoffset: END_VALUE;    transform: rotateX(180deg) rotate(72.5deg); }\n    25%     { stroke-dashoffset: START_VALUE;  transform: rotateX(180deg) rotate(72.5deg); }\n\n    25.0001%   { stroke-dashoffset: START_VALUE;  transform: rotate(270deg); }\n    37.5%   { stroke-dashoffset: END_VALUE;    transform: rotate(270deg); }\n    37.5001%  { stroke-dashoffset: END_VALUE;    transform: rotateX(180deg) rotate(161.5deg); }\n    50%     { stroke-dashoffset: START_VALUE;  transform: rotateX(180deg) rotate(161.5deg); }\n\n    50.0001%  { stroke-dashoffset: START_VALUE;  transform: rotate(180deg); }\n    62.5%   { stroke-dashoffset: END_VALUE;    transform: rotate(180deg); }\n    62.5001%  { stroke-dashoffset: END_VALUE;    transform: rotateX(180deg) rotate(251.5deg); }\n    75%     { stroke-dashoffset: START_VALUE;  transform: rotateX(180deg) rotate(251.5deg); }\n\n    75.0001%  { stroke-dashoffset: START_VALUE;  transform: rotate(90deg); }\n    87.5%   { stroke-dashoffset: END_VALUE;    transform: rotate(90deg); }\n    87.5001%  { stroke-dashoffset: END_VALUE;    transform: rotateX(180deg) rotate(341.5deg); }\n    100%    { stroke-dashoffset: START_VALUE;  transform: rotateX(180deg) rotate(341.5deg); }\n  }\n";
+    /**
+     * `<mat-progress-spinner>` component.
+     */
+
+    var MatProgressSpinner = /*#__PURE__*/function (_MatProgressSpinnerMi) {
+      _inherits(MatProgressSpinner, _MatProgressSpinnerMi);
+
+      var _super12 = _createSuper(MatProgressSpinner);
+
+      /**
+       * @param {?} _elementRef
+       * @param {?} platform
+       * @param {?} _document
+       * @param {?} animationMode
+       * @param {?=} defaults
+       */
+      function MatProgressSpinner(_elementRef, platform, _document, animationMode, defaults) {
+        var _this39;
+
+        _classCallCheck(this, MatProgressSpinner);
+
+        _this39 = _super12.call(this, _elementRef);
+        _this39._elementRef = _elementRef;
+        _this39._document = _document;
+        _this39._diameter = BASE_SIZE;
+        _this39._value = 0;
+        _this39._fallbackAnimation = false;
+        /**
+         * Mode of the progress circle
+         */
+
+        _this39.mode = 'determinate';
+        /** @type {?} */
+
+        var trackedDiameters = MatProgressSpinner._diameters; // The base size is already inserted via the component's structural styles. We still
+        // need to track it so we don't end up adding the same styles again.
+
+        if (!trackedDiameters.has(_document.head)) {
+          trackedDiameters.set(_document.head, new Set([BASE_SIZE]));
+        }
+
+        _this39._fallbackAnimation = platform.EDGE || platform.TRIDENT;
+        _this39._noopAnimations = animationMode === 'NoopAnimations' && !!defaults && !defaults._forceAnimations;
+
+        if (defaults) {
+          if (defaults.diameter) {
+            _this39.diameter = defaults.diameter;
+          }
+
+          if (defaults.strokeWidth) {
+            _this39.strokeWidth = defaults.strokeWidth;
+          }
+        }
+
+        return _this39;
+      }
+      /**
+       * The diameter of the progress spinner (will set width and height of svg).
+       * @return {?}
+       */
+
+
+      _createClass(MatProgressSpinner, [{
+        key: "ngOnInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngOnInit() {
+          /** @type {?} */
+          var element = this._elementRef.nativeElement; // Note that we need to look up the root node in ngOnInit, rather than the constructor, because
+          // Angular seems to create the element outside the shadow root and then moves it inside, if the
+          // node is inside an `ngIf` and a ShadowDom-encapsulated component.
+
+          this._styleRoot = _getShadowRoot(element, this._document) || this._document.head;
+
+          this._attachStyleNode(); // On IE and Edge, we can't animate the `stroke-dashoffset`
+          // reliably so we fall back to a non-spec animation.
+
+          /** @type {?} */
+
+
+          var animationClass = "mat-progress-spinner-indeterminate".concat(this._fallbackAnimation ? '-fallback' : '', "-animation");
+          element.classList.add(animationClass);
+        }
+        /**
+         * The radius of the spinner, adjusted for stroke width.
+         * @return {?}
+         */
+
+      }, {
+        key: "_attachStyleNode",
+
+        /**
+         * Dynamically generates a style tag containing the correct animation for this diameter.
+         * @private
+         * @return {?}
+         */
+        value: function _attachStyleNode() {
+          /** @type {?} */
+          var styleRoot = this._styleRoot;
+          /** @type {?} */
+
+          var currentDiameter = this._diameter;
+          /** @type {?} */
+
+          var diameters = MatProgressSpinner._diameters;
+          /** @type {?} */
+
+          var diametersForElement = diameters.get(styleRoot);
+
+          if (!diametersForElement || !diametersForElement.has(currentDiameter)) {
+            /** @type {?} */
+            var styleTag = this._document.createElement('style');
+
+            styleTag.setAttribute('mat-spinner-animation', currentDiameter + '');
+            styleTag.textContent = this._getAnimationText();
+            styleRoot.appendChild(styleTag);
+
+            if (!diametersForElement) {
+              diametersForElement = new Set();
+              diameters.set(styleRoot, diametersForElement);
+            }
+
+            diametersForElement.add(currentDiameter);
+          }
+        }
+        /**
+         * Generates animation styles adjusted for the spinner's diameter.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_getAnimationText",
+        value: function _getAnimationText() {
+          return INDETERMINATE_ANIMATION_TEMPLATE // Animation should begin at 5% and end at 80%
+          .replace(/START_VALUE/g, "".concat(0.95 * this._strokeCircumference)).replace(/END_VALUE/g, "".concat(0.2 * this._strokeCircumference)).replace(/DIAMETER/g, "".concat(this.diameter));
+        }
+      }, {
+        key: "diameter",
+        get: function get() {
+          return this._diameter;
+        }
+        /**
+         * @param {?} size
+         * @return {?}
+         */
+        ,
+        set: function set(size) {
+          this._diameter = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceNumberProperty"])(size); // If this is set before `ngOnInit`, the style root may not have been resolved yet.
+
+          if (!this._fallbackAnimation && this._styleRoot) {
+            this._attachStyleNode();
+          }
+        }
+        /**
+         * Stroke width of the progress spinner.
+         * @return {?}
+         */
+
+      }, {
+        key: "strokeWidth",
+        get: function get() {
+          return this._strokeWidth || this.diameter / 10;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._strokeWidth = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceNumberProperty"])(value);
+        }
+        /**
+         * Value of the progress circle.
+         * @return {?}
+         */
+
+      }, {
+        key: "value",
+        get: function get() {
+          return this.mode === 'determinate' ? this._value : 0;
+        }
+        /**
+         * @param {?} newValue
+         * @return {?}
+         */
+        ,
+        set: function set(newValue) {
+          this._value = Math.max(0, Math.min(100, Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceNumberProperty"])(newValue)));
+        }
+      }, {
+        key: "_circleRadius",
+        get: function get() {
+          return (this.diameter - BASE_STROKE_WIDTH) / 2;
+        }
+        /**
+         * The view box of the spinner's svg element.
+         * @return {?}
+         */
+
+      }, {
+        key: "_viewBox",
+        get: function get() {
+          /** @type {?} */
+          var viewBox = this._circleRadius * 2 + this.strokeWidth;
+          return "0 0 ".concat(viewBox, " ").concat(viewBox);
+        }
+        /**
+         * The stroke circumference of the svg circle.
+         * @return {?}
+         */
+
+      }, {
+        key: "_strokeCircumference",
+        get: function get() {
+          return 2 * Math.PI * this._circleRadius;
+        }
+        /**
+         * The dash offset of the svg circle.
+         * @return {?}
+         */
+
+      }, {
+        key: "_strokeDashOffset",
+        get: function get() {
+          if (this.mode === 'determinate') {
+            return this._strokeCircumference * (100 - this._value) / 100;
+          } // In fallback mode set the circle to 80% and rotate it with CSS.
+
+
+          if (this._fallbackAnimation && this.mode === 'indeterminate') {
+            return this._strokeCircumference * 0.2;
+          }
+
+          return null;
+        }
+        /**
+         * Stroke width of the circle in percent.
+         * @return {?}
+         */
+
+      }, {
+        key: "_circleStrokeWidth",
+        get: function get() {
+          return this.strokeWidth / this.diameter * 100;
+        }
+      }]);
+
+      return MatProgressSpinner;
+    }(_MatProgressSpinnerMixinBase);
+    /**
+     * Tracks diameters of existing instances to de-dupe generated styles (default d = 100).
+     * We need to keep track of which elements the diameters were attached to, because for
+     * elements in the Shadow DOM the style tags are attached to the shadow root, rather
+     * than the document head.
+     */
+
+
+    MatProgressSpinner._diameters = new WeakMap();
+    MatProgressSpinner.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"],
+      args: [{
+        selector: 'mat-progress-spinner',
+        exportAs: 'matProgressSpinner',
+        host: {
+          'role': 'progressbar',
+          'class': 'mat-progress-spinner',
+          '[class._mat-animation-noopable]': "_noopAnimations",
+          '[style.width.px]': 'diameter',
+          '[style.height.px]': 'diameter',
+          '[attr.aria-valuemin]': 'mode === "determinate" ? 0 : null',
+          '[attr.aria-valuemax]': 'mode === "determinate" ? 100 : null',
+          '[attr.aria-valuenow]': 'mode === "determinate" ? value : null',
+          '[attr.mode]': 'mode'
+        },
+        inputs: ['color'],
+        template: "<svg [style.width.px]=\"diameter\" [style.height.px]=\"diameter\" [attr.viewBox]=\"_viewBox\" preserveAspectRatio=\"xMidYMid meet\" focusable=\"false\" [ngSwitch]=\"mode === 'indeterminate'\"><circle *ngSwitchCase=\"true\" cx=\"50%\" cy=\"50%\" [attr.r]=\"_circleRadius\" [style.animation-name]=\"'mat-progress-spinner-stroke-rotate-' + diameter\" [style.stroke-dashoffset.px]=\"_strokeDashOffset\" [style.stroke-dasharray.px]=\"_strokeCircumference\" [style.stroke-width.%]=\"_circleStrokeWidth\"></circle><circle *ngSwitchCase=\"false\" cx=\"50%\" cy=\"50%\" [attr.r]=\"_circleRadius\" [style.stroke-dashoffset.px]=\"_strokeDashOffset\" [style.stroke-dasharray.px]=\"_strokeCircumference\" [style.stroke-width.%]=\"_circleStrokeWidth\"></circle></svg>",
+        styles: [".mat-progress-spinner{display:block;position:relative}.mat-progress-spinner svg{position:absolute;transform:rotate(-90deg);top:0;left:0;transform-origin:center;overflow:visible}.mat-progress-spinner circle{fill:transparent;transform-origin:center;transition:stroke-dashoffset 225ms linear}._mat-animation-noopable.mat-progress-spinner circle{transition:none;animation:none}.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate]{animation:mat-progress-spinner-linear-rotate 2s linear infinite}._mat-animation-noopable.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate]{transition:none;animation:none}.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate] circle{transition-property:stroke;animation-duration:4s;animation-timing-function:cubic-bezier(.35,0,.25,1);animation-iteration-count:infinite}._mat-animation-noopable.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate] circle{transition:none;animation:none}.mat-progress-spinner.mat-progress-spinner-indeterminate-fallback-animation[mode=indeterminate]{animation:mat-progress-spinner-stroke-rotate-fallback 10s cubic-bezier(.87,.03,.33,1) infinite}._mat-animation-noopable.mat-progress-spinner.mat-progress-spinner-indeterminate-fallback-animation[mode=indeterminate]{transition:none;animation:none}.mat-progress-spinner.mat-progress-spinner-indeterminate-fallback-animation[mode=indeterminate] circle{transition-property:stroke}._mat-animation-noopable.mat-progress-spinner.mat-progress-spinner-indeterminate-fallback-animation[mode=indeterminate] circle{transition:none;animation:none}@keyframes mat-progress-spinner-linear-rotate{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes mat-progress-spinner-stroke-rotate-100{0%{stroke-dashoffset:268.60617px;transform:rotate(0)}12.5%{stroke-dashoffset:56.54867px;transform:rotate(0)}12.5001%{stroke-dashoffset:56.54867px;transform:rotateX(180deg) rotate(72.5deg)}25%{stroke-dashoffset:268.60617px;transform:rotateX(180deg) rotate(72.5deg)}25.0001%{stroke-dashoffset:268.60617px;transform:rotate(270deg)}37.5%{stroke-dashoffset:56.54867px;transform:rotate(270deg)}37.5001%{stroke-dashoffset:56.54867px;transform:rotateX(180deg) rotate(161.5deg)}50%{stroke-dashoffset:268.60617px;transform:rotateX(180deg) rotate(161.5deg)}50.0001%{stroke-dashoffset:268.60617px;transform:rotate(180deg)}62.5%{stroke-dashoffset:56.54867px;transform:rotate(180deg)}62.5001%{stroke-dashoffset:56.54867px;transform:rotateX(180deg) rotate(251.5deg)}75%{stroke-dashoffset:268.60617px;transform:rotateX(180deg) rotate(251.5deg)}75.0001%{stroke-dashoffset:268.60617px;transform:rotate(90deg)}87.5%{stroke-dashoffset:56.54867px;transform:rotate(90deg)}87.5001%{stroke-dashoffset:56.54867px;transform:rotateX(180deg) rotate(341.5deg)}100%{stroke-dashoffset:268.60617px;transform:rotateX(180deg) rotate(341.5deg)}}@keyframes mat-progress-spinner-stroke-rotate-fallback{0%{transform:rotate(0)}25%{transform:rotate(1170deg)}50%{transform:rotate(2340deg)}75%{transform:rotate(3510deg)}100%{transform:rotate(4680deg)}}"],
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectionStrategy"].OnPush,
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewEncapsulation"].None
+      }]
+    }];
+    /** @nocollapse */
+
+    MatProgressSpinner.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"]
+      }, {
+        type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_1__["Platform"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
+          args: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["DOCUMENT"]]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
+          args: [MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS]
+        }]
+      }];
+    };
+
+    MatProgressSpinner.propDecorators = {
+      diameter: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      strokeWidth: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      mode: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }],
+      value: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"]
+      }]
+    };
+    /**
+     * `<mat-spinner>` component.
+     *
+     * This is a component definition to be used as a convenience reference to create an
+     * indeterminate `<mat-progress-spinner>` instance.
+     */
+
+    var MatSpinner = /*#__PURE__*/function (_MatProgressSpinner) {
+      _inherits(MatSpinner, _MatProgressSpinner);
+
+      var _super13 = _createSuper(MatSpinner);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} platform
+       * @param {?} document
+       * @param {?} animationMode
+       * @param {?=} defaults
+       */
+      function MatSpinner(elementRef, platform, document, animationMode, defaults) {
+        var _this40;
+
+        _classCallCheck(this, MatSpinner);
+
+        _this40 = _super13.call(this, elementRef, platform, document, animationMode, defaults);
+        _this40.mode = 'indeterminate';
+        return _this40;
+      }
+
+      return MatSpinner;
+    }(MatProgressSpinner);
+
+    MatSpinner.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"],
+      args: [{
+        selector: 'mat-spinner',
+        host: {
+          'role': 'progressbar',
+          'mode': 'indeterminate',
+          'class': 'mat-spinner mat-progress-spinner',
+          '[class._mat-animation-noopable]': "_noopAnimations",
+          '[style.width.px]': 'diameter',
+          '[style.height.px]': 'diameter'
+        },
+        inputs: ['color'],
+        template: "<svg [style.width.px]=\"diameter\" [style.height.px]=\"diameter\" [attr.viewBox]=\"_viewBox\" preserveAspectRatio=\"xMidYMid meet\" focusable=\"false\" [ngSwitch]=\"mode === 'indeterminate'\"><circle *ngSwitchCase=\"true\" cx=\"50%\" cy=\"50%\" [attr.r]=\"_circleRadius\" [style.animation-name]=\"'mat-progress-spinner-stroke-rotate-' + diameter\" [style.stroke-dashoffset.px]=\"_strokeDashOffset\" [style.stroke-dasharray.px]=\"_strokeCircumference\" [style.stroke-width.%]=\"_circleStrokeWidth\"></circle><circle *ngSwitchCase=\"false\" cx=\"50%\" cy=\"50%\" [attr.r]=\"_circleRadius\" [style.stroke-dashoffset.px]=\"_strokeDashOffset\" [style.stroke-dasharray.px]=\"_strokeCircumference\" [style.stroke-width.%]=\"_circleStrokeWidth\"></circle></svg>",
+        styles: [".mat-progress-spinner{display:block;position:relative}.mat-progress-spinner svg{position:absolute;transform:rotate(-90deg);top:0;left:0;transform-origin:center;overflow:visible}.mat-progress-spinner circle{fill:transparent;transform-origin:center;transition:stroke-dashoffset 225ms linear}._mat-animation-noopable.mat-progress-spinner circle{transition:none;animation:none}.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate]{animation:mat-progress-spinner-linear-rotate 2s linear infinite}._mat-animation-noopable.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate]{transition:none;animation:none}.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate] circle{transition-property:stroke;animation-duration:4s;animation-timing-function:cubic-bezier(.35,0,.25,1);animation-iteration-count:infinite}._mat-animation-noopable.mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate] circle{transition:none;animation:none}.mat-progress-spinner.mat-progress-spinner-indeterminate-fallback-animation[mode=indeterminate]{animation:mat-progress-spinner-stroke-rotate-fallback 10s cubic-bezier(.87,.03,.33,1) infinite}._mat-animation-noopable.mat-progress-spinner.mat-progress-spinner-indeterminate-fallback-animation[mode=indeterminate]{transition:none;animation:none}.mat-progress-spinner.mat-progress-spinner-indeterminate-fallback-animation[mode=indeterminate] circle{transition-property:stroke}._mat-animation-noopable.mat-progress-spinner.mat-progress-spinner-indeterminate-fallback-animation[mode=indeterminate] circle{transition:none;animation:none}@keyframes mat-progress-spinner-linear-rotate{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes mat-progress-spinner-stroke-rotate-100{0%{stroke-dashoffset:268.60617px;transform:rotate(0)}12.5%{stroke-dashoffset:56.54867px;transform:rotate(0)}12.5001%{stroke-dashoffset:56.54867px;transform:rotateX(180deg) rotate(72.5deg)}25%{stroke-dashoffset:268.60617px;transform:rotateX(180deg) rotate(72.5deg)}25.0001%{stroke-dashoffset:268.60617px;transform:rotate(270deg)}37.5%{stroke-dashoffset:56.54867px;transform:rotate(270deg)}37.5001%{stroke-dashoffset:56.54867px;transform:rotateX(180deg) rotate(161.5deg)}50%{stroke-dashoffset:268.60617px;transform:rotateX(180deg) rotate(161.5deg)}50.0001%{stroke-dashoffset:268.60617px;transform:rotate(180deg)}62.5%{stroke-dashoffset:56.54867px;transform:rotate(180deg)}62.5001%{stroke-dashoffset:56.54867px;transform:rotateX(180deg) rotate(251.5deg)}75%{stroke-dashoffset:268.60617px;transform:rotateX(180deg) rotate(251.5deg)}75.0001%{stroke-dashoffset:268.60617px;transform:rotate(90deg)}87.5%{stroke-dashoffset:56.54867px;transform:rotate(90deg)}87.5001%{stroke-dashoffset:56.54867px;transform:rotateX(180deg) rotate(341.5deg)}100%{stroke-dashoffset:268.60617px;transform:rotateX(180deg) rotate(341.5deg)}}@keyframes mat-progress-spinner-stroke-rotate-fallback{0%{transform:rotate(0)}25%{transform:rotate(1170deg)}50%{transform:rotate(2340deg)}75%{transform:rotate(3510deg)}100%{transform:rotate(4680deg)}}"],
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ChangeDetectionStrategy"].OnPush,
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewEncapsulation"].None
+      }]
+    }];
+    /** @nocollapse */
+
+    MatSpinner.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ElementRef"]
+      }, {
+        type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_1__["Platform"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
+          args: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["DOCUMENT"]]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
+          args: [MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS]
+        }]
+      }];
+    };
+    /**
+     * Gets the shadow root of an element, if supported and the element is inside the Shadow DOM.
+     * @param {?} element
+     * @param {?} _document
+     * @return {?}
+     */
+
+
+    function _getShadowRoot(element, _document) {
+      // TODO(crisbeto): see whether we should move this into the CDK
+      // feature detection utilities once #15616 gets merged in.
+      if (typeof window !== 'undefined') {
+        /** @type {?} */
+        var head = _document.head; // Check whether the browser supports Shadow DOM.
+
+        if (head && (
+        /** @type {?} */
+        head.createShadowRoot || head.attachShadow)) {
+          /** @type {?} */
+          var rootNode = element.getRootNode ? element.getRootNode() : null; // We need to take the `ShadowRoot` off of `window`, because the built-in types are
+          // incorrect. See https://github.com/Microsoft/TypeScript/issues/27929.
+
+          if (rootNode instanceof
+          /** @type {?} */
+          window.ShadowRoot) {
+            return rootNode;
+          }
+        }
+      }
+
+      return null;
+    }
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+
+    var MatProgressSpinnerModule = function MatProgressSpinnerModule() {
+      _classCallCheck(this, MatProgressSpinnerModule);
+    };
+
+    MatProgressSpinnerModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"],
+      args: [{
+        imports: [_angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
+        exports: [MatProgressSpinner, MatSpinner, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"]],
+        declarations: [MatProgressSpinner, MatSpinner]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=progress-spinner.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/slide-toggle.js":
+  /*!****************************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/slide-toggle.js ***!
+    \****************************************************************/
+
+  /*! exports provided: _MatSlideToggleRequiredValidatorModule, MatSlideToggleModule, MAT_SLIDE_TOGGLE_VALUE_ACCESSOR, MatSlideToggleChange, MatSlideToggle, MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MAT_SLIDE_TOGGLE_REQUIRED_VALIDATOR, MatSlideToggleRequiredValidator */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015SlideToggleJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatSlideToggleRequiredValidatorModule", function () {
+      return _MatSlideToggleRequiredValidatorModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSlideToggleModule", function () {
+      return MatSlideToggleModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SLIDE_TOGGLE_VALUE_ACCESSOR", function () {
+      return MAT_SLIDE_TOGGLE_VALUE_ACCESSOR;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSlideToggleChange", function () {
+      return MatSlideToggleChange;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSlideToggle", function () {
+      return MatSlideToggle;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS", function () {
+      return MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SLIDE_TOGGLE_REQUIRED_VALIDATOR", function () {
+      return MAT_SLIDE_TOGGLE_REQUIRED_VALIDATOR;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSlideToggleRequiredValidator", function () {
+      return MatSlideToggleRequiredValidator;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/cdk/bidi */
+    "./node_modules/@angular/cdk/esm2015/bidi.js");
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/platform-browser/animations */
+    "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/cdk/observers */
+    "./node_modules/@angular/cdk/esm2015/observers.js");
+    /* harmony import */
+
+
+    var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/platform-browser */
+    "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Injection token to be used to override the default options for `mat-slide-toggle`.
+     * @type {?}
+     */
+
+
+    var MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-slide-toggle-default-options', {
+      providedIn: 'root',
+      factory:
+      /**
+      * @return {?}
+      */
+      function factory() {
+        return {
+          disableToggleValue: false,
+          disableDragValue: false
+        };
+      }
+    });
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    // Increasing integer for generating unique ids for slide-toggle components.
+
+    /** @type {?} */
+
+    var nextUniqueId = 0;
+    /**
+     * \@docs-private
+     * @type {?}
+     */
+
+    var MAT_SLIDE_TOGGLE_VALUE_ACCESSOR = {
+      provide: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NG_VALUE_ACCESSOR"],
+      useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(
+      /**
+      * @return {?}
+      */
+      function () {
+        return MatSlideToggle;
+      }),
+      multi: true
+    };
+    /**
+     * Change event object emitted by a MatSlideToggle.
+     */
+
+    var MatSlideToggleChange =
+    /**
+     * @param {?} source
+     * @param {?} checked
+     */
+    function MatSlideToggleChange(source, checked) {
+      _classCallCheck(this, MatSlideToggleChange);
+
+      this.source = source;
+      this.checked = checked;
+    }; // Boilerplate for applying mixins to MatSlideToggle.
+
+    /**
+     * \@docs-private
+     */
+
+
+    var MatSlideToggleBase =
+    /**
+     * @param {?} _elementRef
+     */
+    function MatSlideToggleBase(_elementRef) {
+      _classCallCheck(this, MatSlideToggleBase);
+
+      this._elementRef = _elementRef;
+    };
+    /** @type {?} */
+
+
+    var _MatSlideToggleMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_5__["mixinTabIndex"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_5__["mixinColor"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_5__["mixinDisableRipple"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_5__["mixinDisabled"])(MatSlideToggleBase)), 'accent'));
+    /**
+     * Represents a slidable "switch" toggle that can be moved between on and off.
+     */
+
+
+    var MatSlideToggle = /*#__PURE__*/function (_MatSlideToggleMixinB) {
+      _inherits(MatSlideToggle, _MatSlideToggleMixinB);
+
+      var _super14 = _createSuper(MatSlideToggle);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} _focusMonitor
+       * @param {?} _changeDetectorRef
+       * @param {?} tabIndex
+       * @param {?} _ngZone
+       * @param {?} defaults
+       * @param {?=} _animationMode
+       * @param {?=} _dir
+       */
+      function MatSlideToggle(elementRef, _focusMonitor, _changeDetectorRef, tabIndex, _ngZone, defaults, _animationMode, _dir) {
+        var _this41;
+
+        _classCallCheck(this, MatSlideToggle);
+
+        _this41 = _super14.call(this, elementRef);
+        _this41._focusMonitor = _focusMonitor;
+        _this41._changeDetectorRef = _changeDetectorRef;
+        _this41._ngZone = _ngZone;
+        _this41.defaults = defaults;
+        _this41._animationMode = _animationMode;
+        _this41._dir = _dir;
+
+        _this41._onChange =
+        /**
+        * @param {?} _
+        * @return {?}
+        */
+        function (_) {};
+
+        _this41._onTouched =
+        /**
+        * @return {?}
+        */
+        function () {};
+
+        _this41._uniqueId = "mat-slide-toggle-".concat(++nextUniqueId);
+        _this41._required = false;
+        _this41._checked = false;
+        /**
+         * Whether the thumb is currently being dragged.
+         */
+
+        _this41._dragging = false;
+        /**
+         * Name value will be applied to the input element if present.
+         */
+
+        _this41.name = null;
+        /**
+         * A unique id for the slide-toggle input. If none is supplied, it will be auto-generated.
+         */
+
+        _this41.id = _this41._uniqueId;
+        /**
+         * Whether the label should appear after or before the slide-toggle. Defaults to 'after'.
+         */
+
+        _this41.labelPosition = 'after';
+        /**
+         * Used to set the aria-label attribute on the underlying input element.
+         */
+
+        _this41.ariaLabel = null;
+        /**
+         * Used to set the aria-labelledby attribute on the underlying input element.
+         */
+
+        _this41.ariaLabelledby = null;
+        /**
+         * An event will be dispatched each time the slide-toggle changes its value.
+         */
+
+        _this41.change = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * An event will be dispatched each time the slide-toggle input is toggled.
+         * This event is always emitted when the user toggles the slide toggle, but this does not mean
+         * the slide toggle's value has changed. The event does not fire when the user drags to change
+         * the slide toggle value.
+         */
+
+        _this41.toggleChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * An event will be dispatched each time the slide-toggle is dragged.
+         * This event is always emitted when the user drags the slide toggle to make a change greater
+         * than 50%. It does not mean the slide toggle's value is changed. The event is not emitted when
+         * the user toggles the slide toggle to change its value.
+         */
+
+        _this41.dragChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        _this41.tabIndex = parseInt(tabIndex) || 0;
+        return _this41;
+      }
+      /**
+       * Whether the slide-toggle is required.
+       * @return {?}
+       */
+
+
+      _createClass(MatSlideToggle, [{
+        key: "ngAfterContentInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngAfterContentInit() {
+          var _this42 = this;
+
+          this._focusMonitor.monitor(this._elementRef, true).subscribe(
+          /**
+          * @param {?} focusOrigin
+          * @return {?}
+          */
+          function (focusOrigin) {
+            if (!focusOrigin) {
+              // When a focused element becomes disabled, the browser *immediately* fires a blur event.
+              // Angular does not expect events to be raised during change detection, so any state
+              // change (such as a form control's 'ng-touched') will cause a changed-after-checked
+              // error. See https://github.com/angular/angular/issues/17793. To work around this,
+              // we defer telling the form control it has been touched until the next tick.
+              Promise.resolve().then(
+              /**
+              * @return {?}
+              */
+              function () {
+                return _this42._onTouched();
+              });
+            }
+          });
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._focusMonitor.stopMonitoring(this._elementRef);
+        }
+        /**
+         * Method being called whenever the underlying input emits a change event.
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onChangeEvent",
+        value: function _onChangeEvent(event) {
+          // We always have to stop propagation on the change event.
+          // Otherwise the change event, from the input element, will bubble up and
+          // emit its event object to the component's `change` output.
+          event.stopPropagation();
+
+          if (!this._dragging) {
+            this.toggleChange.emit();
+          } // Releasing the pointer over the `<label>` element while dragging triggers another
+          // click event on the `<label>` element. This means that the checked state of the underlying
+          // input changed unintentionally and needs to be changed back. Or when the slide toggle's config
+          // disabled toggle change event by setting `disableToggleValue: true`, the slide toggle's value
+          // does not change, and the checked state of the underlying input needs to be changed back.
+
+
+          if (this._dragging || this.defaults.disableToggleValue) {
+            this._inputElement.nativeElement.checked = this.checked;
+            return;
+          } // Sync the value from the underlying input element with the component instance.
+
+
+          this.checked = this._inputElement.nativeElement.checked; // Emit our custom change event only if the underlying input emitted one. This ensures that
+          // there is no change event, when the checked state changes programmatically.
+
+          this._emitChangeEvent();
+        }
+        /**
+         * Method being called whenever the slide-toggle has been clicked.
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onInputClick",
+        value: function _onInputClick(event) {
+          // We have to stop propagation for click events on the visual hidden input element.
+          // By default, when a user clicks on a label element, a generated click event will be
+          // dispatched on the associated input element. Since we are using a label element as our
+          // root container, the click event on the `slide-toggle` will be executed twice.
+          // The real click event will bubble up, and the generated click event also tries to bubble up.
+          // This will lead to multiple click events.
+          // Preventing bubbling for the second event will solve that issue.
+          event.stopPropagation();
+        }
+        /**
+         * Implemented as part of ControlValueAccessor.
+         * @param {?} value
+         * @return {?}
+         */
+
+      }, {
+        key: "writeValue",
+        value: function writeValue(value) {
+          this.checked = !!value;
+        }
+        /**
+         * Implemented as part of ControlValueAccessor.
+         * @param {?} fn
+         * @return {?}
+         */
+
+      }, {
+        key: "registerOnChange",
+        value: function registerOnChange(fn) {
+          this._onChange = fn;
+        }
+        /**
+         * Implemented as part of ControlValueAccessor.
+         * @param {?} fn
+         * @return {?}
+         */
+
+      }, {
+        key: "registerOnTouched",
+        value: function registerOnTouched(fn) {
+          this._onTouched = fn;
+        }
+        /**
+         * Implemented as a part of ControlValueAccessor.
+         * @param {?} isDisabled
+         * @return {?}
+         */
+
+      }, {
+        key: "setDisabledState",
+        value: function setDisabledState(isDisabled) {
+          this.disabled = isDisabled;
+
+          this._changeDetectorRef.markForCheck();
+        }
+        /**
+         * Focuses the slide-toggle.
+         * @param {?=} options
+         * @return {?}
+         */
+
+      }, {
+        key: "focus",
+        value: function focus(options) {
+          this._focusMonitor.focusVia(this._inputElement, 'keyboard', options);
+        }
+        /**
+         * Toggles the checked state of the slide-toggle.
+         * @return {?}
+         */
+
+      }, {
+        key: "toggle",
+        value: function toggle() {
+          this.checked = !this.checked;
+
+          this._onChange(this.checked);
+        }
+        /**
+         * Emits a change event on the `change` output. Also notifies the FormControl about the change.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_emitChangeEvent",
+        value: function _emitChangeEvent() {
+          this._onChange(this.checked);
+
+          this.change.emit(new MatSlideToggleChange(this, this.checked));
+        }
+        /**
+         * Retrieves the percentage of thumb from the moved distance. Percentage as fraction of 100.
+         * @private
+         * @param {?} distance
+         * @return {?}
+         */
+
+      }, {
+        key: "_getDragPercentage",
+        value: function _getDragPercentage(distance) {
+          /** @type {?} */
+          var percentage = distance / this._thumbBarWidth * 100; // When the toggle was initially checked, then we have to start the drag at the end.
+
+          if (this._previousChecked) {
+            percentage += 100;
+          }
+
+          return Math.max(0, Math.min(percentage, 100));
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_onDragStart",
+        value: function _onDragStart() {
+          if (!this.disabled && !this._dragging) {
+            /** @type {?} */
+            var thumbEl = this._thumbEl.nativeElement;
+            this._thumbBarWidth = this._thumbBarEl.nativeElement.clientWidth - thumbEl.clientWidth;
+            thumbEl.classList.add('mat-dragging');
+            this._previousChecked = this.checked;
+            this._dragging = true;
+          }
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onDrag",
+        value: function _onDrag(event) {
+          if (this._dragging) {
+            /** @type {?} */
+            var direction = this._dir && this._dir.value === 'rtl' ? -1 : 1;
+            this._dragPercentage = this._getDragPercentage(event.deltaX * direction); // Calculate the moved distance based on the thumb bar width.
+
+            /** @type {?} */
+
+            var dragX = this._dragPercentage / 100 * this._thumbBarWidth * direction;
+            this._thumbEl.nativeElement.style.transform = "translate3d(".concat(dragX, "px, 0, 0)");
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_onDragEnd",
+        value: function _onDragEnd() {
+          var _this43 = this;
+
+          if (this._dragging) {
+            /** @type {?} */
+            var newCheckedValue = this._dragPercentage > 50;
+
+            if (newCheckedValue !== this.checked) {
+              this.dragChange.emit();
+
+              if (!this.defaults.disableDragValue) {
+                this.checked = newCheckedValue;
+
+                this._emitChangeEvent();
+              }
+            } // The drag should be stopped outside of the current event handler, otherwise the
+            // click event will be fired before it and will revert the drag change.
+
+
+            this._ngZone.runOutsideAngular(
+            /**
+            * @return {?}
+            */
+            function () {
+              return setTimeout(
+              /**
+              * @return {?}
+              */
+              function () {
+                if (_this43._dragging) {
+                  _this43._dragging = false;
+
+                  _this43._thumbEl.nativeElement.classList.remove('mat-dragging'); // Reset the transform because the component will take care
+                  // of the thumb position after drag.
+
+
+                  _this43._thumbEl.nativeElement.style.transform = '';
+                }
+              });
+            });
+          }
+        }
+        /**
+         * Method being called whenever the label text changes.
+         * @return {?}
+         */
+
+      }, {
+        key: "_onLabelTextChange",
+        value: function _onLabelTextChange() {
+          // Since the event of the `cdkObserveContent` directive runs outside of the zone, the
+          // slide-toggle component will be only marked for check, but no actual change detection runs
+          // automatically. Instead of going back into the zone in order to trigger a change detection
+          // which causes *all* components to be checked (if explicitly marked or not using OnPush),
+          // we only trigger an explicit change detection for the slide-toggle view and its children.
+          this._changeDetectorRef.detectChanges();
+        }
+      }, {
+        key: "required",
+        get: function get() {
+          return this._required;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._required = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * Whether the slide-toggle element is checked or not.
+         * @return {?}
+         */
+
+      }, {
+        key: "checked",
+        get: function get() {
+          return this._checked;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._checked = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceBooleanProperty"])(value);
+
+          this._changeDetectorRef.markForCheck();
+        }
+        /**
+         * Returns the unique id for the visual hidden input.
+         * @return {?}
+         */
+
+      }, {
+        key: "inputId",
+        get: function get() {
+          return "".concat(this.id || this._uniqueId, "-input");
+        }
+      }]);
+
+      return MatSlideToggle;
+    }(_MatSlideToggleMixinBase);
+
+    MatSlideToggle.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-slide-toggle',
+        exportAs: 'matSlideToggle',
+        host: {
+          'class': 'mat-slide-toggle',
+          '[id]': 'id',
+          // Needs to be `-1` so it can still receive programmatic focus.
+          '[attr.tabindex]': 'disabled ? null : -1',
+          '[attr.aria-label]': 'null',
+          '[attr.aria-labelledby]': 'null',
+          '[class.mat-checked]': 'checked',
+          '[class.mat-disabled]': 'disabled',
+          '[class.mat-slide-toggle-label-before]': 'labelPosition == "before"',
+          '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"',
+          '(focus)': '_inputElement.nativeElement.focus()'
+        },
+        template: "<label [attr.for]=\"inputId\" class=\"mat-slide-toggle-label\" #label><div #toggleBar class=\"mat-slide-toggle-bar\" [class.mat-slide-toggle-bar-no-side-margin]=\"!labelContent.textContent || !labelContent.textContent.trim()\"><input #input class=\"mat-slide-toggle-input cdk-visually-hidden\" type=\"checkbox\" role=\"switch\" [id]=\"inputId\" [required]=\"required\" [tabIndex]=\"tabIndex\" [checked]=\"checked\" [disabled]=\"disabled\" [attr.name]=\"name\" [attr.aria-checked]=\"checked.toString()\" [attr.aria-label]=\"ariaLabel\" [attr.aria-labelledby]=\"ariaLabelledby\" (change)=\"_onChangeEvent($event)\" (click)=\"_onInputClick($event)\"><div class=\"mat-slide-toggle-thumb-container\" #thumbContainer (slidestart)=\"_onDragStart()\" (slide)=\"_onDrag($event)\" (slideend)=\"_onDragEnd()\"><div class=\"mat-slide-toggle-thumb\"></div><div class=\"mat-slide-toggle-ripple\" mat-ripple [matRippleTrigger]=\"label\" [matRippleDisabled]=\"disableRipple || disabled\" [matRippleCentered]=\"true\" [matRippleRadius]=\"20\" [matRippleAnimation]=\"{enterDuration: 150}\"><div class=\"mat-ripple-element mat-slide-toggle-persistent-ripple\"></div></div></div></div><span class=\"mat-slide-toggle-content\" #labelContent (cdkObserveContent)=\"_onLabelTextChange()\"><span style=\"display:none\">&nbsp;</span><ng-content></ng-content></span></label>",
+        styles: [".mat-slide-toggle{display:inline-block;height:24px;max-width:100%;line-height:24px;white-space:nowrap;outline:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container{transform:translate3d(16px,0,0)}[dir=rtl] .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container{transform:translate3d(-16px,0,0)}.mat-slide-toggle.mat-disabled{opacity:.38}.mat-slide-toggle.mat-disabled .mat-slide-toggle-label,.mat-slide-toggle.mat-disabled .mat-slide-toggle-thumb-container{cursor:default}.mat-slide-toggle-label{display:flex;flex:1;flex-direction:row;align-items:center;height:inherit;cursor:pointer}.mat-slide-toggle-content{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mat-slide-toggle-label-before .mat-slide-toggle-label{order:1}.mat-slide-toggle-label-before .mat-slide-toggle-bar{order:2}.mat-slide-toggle-bar,[dir=rtl] .mat-slide-toggle-label-before .mat-slide-toggle-bar{margin-right:8px;margin-left:0}.mat-slide-toggle-label-before .mat-slide-toggle-bar,[dir=rtl] .mat-slide-toggle-bar{margin-left:8px;margin-right:0}.mat-slide-toggle-bar-no-side-margin{margin-left:0;margin-right:0}.mat-slide-toggle-thumb-container{position:absolute;z-index:1;width:20px;height:20px;top:-3px;left:0;transform:translate3d(0,0,0);transition:all 80ms linear;transition-property:transform;cursor:-webkit-grab;cursor:grab}.mat-slide-toggle-thumb-container.mat-dragging{transition-duration:0s}.mat-slide-toggle-thumb-container:active{cursor:-webkit-grabbing;cursor:grabbing}._mat-animation-noopable .mat-slide-toggle-thumb-container{transition:none}[dir=rtl] .mat-slide-toggle-thumb-container{left:auto;right:0}.mat-slide-toggle-thumb{height:20px;width:20px;border-radius:50%}.mat-slide-toggle-bar{position:relative;width:36px;height:14px;flex-shrink:0;border-radius:8px}.mat-slide-toggle-input{bottom:0;left:10px}[dir=rtl] .mat-slide-toggle-input{left:auto;right:10px}.mat-slide-toggle-bar,.mat-slide-toggle-thumb{transition:all 80ms linear;transition-property:background-color;transition-delay:50ms}._mat-animation-noopable .mat-slide-toggle-bar,._mat-animation-noopable .mat-slide-toggle-thumb{transition:none}.mat-slide-toggle .mat-slide-toggle-ripple{position:absolute;top:calc(50% - 20px);left:calc(50% - 20px);height:40px;width:40px;z-index:1;pointer-events:none}.mat-slide-toggle .mat-slide-toggle-ripple .mat-ripple-element:not(.mat-slide-toggle-persistent-ripple){opacity:.12}.mat-slide-toggle-persistent-ripple{width:100%;height:100%;transform:none}.mat-slide-toggle-bar:hover .mat-slide-toggle-persistent-ripple{opacity:.04}.mat-slide-toggle:not(.mat-disabled).cdk-keyboard-focused .mat-slide-toggle-persistent-ripple{opacity:.12}.mat-slide-toggle-persistent-ripple,.mat-slide-toggle.mat-disabled .mat-slide-toggle-bar:hover .mat-slide-toggle-persistent-ripple{opacity:0}@media (hover:none){.mat-slide-toggle-bar:hover .mat-slide-toggle-persistent-ripple{display:none}}@media (-ms-high-contrast:active){.mat-slide-toggle-thumb{background:#fff;border:1px solid #000}.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{background:#000;border:1px solid #fff}.mat-slide-toggle-bar{background:#fff}.mat-slide-toggle.cdk-keyboard-focused .mat-slide-toggle-bar{outline:1px dotted;outline-offset:5px}}@media (-ms-high-contrast:black-on-white){.mat-slide-toggle-bar{border:1px solid #000}}"],
+        providers: [MAT_SLIDE_TOGGLE_VALUE_ACCESSOR],
+        inputs: ['disabled', 'disableRipple', 'color', 'tabIndex'],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
+      }]
+    }];
+    /** @nocollapse */
+
+    MatSlideToggle.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["FocusMonitor"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Attribute"],
+          args: ['tabindex']
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }];
+    };
+
+    MatSlideToggle.propDecorators = {
+      _thumbEl: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['thumbContainer', {
+          "static": false
+        }]
+      }],
+      _thumbBarEl: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['toggleBar', {
+          "static": false
+        }]
+      }],
+      name: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      id: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      labelPosition: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      ariaLabel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['aria-label']
+      }],
+      ariaLabelledby: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['aria-labelledby']
+      }],
+      required: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      checked: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      change: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      toggleChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      dragChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      _inputElement: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['input', {
+          "static": false
+        }]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /** @type {?} */
+
+    var MAT_SLIDE_TOGGLE_REQUIRED_VALIDATOR = {
+      provide: _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NG_VALIDATORS"],
+      useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(
+      /**
+      * @return {?}
+      */
+      function () {
+        return MatSlideToggleRequiredValidator;
+      }),
+      multi: true
+    };
+    /**
+     * Validator for Material slide-toggle components with the required attribute in a
+     * template-driven form. The default validator for required form controls asserts
+     * that the control value is not undefined but that is not appropriate for a slide-toggle
+     * where the value is always defined.
+     *
+     * Required slide-toggle form controls are valid when checked.
+     */
+
+    var MatSlideToggleRequiredValidator = /*#__PURE__*/function (_angular_forms__WEBPA2) {
+      _inherits(MatSlideToggleRequiredValidator, _angular_forms__WEBPA2);
+
+      var _super15 = _createSuper(MatSlideToggleRequiredValidator);
+
+      function MatSlideToggleRequiredValidator() {
+        _classCallCheck(this, MatSlideToggleRequiredValidator);
+
+        return _super15.apply(this, arguments);
+      }
+
+      return MatSlideToggleRequiredValidator;
+    }(_angular_forms__WEBPACK_IMPORTED_MODULE_4__["CheckboxRequiredValidator"]);
+
+    MatSlideToggleRequiredValidator.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: "mat-slide-toggle[required][formControlName],\n             mat-slide-toggle[required][formControl], mat-slide-toggle[required][ngModel]",
+        providers: [MAT_SLIDE_TOGGLE_REQUIRED_VALIDATOR]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * This module is used by both original and MDC-based slide-toggle implementations.
+     */
+    // tslint:disable-next-line:class-name
+
+    var _MatSlideToggleRequiredValidatorModule = function _MatSlideToggleRequiredValidatorModule() {
+      _classCallCheck(this, _MatSlideToggleRequiredValidatorModule);
+    };
+
+    _MatSlideToggleRequiredValidatorModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+      args: [{
+        exports: [MatSlideToggleRequiredValidator],
+        declarations: [MatSlideToggleRequiredValidator]
+      }]
+    }];
+
+    var MatSlideToggleModule = function MatSlideToggleModule() {
+      _classCallCheck(this, MatSlideToggleModule);
+    };
+
+    MatSlideToggleModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+      args: [{
+        imports: [_MatSlideToggleRequiredValidatorModule, _angular_material_core__WEBPACK_IMPORTED_MODULE_5__["MatRippleModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_5__["MatCommonModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_7__["ObserversModule"]],
+        exports: [_MatSlideToggleRequiredValidatorModule, MatSlideToggle, _angular_material_core__WEBPACK_IMPORTED_MODULE_5__["MatCommonModule"]],
+        declarations: [MatSlideToggle],
+        providers: [{
+          provide: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_8__["HAMMER_GESTURE_CONFIG"],
+          useClass: _angular_material_core__WEBPACK_IMPORTED_MODULE_5__["GestureConfig"]
+        }]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=slide-toggle.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/slider.js":
+  /*!**********************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/slider.js ***!
+    \**********************************************************/
+
+  /*! exports provided: MatSliderModule, MAT_SLIDER_VALUE_ACCESSOR, MatSliderChange, MatSlider */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015SliderJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSliderModule", function () {
+      return MatSliderModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SLIDER_VALUE_ACCESSOR", function () {
+      return MAT_SLIDER_VALUE_ACCESSOR;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSliderChange", function () {
+      return MatSliderChange;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSlider", function () {
+      return MatSlider;
+    });
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/cdk/bidi */
+    "./node_modules/@angular/cdk/esm2015/bidi.js");
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/cdk/keycodes */
+    "./node_modules/@angular/cdk/esm2015/keycodes.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/platform-browser/animations */
+    "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/platform-browser */
+    "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Visually, a 30px separation between tick marks looks best. This is very subjective but it is
+     * the default separation we chose.
+     * @type {?}
+     */
+
+
+    var MIN_AUTO_TICK_SEPARATION = 30;
+    /**
+     * The thumb gap size for a disabled slider.
+     * @type {?}
+     */
+
+    var DISABLED_THUMB_GAP = 7;
+    /**
+     * The thumb gap size for a non-active slider at its minimum value.
+     * @type {?}
+     */
+
+    var MIN_VALUE_NONACTIVE_THUMB_GAP = 7;
+    /**
+     * The thumb gap size for an active slider at its minimum value.
+     * @type {?}
+     */
+
+    var MIN_VALUE_ACTIVE_THUMB_GAP = 10;
+    /**
+     * Provider Expression that allows mat-slider to register as a ControlValueAccessor.
+     * This allows it to support [(ngModel)] and [formControl].
+     * \@docs-private
+     * @type {?}
+     */
+
+    var MAT_SLIDER_VALUE_ACCESSOR = {
+      provide: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NG_VALUE_ACCESSOR"],
+      useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["forwardRef"])(
+      /**
+      * @return {?}
+      */
+      function () {
+        return MatSlider;
+      }),
+      multi: true
+    };
+    /**
+     * A simple change event emitted by the MatSlider component.
+     */
+
+    var MatSliderChange = function MatSliderChange() {
+      _classCallCheck(this, MatSliderChange);
+    }; // Boilerplate for applying mixins to MatSlider.
+
+    /**
+     * \@docs-private
+     */
+
+
+    var MatSliderBase =
+    /**
+     * @param {?} _elementRef
+     */
+    function MatSliderBase(_elementRef) {
+      _classCallCheck(this, MatSliderBase);
+
+      this._elementRef = _elementRef;
+    };
+    /** @type {?} */
+
+
+    var _MatSliderMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_6__["mixinTabIndex"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_6__["mixinColor"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_6__["mixinDisabled"])(MatSliderBase), 'accent'));
+    /**
+     * Allows users to select from a range of values by moving the slider thumb. It is similar in
+     * behavior to the native `<input type="range">` element.
+     */
+
+
+    var MatSlider = /*#__PURE__*/function (_MatSliderMixinBase2) {
+      _inherits(MatSlider, _MatSliderMixinBase2);
+
+      var _super16 = _createSuper(MatSlider);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} _focusMonitor
+       * @param {?} _changeDetectorRef
+       * @param {?} _dir
+       * @param {?} tabIndex
+       * @param {?=} _animationMode
+       */
+      function MatSlider(elementRef, _focusMonitor, _changeDetectorRef, _dir, tabIndex, _animationMode) {
+        var _this44;
+
+        _classCallCheck(this, MatSlider);
+
+        _this44 = _super16.call(this, elementRef);
+        _this44._focusMonitor = _focusMonitor;
+        _this44._changeDetectorRef = _changeDetectorRef;
+        _this44._dir = _dir;
+        _this44._animationMode = _animationMode;
+        _this44._invert = false;
+        _this44._max = 100;
+        _this44._min = 0;
+        _this44._step = 1;
+        _this44._thumbLabel = false;
+        _this44._tickInterval = 0;
+        _this44._value = null;
+        _this44._vertical = false;
+        /**
+         * Event emitted when the slider value has changed.
+         */
+
+        _this44.change = new _angular_core__WEBPACK_IMPORTED_MODULE_4__["EventEmitter"]();
+        /**
+         * Event emitted when the slider thumb moves.
+         */
+
+        _this44.input = new _angular_core__WEBPACK_IMPORTED_MODULE_4__["EventEmitter"]();
+        /**
+         * Emits when the raw value of the slider changes. This is here primarily
+         * to facilitate the two-way binding for the `value` input.
+         * \@docs-private
+         */
+
+        _this44.valueChange = new _angular_core__WEBPACK_IMPORTED_MODULE_4__["EventEmitter"]();
+        /**
+         * onTouch function registered via registerOnTouch (ControlValueAccessor).
+         */
+
+        _this44.onTouched =
+        /**
+        * @return {?}
+        */
+        function () {};
+
+        _this44._percent = 0;
+        /**
+         * Whether or not the thumb is sliding.
+         * Used to determine if there should be a transition for the thumb and fill track.
+         */
+
+        _this44._isSliding = false;
+        /**
+         * Whether or not the slider is active (clicked or sliding).
+         * Used to shrink and grow the thumb as according to the Material Design spec.
+         */
+
+        _this44._isActive = false;
+        /**
+         * The size of a tick interval as a percentage of the size of the track.
+         */
+
+        _this44._tickIntervalPercent = 0;
+        /**
+         * The dimensions of the slider.
+         */
+
+        _this44._sliderDimensions = null;
+
+        _this44._controlValueAccessorChangeFn =
+        /**
+        * @return {?}
+        */
+        function () {};
+        /**
+         * Subscription to the Directionality change EventEmitter.
+         */
+
+
+        _this44._dirChangeSubscription = rxjs__WEBPACK_IMPORTED_MODULE_8__["Subscription"].EMPTY;
+        _this44.tabIndex = parseInt(tabIndex) || 0;
+        return _this44;
+      }
+      /**
+       * Whether the slider is inverted.
+       * @return {?}
+       */
+
+
+      _createClass(MatSlider, [{
+        key: "focus",
+
+        /**
+         * set focus to the host element
+         * @param {?=} options
+         * @return {?}
+         */
+        value: function focus(options) {
+          this._focusHostElement(options);
+        }
+        /**
+         * blur the host element
+         * @return {?}
+         */
+
+      }, {
+        key: "blur",
+        value: function blur() {
+          this._blurHostElement();
+        }
+        /**
+         * The percentage of the slider that coincides with the value.
+         * @return {?}
+         */
+
+      }, {
+        key: "_shouldInvertMouseCoords",
+
+        /**
+         * Whether mouse events should be converted to a slider position by calculating their distance
+         * from the right or bottom edge of the slider as opposed to the top or left.
+         * @return {?}
+         */
+        value: function _shouldInvertMouseCoords() {
+          return this._getDirection() == 'rtl' && !this.vertical ? !this._invertAxis : this._invertAxis;
+        }
+        /**
+         * The language direction for this slider element.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_getDirection",
+        value: function _getDirection() {
+          return this._dir && this._dir.value == 'rtl' ? 'rtl' : 'ltr';
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this45 = this;
+
+          this._focusMonitor.monitor(this._elementRef, true).subscribe(
+          /**
+          * @param {?} origin
+          * @return {?}
+          */
+          function (origin) {
+            _this45._isActive = !!origin && origin !== 'keyboard';
+
+            _this45._changeDetectorRef.detectChanges();
+          });
+
+          if (this._dir) {
+            this._dirChangeSubscription = this._dir.change.subscribe(
+            /**
+            * @return {?}
+            */
+            function () {
+              _this45._changeDetectorRef.markForCheck();
+            });
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._focusMonitor.stopMonitoring(this._elementRef);
+
+          this._dirChangeSubscription.unsubscribe();
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_onMouseenter",
+        value: function _onMouseenter() {
+          if (this.disabled) {
+            return;
+          } // We save the dimensions of the slider here so we can use them to update the spacing of the
+          // ticks and determine where on the slider click and slide events happen.
+
+
+          this._sliderDimensions = this._getSliderDimensions();
+
+          this._updateTickIntervalPercent();
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onMousedown",
+        value: function _onMousedown(event) {
+          // Don't do anything if the slider is disabled or the
+          // user is using anything other than the main mouse button.
+          if (this.disabled || event.button !== 0) {
+            return;
+          }
+          /** @type {?} */
+
+
+          var oldValue = this.value;
+          this._isSliding = false;
+
+          this._focusHostElement();
+
+          this._updateValueFromPosition({
+            x: event.clientX,
+            y: event.clientY
+          }); // Emit a change and input event if the value changed.
+
+
+          if (oldValue != this.value) {
+            this._emitInputEvent();
+
+            this._emitChangeEvent();
+          }
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onSlide",
+        value: function _onSlide(event) {
+          if (this.disabled) {
+            return;
+          } // The slide start event sometimes fails to fire on iOS, so if we're not already in the sliding
+          // state, call the slide start handler manually.
+
+
+          if (!this._isSliding) {
+            this._onSlideStart(null);
+          } // Prevent the slide from selecting anything else.
+
+
+          event.preventDefault();
+          /** @type {?} */
+
+          var oldValue = this.value;
+
+          this._updateValueFromPosition({
+            x: event.center.x,
+            y: event.center.y
+          }); // Native range elements always emit `input` events when the value changed while sliding.
+
+
+          if (oldValue != this.value) {
+            this._emitInputEvent();
+          }
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onSlideStart",
+        value: function _onSlideStart(event) {
+          if (this.disabled || this._isSliding) {
+            return;
+          } // Simulate mouseenter in case this is a mobile device.
+
+
+          this._onMouseenter();
+
+          this._isSliding = true;
+
+          this._focusHostElement();
+
+          this._valueOnSlideStart = this.value;
+
+          if (event) {
+            this._updateValueFromPosition({
+              x: event.center.x,
+              y: event.center.y
+            });
+
+            event.preventDefault();
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_onSlideEnd",
+        value: function _onSlideEnd() {
+          this._isSliding = false;
+
+          if (this._valueOnSlideStart != this.value && !this.disabled) {
+            this._emitChangeEvent();
+          }
+
+          this._valueOnSlideStart = null;
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_onFocus",
+        value: function _onFocus() {
+          // We save the dimensions of the slider here so we can use them to update the spacing of the
+          // ticks and determine where on the slider click and slide events happen.
+          this._sliderDimensions = this._getSliderDimensions();
+
+          this._updateTickIntervalPercent();
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_onBlur",
+        value: function _onBlur() {
+          this.onTouched();
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onKeydown",
+        value: function _onKeydown(event) {
+          if (this.disabled || Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["hasModifierKey"])(event)) {
+            return;
+          }
+          /** @type {?} */
+
+
+          var oldValue = this.value;
+
+          switch (event.keyCode) {
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["PAGE_UP"]:
+              this._increment(10);
+
+              break;
+
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["PAGE_DOWN"]:
+              this._increment(-10);
+
+              break;
+
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["END"]:
+              this.value = this.max;
+              break;
+
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["HOME"]:
+              this.value = this.min;
+              break;
+
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["LEFT_ARROW"]:
+              // NOTE: For a sighted user it would make more sense that when they press an arrow key on an
+              // inverted slider the thumb moves in that direction. However for a blind user, nothing
+              // about the slider indicates that it is inverted. They will expect left to be decrement,
+              // regardless of how it appears on the screen. For speakers ofRTL languages, they probably
+              // expect left to mean increment. Therefore we flip the meaning of the side arrow keys for
+              // RTL. For inverted sliders we prefer a good a11y experience to having it "look right" for
+              // sighted users, therefore we do not swap the meaning.
+              this._increment(this._getDirection() == 'rtl' ? 1 : -1);
+
+              break;
+
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["UP_ARROW"]:
+              this._increment(1);
+
+              break;
+
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["RIGHT_ARROW"]:
+              // See comment on LEFT_ARROW about the conditions under which we flip the meaning.
+              this._increment(this._getDirection() == 'rtl' ? -1 : 1);
+
+              break;
+
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_3__["DOWN_ARROW"]:
+              this._increment(-1);
+
+              break;
+
+            default:
+              // Return if the key is not one that we explicitly handle to avoid calling preventDefault on
+              // it.
+              return;
+          }
+
+          if (oldValue != this.value) {
+            this._emitInputEvent();
+
+            this._emitChangeEvent();
+          }
+
+          this._isSliding = true;
+          event.preventDefault();
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_onKeyup",
+        value: function _onKeyup() {
+          this._isSliding = false;
+        }
+        /**
+         * Increments the slider by the given number of steps (negative number decrements).
+         * @private
+         * @param {?} numSteps
+         * @return {?}
+         */
+
+      }, {
+        key: "_increment",
+        value: function _increment(numSteps) {
+          this.value = this._clamp((this.value || 0) + this.step * numSteps, this.min, this.max);
+        }
+        /**
+         * Calculate the new value from the new physical location. The value will always be snapped.
+         * @private
+         * @param {?} pos
+         * @return {?}
+         */
+
+      }, {
+        key: "_updateValueFromPosition",
+        value: function _updateValueFromPosition(pos) {
+          if (!this._sliderDimensions) {
+            return;
+          }
+          /** @type {?} */
+
+
+          var offset = this.vertical ? this._sliderDimensions.top : this._sliderDimensions.left;
+          /** @type {?} */
+
+          var size = this.vertical ? this._sliderDimensions.height : this._sliderDimensions.width;
+          /** @type {?} */
+
+          var posComponent = this.vertical ? pos.y : pos.x; // The exact value is calculated from the event and used to find the closest snap value.
+
+          /** @type {?} */
+
+          var percent = this._clamp((posComponent - offset) / size);
+
+          if (this._shouldInvertMouseCoords()) {
+            percent = 1 - percent;
+          } // Since the steps may not divide cleanly into the max value, if the user
+          // slid to 0 or 100 percent, we jump to the min/max value. This approach
+          // is slightly more intuitive than using `Math.ceil` below, because it
+          // follows the user's pointer closer.
+
+
+          if (percent === 0) {
+            this.value = this.min;
+          } else if (percent === 1) {
+            this.value = this.max;
+          } else {
+            /** @type {?} */
+            var exactValue = this._calculateValue(percent); // This calculation finds the closest step by finding the closest
+            // whole number divisible by the step relative to the min.
+
+            /** @type {?} */
+
+
+            var closestValue = Math.round((exactValue - this.min) / this.step) * this.step + this.min; // The value needs to snap to the min and max.
+
+            this.value = this._clamp(closestValue, this.min, this.max);
+          }
+        }
+        /**
+         * Emits a change event if the current value is different from the last emitted value.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_emitChangeEvent",
+        value: function _emitChangeEvent() {
+          this._controlValueAccessorChangeFn(this.value);
+
+          this.valueChange.emit(this.value);
+          this.change.emit(this._createChangeEvent());
+        }
+        /**
+         * Emits an input event when the current value is different from the last emitted value.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_emitInputEvent",
+        value: function _emitInputEvent() {
+          this.input.emit(this._createChangeEvent());
+        }
+        /**
+         * Updates the amount of space between ticks as a percentage of the width of the slider.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_updateTickIntervalPercent",
+        value: function _updateTickIntervalPercent() {
+          if (!this.tickInterval || !this._sliderDimensions) {
+            return;
+          }
+
+          if (this.tickInterval == 'auto') {
+            /** @type {?} */
+            var trackSize = this.vertical ? this._sliderDimensions.height : this._sliderDimensions.width;
+            /** @type {?} */
+
+            var pixelsPerStep = trackSize * this.step / (this.max - this.min);
+            /** @type {?} */
+
+            var stepsPerTick = Math.ceil(MIN_AUTO_TICK_SEPARATION / pixelsPerStep);
+            /** @type {?} */
+
+            var pixelsPerTick = stepsPerTick * this.step;
+            this._tickIntervalPercent = pixelsPerTick / trackSize;
+          } else {
+            this._tickIntervalPercent = this.tickInterval * this.step / (this.max - this.min);
+          }
+        }
+        /**
+         * Creates a slider change object from the specified value.
+         * @private
+         * @param {?=} value
+         * @return {?}
+         */
+
+      }, {
+        key: "_createChangeEvent",
+        value: function _createChangeEvent() {
+          var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.value;
+
+          /** @type {?} */
+          var event = new MatSliderChange();
+          event.source = this;
+          event.value = value;
+          return event;
+        }
+        /**
+         * Calculates the percentage of the slider that a value is.
+         * @private
+         * @param {?} value
+         * @return {?}
+         */
+
+      }, {
+        key: "_calculatePercentage",
+        value: function _calculatePercentage(value) {
+          return ((value || 0) - this.min) / (this.max - this.min);
+        }
+        /**
+         * Calculates the value a percentage of the slider corresponds to.
+         * @private
+         * @param {?} percentage
+         * @return {?}
+         */
+
+      }, {
+        key: "_calculateValue",
+        value: function _calculateValue(percentage) {
+          return this.min + percentage * (this.max - this.min);
+        }
+        /**
+         * Return a number between two numbers.
+         * @private
+         * @param {?} value
+         * @param {?=} min
+         * @param {?=} max
+         * @return {?}
+         */
+
+      }, {
+        key: "_clamp",
+        value: function _clamp(value) {
+          var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+          var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+          return Math.max(min, Math.min(value, max));
+        }
+        /**
+         * Get the bounding client rect of the slider track element.
+         * The track is used rather than the native element to ignore the extra space that the thumb can
+         * take up.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_getSliderDimensions",
+        value: function _getSliderDimensions() {
+          return this._sliderWrapper ? this._sliderWrapper.nativeElement.getBoundingClientRect() : null;
+        }
+        /**
+         * Focuses the native element.
+         * Currently only used to allow a blur event to fire but will be used with keyboard input later.
+         * @private
+         * @param {?=} options
+         * @return {?}
+         */
+
+      }, {
+        key: "_focusHostElement",
+        value: function _focusHostElement(options) {
+          this._elementRef.nativeElement.focus(options);
+        }
+        /**
+         * Blurs the native element.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_blurHostElement",
+        value: function _blurHostElement() {
+          this._elementRef.nativeElement.blur();
+        }
+        /**
+         * Sets the model value. Implemented as part of ControlValueAccessor.
+         * @param {?} value
+         * @return {?}
+         */
+
+      }, {
+        key: "writeValue",
+        value: function writeValue(value) {
+          this.value = value;
+        }
+        /**
+         * Registers a callback to be triggered when the value has changed.
+         * Implemented as part of ControlValueAccessor.
+         * @param {?} fn Callback to be registered.
+         * @return {?}
+         */
+
+      }, {
+        key: "registerOnChange",
+        value: function registerOnChange(fn) {
+          this._controlValueAccessorChangeFn = fn;
+        }
+        /**
+         * Registers a callback to be triggered when the component is touched.
+         * Implemented as part of ControlValueAccessor.
+         * @param {?} fn Callback to be registered.
+         * @return {?}
+         */
+
+      }, {
+        key: "registerOnTouched",
+        value: function registerOnTouched(fn) {
+          this.onTouched = fn;
+        }
+        /**
+         * Sets whether the component should be disabled.
+         * Implemented as part of ControlValueAccessor.
+         * @param {?} isDisabled
+         * @return {?}
+         */
+
+      }, {
+        key: "setDisabledState",
+        value: function setDisabledState(isDisabled) {
+          this.disabled = isDisabled;
+        }
+      }, {
+        key: "invert",
+        get: function get() {
+          return this._invert;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._invert = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * The maximum value that the slider can have.
+         * @return {?}
+         */
+
+      }, {
+        key: "max",
+        get: function get() {
+          return this._max;
+        }
+        /**
+         * @param {?} v
+         * @return {?}
+         */
+        ,
+        set: function set(v) {
+          this._max = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceNumberProperty"])(v, this._max);
+          this._percent = this._calculatePercentage(this._value); // Since this also modifies the percentage, we need to let the change detection know.
+
+          this._changeDetectorRef.markForCheck();
+        }
+        /**
+         * The minimum value that the slider can have.
+         * @return {?}
+         */
+
+      }, {
+        key: "min",
+        get: function get() {
+          return this._min;
+        }
+        /**
+         * @param {?} v
+         * @return {?}
+         */
+        ,
+        set: function set(v) {
+          this._min = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceNumberProperty"])(v, this._min); // If the value wasn't explicitly set by the user, set it to the min.
+
+          if (this._value === null) {
+            this.value = this._min;
+          }
+
+          this._percent = this._calculatePercentage(this._value); // Since this also modifies the percentage, we need to let the change detection know.
+
+          this._changeDetectorRef.markForCheck();
+        }
+        /**
+         * The values at which the thumb will snap.
+         * @return {?}
+         */
+
+      }, {
+        key: "step",
+        get: function get() {
+          return this._step;
+        }
+        /**
+         * @param {?} v
+         * @return {?}
+         */
+        ,
+        set: function set(v) {
+          this._step = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceNumberProperty"])(v, this._step);
+
+          if (this._step % 1 !== 0) {
+            this._roundToDecimal =
+            /** @type {?} */
+            this._step.toString().split('.').pop().length;
+          } // Since this could modify the label, we need to notify the change detection.
+
+
+          this._changeDetectorRef.markForCheck();
+        }
+        /**
+         * Whether or not to show the thumb label.
+         * @return {?}
+         */
+
+      }, {
+        key: "thumbLabel",
+        get: function get() {
+          return this._thumbLabel;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._thumbLabel = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * How often to show ticks. Relative to the step so that a tick always appears on a step.
+         * Ex: Tick interval of 4 with a step of 3 will draw a tick every 4 steps (every 12 values).
+         * @return {?}
+         */
+
+      }, {
+        key: "tickInterval",
+        get: function get() {
+          return this._tickInterval;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          if (value === 'auto') {
+            this._tickInterval = 'auto';
+          } else if (typeof value === 'number' || typeof value === 'string') {
+            this._tickInterval = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceNumberProperty"])(value,
+            /** @type {?} */
+            this._tickInterval);
+          } else {
+            this._tickInterval = 0;
+          }
+        }
+        /**
+         * Value of the slider.
+         * @return {?}
+         */
+
+      }, {
+        key: "value",
+        get: function get() {
+          // If the value needs to be read and it is still uninitialized, initialize it to the min.
+          if (this._value === null) {
+            this.value = this._min;
+          }
+
+          return this._value;
+        }
+        /**
+         * @param {?} v
+         * @return {?}
+         */
+        ,
+        set: function set(v) {
+          if (v !== this._value) {
+            /** @type {?} */
+            var value = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceNumberProperty"])(v); // While incrementing by a decimal we can end up with values like 33.300000000000004.
+            // Truncate it to ensure that it matches the label and to make it easier to work with.
+
+            if (this._roundToDecimal) {
+              value = parseFloat(value.toFixed(this._roundToDecimal));
+            }
+
+            this._value = value;
+            this._percent = this._calculatePercentage(this._value); // Since this also modifies the percentage, we need to let the change detection know.
+
+            this._changeDetectorRef.markForCheck();
+          }
+        }
+        /**
+         * Whether the slider is vertical.
+         * @return {?}
+         */
+
+      }, {
+        key: "vertical",
+        get: function get() {
+          return this._vertical;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._vertical = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * The value to be used for display purposes.
+         * @return {?}
+         */
+
+      }, {
+        key: "displayValue",
+        get: function get() {
+          if (this.displayWith) {
+            // Value is never null but since setters and getters cannot have
+            // different types, the value getter is also typed to return null.
+            return this.displayWith(
+            /** @type {?} */
+            this.value);
+          } // Note that this could be improved further by rounding something like 0.999 to 1 or
+          // 0.899 to 0.9, however it is very performance sensitive, because it gets called on
+          // every change detection cycle.
+
+
+          if (this._roundToDecimal && this.value && this.value % 1 !== 0) {
+            return this.value.toFixed(this._roundToDecimal);
+          }
+
+          return this.value || 0;
+        }
+      }, {
+        key: "percent",
+        get: function get() {
+          return this._clamp(this._percent);
+        }
+        /**
+         * Whether the axis of the slider is inverted.
+         * (i.e. whether moving the thumb in the positive x or y direction decreases the slider's value).
+         * @return {?}
+         */
+
+      }, {
+        key: "_invertAxis",
+        get: function get() {
+          // Standard non-inverted mode for a vertical slider should be dragging the thumb from bottom to
+          // top. However from a y-axis standpoint this is inverted.
+          return this.vertical ? !this.invert : this.invert;
+        }
+        /**
+         * Whether the slider is at its minimum value.
+         * @return {?}
+         */
+
+      }, {
+        key: "_isMinValue",
+        get: function get() {
+          return this.percent === 0;
+        }
+        /**
+         * The amount of space to leave between the slider thumb and the track fill & track background
+         * elements.
+         * @return {?}
+         */
+
+      }, {
+        key: "_thumbGap",
+        get: function get() {
+          if (this.disabled) {
+            return DISABLED_THUMB_GAP;
+          }
+
+          if (this._isMinValue && !this.thumbLabel) {
+            return this._isActive ? MIN_VALUE_ACTIVE_THUMB_GAP : MIN_VALUE_NONACTIVE_THUMB_GAP;
+          }
+
+          return 0;
+        }
+        /**
+         * CSS styles for the track background element.
+         * @return {?}
+         */
+
+      }, {
+        key: "_trackBackgroundStyles",
+        get: function get() {
+          /** @type {?} */
+          var axis = this.vertical ? 'Y' : 'X';
+          /** @type {?} */
+
+          var scale = this.vertical ? "1, ".concat(1 - this.percent, ", 1") : "".concat(1 - this.percent, ", 1, 1");
+          /** @type {?} */
+
+          var sign = this._shouldInvertMouseCoords() ? '-' : '';
+          return {
+            // scale3d avoids some rendering issues in Chrome. See #12071.
+            transform: "translate".concat(axis, "(").concat(sign).concat(this._thumbGap, "px) scale3d(").concat(scale, ")")
+          };
+        }
+        /**
+         * CSS styles for the track fill element.
+         * @return {?}
+         */
+
+      }, {
+        key: "_trackFillStyles",
+        get: function get() {
+          /** @type {?} */
+          var axis = this.vertical ? 'Y' : 'X';
+          /** @type {?} */
+
+          var scale = this.vertical ? "1, ".concat(this.percent, ", 1") : "".concat(this.percent, ", 1, 1");
+          /** @type {?} */
+
+          var sign = this._shouldInvertMouseCoords() ? '' : '-';
+          return {
+            // scale3d avoids some rendering issues in Chrome. See #12071.
+            transform: "translate".concat(axis, "(").concat(sign).concat(this._thumbGap, "px) scale3d(").concat(scale, ")")
+          };
+        }
+        /**
+         * CSS styles for the ticks container element.
+         * @return {?}
+         */
+
+      }, {
+        key: "_ticksContainerStyles",
+        get: function get() {
+          /** @type {?} */
+          var axis = this.vertical ? 'Y' : 'X'; // For a horizontal slider in RTL languages we push the ticks container off the left edge
+          // instead of the right edge to avoid causing a horizontal scrollbar to appear.
+
+          /** @type {?} */
+
+          var sign = !this.vertical && this._getDirection() == 'rtl' ? '' : '-';
+          /** @type {?} */
+
+          var offset = this._tickIntervalPercent / 2 * 100;
+          return {
+            'transform': "translate".concat(axis, "(").concat(sign).concat(offset, "%)")
+          };
+        }
+        /**
+         * CSS styles for the ticks element.
+         * @return {?}
+         */
+
+      }, {
+        key: "_ticksStyles",
+        get: function get() {
+          /** @type {?} */
+          var tickSize = this._tickIntervalPercent * 100;
+          /** @type {?} */
+
+          var backgroundSize = this.vertical ? "2px ".concat(tickSize, "%") : "".concat(tickSize, "% 2px");
+          /** @type {?} */
+
+          var axis = this.vertical ? 'Y' : 'X'; // Depending on the direction we pushed the ticks container, push the ticks the opposite
+          // direction to re-center them but clip off the end edge. In RTL languages we need to flip the
+          // ticks 180 degrees so we're really cutting off the end edge abd not the start.
+
+          /** @type {?} */
+
+          var sign = !this.vertical && this._getDirection() == 'rtl' ? '-' : '';
+          /** @type {?} */
+
+          var rotate = !this.vertical && this._getDirection() == 'rtl' ? ' rotate(180deg)' : '';
+          /** @type {?} */
+
+          var styles = {
+            'backgroundSize': backgroundSize,
+            // Without translateZ ticks sometimes jitter as the slider moves on Chrome & Firefox.
+            'transform': "translateZ(0) translate".concat(axis, "(").concat(sign).concat(tickSize / 2, "%)").concat(rotate)
+          };
+
+          if (this._isMinValue && this._thumbGap) {
+            /** @type {?} */
+            var side = this.vertical ? this._invertAxis ? 'Bottom' : 'Top' : this._invertAxis ? 'Right' : 'Left';
+            styles["padding".concat(side)] = "".concat(this._thumbGap, "px");
+          }
+
+          return styles;
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_thumbContainerStyles",
+        get: function get() {
+          /** @type {?} */
+          var axis = this.vertical ? 'Y' : 'X'; // For a horizontal slider in RTL languages we push the thumb container off the left edge
+          // instead of the right edge to avoid causing a horizontal scrollbar to appear.
+
+          /** @type {?} */
+
+          var invertOffset = this._getDirection() == 'rtl' && !this.vertical ? !this._invertAxis : this._invertAxis;
+          /** @type {?} */
+
+          var offset = (invertOffset ? this.percent : 1 - this.percent) * 100;
+          return {
+            'transform': "translate".concat(axis, "(-").concat(offset, "%)")
+          };
+        }
+      }]);
+
+      return MatSlider;
+    }(_MatSliderMixinBase);
+
+    MatSlider.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"],
+      args: [{
+        selector: 'mat-slider',
+        exportAs: 'matSlider',
+        providers: [MAT_SLIDER_VALUE_ACCESSOR],
+        host: {
+          '(focus)': '_onFocus()',
+          '(blur)': '_onBlur()',
+          '(mousedown)': '_onMousedown($event)',
+          '(keydown)': '_onKeydown($event)',
+          '(keyup)': '_onKeyup()',
+          '(mouseenter)': '_onMouseenter()',
+          '(slide)': '_onSlide($event)',
+          '(slideend)': '_onSlideEnd()',
+          '(slidestart)': '_onSlideStart($event)',
+          // On Safari starting to slide temporarily triggers text selection mode which
+          // show the wrong cursor. We prevent it by stopping the `selectstart` event.
+          '(selectstart)': '$event.preventDefault()',
+          'class': 'mat-slider',
+          'role': 'slider',
+          '[tabIndex]': 'tabIndex',
+          '[attr.aria-disabled]': 'disabled',
+          '[attr.aria-valuemax]': 'max',
+          '[attr.aria-valuemin]': 'min',
+          '[attr.aria-valuenow]': 'value',
+          '[attr.aria-orientation]': 'vertical ? "vertical" : "horizontal"',
+          '[class.mat-slider-disabled]': 'disabled',
+          '[class.mat-slider-has-ticks]': 'tickInterval',
+          '[class.mat-slider-horizontal]': '!vertical',
+          '[class.mat-slider-axis-inverted]': '_invertAxis',
+          // Class binding which is only used by the test harness as there is no other
+          // way for the harness to detect if mouse coordinates need to be inverted.
+          '[class.mat-slider-invert-mouse-coords]': '_shouldInvertMouseCoords()',
+          '[class.mat-slider-sliding]': '_isSliding',
+          '[class.mat-slider-thumb-label-showing]': 'thumbLabel',
+          '[class.mat-slider-vertical]': 'vertical',
+          '[class.mat-slider-min-value]': '_isMinValue',
+          '[class.mat-slider-hide-last-tick]': 'disabled || _isMinValue && _thumbGap && _invertAxis',
+          '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"'
+        },
+        template: "<div class=\"mat-slider-wrapper\" #sliderWrapper><div class=\"mat-slider-track-wrapper\"><div class=\"mat-slider-track-background\" [ngStyle]=\"_trackBackgroundStyles\"></div><div class=\"mat-slider-track-fill\" [ngStyle]=\"_trackFillStyles\"></div></div><div class=\"mat-slider-ticks-container\" [ngStyle]=\"_ticksContainerStyles\"><div class=\"mat-slider-ticks\" [ngStyle]=\"_ticksStyles\"></div></div><div class=\"mat-slider-thumb-container\" [ngStyle]=\"_thumbContainerStyles\"><div class=\"mat-slider-focus-ring\"></div><div class=\"mat-slider-thumb\"></div><div class=\"mat-slider-thumb-label\"><span class=\"mat-slider-thumb-label-text\">{{displayValue}}</span></div></div></div>",
+        styles: [".mat-slider{display:inline-block;position:relative;box-sizing:border-box;padding:8px;outline:0;vertical-align:middle}.mat-slider.mat-slider-sliding:not(.mat-slider-disabled),.mat-slider:not(.mat-slider-disabled):active{cursor:-webkit-grabbing;cursor:grabbing}.mat-slider-wrapper{position:absolute}.mat-slider-track-wrapper{position:absolute;top:0;left:0;overflow:hidden}.mat-slider-track-fill{position:absolute;transform-origin:0 0;transition:transform .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1)}.mat-slider-track-background{position:absolute;transform-origin:100% 100%;transition:transform .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1)}.mat-slider-ticks-container{position:absolute;left:0;top:0;overflow:hidden}.mat-slider-ticks{background-repeat:repeat;background-clip:content-box;box-sizing:border-box;opacity:0;transition:opacity .4s cubic-bezier(.25,.8,.25,1)}.mat-slider-thumb-container{position:absolute;z-index:1;transition:transform .4s cubic-bezier(.25,.8,.25,1)}.mat-slider-focus-ring{position:absolute;width:30px;height:30px;border-radius:50%;transform:scale(0);opacity:0;transition:transform .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1),opacity .4s cubic-bezier(.25,.8,.25,1)}.mat-slider.cdk-keyboard-focused .mat-slider-focus-ring,.mat-slider.cdk-program-focused .mat-slider-focus-ring{transform:scale(1);opacity:1}.mat-slider:not(.mat-slider-disabled):not(.mat-slider-sliding) .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled):not(.mat-slider-sliding) .mat-slider-thumb-label{cursor:-webkit-grab;cursor:grab}.mat-slider-thumb{position:absolute;right:-10px;bottom:-10px;box-sizing:border-box;width:20px;height:20px;border:3px solid transparent;border-radius:50%;transform:scale(.7);transition:transform .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1),border-color .4s cubic-bezier(.25,.8,.25,1)}.mat-slider-thumb-label{display:none;align-items:center;justify-content:center;position:absolute;width:28px;height:28px;border-radius:50%;transition:transform .4s cubic-bezier(.25,.8,.25,1),border-radius .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1)}@media (-ms-high-contrast:active){.mat-slider-thumb-label{outline:solid 1px}}.mat-slider-thumb-label-text{z-index:1;opacity:0;transition:opacity .4s cubic-bezier(.25,.8,.25,1)}.mat-slider-sliding .mat-slider-thumb-container,.mat-slider-sliding .mat-slider-track-background,.mat-slider-sliding .mat-slider-track-fill{transition-duration:0s}.mat-slider-has-ticks .mat-slider-wrapper::after{content:'';position:absolute;border-width:0;border-style:solid;opacity:0;transition:opacity .4s cubic-bezier(.25,.8,.25,1)}.mat-slider-has-ticks.cdk-focused:not(.mat-slider-hide-last-tick) .mat-slider-wrapper::after,.mat-slider-has-ticks:hover:not(.mat-slider-hide-last-tick) .mat-slider-wrapper::after{opacity:1}.mat-slider-has-ticks.cdk-focused:not(.mat-slider-disabled) .mat-slider-ticks,.mat-slider-has-ticks:hover:not(.mat-slider-disabled) .mat-slider-ticks{opacity:1}.mat-slider-thumb-label-showing .mat-slider-focus-ring{display:none}.mat-slider-thumb-label-showing .mat-slider-thumb-label{display:flex}.mat-slider-axis-inverted .mat-slider-track-fill{transform-origin:100% 100%}.mat-slider-axis-inverted .mat-slider-track-background{transform-origin:0 0}.mat-slider:not(.mat-slider-disabled).cdk-focused.mat-slider-thumb-label-showing .mat-slider-thumb{transform:scale(0)}.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label{border-radius:50% 50% 0}.mat-slider:not(.mat-slider-disabled).cdk-focused .mat-slider-thumb-label-text{opacity:1}.mat-slider:not(.mat-slider-disabled).cdk-mouse-focused .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled).cdk-program-focused .mat-slider-thumb,.mat-slider:not(.mat-slider-disabled).cdk-touch-focused .mat-slider-thumb{border-width:2px;transform:scale(1)}.mat-slider-disabled .mat-slider-focus-ring{transform:scale(0);opacity:0}.mat-slider-disabled .mat-slider-thumb{border-width:4px;transform:scale(.5)}.mat-slider-disabled .mat-slider-thumb-label{display:none}.mat-slider-horizontal{height:48px;min-width:128px}.mat-slider-horizontal .mat-slider-wrapper{height:2px;top:23px;left:8px;right:8px}.mat-slider-horizontal .mat-slider-wrapper::after{height:2px;border-left-width:2px;right:0;top:0}.mat-slider-horizontal .mat-slider-track-wrapper{height:2px;width:100%}.mat-slider-horizontal .mat-slider-track-fill{height:2px;width:100%;transform:scaleX(0)}.mat-slider-horizontal .mat-slider-track-background{height:2px;width:100%;transform:scaleX(1)}.mat-slider-horizontal .mat-slider-ticks-container{height:2px;width:100%}@media (-ms-high-contrast:active){.mat-slider-horizontal .mat-slider-ticks-container{height:0;outline:solid 2px;top:1px}}.mat-slider-horizontal .mat-slider-ticks{height:2px;width:100%}.mat-slider-horizontal .mat-slider-thumb-container{width:100%;height:0;top:50%}.mat-slider-horizontal .mat-slider-focus-ring{top:-15px;right:-15px}.mat-slider-horizontal .mat-slider-thumb-label{right:-14px;top:-40px;transform:translateY(26px) scale(.01) rotate(45deg)}.mat-slider-horizontal .mat-slider-thumb-label-text{transform:rotate(-45deg)}.mat-slider-horizontal.cdk-focused .mat-slider-thumb-label{transform:rotate(45deg)}@media (-ms-high-contrast:active){.mat-slider-horizontal.cdk-focused .mat-slider-thumb-label,.mat-slider-horizontal.cdk-focused .mat-slider-thumb-label-text{transform:none}}.mat-slider-vertical{width:48px;min-height:128px}.mat-slider-vertical .mat-slider-wrapper{width:2px;top:8px;bottom:8px;left:23px}.mat-slider-vertical .mat-slider-wrapper::after{width:2px;border-top-width:2px;bottom:0;left:0}.mat-slider-vertical .mat-slider-track-wrapper{height:100%;width:2px}.mat-slider-vertical .mat-slider-track-fill{height:100%;width:2px;transform:scaleY(0)}.mat-slider-vertical .mat-slider-track-background{height:100%;width:2px;transform:scaleY(1)}.mat-slider-vertical .mat-slider-ticks-container{width:2px;height:100%}@media (-ms-high-contrast:active){.mat-slider-vertical .mat-slider-ticks-container{width:0;outline:solid 2px;left:1px}}.mat-slider-vertical .mat-slider-focus-ring{bottom:-15px;left:-15px}.mat-slider-vertical .mat-slider-ticks{width:2px;height:100%}.mat-slider-vertical .mat-slider-thumb-container{height:100%;width:0;left:50%}.mat-slider-vertical .mat-slider-thumb{-webkit-backface-visibility:hidden;backface-visibility:hidden}.mat-slider-vertical .mat-slider-thumb-label{bottom:-14px;left:-40px;transform:translateX(26px) scale(.01) rotate(-45deg)}.mat-slider-vertical .mat-slider-thumb-label-text{transform:rotate(45deg)}.mat-slider-vertical.cdk-focused .mat-slider-thumb-label{transform:rotate(-45deg)}[dir=rtl] .mat-slider-wrapper::after{left:0;right:auto}[dir=rtl] .mat-slider-horizontal .mat-slider-track-fill{transform-origin:100% 100%}[dir=rtl] .mat-slider-horizontal .mat-slider-track-background{transform-origin:0 0}[dir=rtl] .mat-slider-horizontal.mat-slider-axis-inverted .mat-slider-track-fill{transform-origin:0 0}[dir=rtl] .mat-slider-horizontal.mat-slider-axis-inverted .mat-slider-track-background{transform-origin:100% 100%}.mat-slider._mat-animation-noopable .mat-slider-focus-ring,.mat-slider._mat-animation-noopable .mat-slider-has-ticks .mat-slider-wrapper::after,.mat-slider._mat-animation-noopable .mat-slider-thumb,.mat-slider._mat-animation-noopable .mat-slider-thumb-container,.mat-slider._mat-animation-noopable .mat-slider-thumb-label,.mat-slider._mat-animation-noopable .mat-slider-thumb-label-text,.mat-slider._mat-animation-noopable .mat-slider-ticks,.mat-slider._mat-animation-noopable .mat-slider-track-background,.mat-slider._mat-animation-noopable .mat-slider-track-fill{transition:none}"],
+        inputs: ['disabled', 'color', 'tabIndex'],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_4__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_4__["ChangeDetectionStrategy"].OnPush
+      }]
+    }];
+    /** @nocollapse */
+
+    MatSlider.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["ElementRef"]
+      }, {
+        type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__["FocusMonitor"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_1__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Optional"]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Attribute"],
+          args: ['tabindex']
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+
+    MatSlider.propDecorators = {
+      invert: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Input"]
+      }],
+      max: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Input"]
+      }],
+      min: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Input"]
+      }],
+      step: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Input"]
+      }],
+      thumbLabel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Input"]
+      }],
+      tickInterval: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Input"]
+      }],
+      value: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Input"]
+      }],
+      displayWith: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Input"]
+      }],
+      vertical: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Input"]
+      }],
+      change: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Output"]
+      }],
+      input: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Output"]
+      }],
+      valueChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Output"]
+      }],
+      _sliderWrapper: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["ViewChild"],
+        args: ['sliderWrapper', {
+          "static": false
+        }]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var MatSliderModule = function MatSliderModule() {
+      _classCallCheck(this, MatSliderModule);
+    };
+
+    MatSliderModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"],
+      args: [{
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["CommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_6__["MatCommonModule"]],
+        exports: [MatSlider, _angular_material_core__WEBPACK_IMPORTED_MODULE_6__["MatCommonModule"]],
+        declarations: [MatSlider],
+        providers: [{
+          provide: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_10__["HAMMER_GESTURE_CONFIG"],
+          useClass: _angular_material_core__WEBPACK_IMPORTED_MODULE_6__["GestureConfig"]
+        }]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=slider.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/sort.js":
+  /*!********************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/sort.js ***!
+    \********************************************************/
+
+  /*! exports provided: MatSortModule, MatSortHeader, MAT_SORT_HEADER_INTL_PROVIDER_FACTORY, MatSortHeaderIntl, MAT_SORT_HEADER_INTL_PROVIDER, MatSort, matSortAnimations */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015SortJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSortModule", function () {
+      return MatSortModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSortHeader", function () {
+      return MatSortHeader;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SORT_HEADER_INTL_PROVIDER_FACTORY", function () {
+      return MAT_SORT_HEADER_INTL_PROVIDER_FACTORY;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSortHeaderIntl", function () {
+      return MatSortHeaderIntl;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_SORT_HEADER_INTL_PROVIDER", function () {
+      return MAT_SORT_HEADER_INTL_PROVIDER;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatSort", function () {
+      return MatSort;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matSortAnimations", function () {
+      return matSortAnimations;
+    });
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _angular_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/animations */
+    "./node_modules/@angular/animations/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * \@docs-private
+     * @param {?} id
+     * @return {?}
+     */
+
+
+    function getSortDuplicateSortableIdError(id) {
+      return Error("Cannot have two MatSortables with the same id (".concat(id, ")."));
+    }
+    /**
+     * \@docs-private
+     * @return {?}
+     */
+
+
+    function getSortHeaderNotContainedWithinSortError() {
+      return Error("MatSortHeader must be placed within a parent element with the MatSort directive.");
+    }
+    /**
+     * \@docs-private
+     * @return {?}
+     */
+
+
+    function getSortHeaderMissingIdError() {
+      return Error("MatSortHeader must be provided with a unique id.");
+    }
+    /**
+     * \@docs-private
+     * @param {?} direction
+     * @return {?}
+     */
+
+
+    function getSortInvalidDirectionError(direction) {
+      return Error("".concat(direction, " is not a valid sort direction ('asc' or 'desc')."));
+    }
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    // Boilerplate for applying mixins to MatSort.
+
+    /**
+     * \@docs-private
+     */
+
+
+    var MatSortBase = function MatSortBase() {
+      _classCallCheck(this, MatSortBase);
+    };
+    /** @type {?} */
+
+
+    var _MatSortMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinInitialized"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisabled"])(MatSortBase));
+    /**
+     * Container for MatSortables to manage the sort state and provide default sort parameters.
+     */
+
+
+    var MatSort = /*#__PURE__*/function (_MatSortMixinBase2) {
+      _inherits(MatSort, _MatSortMixinBase2);
+
+      var _super17 = _createSuper(MatSort);
+
+      function MatSort() {
+        var _this46;
+
+        _classCallCheck(this, MatSort);
+
+        _this46 = _super17.apply(this, arguments);
+        /**
+         * Collection of all registered sortables that this directive manages.
+         */
+
+        _this46.sortables = new Map();
+        /**
+         * Used to notify any child components listening to state changes.
+         */
+
+        _this46._stateChanges = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        /**
+         * The direction to set when an MatSortable is initially sorted.
+         * May be overriden by the MatSortable's sort start.
+         */
+
+        _this46.start = 'asc';
+        _this46._direction = '';
+        /**
+         * Event emitted when the user changes either the active sort or sort direction.
+         */
+
+        _this46.sortChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        return _this46;
+      }
+      /**
+       * The sort direction of the currently active MatSortable.
+       * @return {?}
+       */
+
+
+      _createClass(MatSort, [{
+        key: "register",
+
+        /**
+         * Register function to be used by the contained MatSortables. Adds the MatSortable to the
+         * collection of MatSortables.
+         * @param {?} sortable
+         * @return {?}
+         */
+        value: function register(sortable) {
+          if (!sortable.id) {
+            throw getSortHeaderMissingIdError();
+          }
+
+          if (this.sortables.has(sortable.id)) {
+            throw getSortDuplicateSortableIdError(sortable.id);
+          }
+
+          this.sortables.set(sortable.id, sortable);
+        }
+        /**
+         * Unregister function to be used by the contained MatSortables. Removes the MatSortable from the
+         * collection of contained MatSortables.
+         * @param {?} sortable
+         * @return {?}
+         */
+
+      }, {
+        key: "deregister",
+        value: function deregister(sortable) {
+          this.sortables["delete"](sortable.id);
+        }
+        /**
+         * Sets the active sort id and determines the new sort direction.
+         * @param {?} sortable
+         * @return {?}
+         */
+
+      }, {
+        key: "sort",
+        value: function sort(sortable) {
+          if (this.active != sortable.id) {
+            this.active = sortable.id;
+            this.direction = sortable.start ? sortable.start : this.start;
+          } else {
+            this.direction = this.getNextSortDirection(sortable);
+          }
+
+          this.sortChange.emit({
+            active: this.active,
+            direction: this.direction
+          });
+        }
+        /**
+         * Returns the next sort direction of the active sortable, checking for potential overrides.
+         * @param {?} sortable
+         * @return {?}
+         */
+
+      }, {
+        key: "getNextSortDirection",
+        value: function getNextSortDirection(sortable) {
+          if (!sortable) {
+            return '';
+          } // Get the sort direction cycle with the potential sortable overrides.
+
+          /** @type {?} */
+
+
+          var disableClear = sortable.disableClear != null ? sortable.disableClear : this.disableClear;
+          /** @type {?} */
+
+          var sortDirectionCycle = getSortDirectionCycle(sortable.start || this.start, disableClear); // Get and return the next direction in the cycle
+
+          /** @type {?} */
+
+          var nextDirectionIndex = sortDirectionCycle.indexOf(this.direction) + 1;
+
+          if (nextDirectionIndex >= sortDirectionCycle.length) {
+            nextDirectionIndex = 0;
+          }
+
+          return sortDirectionCycle[nextDirectionIndex];
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this._markInitialized();
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnChanges",
+        value: function ngOnChanges() {
+          this._stateChanges.next();
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._stateChanges.complete();
+        }
+      }, {
+        key: "direction",
+        get: function get() {
+          return this._direction;
+        }
+        /**
+         * @param {?} direction
+         * @return {?}
+         */
+        ,
+        set: function set(direction) {
+          if (Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["isDevMode"])() && direction && direction !== 'asc' && direction !== 'desc') {
+            throw getSortInvalidDirectionError(direction);
+          }
+
+          this._direction = direction;
+        }
+        /**
+         * Whether to disable the user from clearing the sort by finishing the sort direction cycle.
+         * May be overriden by the MatSortable's disable clear input.
+         * @return {?}
+         */
+
+      }, {
+        key: "disableClear",
+        get: function get() {
+          return this._disableClear;
+        }
+        /**
+         * @param {?} v
+         * @return {?}
+         */
+        ,
+        set: function set(v) {
+          this._disableClear = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceBooleanProperty"])(v);
+        }
+      }]);
+
+      return MatSort;
+    }(_MatSortMixinBase);
+
+    MatSort.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+      args: [{
+        selector: '[matSort]',
+        exportAs: 'matSort',
+        inputs: ['disabled: matSortDisabled']
+      }]
+    }];
+    MatSort.propDecorators = {
+      active: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"],
+        args: ['matSortActive']
+      }],
+      start: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"],
+        args: ['matSortStart']
+      }],
+      direction: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"],
+        args: ['matSortDirection']
+      }],
+      disableClear: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"],
+        args: ['matSortDisableClear']
+      }],
+      sortChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"],
+        args: ['matSortChange']
+      }]
+    };
+    /**
+     * Returns the sort direction cycle to use given the provided parameters of order and clear.
+     * @param {?} start
+     * @param {?} disableClear
+     * @return {?}
+     */
+
+    function getSortDirectionCycle(start, disableClear) {
+      /** @type {?} */
+      var sortOrder = ['asc', 'desc'];
+
+      if (start == 'desc') {
+        sortOrder.reverse();
+      }
+
+      if (!disableClear) {
+        sortOrder.push('');
+      }
+
+      return sortOrder;
+    }
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /** @type {?} */
+
+
+    var SORT_ANIMATION_TRANSITION = _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["AnimationDurations"].ENTERING + ' ' + _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["AnimationCurves"].STANDARD_CURVE;
+    /**
+     * Animations used by MatSort.
+     * \@docs-private
+     * @type {?}
+     */
+
+    var matSortAnimations = {
+      /**
+       * Animation that moves the sort indicator.
+       */
+      indicator: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('indicator', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('active-asc, asc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(0px)'
+      })), // 10px is the height of the sort indicator, minus the width of the pointers
+      Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('active-desc, desc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(10px)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('active-asc <=> active-desc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])(SORT_ANIMATION_TRANSITION))]),
+
+      /**
+       * Animation that rotates the left pointer of the indicator based on the sorting direction.
+       */
+      leftPointer: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('leftPointer', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('active-asc, asc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'rotate(-45deg)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('active-desc, desc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'rotate(45deg)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('active-asc <=> active-desc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])(SORT_ANIMATION_TRANSITION))]),
+
+      /**
+       * Animation that rotates the right pointer of the indicator based on the sorting direction.
+       */
+      rightPointer: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('rightPointer', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('active-asc, asc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'rotate(45deg)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('active-desc, desc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'rotate(-45deg)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('active-asc <=> active-desc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])(SORT_ANIMATION_TRANSITION))]),
+
+      /**
+       * Animation that controls the arrow opacity.
+       */
+      arrowOpacity: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('arrowOpacity', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('desc-to-active, asc-to-active, active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        opacity: 1
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('desc-to-hint, asc-to-hint, hint', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        opacity: .54
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('hint-to-desc, active-to-desc, desc, hint-to-asc, active-to-asc, asc, void', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        opacity: 0
+      })), // Transition between all states except for immediate transitions
+      Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('* => asc, * => desc, * => active, * => hint, * => void', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('0ms')), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('* <=> *', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])(SORT_ANIMATION_TRANSITION))]),
+
+      /**
+       * Animation for the translation of the arrow as a whole. States are separated into two
+       * groups: ones with animations and others that are immediate. Immediate states are asc, desc,
+       * peek, and active. The other states define a specific animation (source-to-destination)
+       * and are determined as a function of their prev user-perceived state and what the next state
+       * should be.
+       */
+      arrowPosition: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('arrowPosition', [// Hidden Above => Hint Center
+      Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('* => desc-to-hint, * => desc-to-active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])(SORT_ANIMATION_TRANSITION, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["keyframes"])([Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(-25%)'
+      }), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(0)'
+      })]))), // Hint Center => Hidden Below
+      Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('* => hint-to-desc, * => active-to-desc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])(SORT_ANIMATION_TRANSITION, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["keyframes"])([Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(0)'
+      }), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(25%)'
+      })]))), // Hidden Below => Hint Center
+      Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('* => asc-to-hint, * => asc-to-active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])(SORT_ANIMATION_TRANSITION, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["keyframes"])([Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(25%)'
+      }), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(0)'
+      })]))), // Hint Center => Hidden Above
+      Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('* => hint-to-asc, * => active-to-asc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])(SORT_ANIMATION_TRANSITION, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["keyframes"])([Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(0)'
+      }), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(-25%)'
+      })]))), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('desc-to-hint, asc-to-hint, hint, desc-to-active, asc-to-active, active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(0)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('hint-to-desc, active-to-desc, desc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(-25%)'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('hint-to-asc, active-to-asc, asc', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translateY(25%)'
+      }))]),
+
+      /**
+       * Necessary trigger that calls animate on children animations.
+       */
+      allowChildren: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('allowChildren', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('* <=> *', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["query"])('@*', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animateChild"])(), {
+        optional: true
+      })])])
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * To modify the labels and text displayed, create a new instance of MatSortHeaderIntl and
+     * include it in a custom provider.
+     */
+
+    var MatSortHeaderIntl = function MatSortHeaderIntl() {
+      _classCallCheck(this, MatSortHeaderIntl);
+
+      /**
+       * Stream that emits whenever the labels here are changed. Use this to notify
+       * components if the labels have changed after initialization.
+       */
+      this.changes = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+      /**
+       * ARIA label for the sorting button.
+       */
+
+      this.sortButtonLabel =
+      /**
+      * @param {?} id
+      * @return {?}
+      */
+      function (id) {
+        return "Change sorting for ".concat(id);
+      };
+    };
+
+    MatSortHeaderIntl.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+      args: [{
+        providedIn: 'root'
+      }]
+    }];
+    /** @nocollapse */
+
+    MatSortHeaderIntl.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({
+      factory: function MatSortHeaderIntl_Factory() {
+        return new MatSortHeaderIntl();
+      },
+      token: MatSortHeaderIntl,
+      providedIn: "root"
+    });
+    /**
+     * \@docs-private
+     * @param {?} parentIntl
+     * @return {?}
+     */
+
+    function MAT_SORT_HEADER_INTL_PROVIDER_FACTORY(parentIntl) {
+      return parentIntl || new MatSortHeaderIntl();
+    }
+    /**
+     * \@docs-private
+     * @type {?}
+     */
+
+
+    var MAT_SORT_HEADER_INTL_PROVIDER = {
+      // If there is already an MatSortHeaderIntl available, use that. Otherwise, provide a new one.
+      provide: MatSortHeaderIntl,
+      deps: [[new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"](), new _angular_core__WEBPACK_IMPORTED_MODULE_1__["SkipSelf"](), MatSortHeaderIntl]],
+      useFactory: MAT_SORT_HEADER_INTL_PROVIDER_FACTORY
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    // Boilerplate for applying mixins to the sort header.
+
+    /**
+     * \@docs-private
+     */
+
+    var MatSortHeaderBase = function MatSortHeaderBase() {
+      _classCallCheck(this, MatSortHeaderBase);
+    };
+    /** @type {?} */
+
+
+    var _MatSortHeaderMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisabled"])(MatSortHeaderBase);
+    /**
+     * Applies sorting behavior (click to change sort) and styles to an element, including an
+     * arrow to display the current sort direction.
+     *
+     * Must be provided with an id and contained within a parent MatSort directive.
+     *
+     * If used on header cells in a CdkTable, it will automatically default its id from its containing
+     * column definition.
+     */
+
+
+    var MatSortHeader = /*#__PURE__*/function (_MatSortHeaderMixinBa) {
+      _inherits(MatSortHeader, _MatSortHeaderMixinBa);
+
+      var _super18 = _createSuper(MatSortHeader);
+
+      /**
+       * @param {?} _intl
+       * @param {?} changeDetectorRef
+       * @param {?} _sort
+       * @param {?} _columnDef
+       */
+      function MatSortHeader(_intl, changeDetectorRef, _sort, _columnDef) {
+        var _this47;
+
+        _classCallCheck(this, MatSortHeader);
+
+        // Note that we use a string token for the `_columnDef`, because the value is provided both by
+        // `material/table` and `cdk/table` and we can't have the CDK depending on Material,
+        // and we want to avoid having the sort header depending on the CDK table because
+        // of this single reference.
+        _this47 = _super18.call(this);
+        _this47._intl = _intl;
+        _this47._sort = _sort;
+        _this47._columnDef = _columnDef;
+        /**
+         * Flag set to true when the indicator should be displayed while the sort is not active. Used to
+         * provide an affordance that the header is sortable by showing on focus and hover.
+         */
+
+        _this47._showIndicatorHint = false;
+        /**
+         * The direction the arrow should be facing according to the current state.
+         */
+
+        _this47._arrowDirection = '';
+        /**
+         * Whether the view state animation should show the transition between the `from` and `to` states.
+         */
+
+        _this47._disableViewStateAnimation = false;
+        /**
+         * Sets the position of the arrow that displays when sorted.
+         */
+
+        _this47.arrowPosition = 'after';
+
+        if (!_sort) {
+          throw getSortHeaderNotContainedWithinSortError();
+        }
+
+        _this47._rerenderSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["merge"])(_sort.sortChange, _sort._stateChanges, _intl.changes).subscribe(
+        /**
+        * @return {?}
+        */
+        function () {
+          if (_this47._isSorted()) {
+            _this47._updateArrowDirection();
+          } // If this header was recently active and now no longer sorted, animate away the arrow.
+
+
+          if (!_this47._isSorted() && _this47._viewState && _this47._viewState.toState === 'active') {
+            _this47._disableViewStateAnimation = false;
+
+            _this47._setAnimationTransitionState({
+              fromState: 'active',
+              toState: _this47._arrowDirection
+            });
+          }
+
+          changeDetectorRef.markForCheck();
+        });
+        return _this47;
+      }
+      /**
+       * Overrides the disable clear value of the containing MatSort for this MatSortable.
+       * @return {?}
+       */
+
+
+      _createClass(MatSortHeader, [{
+        key: "ngOnInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngOnInit() {
+          if (!this.id && this._columnDef) {
+            this.id = this._columnDef.name;
+          } // Initialize the direction of the arrow and set the view state to be immediately that state.
+
+
+          this._updateArrowDirection();
+
+          this._setAnimationTransitionState({
+            toState: this._isSorted() ? 'active' : this._arrowDirection
+          });
+
+          this._sort.register(this);
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._sort.deregister(this);
+
+          this._rerenderSubscription.unsubscribe();
+        }
+        /**
+         * Sets the "hint" state such that the arrow will be semi-transparently displayed as a hint to the
+         * user showing what the active sort will become. If set to false, the arrow will fade away.
+         * @param {?} visible
+         * @return {?}
+         */
+
+      }, {
+        key: "_setIndicatorHintVisible",
+        value: function _setIndicatorHintVisible(visible) {
+          // No-op if the sort header is disabled - should not make the hint visible.
+          if (this._isDisabled() && visible) {
+            return;
+          }
+
+          this._showIndicatorHint = visible;
+
+          if (!this._isSorted()) {
+            this._updateArrowDirection();
+
+            if (this._showIndicatorHint) {
+              this._setAnimationTransitionState({
+                fromState: this._arrowDirection,
+                toState: 'hint'
+              });
+            } else {
+              this._setAnimationTransitionState({
+                fromState: 'hint',
+                toState: this._arrowDirection
+              });
+            }
+          }
+        }
+        /**
+         * Sets the animation transition view state for the arrow's position and opacity. If the
+         * `disableViewStateAnimation` flag is set to true, the `fromState` will be ignored so that
+         * no animation appears.
+         * @param {?} viewState
+         * @return {?}
+         */
+
+      }, {
+        key: "_setAnimationTransitionState",
+        value: function _setAnimationTransitionState(viewState) {
+          this._viewState = viewState; // If the animation for arrow position state (opacity/translation) should be disabled,
+          // remove the fromState so that it jumps right to the toState.
+
+          if (this._disableViewStateAnimation) {
+            this._viewState = {
+              toState: viewState.toState
+            };
+          }
+        }
+        /**
+         * Triggers the sort on this sort header and removes the indicator hint.
+         * @return {?}
+         */
+
+      }, {
+        key: "_handleClick",
+        value: function _handleClick() {
+          if (this._isDisabled()) {
+            return;
+          }
+
+          this._sort.sort(this); // Do not show the animation if the header was already shown in the right position.
+
+
+          if (this._viewState.toState === 'hint' || this._viewState.toState === 'active') {
+            this._disableViewStateAnimation = true;
+          } // If the arrow is now sorted, animate the arrow into place. Otherwise, animate it away into
+          // the direction it is facing.
+
+          /** @type {?} */
+
+
+          var viewState = this._isSorted() ? {
+            fromState: this._arrowDirection,
+            toState: 'active'
+          } : {
+            fromState: 'active',
+            toState: this._arrowDirection
+          };
+
+          this._setAnimationTransitionState(viewState);
+
+          this._showIndicatorHint = false;
+        }
+        /**
+         * Whether this MatSortHeader is currently sorted in either ascending or descending order.
+         * @return {?}
+         */
+
+      }, {
+        key: "_isSorted",
+        value: function _isSorted() {
+          return this._sort.active == this.id && (this._sort.direction === 'asc' || this._sort.direction === 'desc');
+        }
+        /**
+         * Returns the animation state for the arrow direction (indicator and pointers).
+         * @return {?}
+         */
+
+      }, {
+        key: "_getArrowDirectionState",
+        value: function _getArrowDirectionState() {
+          return "".concat(this._isSorted() ? 'active-' : '').concat(this._arrowDirection);
+        }
+        /**
+         * Returns the arrow position state (opacity, translation).
+         * @return {?}
+         */
+
+      }, {
+        key: "_getArrowViewState",
+        value: function _getArrowViewState() {
+          /** @type {?} */
+          var fromState = this._viewState.fromState;
+          return (fromState ? "".concat(fromState, "-to-") : '') + this._viewState.toState;
+        }
+        /**
+         * Updates the direction the arrow should be pointing. If it is not sorted, the arrow should be
+         * facing the start direction. Otherwise if it is sorted, the arrow should point in the currently
+         * active sorted direction. The reason this is updated through a function is because the direction
+         * should only be changed at specific times - when deactivated but the hint is displayed and when
+         * the sort is active and the direction changes. Otherwise the arrow's direction should linger
+         * in cases such as the sort becoming deactivated but we want to animate the arrow away while
+         * preserving its direction, even though the next sort direction is actually different and should
+         * only be changed once the arrow displays again (hint or activation).
+         * @return {?}
+         */
+
+      }, {
+        key: "_updateArrowDirection",
+        value: function _updateArrowDirection() {
+          this._arrowDirection = this._isSorted() ? this._sort.direction : this.start || this._sort.start;
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "_isDisabled",
+        value: function _isDisabled() {
+          return this._sort.disabled || this.disabled;
+        }
+        /**
+         * Gets the aria-sort attribute that should be applied to this sort header. If this header
+         * is not sorted, returns null so that the attribute is removed from the host element. Aria spec
+         * says that the aria-sort property should only be present on one header at a time, so removing
+         * ensures this is true.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getAriaSortAttribute",
+        value: function _getAriaSortAttribute() {
+          if (!this._isSorted()) {
+            return null;
+          }
+
+          return this._sort.direction == 'asc' ? 'ascending' : 'descending';
+        }
+        /**
+         * Whether the arrow inside the sort header should be rendered.
+         * @return {?}
+         */
+
+      }, {
+        key: "_renderArrow",
+        value: function _renderArrow() {
+          return !this._isDisabled() || this._isSorted();
+        }
+      }, {
+        key: "disableClear",
+        get: function get() {
+          return this._disableClear;
+        }
+        /**
+         * @param {?} v
+         * @return {?}
+         */
+        ,
+        set: function set(v) {
+          this._disableClear = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceBooleanProperty"])(v);
+        }
+      }]);
+
+      return MatSortHeader;
+    }(_MatSortHeaderMixinBase);
+
+    MatSortHeader.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
+      args: [{
+        selector: '[mat-sort-header]',
+        exportAs: 'matSortHeader',
+        template: "<div class=\"mat-sort-header-container\" [class.mat-sort-header-sorted]=\"_isSorted()\" [class.mat-sort-header-position-before]=\"arrowPosition == 'before'\"><button class=\"mat-sort-header-button\" type=\"button\" [attr.disabled]=\"_isDisabled() || null\" [attr.aria-label]=\"_intl.sortButtonLabel(id)\" (focus)=\"_setIndicatorHintVisible(true)\" (blur)=\"_setIndicatorHintVisible(false)\"><ng-content></ng-content></button><div class=\"mat-sort-header-arrow\" *ngIf=\"_renderArrow()\" [@arrowOpacity]=\"_getArrowViewState()\" [@arrowPosition]=\"_getArrowViewState()\" [@allowChildren]=\"_getArrowDirectionState()\" (@arrowPosition.start)=\"_disableViewStateAnimation = true\" (@arrowPosition.done)=\"_disableViewStateAnimation = false\"><div class=\"mat-sort-header-stem\"></div><div class=\"mat-sort-header-indicator\" [@indicator]=\"_getArrowDirectionState()\"><div class=\"mat-sort-header-pointer-left\" [@leftPointer]=\"_getArrowDirectionState()\"></div><div class=\"mat-sort-header-pointer-right\" [@rightPointer]=\"_getArrowDirectionState()\"></div><div class=\"mat-sort-header-pointer-middle\"></div></div></div></div>",
+        styles: [".mat-sort-header-container{display:flex;cursor:pointer;align-items:center}.mat-sort-header-disabled .mat-sort-header-container{cursor:default}.mat-sort-header-position-before{flex-direction:row-reverse}.mat-sort-header-button{border:none;background:0 0;display:flex;align-items:center;padding:0;cursor:inherit;outline:0;font:inherit;color:currentColor}.mat-sort-header-button::-moz-focus-inner{border:0}.mat-sort-header-arrow{height:12px;width:12px;min-width:12px;position:relative;display:flex;opacity:0}.mat-sort-header-arrow,[dir=rtl] .mat-sort-header-position-before .mat-sort-header-arrow{margin:0 0 0 6px}.mat-sort-header-position-before .mat-sort-header-arrow,[dir=rtl] .mat-sort-header-arrow{margin:0 6px 0 0}.mat-sort-header-stem{background:currentColor;height:10px;width:2px;margin:auto;display:flex;align-items:center}@media (-ms-high-contrast:active){.mat-sort-header-stem{width:0;border-left:solid 2px}}.mat-sort-header-indicator{width:100%;height:2px;display:flex;align-items:center;position:absolute;top:0;left:0}.mat-sort-header-pointer-middle{margin:auto;height:2px;width:2px;background:currentColor;transform:rotate(45deg)}@media (-ms-high-contrast:active){.mat-sort-header-pointer-middle{width:0;height:0;border-top:solid 2px;border-left:solid 2px}}.mat-sort-header-pointer-left,.mat-sort-header-pointer-right{background:currentColor;width:6px;height:2px;position:absolute;top:0}@media (-ms-high-contrast:active){.mat-sort-header-pointer-left,.mat-sort-header-pointer-right{width:0;height:0;border-left:solid 6px;border-top:solid 2px}}.mat-sort-header-pointer-left{transform-origin:right;left:0}.mat-sort-header-pointer-right{transform-origin:left;right:0}"],
+        host: {
+          '(click)': '_handleClick()',
+          '(mouseenter)': '_setIndicatorHintVisible(true)',
+          '(mouseleave)': '_setIndicatorHintVisible(false)',
+          '[attr.aria-sort]': '_getAriaSortAttribute()',
+          '[class.mat-sort-header-disabled]': '_isDisabled()'
+        },
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectionStrategy"].OnPush,
+        inputs: ['disabled'],
+        animations: [matSortAnimations.indicator, matSortAnimations.leftPointer, matSortAnimations.rightPointer, matSortAnimations.arrowOpacity, matSortAnimations.arrowPosition, matSortAnimations.allowChildren]
+      }]
+    }];
+    /** @nocollapse */
+
+    MatSortHeader.ctorParameters = function () {
+      return [{
+        type: MatSortHeaderIntl
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]
+      }, {
+        type: MatSort,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+        }]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+          args: ['MAT_SORT_HEADER_COLUMN_DEF']
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+        }]
+      }];
+    };
+
+    MatSortHeader.propDecorators = {
+      id: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"],
+        args: ['mat-sort-header']
+      }],
+      arrowPosition: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+      }],
+      start: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+      }],
+      disableClear: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var MatSortModule = function MatSortModule() {
+      _classCallCheck(this, MatSortModule);
+    };
+
+    MatSortModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+      args: [{
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"]],
+        exports: [MatSort, MatSortHeader],
+        declarations: [MatSort, MatSortHeader],
+        providers: [MAT_SORT_HEADER_INTL_PROVIDER]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=sort.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/stepper.js":
+  /*!***********************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/stepper.js ***!
+    \***********************************************************/
+
+  /*! exports provided: MatStepperModule, MatStepLabel, MatStep, MatStepper, MatHorizontalStepper, MatVerticalStepper, MatStepperNext, MatStepperPrevious, MatStepHeader, MAT_STEPPER_INTL_PROVIDER_FACTORY, MatStepperIntl, MAT_STEPPER_INTL_PROVIDER, matStepperAnimations, MatStepperIcon */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015StepperJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepperModule", function () {
+      return MatStepperModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepLabel", function () {
+      return MatStepLabel;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStep", function () {
+      return MatStep;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepper", function () {
+      return MatStepper;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatHorizontalStepper", function () {
+      return MatHorizontalStepper;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatVerticalStepper", function () {
+      return MatVerticalStepper;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepperNext", function () {
+      return MatStepperNext;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepperPrevious", function () {
+      return MatStepperPrevious;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepHeader", function () {
+      return MatStepHeader;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_STEPPER_INTL_PROVIDER_FACTORY", function () {
+      return MAT_STEPPER_INTL_PROVIDER_FACTORY;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepperIntl", function () {
+      return MatStepperIntl;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_STEPPER_INTL_PROVIDER", function () {
+      return MAT_STEPPER_INTL_PROVIDER;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matStepperAnimations", function () {
+      return matStepperAnimations;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatStepperIcon", function () {
+      return MatStepperIcon;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/cdk/stepper */
+    "./node_modules/@angular/cdk/esm2015/stepper.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/animations */
+    "./node_modules/@angular/animations/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/cdk/bidi */
+    "./node_modules/@angular/cdk/esm2015/bidi.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @angular/cdk/portal */
+    "./node_modules/@angular/cdk/esm2015/portal.js");
+    /* harmony import */
+
+
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/material/button */
+    "./node_modules/@angular/material/esm2015/button.js");
+    /* harmony import */
+
+
+    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @angular/material/icon */
+    "./node_modules/@angular/material/esm2015/icon.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+
+    var MatStepLabel = /*#__PURE__*/function (_angular_cdk_stepper_) {
+      _inherits(MatStepLabel, _angular_cdk_stepper_);
+
+      var _super19 = _createSuper(MatStepLabel);
+
+      function MatStepLabel() {
+        _classCallCheck(this, MatStepLabel);
+
+        return _super19.apply(this, arguments);
+      }
+
+      return MatStepLabel;
+    }(_angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["CdkStepLabel"]);
+
+    MatStepLabel.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: '[matStepLabel]'
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Stepper data that is required for internationalization.
+     */
+
+    var MatStepperIntl = function MatStepperIntl() {
+      _classCallCheck(this, MatStepperIntl);
+
+      /**
+       * Stream that emits whenever the labels here are changed. Use this to notify
+       * components if the labels have changed after initialization.
+       */
+      this.changes = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+      /**
+       * Label that is rendered below optional steps.
+       */
+
+      this.optionalLabel = 'Optional';
+    };
+
+    MatStepperIntl.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+      args: [{
+        providedIn: 'root'
+      }]
+    }];
+    /** @nocollapse */
+
+    MatStepperIntl.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({
+      factory: function MatStepperIntl_Factory() {
+        return new MatStepperIntl();
+      },
+      token: MatStepperIntl,
+      providedIn: "root"
+    });
+    /**
+     * \@docs-private
+     * @param {?} parentIntl
+     * @return {?}
+     */
+
+    function MAT_STEPPER_INTL_PROVIDER_FACTORY(parentIntl) {
+      return parentIntl || new MatStepperIntl();
+    }
+    /**
+     * \@docs-private
+     * @type {?}
+     */
+
+
+    var MAT_STEPPER_INTL_PROVIDER = {
+      provide: MatStepperIntl,
+      deps: [[new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"](), new _angular_core__WEBPACK_IMPORTED_MODULE_0__["SkipSelf"](), MatStepperIntl]],
+      useFactory: MAT_STEPPER_INTL_PROVIDER_FACTORY
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var MatStepHeader = /*#__PURE__*/function (_angular_cdk_stepper_2) {
+      _inherits(MatStepHeader, _angular_cdk_stepper_2);
+
+      var _super20 = _createSuper(MatStepHeader);
+
+      /**
+       * @param {?} _intl
+       * @param {?} _focusMonitor
+       * @param {?} _elementRef
+       * @param {?} changeDetectorRef
+       */
+      function MatStepHeader(_intl, _focusMonitor, _elementRef, changeDetectorRef) {
+        var _this48;
+
+        _classCallCheck(this, MatStepHeader);
+
+        _this48 = _super20.call(this, _elementRef);
+        _this48._intl = _intl;
+        _this48._focusMonitor = _focusMonitor;
+
+        _focusMonitor.monitor(_elementRef, true);
+
+        _this48._intlSubscription = _intl.changes.subscribe(
+        /**
+        * @return {?}
+        */
+        function () {
+          return changeDetectorRef.markForCheck();
+        });
+        return _this48;
+      }
+      /**
+       * @return {?}
+       */
+
+
+      _createClass(MatStepHeader, [{
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._intlSubscription.unsubscribe();
+
+          this._focusMonitor.stopMonitoring(this._elementRef);
+        }
+        /**
+         * Focuses the step header.
+         * @return {?}
+         */
+
+      }, {
+        key: "focus",
+        value: function focus() {
+          this._focusMonitor.focusVia(this._elementRef, 'program');
+        }
+        /**
+         * Returns string label of given step if it is a text label.
+         * @return {?}
+         */
+
+      }, {
+        key: "_stringLabel",
+        value: function _stringLabel() {
+          return this.label instanceof MatStepLabel ? null : this.label;
+        }
+        /**
+         * Returns MatStepLabel if the label of given step is a template label.
+         * @return {?}
+         */
+
+      }, {
+        key: "_templateLabel",
+        value: function _templateLabel() {
+          return this.label instanceof MatStepLabel ? this.label : null;
+        }
+        /**
+         * Returns the host HTML element.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getHostElement",
+        value: function _getHostElement() {
+          return this._elementRef.nativeElement;
+        }
+        /**
+         * Template context variables that are exposed to the `matStepperIcon` instances.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getIconContext",
+        value: function _getIconContext() {
+          return {
+            index: this.index,
+            active: this.active,
+            optional: this.optional
+          };
+        }
+        /**
+         * @param {?} state
+         * @return {?}
+         */
+
+      }, {
+        key: "_getDefaultTextForState",
+        value: function _getDefaultTextForState(state$$1) {
+          if (state$$1 == 'number') {
+            return "".concat(this.index + 1);
+          }
+
+          if (state$$1 == 'edit') {
+            return 'create';
+          }
+
+          if (state$$1 == 'error') {
+            return 'warning';
+          }
+
+          return state$$1;
+        }
+      }]);
+
+      return MatStepHeader;
+    }(_angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["CdkStepHeader"]);
+
+    MatStepHeader.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-step-header',
+        template: "<div class=\"mat-step-header-ripple\" matRipple [matRippleTrigger]=\"_getHostElement()\" [matRippleDisabled]=\"disableRipple\"></div><div class=\"mat-step-icon-state-{{state}} mat-step-icon\" [class.mat-step-icon-selected]=\"selected\"><div class=\"mat-step-icon-content\" [ngSwitch]=\"!!(iconOverrides && iconOverrides[state])\"><ng-container *ngSwitchCase=\"true\" [ngTemplateOutlet]=\"iconOverrides[state]\" [ngTemplateOutletContext]=\"_getIconContext()\"></ng-container><ng-container *ngSwitchDefault [ngSwitch]=\"state\"><span *ngSwitchCase=\"'number'\">{{_getDefaultTextForState(state)}}</span><mat-icon *ngSwitchDefault>{{_getDefaultTextForState(state)}}</mat-icon></ng-container></div></div><div class=\"mat-step-label\" [class.mat-step-label-active]=\"active\" [class.mat-step-label-selected]=\"selected\" [class.mat-step-label-error]=\"state == 'error'\"><ng-container *ngIf=\"_templateLabel()\" [ngTemplateOutlet]=\"_templateLabel()!.template\"></ng-container><div class=\"mat-step-text-label\" *ngIf=\"_stringLabel()\">{{label}}</div><div class=\"mat-step-optional\" *ngIf=\"optional && state != 'error'\">{{_intl.optionalLabel}}</div><div class=\"mat-step-sub-label-error\" *ngIf=\"state == 'error'\">{{errorMessage}}</div></div>",
+        styles: [".mat-step-header{overflow:hidden;outline:0;cursor:pointer;position:relative;box-sizing:content-box;-webkit-tap-highlight-color:transparent}.mat-step-optional,.mat-step-sub-label-error{font-size:12px}.mat-step-icon{border-radius:50%;height:24px;width:24px;flex-shrink:0;position:relative}.mat-step-icon .mat-icon,.mat-step-icon-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.mat-step-icon .mat-icon{font-size:16px;height:16px;width:16px}.mat-step-icon-state-error .mat-icon{font-size:24px;height:24px;width:24px}.mat-step-label{display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:50px;vertical-align:middle}.mat-step-text-label{text-overflow:ellipsis;overflow:hidden}.mat-step-header .mat-step-header-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}"],
+        host: {
+          'class': 'mat-step-header',
+          'role': 'tab'
+        },
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
+      }]
+    }];
+    /** @nocollapse */
+
+    MatStepHeader.ctorParameters = function () {
+      return [{
+        type: MatStepperIntl
+      }, {
+        type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_3__["FocusMonitor"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }];
+    };
+
+    MatStepHeader.propDecorators = {
+      state: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      label: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      errorMessage: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      iconOverrides: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      index: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      selected: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      active: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      optional: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      disableRipple: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Animations used by the Material steppers.
+     * \@docs-private
+     * @type {?}
+     */
+
+    var matStepperAnimations = {
+      /**
+       * Animation that transitions the step along the X axis in a horizontal stepper.
+       */
+      horizontalStepTransition: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('stepTransition', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('previous', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translate3d(-100%, 0, 0)',
+        visibility: 'hidden'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('current', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'none',
+        visibility: 'visible'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('next', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        transform: 'translate3d(100%, 0, 0)',
+        visibility: 'hidden'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('* => *', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('500ms cubic-bezier(0.35, 0, 0.25, 1)'))]),
+
+      /**
+       * Animation that transitions the step along the Y axis in a vertical stepper.
+       */
+      verticalStepTransition: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('stepTransition', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('previous', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        height: '0px',
+        visibility: 'hidden'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('next', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        height: '0px',
+        visibility: 'hidden'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('current', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({
+        height: '*',
+        visibility: 'visible'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('* <=> current', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'))])
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Template to be used to override the icons inside the step header.
+     */
+
+    var MatStepperIcon =
+    /**
+     * @param {?} templateRef
+     */
+    function MatStepperIcon(templateRef) {
+      _classCallCheck(this, MatStepperIcon);
+
+      this.templateRef = templateRef;
+    };
+
+    MatStepperIcon.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'ng-template[matStepperIcon]'
+      }]
+    }];
+    /** @nocollapse */
+
+    MatStepperIcon.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]
+      }];
+    };
+
+    MatStepperIcon.propDecorators = {
+      name: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['matStepperIcon']
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var MatStep = /*#__PURE__*/function (_angular_cdk_stepper_3) {
+      _inherits(MatStep, _angular_cdk_stepper_3);
+
+      var _super21 = _createSuper(MatStep);
+
+      /**
+       * \@breaking-change 8.0.0 remove the `?` after `stepperOptions`
+       * @param {?} stepper
+       * @param {?} _errorStateMatcher
+       * @param {?=} stepperOptions
+       */
+      function MatStep(stepper, _errorStateMatcher, stepperOptions) {
+        var _this49;
+
+        _classCallCheck(this, MatStep);
+
+        _this49 = _super21.call(this, stepper, stepperOptions);
+        _this49._errorStateMatcher = _errorStateMatcher;
+        return _this49;
+      }
+      /**
+       * Custom error state matcher that additionally checks for validity of interacted form.
+       * @param {?} control
+       * @param {?} form
+       * @return {?}
+       */
+
+
+      _createClass(MatStep, [{
+        key: "isErrorState",
+        value: function isErrorState(control, form) {
+          /** @type {?} */
+          var originalErrorState = this._errorStateMatcher.isErrorState(control, form); // Custom error state checks for the validity of form that is not submitted or touched
+          // since user can trigger a form change by calling for another step without directly
+          // interacting with the current form.
+
+          /** @type {?} */
+
+
+          var customErrorState = !!(control && control.invalid && this.interacted);
+          return originalErrorState || customErrorState;
+        }
+      }]);
+
+      return MatStep;
+    }(_angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["CdkStep"]);
+
+    MatStep.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-step',
+        template: "<ng-template><ng-content></ng-content></ng-template>",
+        providers: [{
+          provide: _angular_material_core__WEBPACK_IMPORTED_MODULE_7__["ErrorStateMatcher"],
+          useExisting: MatStep
+        }],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        exportAs: 'matStep',
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
+      }]
+    }];
+    /** @nocollapse */
+
+    MatStep.ctorParameters = function () {
+      return [{
+        type: MatStepper,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            return MatStepper;
+          })]
+        }]
+      }, {
+        type: _angular_material_core__WEBPACK_IMPORTED_MODULE_7__["ErrorStateMatcher"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["SkipSelf"]
+        }]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["STEPPER_GLOBAL_OPTIONS"]]
+        }]
+      }];
+    };
+
+    MatStep.propDecorators = {
+      stepLabel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"],
+        args: [MatStepLabel, {
+          "static": false
+        }]
+      }]
+    };
+
+    var MatStepper = /*#__PURE__*/function (_angular_cdk_stepper_4) {
+      _inherits(MatStepper, _angular_cdk_stepper_4);
+
+      var _super22 = _createSuper(MatStepper);
+
+      function MatStepper() {
+        var _this50;
+
+        _classCallCheck(this, MatStepper);
+
+        _this50 = _super22.apply(this, arguments);
+        /**
+         * Event emitted when the current step is done transitioning in.
+         */
+
+        _this50.animationDone = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Consumer-specified template-refs to be used to override the header icons.
+         */
+
+        _this50._iconOverrides = {};
+        /**
+         * Stream of animation `done` events when the body expands/collapses.
+         */
+
+        _this50._animationDone = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        return _this50;
+      }
+      /**
+       * @return {?}
+       */
+
+
+      _createClass(MatStepper, [{
+        key: "ngAfterContentInit",
+        value: function ngAfterContentInit() {
+          var _this51 = this;
+
+          this._icons.forEach(
+          /**
+          * @param {?} __0
+          * @return {?}
+          */
+          function (_ref) {
+            var name = _ref.name,
+                templateRef = _ref.templateRef;
+            return _this51._iconOverrides[name] = templateRef;
+          }); // Mark the component for change detection whenever the content children query changes
+
+
+          this._steps.changes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this51._stateChanged();
+          });
+
+          this._animationDone.pipe( // This needs a `distinctUntilChanged` in order to avoid emitting the same event twice due
+          // to a bug in animations where the `.done` callback gets invoked twice on some browsers.
+          // See https://github.com/angular/angular/issues/24084
+          Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["distinctUntilChanged"])(
+          /**
+          * @param {?} x
+          * @param {?} y
+          * @return {?}
+          */
+          function (x, y) {
+            return x.fromState === y.fromState && x.toState === y.toState;
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @param {?} event
+          * @return {?}
+          */
+          function (event) {
+            if (
+            /** @type {?} */
+            event.toState === 'current') {
+              _this51.animationDone.emit();
+            }
+          });
+        }
+      }]);
+
+      return MatStepper;
+    }(_angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["CdkStepper"]);
+
+    MatStepper.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: '[matStepper]',
+        providers: [{
+          provide: _angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["CdkStepper"],
+          useExisting: MatStepper
+        }]
+      }]
+    }];
+    MatStepper.propDecorators = {
+      _stepHeader: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChildren"],
+        args: [MatStepHeader]
+      }],
+      _steps: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+        args: [MatStep]
+      }],
+      _icons: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+        args: [MatStepperIcon]
+      }],
+      animationDone: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      disableRipple: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+
+    var MatHorizontalStepper = /*#__PURE__*/function (_MatStepper) {
+      _inherits(MatHorizontalStepper, _MatStepper);
+
+      var _super23 = _createSuper(MatHorizontalStepper);
+
+      function MatHorizontalStepper() {
+        var _this52;
+
+        _classCallCheck(this, MatHorizontalStepper);
+
+        _this52 = _super23.apply(this, arguments);
+        /**
+         * Whether the label should display in bottom or end position.
+         */
+
+        _this52.labelPosition = 'end';
+        return _this52;
+      }
+
+      return MatHorizontalStepper;
+    }(MatStepper);
+
+    MatHorizontalStepper.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-horizontal-stepper',
+        exportAs: 'matHorizontalStepper',
+        template: "<div class=\"mat-horizontal-stepper-header-container\"><ng-container *ngFor=\"let step of steps; let i = index; let isLast = last\"><mat-step-header class=\"mat-horizontal-stepper-header\" (click)=\"step.select()\" (keydown)=\"_onKeydown($event)\" [tabIndex]=\"_getFocusIndex() === i ? 0 : -1\" [id]=\"_getStepLabelId(i)\" [attr.aria-posinset]=\"i + 1\" [attr.aria-setsize]=\"steps.length\" [attr.aria-controls]=\"_getStepContentId(i)\" [attr.aria-selected]=\"selectedIndex == i\" [attr.aria-label]=\"step.ariaLabel || null\" [attr.aria-labelledby]=\"(!step.ariaLabel && step.ariaLabelledby) ? step.ariaLabelledby : null\" [index]=\"i\" [state]=\"_getIndicatorType(i, step.state)\" [label]=\"step.stepLabel || step.label\" [selected]=\"selectedIndex === i\" [active]=\"step.completed || selectedIndex === i || !linear\" [optional]=\"step.optional\" [errorMessage]=\"step.errorMessage\" [iconOverrides]=\"_iconOverrides\" [disableRipple]=\"disableRipple\"></mat-step-header><div *ngIf=\"!isLast\" class=\"mat-stepper-horizontal-line\"></div></ng-container></div><div class=\"mat-horizontal-content-container\"><div *ngFor=\"let step of steps; let i = index\" [attr.tabindex]=\"selectedIndex === i ? 0 : null\" class=\"mat-horizontal-stepper-content\" role=\"tabpanel\" [@stepTransition]=\"_getAnimationDirection(i)\" (@stepTransition.done)=\"_animationDone.next($event)\" [id]=\"_getStepContentId(i)\" [attr.aria-labelledby]=\"_getStepLabelId(i)\" [attr.aria-expanded]=\"selectedIndex === i\"><ng-container [ngTemplateOutlet]=\"step.content\"></ng-container></div></div>",
+        styles: [".mat-stepper-horizontal,.mat-stepper-vertical{display:block}.mat-horizontal-stepper-header-container{white-space:nowrap;display:flex;align-items:center}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container{align-items:flex-start}.mat-stepper-horizontal-line{border-top-width:1px;border-top-style:solid;flex:auto;height:0;margin:0 -16px;min-width:32px}.mat-stepper-label-position-bottom .mat-stepper-horizontal-line{margin:0;min-width:0;position:relative;top:36px}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before,.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after,[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after,[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before{border-top-width:1px;border-top-style:solid;content:'';display:inline-block;height:0;position:absolute;top:36px;width:calc(50% - 20px)}.mat-horizontal-stepper-header{display:flex;height:72px;overflow:hidden;align-items:center;padding:0 24px}.mat-horizontal-stepper-header .mat-step-icon{margin-right:8px;flex:none}[dir=rtl] .mat-horizontal-stepper-header .mat-step-icon{margin-right:0;margin-left:8px}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header{box-sizing:border-box;flex-direction:column;height:auto;padding:24px}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after,[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after{right:0}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before,[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before{left:0}[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:first-child::after,[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:last-child::before{display:none}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-icon{margin-right:0;margin-left:0}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label{padding:16px 0 0 0;text-align:center;width:100%}.mat-vertical-stepper-header{display:flex;align-items:center;padding:24px;height:24px}.mat-vertical-stepper-header .mat-step-icon{margin-right:12px}[dir=rtl] .mat-vertical-stepper-header .mat-step-icon{margin-right:0;margin-left:12px}.mat-horizontal-stepper-content{outline:0}.mat-horizontal-stepper-content[aria-expanded=false]{height:0;overflow:hidden}.mat-horizontal-content-container{overflow:hidden;padding:0 24px 24px 24px}.mat-vertical-content-container{margin-left:36px;border:0;position:relative}[dir=rtl] .mat-vertical-content-container{margin-left:0;margin-right:36px}.mat-stepper-vertical-line::before{content:'';position:absolute;top:-16px;bottom:-16px;left:0;border-left-width:1px;border-left-style:solid}[dir=rtl] .mat-stepper-vertical-line::before{left:auto;right:0}.mat-vertical-stepper-content{overflow:hidden;outline:0}.mat-vertical-content{padding:0 24px 24px 24px}.mat-step:last-child .mat-vertical-content-container{border:none}"],
+        inputs: ['selectedIndex'],
+        host: {
+          'class': 'mat-stepper-horizontal',
+          '[class.mat-stepper-label-position-end]': 'labelPosition == "end"',
+          '[class.mat-stepper-label-position-bottom]': 'labelPosition == "bottom"',
+          'aria-orientation': 'horizontal',
+          'role': 'tablist'
+        },
+        animations: [matStepperAnimations.horizontalStepTransition],
+        providers: [{
+          provide: MatStepper,
+          useExisting: MatHorizontalStepper
+        }, {
+          provide: _angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["CdkStepper"],
+          useExisting: MatHorizontalStepper
+        }],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
+      }]
+    }];
+    MatHorizontalStepper.propDecorators = {
+      labelPosition: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+
+    var MatVerticalStepper = /*#__PURE__*/function (_MatStepper2) {
+      _inherits(MatVerticalStepper, _MatStepper2);
+
+      var _super24 = _createSuper(MatVerticalStepper);
+
+      /**
+       * @param {?} dir
+       * @param {?} changeDetectorRef
+       * @param {?=} elementRef
+       * @param {?=} _document
+       */
+      function MatVerticalStepper(dir, changeDetectorRef, // @breaking-change 8.0.0 `elementRef` and `_document` parameters to become required.
+      elementRef, _document) {
+        var _this53;
+
+        _classCallCheck(this, MatVerticalStepper);
+
+        _this53 = _super24.call(this, dir, changeDetectorRef, elementRef, _document);
+        _this53._orientation = 'vertical';
+        return _this53;
+      }
+
+      return MatVerticalStepper;
+    }(MatStepper);
+
+    MatVerticalStepper.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-vertical-stepper',
+        exportAs: 'matVerticalStepper',
+        template: "<div class=\"mat-step\" *ngFor=\"let step of steps; let i = index; let isLast = last\"><mat-step-header class=\"mat-vertical-stepper-header\" (click)=\"step.select()\" (keydown)=\"_onKeydown($event)\" [tabIndex]=\"_getFocusIndex() == i ? 0 : -1\" [id]=\"_getStepLabelId(i)\" [attr.aria-posinset]=\"i + 1\" [attr.aria-setsize]=\"steps.length\" [attr.aria-controls]=\"_getStepContentId(i)\" [attr.aria-selected]=\"selectedIndex === i\" [attr.aria-label]=\"step.ariaLabel || null\" [attr.aria-labelledby]=\"(!step.ariaLabel && step.ariaLabelledby) ? step.ariaLabelledby : null\" [index]=\"i\" [state]=\"_getIndicatorType(i, step.state)\" [label]=\"step.stepLabel || step.label\" [selected]=\"selectedIndex === i\" [active]=\"step.completed || selectedIndex === i || !linear\" [optional]=\"step.optional\" [errorMessage]=\"step.errorMessage\" [iconOverrides]=\"_iconOverrides\" [disableRipple]=\"disableRipple\"></mat-step-header><div class=\"mat-vertical-content-container\" [class.mat-stepper-vertical-line]=\"!isLast\"><div class=\"mat-vertical-stepper-content\" role=\"tabpanel\" [attr.tabindex]=\"selectedIndex === i ? 0 : null\" [@stepTransition]=\"_getAnimationDirection(i)\" (@stepTransition.done)=\"_animationDone.next($event)\" [id]=\"_getStepContentId(i)\" [attr.aria-labelledby]=\"_getStepLabelId(i)\" [attr.aria-expanded]=\"selectedIndex === i\"><div class=\"mat-vertical-content\"><ng-container [ngTemplateOutlet]=\"step.content\"></ng-container></div></div></div></div>",
+        styles: [".mat-stepper-horizontal,.mat-stepper-vertical{display:block}.mat-horizontal-stepper-header-container{white-space:nowrap;display:flex;align-items:center}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container{align-items:flex-start}.mat-stepper-horizontal-line{border-top-width:1px;border-top-style:solid;flex:auto;height:0;margin:0 -16px;min-width:32px}.mat-stepper-label-position-bottom .mat-stepper-horizontal-line{margin:0;min-width:0;position:relative;top:36px}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before,.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after,[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after,[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before{border-top-width:1px;border-top-style:solid;content:'';display:inline-block;height:0;position:absolute;top:36px;width:calc(50% - 20px)}.mat-horizontal-stepper-header{display:flex;height:72px;overflow:hidden;align-items:center;padding:0 24px}.mat-horizontal-stepper-header .mat-step-icon{margin-right:8px;flex:none}[dir=rtl] .mat-horizontal-stepper-header .mat-step-icon{margin-right:0;margin-left:8px}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header{box-sizing:border-box;flex-direction:column;height:auto;padding:24px}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::after,[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::after{right:0}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:first-child)::before,[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:not(:last-child)::before{left:0}[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:first-child::after,[dir=rtl] .mat-stepper-label-position-bottom .mat-horizontal-stepper-header:last-child::before{display:none}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-icon{margin-right:0;margin-left:0}.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label{padding:16px 0 0 0;text-align:center;width:100%}.mat-vertical-stepper-header{display:flex;align-items:center;padding:24px;height:24px}.mat-vertical-stepper-header .mat-step-icon{margin-right:12px}[dir=rtl] .mat-vertical-stepper-header .mat-step-icon{margin-right:0;margin-left:12px}.mat-horizontal-stepper-content{outline:0}.mat-horizontal-stepper-content[aria-expanded=false]{height:0;overflow:hidden}.mat-horizontal-content-container{overflow:hidden;padding:0 24px 24px 24px}.mat-vertical-content-container{margin-left:36px;border:0;position:relative}[dir=rtl] .mat-vertical-content-container{margin-left:0;margin-right:36px}.mat-stepper-vertical-line::before{content:'';position:absolute;top:-16px;bottom:-16px;left:0;border-left-width:1px;border-left-style:solid}[dir=rtl] .mat-stepper-vertical-line::before{left:auto;right:0}.mat-vertical-stepper-content{overflow:hidden;outline:0}.mat-vertical-content{padding:0 24px 24px 24px}.mat-step:last-child .mat-vertical-content-container{border:none}"],
+        inputs: ['selectedIndex'],
+        host: {
+          'class': 'mat-stepper-vertical',
+          'aria-orientation': 'vertical',
+          'role': 'tablist'
+        },
+        animations: [matStepperAnimations.verticalStepTransition],
+        providers: [{
+          provide: MatStepper,
+          useExisting: MatVerticalStepper
+        }, {
+          provide: _angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["CdkStepper"],
+          useExisting: MatVerticalStepper
+        }],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
+      }]
+    }];
+    /** @nocollapse */
+
+    MatVerticalStepper.ctorParameters = function () {
+      return [{
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"]]
+        }]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Button that moves to the next step in a stepper workflow.
+     */
+
+
+    var MatStepperNext = /*#__PURE__*/function (_angular_cdk_stepper_5) {
+      _inherits(MatStepperNext, _angular_cdk_stepper_5);
+
+      var _super25 = _createSuper(MatStepperNext);
+
+      function MatStepperNext() {
+        _classCallCheck(this, MatStepperNext);
+
+        return _super25.apply(this, arguments);
+      }
+
+      return MatStepperNext;
+    }(_angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["CdkStepperNext"]);
+
+    MatStepperNext.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'button[matStepperNext]',
+        host: {
+          '[type]': 'type'
+        },
+        inputs: ['type']
+      }]
+    }];
+    /**
+     * Button that moves to the previous step in a stepper workflow.
+     */
+
+    var MatStepperPrevious = /*#__PURE__*/function (_angular_cdk_stepper_6) {
+      _inherits(MatStepperPrevious, _angular_cdk_stepper_6);
+
+      var _super26 = _createSuper(MatStepperPrevious);
+
+      function MatStepperPrevious() {
+        _classCallCheck(this, MatStepperPrevious);
+
+        return _super26.apply(this, arguments);
+      }
+
+      return MatStepperPrevious;
+    }(_angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["CdkStepperPrevious"]);
+
+    MatStepperPrevious.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'button[matStepperPrevious]',
+        host: {
+          '[type]': 'type'
+        },
+        inputs: ['type']
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    var MatStepperModule = function MatStepperModule() {
+      _classCallCheck(this, MatStepperModule);
+    };
+
+    MatStepperModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+      args: [{
+        imports: [_angular_material_core__WEBPACK_IMPORTED_MODULE_7__["MatCommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"], _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_9__["PortalModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_10__["MatButtonModule"], _angular_cdk_stepper__WEBPACK_IMPORTED_MODULE_1__["CdkStepperModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_11__["MatIconModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_7__["MatRippleModule"]],
+        exports: [_angular_material_core__WEBPACK_IMPORTED_MODULE_7__["MatCommonModule"], MatHorizontalStepper, MatVerticalStepper, MatStep, MatStepLabel, MatStepper, MatStepperNext, MatStepperPrevious, MatStepHeader, MatStepperIcon],
+        declarations: [MatHorizontalStepper, MatVerticalStepper, MatStep, MatStepLabel, MatStepper, MatStepperNext, MatStepperPrevious, MatStepHeader, MatStepperIcon],
+        providers: [MAT_STEPPER_INTL_PROVIDER, _angular_material_core__WEBPACK_IMPORTED_MODULE_7__["ErrorStateMatcher"]]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=stepper.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/tabs.js":
+  /*!********************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/tabs.js ***!
+    \********************************************************/
+
+  /*! exports provided: MatTabsModule, MatInkBar, _MAT_INK_BAR_POSITIONER, MatTabBody, _MatTabBodyBase, MatTabBodyPortal, MatTabHeader, _MatTabHeaderBase, MatTabLabelWrapper, MatTab, MatTabLabel, MatTabNav, MatTabLink, _MatTabNavBase, _MatTabLinkBase, MatTabContent, MatTabChangeEvent, MAT_TABS_CONFIG, _MatTabGroupBase, MatTabGroup, matTabsAnimations, ɵa24, ɵb24 */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015TabsJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabsModule", function () {
+      return MatTabsModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatInkBar", function () {
+      return MatInkBar;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MAT_INK_BAR_POSITIONER", function () {
+      return _MAT_INK_BAR_POSITIONER;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabBody", function () {
+      return MatTabBody;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatTabBodyBase", function () {
+      return _MatTabBodyBase;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabBodyPortal", function () {
+      return MatTabBodyPortal;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabHeader", function () {
+      return MatTabHeader;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatTabHeaderBase", function () {
+      return _MatTabHeaderBase;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabLabelWrapper", function () {
+      return MatTabLabelWrapper;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTab", function () {
+      return MatTab;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabLabel", function () {
+      return MatTabLabel;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabNav", function () {
+      return MatTabNav;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabLink", function () {
+      return MatTabLink;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatTabNavBase", function () {
+      return _MatTabNavBase;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatTabLinkBase", function () {
+      return _MatTabLinkBase;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabContent", function () {
+      return MatTabContent;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabChangeEvent", function () {
+      return MatTabChangeEvent;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MAT_TABS_CONFIG", function () {
+      return MAT_TABS_CONFIG;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "_MatTabGroupBase", function () {
+      return _MatTabGroupBase;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTabGroup", function () {
+      return MatTabGroup;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "matTabsAnimations", function () {
+      return matTabsAnimations;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ɵa24", function () {
+      return _MAT_INK_BAR_POSITIONER_FACTORY;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ɵb24", function () {
+      return MatPaginatedTabHeader;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/platform-browser/animations */
+    "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/cdk/portal */
+    "./node_modules/@angular/cdk/esm2015/portal.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _angular_animations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/animations */
+    "./node_modules/@angular/animations/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/cdk/bidi */
+    "./node_modules/@angular/cdk/esm2015/bidi.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @angular/cdk/scrolling */
+    "./node_modules/@angular/cdk/esm2015/scrolling.js");
+    /* harmony import */
+
+
+    var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/cdk/a11y */
+    "./node_modules/@angular/cdk/esm2015/a11y.js");
+    /* harmony import */
+
+
+    var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @angular/cdk/keycodes */
+    "./node_modules/@angular/cdk/esm2015/keycodes.js");
+    /* harmony import */
+
+
+    var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! @angular/cdk/platform */
+    "./node_modules/@angular/cdk/esm2015/platform.js");
+    /* harmony import */
+
+
+    var _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! @angular/cdk/observers */
+    "./node_modules/@angular/cdk/esm2015/observers.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Injection token for the MatInkBar's Positioner.
+     * @type {?}
+     */
+
+
+    var _MAT_INK_BAR_POSITIONER = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MatInkBarPositioner', {
+      providedIn: 'root',
+      factory: _MAT_INK_BAR_POSITIONER_FACTORY
+    });
+    /**
+     * The default positioner function for the MatInkBar.
+     * \@docs-private
+     * @return {?}
+     */
+
+
+    function _MAT_INK_BAR_POSITIONER_FACTORY() {
+      /** @type {?} */
+      var method =
+      /**
+      * @param {?} element
+      * @return {?}
+      */
+      function method(element) {
+        return {
+          left: element ? (element.offsetLeft || 0) + 'px' : '0',
+          width: element ? (element.offsetWidth || 0) + 'px' : '0'
+        };
+      };
+
+      return method;
+    }
+    /**
+     * The ink-bar is used to display and animate the line underneath the current active tab label.
+     * \@docs-private
+     */
+
+
+    var MatInkBar = /*#__PURE__*/function () {
+      /**
+       * @param {?} _elementRef
+       * @param {?} _ngZone
+       * @param {?} _inkBarPositioner
+       * @param {?=} _animationMode
+       */
+      function MatInkBar(_elementRef, _ngZone, _inkBarPositioner, _animationMode) {
+        _classCallCheck(this, MatInkBar);
+
+        this._elementRef = _elementRef;
+        this._ngZone = _ngZone;
+        this._inkBarPositioner = _inkBarPositioner;
+        this._animationMode = _animationMode;
+      }
+      /**
+       * Calculates the styles from the provided element in order to align the ink-bar to that element.
+       * Shows the ink bar if previously set as hidden.
+       * @param {?} element
+       * @return {?}
+       */
+
+
+      _createClass(MatInkBar, [{
+        key: "alignToElement",
+        value: function alignToElement(element) {
+          var _this54 = this;
+
+          this.show();
+
+          if (typeof requestAnimationFrame !== 'undefined') {
+            this._ngZone.runOutsideAngular(
+            /**
+            * @return {?}
+            */
+            function () {
+              requestAnimationFrame(
+              /**
+              * @return {?}
+              */
+              function () {
+                return _this54._setStyles(element);
+              });
+            });
+          } else {
+            this._setStyles(element);
+          }
+        }
+        /**
+         * Shows the ink bar.
+         * @return {?}
+         */
+
+      }, {
+        key: "show",
+        value: function show() {
+          this._elementRef.nativeElement.style.visibility = 'visible';
+        }
+        /**
+         * Hides the ink bar.
+         * @return {?}
+         */
+
+      }, {
+        key: "hide",
+        value: function hide() {
+          this._elementRef.nativeElement.style.visibility = 'hidden';
+        }
+        /**
+         * Sets the proper styles to the ink bar element.
+         * @private
+         * @param {?} element
+         * @return {?}
+         */
+
+      }, {
+        key: "_setStyles",
+        value: function _setStyles(element) {
+          /** @type {?} */
+          var positions = this._inkBarPositioner(element);
+          /** @type {?} */
+
+
+          var inkBar = this._elementRef.nativeElement;
+          inkBar.style.left = positions.left;
+          inkBar.style.width = positions.width;
+        }
+      }]);
+
+      return MatInkBar;
+    }();
+
+    MatInkBar.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: 'mat-ink-bar',
+        host: {
+          'class': 'mat-ink-bar',
+          '[class._mat-animation-noopable]': "_animationMode === 'NoopAnimations'"
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    MatInkBar.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_MAT_INK_BAR_POSITIONER]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Decorates the `ng-template` tags and reads out the template from it.
+     */
+
+
+    var MatTabContent =
+    /**
+     * @param {?} template
+     */
+    function MatTabContent(template) {
+      _classCallCheck(this, MatTabContent);
+
+      this.template = template;
+    };
+
+    MatTabContent.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: '[matTabContent]'
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTabContent.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Used to flag tab labels for use with the portal directive
+     */
+
+
+    var MatTabLabel = /*#__PURE__*/function (_angular_cdk_portal__2) {
+      _inherits(MatTabLabel, _angular_cdk_portal__2);
+
+      var _super27 = _createSuper(MatTabLabel);
+
+      function MatTabLabel() {
+        _classCallCheck(this, MatTabLabel);
+
+        return _super27.apply(this, arguments);
+      }
+
+      return MatTabLabel;
+    }(_angular_cdk_portal__WEBPACK_IMPORTED_MODULE_2__["CdkPortal"]);
+
+    MatTabLabel.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: '[mat-tab-label], [matTabLabel]'
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    // Boilerplate for applying mixins to MatTab.
+
+    /**
+     * \@docs-private
+     */
+
+    var MatTabBase = function MatTabBase() {
+      _classCallCheck(this, MatTabBase);
+    };
+    /** @type {?} */
+
+
+    var _MatTabMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinDisabled"])(MatTabBase);
+
+    var MatTab = /*#__PURE__*/function (_MatTabMixinBase2) {
+      _inherits(MatTab, _MatTabMixinBase2);
+
+      var _super28 = _createSuper(MatTab);
+
+      /**
+       * @param {?} _viewContainerRef
+       */
+      function MatTab(_viewContainerRef) {
+        var _this55;
+
+        _classCallCheck(this, MatTab);
+
+        _this55 = _super28.call(this);
+        _this55._viewContainerRef = _viewContainerRef;
+        /**
+         * Plain text label for the tab, used when there is no template label.
+         */
+
+        _this55.textLabel = '';
+        /**
+         * Portal that will be the hosted content of the tab
+         */
+
+        _this55._contentPortal = null;
+        /**
+         * Emits whenever the internal state of the tab changes.
+         */
+
+        _this55._stateChanges = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
+        /**
+         * The relatively indexed position where 0 represents the center, negative is left, and positive
+         * represents the right.
+         */
+
+        _this55.position = null;
+        /**
+         * The initial relatively index origin of the tab if it was created and selected after there
+         * was already a selected tab. Provides context of what position the tab should originate from.
+         */
+
+        _this55.origin = null;
+        /**
+         * Whether the tab is currently active.
+         */
+
+        _this55.isActive = false;
+        return _this55;
+      }
+      /**
+       * \@docs-private
+       * @return {?}
+       */
+
+
+      _createClass(MatTab, [{
+        key: "ngOnChanges",
+
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        value: function ngOnChanges(changes) {
+          if (changes.hasOwnProperty('textLabel') || changes.hasOwnProperty('disabled')) {
+            this._stateChanges.next();
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._stateChanges.complete();
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this._contentPortal = new _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_2__["TemplatePortal"](this._explicitContent || this._implicitContent, this._viewContainerRef);
+        }
+      }, {
+        key: "content",
+        get: function get() {
+          return this._contentPortal;
+        }
+      }]);
+
+      return MatTab;
+    }(_MatTabMixinBase);
+
+    MatTab.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-tab',
+        template: "<ng-template><ng-content></ng-content></ng-template>",
+        inputs: ['disabled'],
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        exportAs: 'matTab'
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTab.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]
+      }];
+    };
+
+    MatTab.propDecorators = {
+      templateLabel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"],
+        args: [MatTabLabel, {
+          "static": false
+        }]
+      }],
+      _explicitContent: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"],
+        args: [MatTabContent, {
+          read: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"],
+          "static": true
+        }]
+      }],
+      _implicitContent: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"], {
+          "static": true
+        }]
+      }],
+      textLabel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['label']
+      }],
+      ariaLabel: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['aria-label']
+      }],
+      ariaLabelledby: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['aria-labelledby']
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Animations used by the Material tabs.
+     * \@docs-private
+     * @type {?}
+     */
+
+    var matTabsAnimations = {
+      /**
+       * Animation translates a tab along the X axis.
+       */
+      translateTab: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["trigger"])('translateTab', [// Note: transitions to `none` instead of 0, because some browsers might blur the content.
+      Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["state"])('center, void, left-origin-center, right-origin-center', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["style"])({
+        transform: 'none'
+      })), // If the tab is either on the left or right, we additionally add a `min-height` of 1px
+      // in order to ensure that the element has a height before its state changes. This is
+      // necessary because Chrome does seem to skip the transition in RTL mode if the element does
+      // not have a static height and is not rendered. See related issue: #9465
+      Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["state"])('left', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["style"])({
+        transform: 'translate3d(-100%, 0, 0)',
+        minHeight: '1px'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["state"])('right', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["style"])({
+        transform: 'translate3d(100%, 0, 0)',
+        minHeight: '1px'
+      })), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["transition"])('* => left, * => right, left => center, right => center', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["animate"])('{{animationDuration}} cubic-bezier(0.35, 0, 0.25, 1)')), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["transition"])('void => left-origin-center', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["style"])({
+        transform: 'translate3d(-100%, 0, 0)'
+      }), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["animate"])('{{animationDuration}} cubic-bezier(0.35, 0, 0.25, 1)')]), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["transition"])('void => right-origin-center', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["style"])({
+        transform: 'translate3d(100%, 0, 0)'
+      }), Object(_angular_animations__WEBPACK_IMPORTED_MODULE_5__["animate"])('{{animationDuration}} cubic-bezier(0.35, 0, 0.25, 1)')])])
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * The portal host directive for the contents of the tab.
+     * \@docs-private
+     */
+
+    var MatTabBodyPortal = /*#__PURE__*/function (_angular_cdk_portal__3) {
+      _inherits(MatTabBodyPortal, _angular_cdk_portal__3);
+
+      var _super29 = _createSuper(MatTabBodyPortal);
+
+      /**
+       * @param {?} componentFactoryResolver
+       * @param {?} viewContainerRef
+       * @param {?} _host
+       */
+      function MatTabBodyPortal(componentFactoryResolver, viewContainerRef, _host) {
+        var _this56;
+
+        _classCallCheck(this, MatTabBodyPortal);
+
+        _this56 = _super29.call(this, componentFactoryResolver, viewContainerRef);
+        _this56._host = _host;
+        /**
+         * Subscription to events for when the tab body begins centering.
+         */
+
+        _this56._centeringSub = rxjs__WEBPACK_IMPORTED_MODULE_4__["Subscription"].EMPTY;
+        /**
+         * Subscription to events for when the tab body finishes leaving from center position.
+         */
+
+        _this56._leavingSub = rxjs__WEBPACK_IMPORTED_MODULE_4__["Subscription"].EMPTY;
+        return _this56;
+      }
+      /**
+       * Set initial visibility or set up subscription for changing visibility.
+       * @return {?}
+       */
+
+
+      _createClass(MatTabBodyPortal, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this57 = this;
+
+          _get(_getPrototypeOf(MatTabBodyPortal.prototype), "ngOnInit", this).call(this);
+
+          this._centeringSub = this._host._beforeCentering.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["startWith"])(this._host._isCenterPosition(this._host._position))).subscribe(
+          /**
+          * @param {?} isCentering
+          * @return {?}
+          */
+          function (isCentering) {
+            if (isCentering && !_this57.hasAttached()) {
+              _this57.attach(_this57._host._content);
+            }
+          });
+          this._leavingSub = this._host._afterLeavingCenter.subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            _this57.detach();
+          });
+        }
+        /**
+         * Clean up centering subscription.
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          _get(_getPrototypeOf(MatTabBodyPortal.prototype), "ngOnDestroy", this).call(this);
+
+          this._centeringSub.unsubscribe();
+
+          this._leavingSub.unsubscribe();
+        }
+      }]);
+
+      return MatTabBodyPortal;
+    }(_angular_cdk_portal__WEBPACK_IMPORTED_MODULE_2__["CdkPortalOutlet"]);
+
+    MatTabBodyPortal.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: '[matTabBodyHost]'
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTabBodyPortal.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]
+      }, {
+        type: MatTabBody,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            return MatTabBody;
+          })]
+        }]
+      }];
+    };
+    /**
+     * Base class with all of the `MatTabBody` functionality.
+     * \@docs-private
+     * @abstract
+     */
+    // tslint:disable-next-line:class-name
+
+
+    var _MatTabBodyBase = /*#__PURE__*/function () {
+      /**
+       * @param {?} _elementRef
+       * @param {?} _dir
+       * @param {?} changeDetectorRef
+       */
+      function _MatTabBodyBase(_elementRef, _dir, changeDetectorRef) {
+        var _this58 = this;
+
+        _classCallCheck(this, _MatTabBodyBase);
+
+        this._elementRef = _elementRef;
+        this._dir = _dir;
+        /**
+         * Subscription to the directionality change observable.
+         */
+
+        this._dirChangeSubscription = rxjs__WEBPACK_IMPORTED_MODULE_4__["Subscription"].EMPTY;
+        /**
+         * Emits when an animation on the tab is complete.
+         */
+
+        this._translateTabComplete = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
+        /**
+         * Event emitted when the tab begins to animate towards the center as the active tab.
+         */
+
+        this._onCentering = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted before the centering of the tab begins.
+         */
+
+        this._beforeCentering = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted before the centering of the tab begins.
+         */
+
+        this._afterLeavingCenter = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when the tab completes its animation towards the center.
+         */
+
+        this._onCentered = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](true); // Note that the default value will always be overwritten by `MatTabBody`, but we need one
+        // anyway to prevent the animations module from throwing an error if the body is used on its own.
+
+        /**
+         * Duration for the tab's animation.
+         */
+
+        this.animationDuration = '500ms';
+
+        if (_dir) {
+          this._dirChangeSubscription = _dir.change.subscribe(
+          /**
+          * @param {?} dir
+          * @return {?}
+          */
+          function (dir) {
+            _this58._computePositionAnimationState(dir);
+
+            changeDetectorRef.markForCheck();
+          });
+        } // Ensure that we get unique animation events, because the `.done` callback can get
+        // invoked twice in some browsers. See https://github.com/angular/angular/issues/24084.
+
+
+        this._translateTabComplete.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["distinctUntilChanged"])(
+        /**
+        * @param {?} x
+        * @param {?} y
+        * @return {?}
+        */
+        function (x, y) {
+          return x.fromState === y.fromState && x.toState === y.toState;
+        })).subscribe(
+        /**
+        * @param {?} event
+        * @return {?}
+        */
+        function (event) {
+          // If the transition to the center is complete, emit an event.
+          if (_this58._isCenterPosition(event.toState) && _this58._isCenterPosition(_this58._position)) {
+            _this58._onCentered.emit();
+          }
+
+          if (_this58._isCenterPosition(event.fromState) && !_this58._isCenterPosition(_this58._position)) {
+            _this58._afterLeavingCenter.emit();
+          }
+        });
+      }
+      /**
+       * The shifted index position of the tab body, where zero represents the active center tab.
+       * @param {?} position
+       * @return {?}
+       */
+
+
+      _createClass(_MatTabBodyBase, [{
+        key: "ngOnInit",
+
+        /**
+         * After initialized, check if the content is centered and has an origin. If so, set the
+         * special position states that transition the tab from the left or right before centering.
+         * @return {?}
+         */
+        value: function ngOnInit() {
+          if (this._position == 'center' && this.origin != null) {
+            this._position = this._computePositionFromOrigin();
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._dirChangeSubscription.unsubscribe();
+
+          this._translateTabComplete.complete();
+        }
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_onTranslateTabStarted",
+        value: function _onTranslateTabStarted(event) {
+          /** @type {?} */
+          var isCentering = this._isCenterPosition(event.toState);
+
+          this._beforeCentering.emit(isCentering);
+
+          if (isCentering) {
+            this._onCentering.emit(this._elementRef.nativeElement.clientHeight);
+          }
+        }
+        /**
+         * The text direction of the containing app.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getLayoutDirection",
+        value: function _getLayoutDirection() {
+          return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
+        }
+        /**
+         * Whether the provided position state is considered center, regardless of origin.
+         * @param {?} position
+         * @return {?}
+         */
+
+      }, {
+        key: "_isCenterPosition",
+        value: function _isCenterPosition(position) {
+          return position == 'center' || position == 'left-origin-center' || position == 'right-origin-center';
+        }
+        /**
+         * Computes the position state that will be used for the tab-body animation trigger.
+         * @private
+         * @param {?=} dir
+         * @return {?}
+         */
+
+      }, {
+        key: "_computePositionAnimationState",
+        value: function _computePositionAnimationState() {
+          var dir = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this._getLayoutDirection();
+
+          if (this._positionIndex < 0) {
+            this._position = dir == 'ltr' ? 'left' : 'right';
+          } else if (this._positionIndex > 0) {
+            this._position = dir == 'ltr' ? 'right' : 'left';
+          } else {
+            this._position = 'center';
+          }
+        }
+        /**
+         * Computes the position state based on the specified origin position. This is used if the
+         * tab is becoming visible immediately after creation.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_computePositionFromOrigin",
+        value: function _computePositionFromOrigin() {
+          /** @type {?} */
+          var dir = this._getLayoutDirection();
+
+          if (dir == 'ltr' && this.origin <= 0 || dir == 'rtl' && this.origin > 0) {
+            return 'left-origin-center';
+          }
+
+          return 'right-origin-center';
+        }
+      }, {
+        key: "position",
+        set: function set(position) {
+          this._positionIndex = position;
+
+          this._computePositionAnimationState();
+        }
+      }]);
+
+      return _MatTabBodyBase;
+    }();
+
+    _MatTabBodyBase.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        // TODO(crisbeto): this selector can be removed when we update to Angular 9.0.
+        selector: 'do-not-use-abstract-mat-tab-body-base'
+      }]
+    }];
+    /** @nocollapse */
+
+    _MatTabBodyBase.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }];
+    };
+
+    _MatTabBodyBase.propDecorators = {
+      _onCentering: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      _beforeCentering: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      _afterLeavingCenter: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      _onCentered: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      _content: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+        args: ['content']
+      }],
+      origin: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      animationDuration: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      position: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+    /**
+     * Wrapper for the contents of a tab.
+     * \@docs-private
+     */
+
+    var MatTabBody = /*#__PURE__*/function (_MatTabBodyBase2) {
+      _inherits(MatTabBody, _MatTabBodyBase2);
+
+      var _super30 = _createSuper(MatTabBody);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} dir
+       * @param {?} changeDetectorRef
+       */
+      function MatTabBody(elementRef, dir, changeDetectorRef) {
+        _classCallCheck(this, MatTabBody);
+
+        return _super30.call(this, elementRef, dir, changeDetectorRef);
+      }
+
+      return MatTabBody;
+    }(_MatTabBodyBase);
+
+    MatTabBody.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-tab-body',
+        template: "<div class=\"mat-tab-body-content\" #content [@translateTab]=\"{ value: _position, params: {animationDuration: animationDuration} }\" (@translateTab.start)=\"_onTranslateTabStarted($event)\" (@translateTab.done)=\"_translateTabComplete.next($event)\"><ng-template matTabBodyHost></ng-template></div>",
+        styles: [".mat-tab-body-content{height:100%;overflow:auto}.mat-tab-group-dynamic-height .mat-tab-body-content{overflow:hidden}"],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+        animations: [matTabsAnimations.translateTab],
+        host: {
+          'class': 'mat-tab-body'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTabBody.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }];
+    };
+
+    MatTabBody.propDecorators = {
+      _portalHost: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: [_angular_cdk_portal__WEBPACK_IMPORTED_MODULE_2__["PortalHostDirective"], {
+          "static": false
+        }]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Used to generate unique ID's for each tab component
+     * @type {?}
+     */
+
+    var nextId = 0;
+    /**
+     * A simple change event emitted on focus or selection changes.
+     */
+
+    var MatTabChangeEvent = function MatTabChangeEvent() {
+      _classCallCheck(this, MatTabChangeEvent);
+    };
+    /**
+     * Injection token that can be used to provide the default options the tabs module.
+     * @type {?}
+     */
+
+
+    var MAT_TABS_CONFIG = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_TABS_CONFIG'); // Boilerplate for applying mixins to MatTabGroup.
+
+    /**
+     * \@docs-private
+     */
+
+    var MatTabGroupMixinBase =
+    /**
+     * @param {?} _elementRef
+     */
+    function MatTabGroupMixinBase(_elementRef) {
+      _classCallCheck(this, MatTabGroupMixinBase);
+
+      this._elementRef = _elementRef;
+    };
+    /** @type {?} */
+
+
+    var _MatTabGroupMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinColor"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinDisableRipple"])(MatTabGroupMixinBase), 'primary');
+    /**
+     * Base class with all of the `MatTabGroupBase` functionality.
+     * \@docs-private
+     * @abstract
+     */
+    // tslint:disable-next-line:class-name
+
+
+    var _MatTabGroupBase = /*#__PURE__*/function (_MatTabGroupMixinBase2) {
+      _inherits(_MatTabGroupBase, _MatTabGroupMixinBase2);
+
+      var _super31 = _createSuper(_MatTabGroupBase);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} _changeDetectorRef
+       * @param {?=} defaultConfig
+       * @param {?=} _animationMode
+       */
+      function _MatTabGroupBase(elementRef, _changeDetectorRef, defaultConfig, _animationMode) {
+        var _this59;
+
+        _classCallCheck(this, _MatTabGroupBase);
+
+        _this59 = _super31.call(this, elementRef);
+        _this59._changeDetectorRef = _changeDetectorRef;
+        _this59._animationMode = _animationMode;
+        /**
+         * The tab index that should be selected after the content has been checked.
+         */
+
+        _this59._indexToSelect = 0;
+        /**
+         * Snapshot of the height of the tab body wrapper before another tab is activated.
+         */
+
+        _this59._tabBodyWrapperHeight = 0;
+        /**
+         * Subscription to tabs being added/removed.
+         */
+
+        _this59._tabsSubscription = rxjs__WEBPACK_IMPORTED_MODULE_4__["Subscription"].EMPTY;
+        /**
+         * Subscription to changes in the tab labels.
+         */
+
+        _this59._tabLabelSubscription = rxjs__WEBPACK_IMPORTED_MODULE_4__["Subscription"].EMPTY;
+        _this59._dynamicHeight = false;
+        _this59._selectedIndex = null;
+        /**
+         * Position of the tab header.
+         */
+
+        _this59.headerPosition = 'above';
+        /**
+         * Output to enable support for two-way binding on `[(selectedIndex)]`
+         */
+
+        _this59.selectedIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when focus has changed within a tab group.
+         */
+
+        _this59.focusChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when the body animation has completed
+         */
+
+        _this59.animationDone = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when the tab selection has changed.
+         */
+
+        _this59.selectedTabChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](true);
+        _this59._groupId = nextId++;
+        _this59.animationDuration = defaultConfig && defaultConfig.animationDuration ? defaultConfig.animationDuration : '500ms';
+        return _this59;
+      }
+      /**
+       * Whether the tab group should grow to the size of the active tab.
+       * @return {?}
+       */
+
+
+      _createClass(_MatTabGroupBase, [{
+        key: "ngAfterContentChecked",
+
+        /**
+         * After the content is checked, this component knows what tabs have been defined
+         * and what the selected index should be. This is where we can know exactly what position
+         * each tab should be in according to the new selected index, and additionally we know how
+         * a new selected tab should transition in (from the left or right).
+         * @return {?}
+         */
+        value: function ngAfterContentChecked() {
+          var _this60 = this;
+
+          // Don't clamp the `indexToSelect` immediately in the setter because it can happen that
+          // the amount of tabs changes before the actual change detection runs.
+
+          /** @type {?} */
+          var indexToSelect = this._indexToSelect = this._clampTabIndex(this._indexToSelect); // If there is a change in selected index, emit a change event. Should not trigger if
+          // the selected index has not yet been initialized.
+
+
+          if (this._selectedIndex != indexToSelect) {
+            /** @type {?} */
+            var isFirstRun = this._selectedIndex == null;
+
+            if (!isFirstRun) {
+              this.selectedTabChange.emit(this._createChangeEvent(indexToSelect));
+            } // Changing these values after change detection has run
+            // since the checked content may contain references to them.
+
+
+            Promise.resolve().then(
+            /**
+            * @return {?}
+            */
+            function () {
+              _this60._tabs.forEach(
+              /**
+              * @param {?} tab
+              * @param {?} index
+              * @return {?}
+              */
+              function (tab, index) {
+                return tab.isActive = index === indexToSelect;
+              });
+
+              if (!isFirstRun) {
+                _this60.selectedIndexChange.emit(indexToSelect);
+              }
+            });
+          } // Setup the position for each tab and optionally setup an origin on the next selected tab.
+
+
+          this._tabs.forEach(
+          /**
+          * @param {?} tab
+          * @param {?} index
+          * @return {?}
+          */
+          function (tab, index) {
+            tab.position = index - indexToSelect; // If there is already a selected tab, then set up an origin for the next selected tab
+            // if it doesn't have one already.
+
+            if (_this60._selectedIndex != null && tab.position == 0 && !tab.origin) {
+              tab.origin = indexToSelect - _this60._selectedIndex;
+            }
+          });
+
+          if (this._selectedIndex !== indexToSelect) {
+            this._selectedIndex = indexToSelect;
+
+            this._changeDetectorRef.markForCheck();
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngAfterContentInit",
+        value: function ngAfterContentInit() {
+          var _this61 = this;
+
+          this._subscribeToTabLabels(); // Subscribe to changes in the amount of tabs, in order to be
+          // able to re-render the content as new tabs are added or removed.
+
+
+          this._tabsSubscription = this._tabs.changes.subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            /** @type {?} */
+            var indexToSelect = _this61._clampTabIndex(_this61._indexToSelect); // Maintain the previously-selected tab if a new tab is added or removed and there is no
+            // explicit change that selects a different tab.
+
+
+            if (indexToSelect === _this61._selectedIndex) {
+              /** @type {?} */
+              var tabs = _this61._tabs.toArray();
+
+              for (var i = 0; i < tabs.length; i++) {
+                if (tabs[i].isActive) {
+                  // Assign both to the `_indexToSelect` and `_selectedIndex` so we don't fire a changed
+                  // event, otherwise the consumer may end up in an infinite loop in some edge cases like
+                  // adding a tab within the `selectedIndexChange` event.
+                  _this61._indexToSelect = _this61._selectedIndex = i;
+                  break;
+                }
+              }
+            }
+
+            _this61._subscribeToTabLabels();
+
+            _this61._changeDetectorRef.markForCheck();
+          });
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._tabsSubscription.unsubscribe();
+
+          this._tabLabelSubscription.unsubscribe();
+        }
+        /**
+         * Re-aligns the ink bar to the selected tab element.
+         * @return {?}
+         */
+
+      }, {
+        key: "realignInkBar",
+        value: function realignInkBar() {
+          if (this._tabHeader) {
+            this._tabHeader._alignInkBarToSelectedTab();
+          }
+        }
+        /**
+         * @param {?} index
+         * @return {?}
+         */
+
+      }, {
+        key: "_focusChanged",
+        value: function _focusChanged(index) {
+          this.focusChange.emit(this._createChangeEvent(index));
+        }
+        /**
+         * @private
+         * @param {?} index
+         * @return {?}
+         */
+
+      }, {
+        key: "_createChangeEvent",
+        value: function _createChangeEvent(index) {
+          /** @type {?} */
+          var event = new MatTabChangeEvent();
+          event.index = index;
+
+          if (this._tabs && this._tabs.length) {
+            event.tab = this._tabs.toArray()[index];
+          }
+
+          return event;
+        }
+        /**
+         * Subscribes to changes in the tab labels. This is needed, because the \@Input for the label is
+         * on the MatTab component, whereas the data binding is inside the MatTabGroup. In order for the
+         * binding to be updated, we need to subscribe to changes in it and trigger change detection
+         * manually.
+         * @private
+         * @return {?}
+         */
+
+      }, {
+        key: "_subscribeToTabLabels",
+        value: function _subscribeToTabLabels() {
+          var _this62 = this;
+
+          if (this._tabLabelSubscription) {
+            this._tabLabelSubscription.unsubscribe();
+          }
+
+          this._tabLabelSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["merge"]).apply(void 0, _toConsumableArray(this._tabs.map(
+          /**
+          * @param {?} tab
+          * @return {?}
+          */
+          function (tab) {
+            return tab._stateChanges;
+          }))).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this62._changeDetectorRef.markForCheck();
+          });
+        }
+        /**
+         * Clamps the given index to the bounds of 0 and the tabs length.
+         * @private
+         * @param {?} index
+         * @return {?}
+         */
+
+      }, {
+        key: "_clampTabIndex",
+        value: function _clampTabIndex(index) {
+          // Note the `|| 0`, which ensures that values like NaN can't get through
+          // and which would otherwise throw the component into an infinite loop
+          // (since Math.max(NaN, 0) === NaN).
+          return Math.min(this._tabs.length - 1, Math.max(index || 0, 0));
+        }
+        /**
+         * Returns a unique id for each tab label element
+         * @param {?} i
+         * @return {?}
+         */
+
+      }, {
+        key: "_getTabLabelId",
+        value: function _getTabLabelId(i) {
+          return "mat-tab-label-".concat(this._groupId, "-").concat(i);
+        }
+        /**
+         * Returns a unique id for each tab content element
+         * @param {?} i
+         * @return {?}
+         */
+
+      }, {
+        key: "_getTabContentId",
+        value: function _getTabContentId(i) {
+          return "mat-tab-content-".concat(this._groupId, "-").concat(i);
+        }
+        /**
+         * Sets the height of the body wrapper to the height of the activating tab if dynamic
+         * height property is true.
+         * @param {?} tabHeight
+         * @return {?}
+         */
+
+      }, {
+        key: "_setTabBodyWrapperHeight",
+        value: function _setTabBodyWrapperHeight(tabHeight) {
+          if (!this._dynamicHeight || !this._tabBodyWrapperHeight) {
+            return;
+          }
+          /** @type {?} */
+
+
+          var wrapper = this._tabBodyWrapper.nativeElement;
+          wrapper.style.height = this._tabBodyWrapperHeight + 'px'; // This conditional forces the browser to paint the height so that
+          // the animation to the new height can have an origin.
+
+          if (this._tabBodyWrapper.nativeElement.offsetHeight) {
+            wrapper.style.height = tabHeight + 'px';
+          }
+        }
+        /**
+         * Removes the height of the tab body wrapper.
+         * @return {?}
+         */
+
+      }, {
+        key: "_removeTabBodyWrapperHeight",
+        value: function _removeTabBodyWrapperHeight() {
+          /** @type {?} */
+          var wrapper = this._tabBodyWrapper.nativeElement;
+          this._tabBodyWrapperHeight = wrapper.clientHeight;
+          wrapper.style.height = '';
+          this.animationDone.emit();
+        }
+        /**
+         * Handle click events, setting new selected index if appropriate.
+         * @param {?} tab
+         * @param {?} tabHeader
+         * @param {?} index
+         * @return {?}
+         */
+
+      }, {
+        key: "_handleClick",
+        value: function _handleClick(tab, tabHeader, index) {
+          if (!tab.disabled) {
+            this.selectedIndex = tabHeader.focusIndex = index;
+          }
+        }
+        /**
+         * Retrieves the tabindex for the tab.
+         * @param {?} tab
+         * @param {?} idx
+         * @return {?}
+         */
+
+      }, {
+        key: "_getTabIndex",
+        value: function _getTabIndex(tab, idx) {
+          if (tab.disabled) {
+            return null;
+          }
+
+          return this.selectedIndex === idx ? 0 : -1;
+        }
+      }, {
+        key: "dynamicHeight",
+        get: function get() {
+          return this._dynamicHeight;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._dynamicHeight = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_8__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * The index of the active tab.
+         * @return {?}
+         */
+
+      }, {
+        key: "selectedIndex",
+        get: function get() {
+          return this._selectedIndex;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._indexToSelect = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_8__["coerceNumberProperty"])(value, null);
+        }
+        /**
+         * Duration for the tab animation. Will be normalized to milliseconds if no units are set.
+         * @return {?}
+         */
+
+      }, {
+        key: "animationDuration",
+        get: function get() {
+          return this._animationDuration;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._animationDuration = /^\d+$/.test(value) ? value + 'ms' : value;
+        }
+        /**
+         * Background color of the tab group.
+         * @return {?}
+         */
+
+      }, {
+        key: "backgroundColor",
+        get: function get() {
+          return this._backgroundColor;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          /** @type {?} */
+          var nativeElement = this._elementRef.nativeElement;
+          nativeElement.classList.remove("mat-background-".concat(this.backgroundColor));
+
+          if (value) {
+            nativeElement.classList.add("mat-background-".concat(value));
+          }
+
+          this._backgroundColor = value;
+        }
+      }]);
+
+      return _MatTabGroupBase;
+    }(_MatTabGroupMixinBase);
+
+    _MatTabGroupBase.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        // TODO(crisbeto): this selector can be removed when we update to Angular 9.0.
+        selector: 'do-not-use-abstract-mat-tab-group-base'
+      }]
+    }];
+    /** @nocollapse */
+
+    _MatTabGroupBase.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [MAT_TABS_CONFIG]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+
+    _MatTabGroupBase.propDecorators = {
+      dynamicHeight: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      selectedIndex: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      headerPosition: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      animationDuration: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      backgroundColor: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      selectedIndexChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      focusChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      animationDone: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }],
+      selectedTabChange: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+      }]
+    };
+    /**
+     * Material design tab-group component. Supports basic tab pairs (label + content) and includes
+     * animated ink-bar, keyboard navigation, and screen reader.
+     * See: https://material.io/design/components/tabs.html
+     */
+
+    var MatTabGroup = /*#__PURE__*/function (_MatTabGroupBase2) {
+      _inherits(MatTabGroup, _MatTabGroupBase2);
+
+      var _super32 = _createSuper(MatTabGroup);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} changeDetectorRef
+       * @param {?=} defaultConfig
+       * @param {?=} animationMode
+       */
+      function MatTabGroup(elementRef, changeDetectorRef, defaultConfig, animationMode) {
+        _classCallCheck(this, MatTabGroup);
+
+        return _super32.call(this, elementRef, changeDetectorRef, defaultConfig, animationMode);
+      }
+
+      return MatTabGroup;
+    }(_MatTabGroupBase);
+
+    MatTabGroup.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-tab-group',
+        exportAs: 'matTabGroup',
+        template: "<mat-tab-header #tabHeader [selectedIndex]=\"selectedIndex\" [disableRipple]=\"disableRipple\" (indexFocused)=\"_focusChanged($event)\" (selectFocusedIndex)=\"selectedIndex = $event\"><div class=\"mat-tab-label\" role=\"tab\" matTabLabelWrapper mat-ripple cdkMonitorElementFocus *ngFor=\"let tab of _tabs; let i = index\" [id]=\"_getTabLabelId(i)\" [attr.tabIndex]=\"_getTabIndex(tab, i)\" [attr.aria-posinset]=\"i + 1\" [attr.aria-setsize]=\"_tabs.length\" [attr.aria-controls]=\"_getTabContentId(i)\" [attr.aria-selected]=\"selectedIndex == i\" [attr.aria-label]=\"tab.ariaLabel || null\" [attr.aria-labelledby]=\"(!tab.ariaLabel && tab.ariaLabelledby) ? tab.ariaLabelledby : null\" [class.mat-tab-label-active]=\"selectedIndex == i\" [disabled]=\"tab.disabled\" [matRippleDisabled]=\"tab.disabled || disableRipple\" (click)=\"_handleClick(tab, tabHeader, i)\"><div class=\"mat-tab-label-content\"><ng-template [ngIf]=\"tab.templateLabel\"><ng-template [cdkPortalOutlet]=\"tab.templateLabel\"></ng-template></ng-template><ng-template [ngIf]=\"!tab.templateLabel\">{{tab.textLabel}}</ng-template></div></div></mat-tab-header><div class=\"mat-tab-body-wrapper\" [class._mat-animation-noopable]=\"_animationMode === 'NoopAnimations'\" #tabBodyWrapper><mat-tab-body role=\"tabpanel\" *ngFor=\"let tab of _tabs; let i = index\" [id]=\"_getTabContentId(i)\" [attr.aria-labelledby]=\"_getTabLabelId(i)\" [class.mat-tab-body-active]=\"selectedIndex == i\" [content]=\"tab.content\" [position]=\"tab.position\" [origin]=\"tab.origin\" [animationDuration]=\"animationDuration\" (_onCentered)=\"_removeTabBodyWrapperHeight()\" (_onCentering)=\"_setTabBodyWrapperHeight($event)\"></mat-tab-body></div>",
+        styles: [".mat-tab-group{display:flex;flex-direction:column}.mat-tab-group.mat-tab-group-inverted-header{flex-direction:column-reverse}.mat-tab-label{height:48px;padding:0 24px;cursor:pointer;box-sizing:border-box;opacity:.6;min-width:160px;text-align:center;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;position:relative}.mat-tab-label:focus{outline:0}.mat-tab-label:focus:not(.mat-tab-disabled){opacity:1}@media (-ms-high-contrast:active){.mat-tab-label:focus{outline:dotted 2px}}.mat-tab-label.mat-tab-disabled{cursor:default}@media (-ms-high-contrast:active){.mat-tab-label.mat-tab-disabled{opacity:.5}}.mat-tab-label .mat-tab-label-content{display:inline-flex;justify-content:center;align-items:center;white-space:nowrap}@media (-ms-high-contrast:active){.mat-tab-label{opacity:1}}@media (max-width:599px){.mat-tab-label{padding:0 12px}}@media (max-width:959px){.mat-tab-label{padding:0 12px}}.mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label{flex-basis:0;flex-grow:1}.mat-tab-body-wrapper{position:relative;overflow:hidden;display:flex;transition:height .5s cubic-bezier(.35,0,.25,1)}._mat-animation-noopable.mat-tab-body-wrapper{transition:none;animation:none}.mat-tab-body{top:0;left:0;right:0;bottom:0;position:absolute;display:block;overflow:hidden;flex-basis:100%}.mat-tab-body.mat-tab-body-active{position:relative;overflow-x:hidden;overflow-y:auto;z-index:1;flex-grow:1}.mat-tab-group.mat-tab-group-dynamic-height .mat-tab-body.mat-tab-body-active{overflow-y:hidden}"],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+        inputs: ['color', 'disableRipple'],
+        host: {
+          'class': 'mat-tab-group',
+          '[class.mat-tab-group-dynamic-height]': 'dynamicHeight',
+          '[class.mat-tab-group-inverted-header]': 'headerPosition === "below"'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTabGroup.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [MAT_TABS_CONFIG]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+
+    MatTabGroup.propDecorators = {
+      _tabs: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+        args: [MatTab]
+      }],
+      _tabBodyWrapper: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['tabBodyWrapper', {
+          "static": false
+        }]
+      }],
+      _tabHeader: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['tabHeader', {
+          "static": false
+        }]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    // Boilerplate for applying mixins to MatTabLabelWrapper.
+
+    /**
+     * \@docs-private
+     */
+
+    var MatTabLabelWrapperBase = function MatTabLabelWrapperBase() {
+      _classCallCheck(this, MatTabLabelWrapperBase);
+    };
+    /** @type {?} */
+
+
+    var _MatTabLabelWrapperMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinDisabled"])(MatTabLabelWrapperBase);
+    /**
+     * Used in the `mat-tab-group` view to display tab labels.
+     * \@docs-private
+     */
+
+
+    var MatTabLabelWrapper = /*#__PURE__*/function (_MatTabLabelWrapperMi) {
+      _inherits(MatTabLabelWrapper, _MatTabLabelWrapperMi);
+
+      var _super33 = _createSuper(MatTabLabelWrapper);
+
+      /**
+       * @param {?} elementRef
+       */
+      function MatTabLabelWrapper(elementRef) {
+        var _this63;
+
+        _classCallCheck(this, MatTabLabelWrapper);
+
+        _this63 = _super33.call(this);
+        _this63.elementRef = elementRef;
+        return _this63;
+      }
+      /**
+       * Sets focus on the wrapper element
+       * @return {?}
+       */
+
+
+      _createClass(MatTabLabelWrapper, [{
+        key: "focus",
+        value: function focus() {
+          this.elementRef.nativeElement.focus();
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "getOffsetLeft",
+        value: function getOffsetLeft() {
+          return this.elementRef.nativeElement.offsetLeft;
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "getOffsetWidth",
+        value: function getOffsetWidth() {
+          return this.elementRef.nativeElement.offsetWidth;
+        }
+      }]);
+
+      return MatTabLabelWrapper;
+    }(_MatTabLabelWrapperMixinBase);
+
+    MatTabLabelWrapper.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: '[matTabLabelWrapper]',
+        inputs: ['disabled'],
+        host: {
+          '[class.mat-tab-disabled]': 'disabled',
+          '[attr.aria-disabled]': '!!disabled'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTabLabelWrapper.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Config used to bind passive event listeners
+     * @type {?}
+     */
+
+
+    var passiveEventListenerOptions =
+    /** @type {?} */
+    Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_12__["normalizePassiveListenerOptions"])({
+      passive: true
+    });
+    /**
+     * The distance in pixels that will be overshot when scrolling a tab label into view. This helps
+     * provide a small affordance to the label next to it.
+     * @type {?}
+     */
+
+    var EXAGGERATED_OVERSCROLL = 60;
+    /**
+     * Amount of milliseconds to wait before starting to scroll the header automatically.
+     * Set a little conservatively in order to handle fake events dispatched on touch devices.
+     * @type {?}
+     */
+
+    var HEADER_SCROLL_DELAY = 650;
+    /**
+     * Interval in milliseconds at which to scroll the header
+     * while the user is holding their pointer.
+     * @type {?}
+     */
+
+    var HEADER_SCROLL_INTERVAL = 100;
+    /**
+     * Base class for a tab header that supported pagination.
+     * \@docs-private
+     * @abstract
+     */
+
+    var MatPaginatedTabHeader = /*#__PURE__*/function () {
+      /**
+       * @param {?} _elementRef
+       * @param {?} _changeDetectorRef
+       * @param {?} _viewportRuler
+       * @param {?} _dir
+       * @param {?} _ngZone
+       * @param {?=} _platform
+       * @param {?=} _animationMode
+       */
+      function MatPaginatedTabHeader(_elementRef, _changeDetectorRef, _viewportRuler, _dir, _ngZone, _platform, _animationMode) {
+        var _this64 = this;
+
+        _classCallCheck(this, MatPaginatedTabHeader);
+
+        this._elementRef = _elementRef;
+        this._changeDetectorRef = _changeDetectorRef;
+        this._viewportRuler = _viewportRuler;
+        this._dir = _dir;
+        this._ngZone = _ngZone;
+        this._platform = _platform;
+        this._animationMode = _animationMode;
+        /**
+         * The distance in pixels that the tab labels should be translated to the left.
+         */
+
+        this._scrollDistance = 0;
+        /**
+         * Whether the header should scroll to the selected index after the view has been checked.
+         */
+
+        this._selectedIndexChanged = false;
+        /**
+         * Emits when the component is destroyed.
+         */
+
+        this._destroyed = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
+        /**
+         * Whether the controls for pagination should be displayed
+         */
+
+        this._showPaginationControls = false;
+        /**
+         * Whether the tab list can be scrolled more towards the end of the tab label list.
+         */
+
+        this._disableScrollAfter = true;
+        /**
+         * Whether the tab list can be scrolled more towards the beginning of the tab label list.
+         */
+
+        this._disableScrollBefore = true;
+        /**
+         * Stream that will stop the automated scrolling.
+         */
+
+        this._stopScrolling = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
+        this._selectedIndex = 0;
+        /**
+         * Event emitted when the option is selected.
+         */
+
+        this.selectFocusedIndex = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when a label is focused.
+         */
+
+        this.indexFocused = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](); // Bind the `mouseleave` event on the outside since it doesn't change anything in the view.
+
+        _ngZone.runOutsideAngular(
+        /**
+        * @return {?}
+        */
+        function () {
+          Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["fromEvent"])(_elementRef.nativeElement, 'mouseleave').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(_this64._destroyed)).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            _this64._stopInterval();
+          });
+        });
+      }
+      /**
+       * The index of the active tab.
+       * @return {?}
+       */
+
+
+      _createClass(MatPaginatedTabHeader, [{
+        key: "ngAfterViewInit",
+
+        /**
+         * @return {?}
+         */
+        value: function ngAfterViewInit() {
+          var _this65 = this;
+
+          // We need to handle these events manually, because we want to bind passive event listeners.
+          Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["fromEvent"])(this._previousPaginator.nativeElement, 'touchstart', passiveEventListenerOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            _this65._handlePaginatorPress('before');
+          });
+          Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["fromEvent"])(this._nextPaginator.nativeElement, 'touchstart', passiveEventListenerOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            _this65._handlePaginatorPress('after');
+          });
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngAfterContentInit",
+        value: function ngAfterContentInit() {
+          var _this66 = this;
+
+          /** @type {?} */
+          var dirChange = this._dir ? this._dir.change : Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(null);
+          /** @type {?} */
+
+          var resize = this._viewportRuler.change(150);
+          /** @type {?} */
+
+
+          var realign =
+          /**
+          * @return {?}
+          */
+          function realign() {
+            _this66.updatePagination();
+
+            _this66._alignInkBarToSelectedTab();
+          };
+
+          this._keyManager = new _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_10__["FocusKeyManager"](this._items).withHorizontalOrientation(this._getLayoutDirection()).withWrap();
+
+          this._keyManager.updateActiveItem(0); // Defer the first call in order to allow for slower browsers to lay out the elements.
+          // This helps in cases where the user lands directly on a page with paginated tabs.
+
+
+          typeof requestAnimationFrame !== 'undefined' ? requestAnimationFrame(realign) : realign(); // On dir change or window resize, realign the ink bar and update the orientation of
+          // the key manager if the direction has changed.
+
+          Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["merge"])(dirChange, resize, this._items.changes).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            realign();
+
+            _this66._keyManager.withHorizontalOrientation(_this66._getLayoutDirection());
+          }); // If there is a change in the focus key manager we need to emit the `indexFocused`
+          // event in order to provide a public event that notifies about focus changes. Also we realign
+          // the tabs container by scrolling the new focused tab into the visible section.
+
+          this._keyManager.change.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @param {?} newFocusIndex
+          * @return {?}
+          */
+          function (newFocusIndex) {
+            _this66.indexFocused.emit(newFocusIndex);
+
+            _this66._setTabFocus(newFocusIndex);
+          });
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngAfterContentChecked",
+        value: function ngAfterContentChecked() {
+          // If the number of tab labels have changed, check if scrolling should be enabled
+          if (this._tabLabelCount != this._items.length) {
+            this.updatePagination();
+            this._tabLabelCount = this._items.length;
+
+            this._changeDetectorRef.markForCheck();
+          } // If the selected index has changed, scroll to the label and check if the scrolling controls
+          // should be disabled.
+
+
+          if (this._selectedIndexChanged) {
+            this._scrollToLabel(this._selectedIndex);
+
+            this._checkScrollingControls();
+
+            this._alignInkBarToSelectedTab();
+
+            this._selectedIndexChanged = false;
+
+            this._changeDetectorRef.markForCheck();
+          } // If the scroll distance has been changed (tab selected, focused, scroll controls activated),
+          // then translate the header to reflect this.
+
+
+          if (this._scrollDistanceChanged) {
+            this._updateTabScrollPosition();
+
+            this._scrollDistanceChanged = false;
+
+            this._changeDetectorRef.markForCheck();
+          }
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._destroyed.next();
+
+          this._destroyed.complete();
+
+          this._stopScrolling.complete();
+        }
+        /**
+         * Handles keyboard events on the header.
+         * @param {?} event
+         * @return {?}
+         */
+
+      }, {
+        key: "_handleKeydown",
+        value: function _handleKeydown(event) {
+          // We don't handle any key bindings with a modifier key.
+          if (Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["hasModifierKey"])(event)) {
+            return;
+          }
+
+          switch (event.keyCode) {
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["HOME"]:
+              this._keyManager.setFirstItemActive();
+
+              event.preventDefault();
+              break;
+
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["END"]:
+              this._keyManager.setLastItemActive();
+
+              event.preventDefault();
+              break;
+
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["ENTER"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["SPACE"]:
+              this.selectFocusedIndex.emit(this.focusIndex);
+
+              this._itemSelected(event);
+
+              break;
+
+            default:
+              this._keyManager.onKeydown(event);
+
+          }
+        }
+        /**
+         * Callback for when the MutationObserver detects that the content has changed.
+         * @return {?}
+         */
+
+      }, {
+        key: "_onContentChanges",
+        value: function _onContentChanges() {
+          var _this67 = this;
+
+          /** @type {?} */
+          var textContent = this._elementRef.nativeElement.textContent; // We need to diff the text content of the header, because the MutationObserver callback
+          // will fire even if the text content didn't change which is inefficient and is prone
+          // to infinite loops if a poorly constructed expression is passed in (see #14249).
+
+          if (textContent !== this._currentTextContent) {
+            this._currentTextContent = textContent || ''; // The content observer runs outside the `NgZone` by default, which
+            // means that we need to bring the callback back in ourselves.
+
+            this._ngZone.run(
+            /**
+            * @return {?}
+            */
+            function () {
+              _this67.updatePagination();
+
+              _this67._alignInkBarToSelectedTab();
+
+              _this67._changeDetectorRef.markForCheck();
+            });
+          }
+        }
+        /**
+         * Updates the view whether pagination should be enabled or not.
+         *
+         * WARNING: Calling this method can be very costly in terms of performance. It should be called
+         * as infrequently as possible from outside of the Tabs component as it causes a reflow of the
+         * page.
+         * @return {?}
+         */
+
+      }, {
+        key: "updatePagination",
+        value: function updatePagination() {
+          this._checkPaginationEnabled();
+
+          this._checkScrollingControls();
+
+          this._updateTabScrollPosition();
+        }
+        /**
+         * Tracks which element has focus; used for keyboard navigation
+         * @return {?}
+         */
+
+      }, {
+        key: "_isValidIndex",
+
+        /**
+         * Determines if an index is valid.  If the tabs are not ready yet, we assume that the user is
+         * providing a valid index and return true.
+         * @param {?} index
+         * @return {?}
+         */
+        value: function _isValidIndex(index) {
+          if (!this._items) {
+            return true;
+          }
+          /** @type {?} */
+
+
+          var tab = this._items ? this._items.toArray()[index] : null;
+          return !!tab && !tab.disabled;
+        }
+        /**
+         * Sets focus on the HTML element for the label wrapper and scrolls it into the view if
+         * scrolling is enabled.
+         * @param {?} tabIndex
+         * @return {?}
+         */
+
+      }, {
+        key: "_setTabFocus",
+        value: function _setTabFocus(tabIndex) {
+          if (this._showPaginationControls) {
+            this._scrollToLabel(tabIndex);
+          }
+
+          if (this._items && this._items.length) {
+            this._items.toArray()[tabIndex].focus(); // Do not let the browser manage scrolling to focus the element, this will be handled
+            // by using translation. In LTR, the scroll left should be 0. In RTL, the scroll width
+            // should be the full width minus the offset width.
+
+            /** @type {?} */
+
+
+            var containerEl = this._tabListContainer.nativeElement;
+            /** @type {?} */
+
+            var dir = this._getLayoutDirection();
+
+            if (dir == 'ltr') {
+              containerEl.scrollLeft = 0;
+            } else {
+              containerEl.scrollLeft = containerEl.scrollWidth - containerEl.offsetWidth;
+            }
+          }
+        }
+        /**
+         * The layout direction of the containing app.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getLayoutDirection",
+        value: function _getLayoutDirection() {
+          return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
+        }
+        /**
+         * Performs the CSS transformation on the tab list that will cause the list to scroll.
+         * @return {?}
+         */
+
+      }, {
+        key: "_updateTabScrollPosition",
+        value: function _updateTabScrollPosition() {
+          /** @type {?} */
+          var scrollDistance = this.scrollDistance;
+          /** @type {?} */
+
+          var platform = this._platform;
+          /** @type {?} */
+
+          var translateX = this._getLayoutDirection() === 'ltr' ? -scrollDistance : scrollDistance; // Don't use `translate3d` here because we don't want to create a new layer. A new layer
+          // seems to cause flickering and overflow in Internet Explorer. For example, the ink bar
+          // and ripples will exceed the boundaries of the visible tab bar.
+          // See: https://github.com/angular/components/issues/10276
+          // We round the `transform` here, because transforms with sub-pixel precision cause some
+          // browsers to blur the content of the element.
+
+          this._tabList.nativeElement.style.transform = "translateX(".concat(Math.round(translateX), "px)"); // Setting the `transform` on IE will change the scroll offset of the parent, causing the
+          // position to be thrown off in some cases. We have to reset it ourselves to ensure that
+          // it doesn't get thrown off. Note that we scope it only to IE and Edge, because messing
+          // with the scroll position throws off Chrome 71+ in RTL mode (see #14689).
+          // @breaking-change 9.0.0 Remove null check for `platform` after it can no longer be undefined.
+
+          if (platform && (platform.TRIDENT || platform.EDGE)) {
+            this._tabListContainer.nativeElement.scrollLeft = 0;
+          }
+        }
+        /**
+         * Sets the distance in pixels that the tab header should be transformed in the X-axis.
+         * @return {?}
+         */
+
+      }, {
+        key: "_scrollHeader",
+
+        /**
+         * Moves the tab list in the 'before' or 'after' direction (towards the beginning of the list or
+         * the end of the list, respectively). The distance to scroll is computed to be a third of the
+         * length of the tab list view window.
+         *
+         * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+         * should be called sparingly.
+         * @param {?} direction
+         * @return {?}
+         */
+        value: function _scrollHeader(direction) {
+          /** @type {?} */
+          var viewLength = this._tabListContainer.nativeElement.offsetWidth; // Move the scroll distance one-third the length of the tab list's viewport.
+
+          /** @type {?} */
+
+          var scrollAmount = (direction == 'before' ? -1 : 1) * viewLength / 3;
+          return this._scrollTo(this._scrollDistance + scrollAmount);
+        }
+        /**
+         * Handles click events on the pagination arrows.
+         * @param {?} direction
+         * @return {?}
+         */
+
+      }, {
+        key: "_handlePaginatorClick",
+        value: function _handlePaginatorClick(direction) {
+          this._stopInterval();
+
+          this._scrollHeader(direction);
+        }
+        /**
+         * Moves the tab list such that the desired tab label (marked by index) is moved into view.
+         *
+         * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+         * should be called sparingly.
+         * @param {?} labelIndex
+         * @return {?}
+         */
+
+      }, {
+        key: "_scrollToLabel",
+        value: function _scrollToLabel(labelIndex) {
+          /** @type {?} */
+          var selectedLabel = this._items ? this._items.toArray()[labelIndex] : null;
+
+          if (!selectedLabel) {
+            return;
+          } // The view length is the visible width of the tab labels.
+
+          /** @type {?} */
+
+
+          var viewLength = this._tabListContainer.nativeElement.offsetWidth;
+          var _selectedLabel$elemen = selectedLabel.elementRef.nativeElement,
+              offsetLeft = _selectedLabel$elemen.offsetLeft,
+              offsetWidth = _selectedLabel$elemen.offsetWidth;
+          /** @type {?} */
+
+          var labelBeforePos;
+          /** @type {?} */
+
+          var labelAfterPos;
+
+          if (this._getLayoutDirection() == 'ltr') {
+            labelBeforePos = offsetLeft;
+            labelAfterPos = labelBeforePos + offsetWidth;
+          } else {
+            labelAfterPos = this._tabList.nativeElement.offsetWidth - offsetLeft;
+            labelBeforePos = labelAfterPos - offsetWidth;
+          }
+          /** @type {?} */
+
+
+          var beforeVisiblePos = this.scrollDistance;
+          /** @type {?} */
+
+          var afterVisiblePos = this.scrollDistance + viewLength;
+
+          if (labelBeforePos < beforeVisiblePos) {
+            // Scroll header to move label to the before direction
+            this.scrollDistance -= beforeVisiblePos - labelBeforePos + EXAGGERATED_OVERSCROLL;
+          } else if (labelAfterPos > afterVisiblePos) {
+            // Scroll header to move label to the after direction
+            this.scrollDistance += labelAfterPos - afterVisiblePos + EXAGGERATED_OVERSCROLL;
+          }
+        }
+        /**
+         * Evaluate whether the pagination controls should be displayed. If the scroll width of the
+         * tab list is wider than the size of the header container, then the pagination controls should
+         * be shown.
+         *
+         * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+         * should be called sparingly.
+         * @return {?}
+         */
+
+      }, {
+        key: "_checkPaginationEnabled",
+        value: function _checkPaginationEnabled() {
+          /** @type {?} */
+          var isEnabled = this._tabList.nativeElement.scrollWidth > this._elementRef.nativeElement.offsetWidth;
+
+          if (!isEnabled) {
+            this.scrollDistance = 0;
+          }
+
+          if (isEnabled !== this._showPaginationControls) {
+            this._changeDetectorRef.markForCheck();
+          }
+
+          this._showPaginationControls = isEnabled;
+        }
+        /**
+         * Evaluate whether the before and after controls should be enabled or disabled.
+         * If the header is at the beginning of the list (scroll distance is equal to 0) then disable the
+         * before button. If the header is at the end of the list (scroll distance is equal to the
+         * maximum distance we can scroll), then disable the after button.
+         *
+         * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+         * should be called sparingly.
+         * @return {?}
+         */
+
+      }, {
+        key: "_checkScrollingControls",
+        value: function _checkScrollingControls() {
+          // Check if the pagination arrows should be activated.
+          this._disableScrollBefore = this.scrollDistance == 0;
+          this._disableScrollAfter = this.scrollDistance == this._getMaxScrollDistance();
+
+          this._changeDetectorRef.markForCheck();
+        }
+        /**
+         * Determines what is the maximum length in pixels that can be set for the scroll distance. This
+         * is equal to the difference in width between the tab list container and tab header container.
+         *
+         * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+         * should be called sparingly.
+         * @return {?}
+         */
+
+      }, {
+        key: "_getMaxScrollDistance",
+        value: function _getMaxScrollDistance() {
+          /** @type {?} */
+          var lengthOfTabList = this._tabList.nativeElement.scrollWidth;
+          /** @type {?} */
+
+          var viewLength = this._tabListContainer.nativeElement.offsetWidth;
+          return lengthOfTabList - viewLength || 0;
+        }
+        /**
+         * Tells the ink-bar to align itself to the current label wrapper
+         * @return {?}
+         */
+
+      }, {
+        key: "_alignInkBarToSelectedTab",
+        value: function _alignInkBarToSelectedTab() {
+          /** @type {?} */
+          var selectedItem = this._items && this._items.length ? this._items.toArray()[this.selectedIndex] : null;
+          /** @type {?} */
+
+          var selectedLabelWrapper = selectedItem ? selectedItem.elementRef.nativeElement : null;
+
+          if (selectedLabelWrapper) {
+            this._inkBar.alignToElement(selectedLabelWrapper);
+          } else {
+            this._inkBar.hide();
+          }
+        }
+        /**
+         * Stops the currently-running paginator interval.
+         * @return {?}
+         */
+
+      }, {
+        key: "_stopInterval",
+        value: function _stopInterval() {
+          this._stopScrolling.next();
+        }
+        /**
+         * Handles the user pressing down on one of the paginators.
+         * Starts scrolling the header after a certain amount of time.
+         * @param {?} direction In which direction the paginator should be scrolled.
+         * @return {?}
+         */
+
+      }, {
+        key: "_handlePaginatorPress",
+        value: function _handlePaginatorPress(direction) {
+          var _this68 = this;
+
+          // Avoid overlapping timers.
+          this._stopInterval(); // Start a timer after the delay and keep firing based on the interval.
+
+
+          Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["timer"])(HEADER_SCROLL_DELAY, HEADER_SCROLL_INTERVAL) // Keep the timer going until something tells it to stop or the component is destroyed.
+          .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["merge"])(this._stopScrolling, this._destroyed))).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            var _this68$_scrollHeader = _this68._scrollHeader(direction),
+                maxScrollDistance = _this68$_scrollHeader.maxScrollDistance,
+                distance = _this68$_scrollHeader.distance; // Stop the timer if we've reached the start or the end.
+
+
+            if (distance === 0 || distance >= maxScrollDistance) {
+              _this68._stopInterval();
+            }
+          });
+        }
+        /**
+         * Scrolls the header to a given position.
+         * @private
+         * @param {?} position Position to which to scroll.
+         * @return {?} Information on the current scroll distance and the maximum.
+         */
+
+      }, {
+        key: "_scrollTo",
+        value: function _scrollTo(position) {
+          /** @type {?} */
+          var maxScrollDistance = this._getMaxScrollDistance();
+
+          this._scrollDistance = Math.max(0, Math.min(maxScrollDistance, position)); // Mark that the scroll distance has changed so that after the view is checked, the CSS
+          // transformation can move the header.
+
+          this._scrollDistanceChanged = true;
+
+          this._checkScrollingControls();
+
+          return {
+            maxScrollDistance: maxScrollDistance,
+            distance: this._scrollDistance
+          };
+        }
+      }, {
+        key: "selectedIndex",
+        get: function get() {
+          return this._selectedIndex;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          value = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_8__["coerceNumberProperty"])(value);
+
+          if (this._selectedIndex != value) {
+            this._selectedIndexChanged = true;
+            this._selectedIndex = value;
+
+            if (this._keyManager) {
+              this._keyManager.updateActiveItemIndex(value);
+            }
+          }
+        }
+      }, {
+        key: "focusIndex",
+        get: function get() {
+          return this._keyManager ?
+          /** @type {?} */
+          this._keyManager.activeItemIndex : 0;
+        }
+        /**
+         * When the focus index is set, we must manually send focus to the correct label
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          if (!this._isValidIndex(value) || this.focusIndex === value || !this._keyManager) {
+            return;
+          }
+
+          this._keyManager.setActiveItem(value);
+        }
+      }, {
+        key: "scrollDistance",
+        get: function get() {
+          return this._scrollDistance;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._scrollTo(value);
+        }
+      }]);
+
+      return MatPaginatedTabHeader;
+    }();
+
+    MatPaginatedTabHeader.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        // TODO(crisbeto): this selector can be removed when we update to Angular 9.0.
+        selector: 'do-not-use-abstract-mat-paginated-tab-header'
+      }]
+    }];
+    /** @nocollapse */
+
+    MatPaginatedTabHeader.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]
+      }, {
+        type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_12__["Platform"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Base class with all of the `MatTabHeader` functionality.
+     * \@docs-private
+     * @abstract
+     */
+    // tslint:disable-next-line:class-name
+
+
+    var _MatTabHeaderBase = /*#__PURE__*/function (_MatPaginatedTabHeade) {
+      _inherits(_MatTabHeaderBase, _MatPaginatedTabHeade);
+
+      var _super34 = _createSuper(_MatTabHeaderBase);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} changeDetectorRef
+       * @param {?} viewportRuler
+       * @param {?} dir
+       * @param {?} ngZone
+       * @param {?} platform
+       * @param {?=} animationMode
+       */
+      function _MatTabHeaderBase(elementRef, changeDetectorRef, viewportRuler, dir, ngZone, platform, // @breaking-change 9.0.0 `_animationMode` parameter to be made required.
+      animationMode) {
+        var _this69;
+
+        _classCallCheck(this, _MatTabHeaderBase);
+
+        _this69 = _super34.call(this, elementRef, changeDetectorRef, viewportRuler, dir, ngZone, platform, animationMode);
+        _this69._disableRipple = false;
+        return _this69;
+      }
+      /**
+       * Whether the ripple effect is disabled or not.
+       * @return {?}
+       */
+
+
+      _createClass(_MatTabHeaderBase, [{
+        key: "_itemSelected",
+
+        /**
+         * @protected
+         * @param {?} event
+         * @return {?}
+         */
+        value: function _itemSelected(event) {
+          event.preventDefault();
+        }
+      }, {
+        key: "disableRipple",
+        get: function get() {
+          return this._disableRipple;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._disableRipple = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_8__["coerceBooleanProperty"])(value);
+        }
+      }]);
+
+      return _MatTabHeaderBase;
+    }(MatPaginatedTabHeader);
+
+    _MatTabHeaderBase.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        // TODO(crisbeto): this selector can be removed when we update to Angular 9.0.
+        selector: 'do-not-use-abstract-mat-tab-header-base'
+      }]
+    }];
+    /** @nocollapse */
+
+    _MatTabHeaderBase.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]
+      }, {
+        type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_12__["Platform"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+
+    _MatTabHeaderBase.propDecorators = {
+      disableRipple: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+    /**
+     * The header of the tab group which displays a list of all the tabs in the tab group. Includes
+     * an ink bar that follows the currently selected tab. When the tabs list's width exceeds the
+     * width of the header container, then arrows will be displayed to allow the user to scroll
+     * left and right across the header.
+     * \@docs-private
+     */
+
+    var MatTabHeader = /*#__PURE__*/function (_MatTabHeaderBase2) {
+      _inherits(MatTabHeader, _MatTabHeaderBase2);
+
+      var _super35 = _createSuper(MatTabHeader);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} changeDetectorRef
+       * @param {?} viewportRuler
+       * @param {?} dir
+       * @param {?} ngZone
+       * @param {?} platform
+       * @param {?=} animationMode
+       */
+      function MatTabHeader(elementRef, changeDetectorRef, viewportRuler, dir, ngZone, platform, // @breaking-change 9.0.0 `_animationMode` parameter to be made required.
+      animationMode) {
+        _classCallCheck(this, MatTabHeader);
+
+        return _super35.call(this, elementRef, changeDetectorRef, viewportRuler, dir, ngZone, platform, animationMode);
+      }
+
+      return MatTabHeader;
+    }(_MatTabHeaderBase);
+
+    MatTabHeader.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: 'mat-tab-header',
+        template: "<div class=\"mat-tab-header-pagination mat-tab-header-pagination-before mat-elevation-z4\" #previousPaginator aria-hidden=\"true\" mat-ripple [matRippleDisabled]=\"_disableScrollBefore || disableRipple\" [class.mat-tab-header-pagination-disabled]=\"_disableScrollBefore\" (click)=\"_handlePaginatorClick('before')\" (mousedown)=\"_handlePaginatorPress('before')\" (touchend)=\"_stopInterval()\"><div class=\"mat-tab-header-pagination-chevron\"></div></div><div class=\"mat-tab-label-container\" #tabListContainer (keydown)=\"_handleKeydown($event)\"><div #tabList class=\"mat-tab-list\" [class._mat-animation-noopable]=\"_animationMode === 'NoopAnimations'\" role=\"tablist\" (cdkObserveContent)=\"_onContentChanges()\"><div class=\"mat-tab-labels\"><ng-content></ng-content></div><mat-ink-bar></mat-ink-bar></div></div><div class=\"mat-tab-header-pagination mat-tab-header-pagination-after mat-elevation-z4\" #nextPaginator aria-hidden=\"true\" mat-ripple [matRippleDisabled]=\"_disableScrollAfter || disableRipple\" [class.mat-tab-header-pagination-disabled]=\"_disableScrollAfter\" (mousedown)=\"_handlePaginatorPress('after')\" (click)=\"_handlePaginatorClick('after')\" (touchend)=\"_stopInterval()\"><div class=\"mat-tab-header-pagination-chevron\"></div></div>",
+        styles: [".mat-tab-header{display:flex;overflow:hidden;position:relative;flex-shrink:0}.mat-tab-header-pagination{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;display:none;justify-content:center;align-items:center;min-width:32px;cursor:pointer;z-index:2;-webkit-tap-highlight-color:transparent;touch-action:none}.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination{display:flex}.mat-tab-header-pagination-before,.mat-tab-header-rtl .mat-tab-header-pagination-after{padding-left:4px}.mat-tab-header-pagination-before .mat-tab-header-pagination-chevron,.mat-tab-header-rtl .mat-tab-header-pagination-after .mat-tab-header-pagination-chevron{transform:rotate(-135deg)}.mat-tab-header-pagination-after,.mat-tab-header-rtl .mat-tab-header-pagination-before{padding-right:4px}.mat-tab-header-pagination-after .mat-tab-header-pagination-chevron,.mat-tab-header-rtl .mat-tab-header-pagination-before .mat-tab-header-pagination-chevron{transform:rotate(45deg)}.mat-tab-header-pagination-chevron{border-style:solid;border-width:2px 2px 0 0;content:'';height:8px;width:8px}.mat-tab-header-pagination-disabled{box-shadow:none;cursor:default}.mat-tab-list{flex-grow:1;position:relative;transition:transform .5s cubic-bezier(.35,0,.25,1)}.mat-ink-bar{position:absolute;bottom:0;height:2px;transition:.5s cubic-bezier(.35,0,.25,1)}._mat-animation-noopable.mat-ink-bar{transition:none;animation:none}.mat-tab-group-inverted-header .mat-ink-bar{bottom:auto;top:0}@media (-ms-high-contrast:active){.mat-ink-bar{outline:solid 2px;height:0}}.mat-tab-labels{display:flex}[mat-align-tabs=center] .mat-tab-labels{justify-content:center}[mat-align-tabs=end] .mat-tab-labels{justify-content:flex-end}.mat-tab-label-container{display:flex;flex-grow:1;overflow:hidden;z-index:1}._mat-animation-noopable.mat-tab-list{transition:none;animation:none}.mat-tab-label{height:48px;padding:0 24px;cursor:pointer;box-sizing:border-box;opacity:.6;min-width:160px;text-align:center;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;position:relative}.mat-tab-label:focus{outline:0}.mat-tab-label:focus:not(.mat-tab-disabled){opacity:1}@media (-ms-high-contrast:active){.mat-tab-label:focus{outline:dotted 2px}}.mat-tab-label.mat-tab-disabled{cursor:default}@media (-ms-high-contrast:active){.mat-tab-label.mat-tab-disabled{opacity:.5}}.mat-tab-label .mat-tab-label-content{display:inline-flex;justify-content:center;align-items:center;white-space:nowrap}@media (-ms-high-contrast:active){.mat-tab-label{opacity:1}}@media (max-width:599px){.mat-tab-label{min-width:72px}}"],
+        inputs: ['selectedIndex'],
+        outputs: ['selectFocusedIndex', 'indexFocused'],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+        host: {
+          'class': 'mat-tab-header',
+          '[class.mat-tab-header-pagination-controls-enabled]': '_showPaginationControls',
+          '[class.mat-tab-header-rtl]': "_getLayoutDirection() == 'rtl'"
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTabHeader.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]
+      }, {
+        type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_12__["Platform"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+
+    MatTabHeader.propDecorators = {
+      _items: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+        args: [MatTabLabelWrapper]
+      }],
+      _inkBar: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: [MatInkBar, {
+          "static": true
+        }]
+      }],
+      _tabListContainer: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['tabListContainer', {
+          "static": true
+        }]
+      }],
+      _tabList: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['tabList', {
+          "static": true
+        }]
+      }],
+      _nextPaginator: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['nextPaginator', {
+          "static": false
+        }]
+      }],
+      _previousPaginator: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['previousPaginator', {
+          "static": false
+        }]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Base class with all of the `MatTabNav` functionality.
+     * \@docs-private
+     * @abstract
+     */
+    // tslint:disable-next-line:class-name
+
+    var _MatTabNavBase = /*#__PURE__*/function (_MatPaginatedTabHeade2) {
+      _inherits(_MatTabNavBase, _MatPaginatedTabHeade2);
+
+      var _super36 = _createSuper(_MatTabNavBase);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} dir
+       * @param {?} ngZone
+       * @param {?} changeDetectorRef
+       * @param {?} viewportRuler
+       * @param {?=} platform
+       * @param {?=} animationMode
+       */
+      function _MatTabNavBase(elementRef, dir, ngZone, changeDetectorRef, viewportRuler,
+      /**
+       * @deprecated @breaking-change 9.0.0 `platform` parameter to become required.
+       */
+      platform, animationMode) {
+        var _this70;
+
+        _classCallCheck(this, _MatTabNavBase);
+
+        _this70 = _super36.call(this, elementRef, changeDetectorRef, viewportRuler, dir, ngZone, platform, animationMode);
+        _this70._disableRipple = false;
+        /**
+         * Theme color of the nav bar.
+         */
+
+        _this70.color = 'primary';
+        return _this70;
+      }
+      /**
+       * Background color of the tab nav.
+       * @return {?}
+       */
+
+
+      _createClass(_MatTabNavBase, [{
+        key: "_itemSelected",
+
+        /**
+         * @protected
+         * @return {?}
+         */
+        value: function _itemSelected() {// noop
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngAfterContentInit",
+        value: function ngAfterContentInit() {
+          var _this71 = this;
+
+          // We need this to run before the `changes` subscription in parent to ensure that the
+          // selectedIndex is up-to-date by the time the super class starts looking for it.
+          this._items.changes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["startWith"])(null), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["takeUntil"])(this._destroyed)).subscribe(
+          /**
+          * @return {?}
+          */
+          function () {
+            _this71.updateActiveLink();
+          });
+
+          _get(_getPrototypeOf(_MatTabNavBase.prototype), "ngAfterContentInit", this).call(this);
+        }
+        /**
+         * Notifies the component that the active link has been changed.
+         * \@breaking-change 8.0.0 `element` parameter to be removed.
+         * @param {?=} _element
+         * @return {?}
+         */
+
+      }, {
+        key: "updateActiveLink",
+        value: function updateActiveLink(_element) {
+          if (!this._items) {
+            return;
+          }
+          /** @type {?} */
+
+
+          var items = this._items.toArray();
+
+          for (var i = 0; i < items.length; i++) {
+            if (items[i].active) {
+              this.selectedIndex = i;
+
+              this._changeDetectorRef.markForCheck();
+
+              return;
+            }
+          } // The ink bar should hide itself if no items are active.
+
+
+          this.selectedIndex = -1;
+
+          this._inkBar.hide();
+        }
+      }, {
+        key: "backgroundColor",
+        get: function get() {
+          return this._backgroundColor;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          /** @type {?} */
+          var classList = this._elementRef.nativeElement.classList;
+          classList.remove("mat-background-".concat(this.backgroundColor));
+
+          if (value) {
+            classList.add("mat-background-".concat(value));
+          }
+
+          this._backgroundColor = value;
+        }
+        /**
+         * Whether the ripple effect is disabled or not.
+         * @return {?}
+         */
+
+      }, {
+        key: "disableRipple",
+        get: function get() {
+          return this._disableRipple;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._disableRipple = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_8__["coerceBooleanProperty"])(value);
+        }
+      }]);
+
+      return _MatTabNavBase;
+    }(MatPaginatedTabHeader);
+
+    _MatTabNavBase.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        // TODO(crisbeto): this selector can be removed when we update to Angular 9.0.
+        selector: 'do-not-use-abstract-mat-tab-nav-base'
+      }]
+    }];
+    /** @nocollapse */
+
+    _MatTabNavBase.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"]
+      }, {
+        type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_12__["Platform"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+
+    _MatTabNavBase.propDecorators = {
+      backgroundColor: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      disableRipple: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }],
+      color: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+    /**
+     * Navigation component matching the styles of the tab group header.
+     * Provides anchored navigation with animated ink bar.
+     */
+
+    var MatTabNav = /*#__PURE__*/function (_MatTabNavBase2) {
+      _inherits(MatTabNav, _MatTabNavBase2);
+
+      var _super37 = _createSuper(MatTabNav);
+
+      /**
+       * @param {?} elementRef
+       * @param {?} dir
+       * @param {?} ngZone
+       * @param {?} changeDetectorRef
+       * @param {?} viewportRuler
+       * @param {?=} platform
+       * @param {?=} animationMode
+       */
+      function MatTabNav(elementRef, dir, ngZone, changeDetectorRef, viewportRuler,
+      /**
+       * @deprecated @breaking-change 9.0.0 `platform` parameter to become required.
+       */
+      platform, animationMode) {
+        _classCallCheck(this, MatTabNav);
+
+        return _super37.call(this, elementRef, dir, ngZone, changeDetectorRef, viewportRuler, platform, animationMode);
+      }
+
+      return MatTabNav;
+    }(_MatTabNavBase);
+
+    MatTabNav.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+      args: [{
+        selector: '[mat-tab-nav-bar]',
+        exportAs: 'matTabNavBar, matTabNav',
+        inputs: ['color'],
+        template: "<div class=\"mat-tab-header-pagination mat-tab-header-pagination-before mat-elevation-z4\" #previousPaginator aria-hidden=\"true\" mat-ripple [matRippleDisabled]=\"_disableScrollBefore || disableRipple\" [class.mat-tab-header-pagination-disabled]=\"_disableScrollBefore\" (click)=\"_handlePaginatorClick('before')\" (mousedown)=\"_handlePaginatorPress('before')\" (touchend)=\"_stopInterval()\"><div class=\"mat-tab-header-pagination-chevron\"></div></div><div class=\"mat-tab-link-container\" #tabListContainer (keydown)=\"_handleKeydown($event)\"><div class=\"mat-tab-list\" #tabList (cdkObserveContent)=\"_onContentChanges()\"><div class=\"mat-tab-links\"><ng-content></ng-content></div><mat-ink-bar></mat-ink-bar></div></div><div class=\"mat-tab-header-pagination mat-tab-header-pagination-after mat-elevation-z4\" #nextPaginator aria-hidden=\"true\" mat-ripple [matRippleDisabled]=\"_disableScrollAfter || disableRipple\" [class.mat-tab-header-pagination-disabled]=\"_disableScrollAfter\" (mousedown)=\"_handlePaginatorPress('after')\" (click)=\"_handlePaginatorClick('after')\" (touchend)=\"_stopInterval()\"><div class=\"mat-tab-header-pagination-chevron\"></div></div>",
+        styles: [".mat-tab-header{display:flex;overflow:hidden;position:relative;flex-shrink:0}.mat-tab-header-pagination{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;display:none;justify-content:center;align-items:center;min-width:32px;cursor:pointer;z-index:2;-webkit-tap-highlight-color:transparent;touch-action:none}.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination{display:flex}.mat-tab-header-pagination-before,.mat-tab-header-rtl .mat-tab-header-pagination-after{padding-left:4px}.mat-tab-header-pagination-before .mat-tab-header-pagination-chevron,.mat-tab-header-rtl .mat-tab-header-pagination-after .mat-tab-header-pagination-chevron{transform:rotate(-135deg)}.mat-tab-header-pagination-after,.mat-tab-header-rtl .mat-tab-header-pagination-before{padding-right:4px}.mat-tab-header-pagination-after .mat-tab-header-pagination-chevron,.mat-tab-header-rtl .mat-tab-header-pagination-before .mat-tab-header-pagination-chevron{transform:rotate(45deg)}.mat-tab-header-pagination-chevron{border-style:solid;border-width:2px 2px 0 0;content:'';height:8px;width:8px}.mat-tab-header-pagination-disabled{box-shadow:none;cursor:default}.mat-tab-list{flex-grow:1;position:relative;transition:transform .5s cubic-bezier(.35,0,.25,1)}.mat-tab-links{display:flex}[mat-align-tabs=center] .mat-tab-links{justify-content:center}[mat-align-tabs=end] .mat-tab-links{justify-content:flex-end}.mat-ink-bar{position:absolute;bottom:0;height:2px;transition:.5s cubic-bezier(.35,0,.25,1)}._mat-animation-noopable.mat-ink-bar{transition:none;animation:none}.mat-tab-group-inverted-header .mat-ink-bar{bottom:auto;top:0}@media (-ms-high-contrast:active){.mat-ink-bar{outline:solid 2px;height:0}}.mat-tab-link-container{display:flex;flex-grow:1;overflow:hidden;z-index:1}.mat-tab-link{height:48px;padding:0 24px;cursor:pointer;box-sizing:border-box;opacity:.6;min-width:160px;text-align:center;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;vertical-align:top;text-decoration:none;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent}.mat-tab-link:focus{outline:0}.mat-tab-link:focus:not(.mat-tab-disabled){opacity:1}@media (-ms-high-contrast:active){.mat-tab-link:focus{outline:dotted 2px}}.mat-tab-link.mat-tab-disabled{cursor:default}@media (-ms-high-contrast:active){.mat-tab-link.mat-tab-disabled{opacity:.5}}.mat-tab-link .mat-tab-label-content{display:inline-flex;justify-content:center;align-items:center;white-space:nowrap}@media (-ms-high-contrast:active){.mat-tab-link{opacity:1}}[mat-stretch-tabs] .mat-tab-link{flex-basis:0;flex-grow:1}.mat-tab-link.mat-tab-disabled{pointer-events:none}@media (max-width:599px){.mat-tab-link{min-width:72px}}"],
+        host: {
+          'class': 'mat-tab-nav-bar mat-tab-header',
+          '[class.mat-tab-header-pagination-controls-enabled]': '_showPaginationControls',
+          '[class.mat-tab-header-rtl]': "_getLayoutDirection() == 'rtl'",
+          '[class.mat-primary]': 'color !== "warn" && color !== "accent"',
+          '[class.mat-accent]': 'color === "accent"',
+          '[class.mat-warn]': 'color === "warn"'
+        },
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTabNav.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_6__["Directionality"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]
+      }, {
+        type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"]
+      }, {
+        type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_12__["Platform"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+
+    MatTabNav.propDecorators = {
+      _items: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+        args: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(
+        /**
+        * @return {?}
+        */
+        function () {
+          return MatTabLink;
+        }), {
+          descendants: true
+        }]
+      }],
+      _inkBar: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: [MatInkBar, {
+          "static": true
+        }]
+      }],
+      _tabListContainer: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['tabListContainer', {
+          "static": true
+        }]
+      }],
+      _tabList: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['tabList', {
+          "static": true
+        }]
+      }],
+      _nextPaginator: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['nextPaginator', {
+          "static": false
+        }]
+      }],
+      _previousPaginator: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+        args: ['previousPaginator', {
+          "static": false
+        }]
+      }]
+    }; // Boilerplate for applying mixins to MatTabLink.
+
+    var MatTabLinkMixinBase = function MatTabLinkMixinBase() {
+      _classCallCheck(this, MatTabLinkMixinBase);
+    };
+    /** @type {?} */
+
+
+    var _MatTabLinkMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinTabIndex"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinDisableRipple"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinDisabled"])(MatTabLinkMixinBase)));
+    /**
+     * Base class with all of the `MatTabLink` functionality.
+     */
+    // tslint:disable-next-line:class-name
+
+
+    var _MatTabLinkBase = /*#__PURE__*/function (_MatTabLinkMixinBase2) {
+      _inherits(_MatTabLinkBase, _MatTabLinkMixinBase2);
+
+      var _super38 = _createSuper(_MatTabLinkBase);
+
+      /**
+       * @param {?} _tabNavBar
+       * @param {?} elementRef
+       * @param {?} globalRippleOptions
+       * @param {?} tabIndex
+       * @param {?} _focusMonitor
+       * @param {?=} animationMode
+       */
+      function _MatTabLinkBase(_tabNavBar, elementRef, globalRippleOptions, tabIndex, _focusMonitor, animationMode) {
+        var _this72;
+
+        _classCallCheck(this, _MatTabLinkBase);
+
+        _this72 = _super38.call(this);
+        _this72._tabNavBar = _tabNavBar;
+        _this72.elementRef = elementRef;
+        _this72._focusMonitor = _focusMonitor;
+        /**
+         * Whether the tab link is active or not.
+         */
+
+        _this72._isActive = false;
+        _this72.rippleConfig = globalRippleOptions || {};
+        _this72.tabIndex = parseInt(tabIndex) || 0;
+
+        if (animationMode === 'NoopAnimations') {
+          _this72.rippleConfig.animation = {
+            enterDuration: 0,
+            exitDuration: 0
+          };
+        }
+
+        _focusMonitor.monitor(elementRef);
+
+        return _this72;
+      }
+      /**
+       * Whether the link is active.
+       * @return {?}
+       */
+
+
+      _createClass(_MatTabLinkBase, [{
+        key: "focus",
+
+        /**
+         * @return {?}
+         */
+        value: function focus() {
+          this.elementRef.nativeElement.focus();
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this._focusMonitor.stopMonitoring(this.elementRef);
+        }
+      }, {
+        key: "active",
+        get: function get() {
+          return this._isActive;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          if (value !== this._isActive) {
+            this._isActive = value;
+
+            this._tabNavBar.updateActiveLink(this.elementRef);
+          }
+        }
+        /**
+         * Whether ripples are disabled on interaction.
+         * \@docs-private
+         * @return {?}
+         */
+
+      }, {
+        key: "rippleDisabled",
+        get: function get() {
+          return this.disabled || this.disableRipple || this._tabNavBar.disableRipple || !!this.rippleConfig.disabled;
+        }
+      }]);
+
+      return _MatTabLinkBase;
+    }(_MatTabLinkMixinBase);
+
+    _MatTabLinkBase.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        // TODO(crisbeto): this selector can be removed when we update to Angular 9.0.
+        selector: 'do-not-use-abstract-mat-tab-link-base'
+      }]
+    }];
+    /** @nocollapse */
+
+    _MatTabLinkBase.ctorParameters = function () {
+      return [{
+        type: _MatTabNavBase
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MAT_RIPPLE_GLOBAL_OPTIONS"]]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Attribute"],
+          args: ['tabindex']
+        }]
+      }, {
+        type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_10__["FocusMonitor"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+
+    _MatTabLinkBase.propDecorators = {
+      active: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+      }]
+    };
+    /**
+     * Link inside of a `mat-tab-nav-bar`.
+     */
+
+    var MatTabLink = /*#__PURE__*/function (_MatTabLinkBase2) {
+      _inherits(MatTabLink, _MatTabLinkBase2);
+
+      var _super39 = _createSuper(MatTabLink);
+
+      /**
+       * @param {?} tabNavBar
+       * @param {?} elementRef
+       * @param {?} ngZone
+       * @param {?} platform
+       * @param {?} globalRippleOptions
+       * @param {?} tabIndex
+       * @param {?} focusMonitor
+       * @param {?=} animationMode
+       */
+      function MatTabLink(tabNavBar, elementRef, ngZone, platform, globalRippleOptions, tabIndex, focusMonitor, animationMode) {
+        var _this73;
+
+        _classCallCheck(this, MatTabLink);
+
+        _this73 = _super39.call(this, tabNavBar, elementRef, globalRippleOptions, tabIndex, focusMonitor, animationMode);
+        _this73._tabLinkRipple = new _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["RippleRenderer"](_assertThisInitialized(_this73), ngZone, elementRef, platform);
+
+        _this73._tabLinkRipple.setupTriggerEvents(elementRef.nativeElement);
+
+        return _this73;
+      }
+      /**
+       * @return {?}
+       */
+
+
+      _createClass(MatTabLink, [{
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          _get(_getPrototypeOf(MatTabLink.prototype), "ngOnDestroy", this).call(this);
+
+          this._tabLinkRipple._removeTriggerEvents();
+        }
+      }]);
+
+      return MatTabLink;
+    }(_MatTabLinkBase);
+
+    MatTabLink.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+      args: [{
+        selector: '[mat-tab-link], [matTabLink]',
+        exportAs: 'matTabLink',
+        inputs: ['disabled', 'disableRipple', 'tabIndex'],
+        host: {
+          'class': 'mat-tab-link',
+          '[attr.aria-current]': 'active ? "page" : null',
+          '[attr.aria-disabled]': 'disabled',
+          '[attr.tabIndex]': 'tabIndex',
+          '[class.mat-tab-disabled]': 'disabled',
+          '[class.mat-tab-label-active]': 'active'
+        }
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTabLink.ctorParameters = function () {
+      return [{
+        type: MatTabNav
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]
+      }, {
+        type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_12__["Platform"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MAT_RIPPLE_GLOBAL_OPTIONS"]]
+        }]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Attribute"],
+          args: ['tabindex']
+        }]
+      }, {
+        type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_10__["FocusMonitor"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+          args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["ANIMATION_MODULE_TYPE"]]
+        }]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+
+    var MatTabsModule = function MatTabsModule() {
+      _classCallCheck(this, MatTabsModule);
+    };
+
+    MatTabsModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+      args: [{
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_14__["CommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_2__["PortalModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatRippleModule"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_13__["ObserversModule"], _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_10__["A11yModule"]],
+        // Don't export all components because some are only to be used internally.
+        exports: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], MatTabGroup, MatTabLabel, MatTab, MatTabNav, MatTabLink, MatTabContent],
+        declarations: [MatTabGroup, MatTabLabel, MatTab, MatInkBar, MatTabLabelWrapper, MatTabNav, MatTabLink, MatTabBody, MatTabBodyPortal, MatTabHeader, MatTabContent,
+        /** @type {?} */
+        // TODO(crisbeto): these can be removed once they're turned into selector-less directives.
+        MatPaginatedTabHeader,
+        /** @type {?} */
+        _MatTabGroupBase,
+        /** @type {?} */
+        _MatTabNavBase,
+        /** @type {?} */
+        _MatTabBodyBase,
+        /** @type {?} */
+        _MatTabHeaderBase,
+        /** @type {?} */
+        _MatTabLinkBase]
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=tabs.js.map
+
+    /***/
+  },
+
+  /***/
+  "./node_modules/@angular/material/esm2015/tree.js":
+  /*!********************************************************!*\
+    !*** ./node_modules/@angular/material/esm2015/tree.js ***!
+    \********************************************************/
+
+  /*! exports provided: MatTreeNode, MatTreeNodeDef, MatNestedTreeNode, MatTreeNodePadding, MatTree, MatTreeModule, MatTreeNodeToggle, MatTreeNodeOutlet, MatTreeFlattener, MatTreeFlatDataSource, MatTreeNestedDataSource */
+
+  /***/
+  function node_modulesAngularMaterialEsm2015TreeJs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNode", function () {
+      return MatTreeNode;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNodeDef", function () {
+      return MatTreeNodeDef;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatNestedTreeNode", function () {
+      return MatNestedTreeNode;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNodePadding", function () {
+      return MatTreeNodePadding;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTree", function () {
+      return MatTree;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeModule", function () {
+      return MatTreeModule;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNodeToggle", function () {
+      return MatTreeNodeToggle;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNodeOutlet", function () {
+      return MatTreeNodeOutlet;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeFlattener", function () {
+      return MatTreeFlattener;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeFlatDataSource", function () {
+      return MatTreeFlatDataSource;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MatTreeNestedDataSource", function () {
+      return MatTreeNestedDataSource;
+    });
+    /* harmony import */
+
+
+    var _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/cdk/tree */
+    "./node_modules/@angular/cdk/esm2015/tree.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_material_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/material/core */
+    "./node_modules/@angular/material/esm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/cdk/coercion */
+    "./node_modules/@angular/cdk/esm2015/coercion.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/cdk/collections */
+    "./node_modules/@angular/cdk/esm2015/collections.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /**
+     * @license
+     * Copyright Google LLC All Rights Reserved.
+     *
+     * Use of this source code is governed by an MIT-style license that can be
+     * found in the LICENSE file at https://angular.io/license
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /** @type {?} */
+
+
+    var _MatTreeNodeMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinTabIndex"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisabled"])(_angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeNode"]));
+    /**
+     * Wrapper for the CdkTree node with Material design styles.
+     * @template T
+     */
+
+
+    var MatTreeNode = /*#__PURE__*/function (_MatTreeNodeMixinBase2) {
+      _inherits(MatTreeNode, _MatTreeNodeMixinBase2);
+
+      var _super40 = _createSuper(MatTreeNode);
+
+      /**
+       * @param {?} _elementRef
+       * @param {?} _tree
+       * @param {?} tabIndex
+       */
+      function MatTreeNode(_elementRef, _tree, tabIndex) {
+        var _this74;
+
+        _classCallCheck(this, MatTreeNode);
+
+        _this74 = _super40.call(this, _elementRef, _tree);
+        _this74._elementRef = _elementRef;
+        _this74._tree = _tree;
+        _this74.role = 'treeitem';
+        _this74.tabIndex = Number(tabIndex) || 0;
+        return _this74;
+      }
+
+      return MatTreeNode;
+    }(_MatTreeNodeMixinBase);
+
+    MatTreeNode.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+      args: [{
+        selector: 'mat-tree-node',
+        exportAs: 'matTreeNode',
+        inputs: ['disabled', 'tabIndex'],
+        host: {
+          '[attr.aria-expanded]': 'isExpanded',
+          '[attr.aria-level]': 'role === "treeitem" ? level : null',
+          '[attr.role]': 'role',
+          'class': 'mat-tree-node'
+        },
+        providers: [{
+          provide: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeNode"],
+          useExisting: MatTreeNode
+        }]
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTreeNode.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]
+      }, {
+        type: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTree"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Attribute"],
+          args: ['tabindex']
+        }]
+      }];
+    };
+
+    MatTreeNode.propDecorators = {
+      role: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+      }]
+    };
+    /**
+     * Wrapper for the CdkTree node definition with Material design styles.
+     * @template T
+     */
+
+    var MatTreeNodeDef = /*#__PURE__*/function (_angular_cdk_tree__WE) {
+      _inherits(MatTreeNodeDef, _angular_cdk_tree__WE);
+
+      var _super41 = _createSuper(MatTreeNodeDef);
+
+      function MatTreeNodeDef() {
+        _classCallCheck(this, MatTreeNodeDef);
+
+        return _super41.apply(this, arguments);
+      }
+
+      return MatTreeNodeDef;
+    }(_angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeNodeDef"]);
+
+    MatTreeNodeDef.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+      args: [{
+        selector: '[matTreeNodeDef]',
+        inputs: ['when: matTreeNodeDefWhen'],
+        providers: [{
+          provide: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeNodeDef"],
+          useExisting: MatTreeNodeDef
+        }]
+      }]
+    }];
+    MatTreeNodeDef.propDecorators = {
+      data: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"],
+        args: ['matTreeNode']
+      }]
+    };
+    /**
+     * Wrapper for the CdkTree nested node with Material design styles.
+     * @template T
+     */
+
+    var MatNestedTreeNode = /*#__PURE__*/function (_angular_cdk_tree__WE2) {
+      _inherits(MatNestedTreeNode, _angular_cdk_tree__WE2);
+
+      var _super42 = _createSuper(MatNestedTreeNode);
+
+      /**
+       * @param {?} _elementRef
+       * @param {?} _tree
+       * @param {?} _differs
+       * @param {?} tabIndex
+       */
+      function MatNestedTreeNode(_elementRef, _tree, _differs, tabIndex) {
+        var _this75;
+
+        _classCallCheck(this, MatNestedTreeNode);
+
+        _this75 = _super42.call(this, _elementRef, _tree, _differs);
+        _this75._elementRef = _elementRef;
+        _this75._tree = _tree;
+        _this75._differs = _differs;
+        _this75._disabled = false;
+        _this75.tabIndex = Number(tabIndex) || 0;
+        return _this75;
+      }
+      /**
+       * Whether the node is disabled.
+       * @return {?}
+       */
+
+
+      _createClass(MatNestedTreeNode, [{
+        key: "ngAfterContentInit",
+        // This is a workaround for https://github.com/angular/angular/issues/23091
+        // In aot mode, the lifecycle hooks from parent class are not called.
+        // TODO(tinayuangao): Remove when the angular issue #23091 is fixed
+
+        /**
+         * @return {?}
+         */
+        value: function ngAfterContentInit() {
+          _get(_getPrototypeOf(MatNestedTreeNode.prototype), "ngAfterContentInit", this).call(this);
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          _get(_getPrototypeOf(MatNestedTreeNode.prototype), "ngOnDestroy", this).call(this);
+        }
+      }, {
+        key: "disabled",
+        get: function get() {
+          return this._disabled;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._disabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_3__["coerceBooleanProperty"])(value);
+        }
+        /**
+         * Tabindex for the node.
+         * @return {?}
+         */
+
+      }, {
+        key: "tabIndex",
+        get: function get() {
+          return this.disabled ? -1 : this._tabIndex;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          // If the specified tabIndex value is null or undefined, fall back to the default value.
+          this._tabIndex = value != null ? value : 0;
+        }
+      }]);
+
+      return MatNestedTreeNode;
+    }(_angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkNestedTreeNode"]);
+
+    MatNestedTreeNode.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+      args: [{
+        selector: 'mat-nested-tree-node',
+        exportAs: 'matNestedTreeNode',
+        host: {
+          '[attr.aria-expanded]': 'isExpanded',
+          '[attr.role]': 'role',
+          'class': 'mat-nested-tree-node'
+        },
+        providers: [{
+          provide: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkNestedTreeNode"],
+          useExisting: MatNestedTreeNode
+        }, {
+          provide: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeNode"],
+          useExisting: MatNestedTreeNode
+        }, {
+          provide: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CDK_TREE_NODE_OUTLET_NODE"],
+          useExisting: MatNestedTreeNode
+        }]
+      }]
+    }];
+    /** @nocollapse */
+
+    MatNestedTreeNode.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]
+      }, {
+        type: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTree"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]
+      }, {
+        type: String,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Attribute"],
+          args: ['tabindex']
+        }]
+      }];
+    };
+
+    MatNestedTreeNode.propDecorators = {
+      node: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"],
+        args: ['matNestedTreeNode']
+      }],
+      disabled: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+      }],
+      tabIndex: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Wrapper for the CdkTree padding with Material design styles.
+     * @template T
+     */
+
+    var MatTreeNodePadding = /*#__PURE__*/function (_angular_cdk_tree__WE3) {
+      _inherits(MatTreeNodePadding, _angular_cdk_tree__WE3);
+
+      var _super43 = _createSuper(MatTreeNodePadding);
+
+      function MatTreeNodePadding() {
+        _classCallCheck(this, MatTreeNodePadding);
+
+        return _super43.apply(this, arguments);
+      }
+
+      return MatTreeNodePadding;
+    }(_angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeNodePadding"]);
+
+    MatTreeNodePadding.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+      args: [{
+        selector: '[matTreeNodePadding]',
+        providers: [{
+          provide: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeNodePadding"],
+          useExisting: MatTreeNodePadding
+        }]
+      }]
+    }];
+    MatTreeNodePadding.propDecorators = {
+      level: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"],
+        args: ['matTreeNodePadding']
+      }],
+      indent: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"],
+        args: ['matTreeNodePaddingIndent']
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Outlet for nested CdkNode. Put `[matTreeNodeOutlet]` on a tag to place children dataNodes
+     * inside the outlet.
+     */
+
+    var MatTreeNodeOutlet =
+    /**
+     * @param {?} viewContainer
+     * @param {?=} _node
+     */
+    function MatTreeNodeOutlet(viewContainer, _node) {
+      _classCallCheck(this, MatTreeNodeOutlet);
+
+      this.viewContainer = viewContainer;
+      this._node = _node;
+    };
+
+    MatTreeNodeOutlet.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+      args: [{
+        selector: '[matTreeNodeOutlet]',
+        providers: [{
+          provide: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeNodeOutlet"],
+          useExisting: MatTreeNodeOutlet
+        }]
+      }]
+    }];
+    /** @nocollapse */
+
+    MatTreeNodeOutlet.ctorParameters = function () {
+      return [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"]
+      }, {
+        type: undefined,
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+          args: [_angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CDK_TREE_NODE_OUTLET_NODE"]]
+        }, {
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+        }]
+      }];
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Wrapper for the CdkTable with Material design styles.
+     * @template T
+     */
+
+
+    var MatTree = /*#__PURE__*/function (_angular_cdk_tree__WE4) {
+      _inherits(MatTree, _angular_cdk_tree__WE4);
+
+      var _super44 = _createSuper(MatTree);
+
+      function MatTree() {
+        _classCallCheck(this, MatTree);
+
+        return _super44.apply(this, arguments);
+      }
+
+      return MatTree;
+    }(_angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTree"]);
+
+    MatTree.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
+      args: [{
+        selector: 'mat-tree',
+        exportAs: 'matTree',
+        template: "<ng-container matTreeNodeOutlet></ng-container>",
+        host: {
+          'class': 'mat-tree',
+          'role': 'tree'
+        },
+        styles: [".mat-tree{display:block}.mat-tree-node{display:flex;align-items:center;min-height:48px;flex:1;overflow:hidden;word-wrap:break-word}.mat-nested-tree-ndoe{border-bottom-width:0}"],
+        encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
+        // See note on CdkTree for explanation on why this uses the default change detection strategy.
+        // tslint:disable-next-line:validate-decorators
+        changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectionStrategy"].Default,
+        providers: [{
+          provide: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTree"],
+          useExisting: MatTree
+        }]
+      }]
+    }];
+    MatTree.propDecorators = {
+      _nodeOutlet: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"],
+        args: [MatTreeNodeOutlet, {
+          "static": true
+        }]
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Wrapper for the CdkTree's toggle with Material design styles.
+     * @template T
+     */
+
+    var MatTreeNodeToggle = /*#__PURE__*/function (_angular_cdk_tree__WE5) {
+      _inherits(MatTreeNodeToggle, _angular_cdk_tree__WE5);
+
+      var _super45 = _createSuper(MatTreeNodeToggle);
+
+      function MatTreeNodeToggle() {
+        var _this76;
+
+        _classCallCheck(this, MatTreeNodeToggle);
+
+        _this76 = _super45.apply(this, arguments);
+        _this76.recursive = false;
+        return _this76;
+      }
+
+      return MatTreeNodeToggle;
+    }(_angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeNodeToggle"]);
+
+    MatTreeNodeToggle.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+      args: [{
+        selector: '[matTreeNodeToggle]',
+        providers: [{
+          provide: _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeNodeToggle"],
+          useExisting: MatTreeNodeToggle
+        }]
+      }]
+    }];
+    MatTreeNodeToggle.propDecorators = {
+      recursive: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"],
+        args: ['matTreeNodeToggleRecursive']
+      }]
+    };
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /** @type {?} */
+
+    var MAT_TREE_DIRECTIVES = [MatNestedTreeNode, MatTreeNodeDef, MatTreeNodePadding, MatTreeNodeToggle, MatTree, MatTreeNode, MatTreeNodeOutlet];
+
+    var MatTreeModule = function MatTreeModule() {
+      _classCallCheck(this, MatTreeModule);
+    };
+
+    MatTreeModule.decorators = [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+      args: [{
+        imports: [_angular_cdk_tree__WEBPACK_IMPORTED_MODULE_0__["CdkTreeModule"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]],
+        exports: MAT_TREE_DIRECTIVES,
+        declarations: MAT_TREE_DIRECTIVES
+      }]
+    }];
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Tree flattener to convert a normal type of node to node with children & level information.
+     * Transform nested nodes of type `T` to flattened nodes of type `F`.
+     *
+     * For example, the input data of type `T` is nested, and contains its children data:
+     *   SomeNode: {
+     *     key: 'Fruits',
+     *     children: [
+     *       NodeOne: {
+     *         key: 'Apple',
+     *       },
+     *       NodeTwo: {
+     *        key: 'Pear',
+     *      }
+     *    ]
+     *  }
+     *  After flattener flatten the tree, the structure will become
+     *  SomeNode: {
+     *    key: 'Fruits',
+     *    expandable: true,
+     *    level: 1
+     *  },
+     *  NodeOne: {
+     *    key: 'Apple',
+     *    expandable: false,
+     *    level: 2
+     *  },
+     *  NodeTwo: {
+     *   key: 'Pear',
+     *   expandable: false,
+     *   level: 2
+     * }
+     * and the output flattened type is `F` with additional information.
+     * @template T, F
+     */
+
+    var MatTreeFlattener = /*#__PURE__*/function () {
+      /**
+       * @param {?} transformFunction
+       * @param {?} getLevel
+       * @param {?} isExpandable
+       * @param {?} getChildren
+       */
+      function MatTreeFlattener(transformFunction, getLevel, isExpandable, getChildren) {
+        _classCallCheck(this, MatTreeFlattener);
+
+        this.transformFunction = transformFunction;
+        this.getLevel = getLevel;
+        this.isExpandable = isExpandable;
+        this.getChildren = getChildren;
+      }
+      /**
+       * @param {?} node
+       * @param {?} level
+       * @param {?} resultNodes
+       * @param {?} parentMap
+       * @return {?}
+       */
+
+
+      _createClass(MatTreeFlattener, [{
+        key: "_flattenNode",
+        value: function _flattenNode(node, level, resultNodes, parentMap) {
+          var _this77 = this;
+
+          /** @type {?} */
+          var flatNode = this.transformFunction(node, level);
+          resultNodes.push(flatNode);
+
+          if (this.isExpandable(flatNode)) {
+            /** @type {?} */
+            var childrenNodes = this.getChildren(node);
+
+            if (childrenNodes) {
+              if (Array.isArray(childrenNodes)) {
+                this._flattenChildren(childrenNodes, level, resultNodes, parentMap);
+              } else {
+                childrenNodes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["take"])(1)).subscribe(
+                /**
+                * @param {?} children
+                * @return {?}
+                */
+                function (children) {
+                  _this77._flattenChildren(children, level, resultNodes, parentMap);
+                });
+              }
+            }
+          }
+
+          return resultNodes;
+        }
+        /**
+         * @param {?} children
+         * @param {?} level
+         * @param {?} resultNodes
+         * @param {?} parentMap
+         * @return {?}
+         */
+
+      }, {
+        key: "_flattenChildren",
+        value: function _flattenChildren(children, level, resultNodes, parentMap) {
+          var _this78 = this;
+
+          children.forEach(
+          /**
+          * @param {?} child
+          * @param {?} index
+          * @return {?}
+          */
+          function (child, index) {
+            /** @type {?} */
+            var childParentMap = parentMap.slice();
+            childParentMap.push(index != children.length - 1);
+
+            _this78._flattenNode(child, level + 1, resultNodes, childParentMap);
+          });
+        }
+        /**
+         * Flatten a list of node type T to flattened version of node F.
+         * Please note that type T may be nested, and the length of `structuredData` may be different
+         * from that of returned list `F[]`.
+         * @param {?} structuredData
+         * @return {?}
+         */
+
+      }, {
+        key: "flattenNodes",
+        value: function flattenNodes(structuredData) {
+          var _this79 = this;
+
+          /** @type {?} */
+          var resultNodes = [];
+          structuredData.forEach(
+          /**
+          * @param {?} node
+          * @return {?}
+          */
+          function (node) {
+            return _this79._flattenNode(node, 0, resultNodes, []);
+          });
+          return resultNodes;
+        }
+        /**
+         * Expand flattened node with current expansion status.
+         * The returned list may have different length.
+         * @param {?} nodes
+         * @param {?} treeControl
+         * @return {?}
+         */
+
+      }, {
+        key: "expandFlattenedNodes",
+        value: function expandFlattenedNodes(nodes, treeControl) {
+          var _this80 = this;
+
+          /** @type {?} */
+          var results = [];
+          /** @type {?} */
+
+          var currentExpand = [];
+          currentExpand[0] = true;
+          nodes.forEach(
+          /**
+          * @param {?} node
+          * @return {?}
+          */
+          function (node) {
+            /** @type {?} */
+            var expand = true;
+
+            for (var i = 0; i <= _this80.getLevel(node); i++) {
+              expand = expand && currentExpand[i];
+            }
+
+            if (expand) {
+              results.push(node);
+            }
+
+            if (_this80.isExpandable(node)) {
+              currentExpand[_this80.getLevel(node) + 1] = treeControl.isExpanded(node);
+            }
+          });
+          return results;
+        }
+      }]);
+
+      return MatTreeFlattener;
+    }();
+    /**
+     * Data source for flat tree.
+     * The data source need to handle expansion/collapsion of the tree node and change the data feed
+     * to `MatTree`.
+     * The nested tree nodes of type `T` are flattened through `MatTreeFlattener`, and converted
+     * to type `F` for `MatTree` to consume.
+     * @template T, F
+     */
+
+
+    var MatTreeFlatDataSource = /*#__PURE__*/function (_angular_cdk_collecti) {
+      _inherits(MatTreeFlatDataSource, _angular_cdk_collecti);
+
+      var _super46 = _createSuper(MatTreeFlatDataSource);
+
+      /**
+       * @param {?} _treeControl
+       * @param {?} _treeFlattener
+       * @param {?=} initialData
+       */
+      function MatTreeFlatDataSource(_treeControl, _treeFlattener) {
+        var _this81;
+
+        var initialData = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+
+        _classCallCheck(this, MatTreeFlatDataSource);
+
+        _this81 = _super46.call(this);
+        _this81._treeControl = _treeControl;
+        _this81._treeFlattener = _treeFlattener;
+        _this81._flattenedData = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"]([]);
+        _this81._expandedData = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"]([]);
+        _this81._data = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](initialData);
+        return _this81;
+      }
+      /**
+       * @return {?}
+       */
+
+
+      _createClass(MatTreeFlatDataSource, [{
+        key: "connect",
+
+        /**
+         * @param {?} collectionViewer
+         * @return {?}
+         */
+        value: function connect(collectionViewer) {
+          var _this82 = this;
+
+          /** @type {?} */
+          var changes = [collectionViewer.viewChange, this._treeControl.expansionModel.onChange, this._flattenedData];
+          return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["merge"]).apply(void 0, changes).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            _this82._expandedData.next(_this82._treeFlattener.expandFlattenedNodes(_this82._flattenedData.value, _this82._treeControl));
+
+            return _this82._expandedData.value;
+          }));
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "disconnect",
+        value: function disconnect() {// no op
+        }
+      }, {
+        key: "data",
+        get: function get() {
+          return this._data.value;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._data.next(value);
+
+          this._flattenedData.next(this._treeFlattener.flattenNodes(this.data));
+
+          this._treeControl.dataNodes = this._flattenedData.value;
+        }
+      }]);
+
+      return MatTreeFlatDataSource;
+    }(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_5__["DataSource"]);
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * Data source for nested tree.
+     *
+     * The data source for nested tree doesn't have to consider node flattener, or the way to expand
+     * or collapse. The expansion/collapsion will be handled by TreeControl and each non-leaf node.
+     * @template T
+     */
+
+
+    var MatTreeNestedDataSource = /*#__PURE__*/function (_angular_cdk_collecti2) {
+      _inherits(MatTreeNestedDataSource, _angular_cdk_collecti2);
+
+      var _super47 = _createSuper(MatTreeNestedDataSource);
+
+      function MatTreeNestedDataSource() {
+        var _this83;
+
+        _classCallCheck(this, MatTreeNestedDataSource);
+
+        _this83 = _super47.apply(this, arguments);
+        _this83._data = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"]([]);
+        return _this83;
+      }
+      /**
+       * Data for the nested tree
+       * @return {?}
+       */
+
+
+      _createClass(MatTreeNestedDataSource, [{
+        key: "connect",
+
+        /**
+         * @param {?} collectionViewer
+         * @return {?}
+         */
+        value: function connect(collectionViewer) {
+          var _this84 = this;
+
+          return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["merge"]).apply(void 0, [collectionViewer.viewChange, this._data]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(
+          /**
+          * @return {?}
+          */
+          function () {
+            return _this84.data;
+          }));
+        }
+        /**
+         * @return {?}
+         */
+
+      }, {
+        key: "disconnect",
+        value: function disconnect() {// no op
+        }
+      }, {
+        key: "data",
+        get: function get() {
+          return this._data.value;
+        }
+        /**
+         * @param {?} value
+         * @return {?}
+         */
+        ,
+        set: function set(value) {
+          this._data.next(value);
+        }
+      }]);
+
+      return MatTreeNestedDataSource;
+    }(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_5__["DataSource"]);
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    //# sourceMappingURL=tree.js.map
+
     /***/
 
   },
@@ -717,13 +22866,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var MatListModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatListModule"], [], function (_l) {
+    var MatListModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatListModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatLineModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatLineModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatRippleModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatRippleModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatPseudoCheckboxModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatPseudoCheckboxModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_divider__WEBPACK_IMPORTED_MODULE_7__["MatDividerModule"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_7__["MatDividerModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatListModule"], _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatListModule"], [])]);
     });
 
     var styles_MatNavList = [".mat-subheader{display:flex;box-sizing:border-box;padding:16px;align-items:center}.mat-list-base .mat-subheader{margin:0}.mat-list-base{padding-top:8px;display:block;-webkit-tap-highlight-color:transparent}.mat-list-base .mat-subheader{height:48px;line-height:16px}.mat-list-base .mat-subheader:first-child{margin-top:-8px}.mat-list-base .mat-list-item,.mat-list-base .mat-list-option{display:block;height:48px;-webkit-tap-highlight-color:transparent;width:100%;padding:0}.mat-list-base .mat-list-item .mat-list-item-content,.mat-list-base .mat-list-option .mat-list-item-content{display:flex;flex-direction:row;align-items:center;box-sizing:border-box;padding:0 16px;position:relative;height:inherit}.mat-list-base .mat-list-item .mat-list-item-content-reverse,.mat-list-base .mat-list-option .mat-list-item-content-reverse{display:flex;align-items:center;padding:0 16px;flex-direction:row-reverse;justify-content:space-around}.mat-list-base .mat-list-item .mat-list-item-ripple,.mat-list-base .mat-list-option .mat-list-item-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-list-base .mat-list-item.mat-list-item-with-avatar,.mat-list-base .mat-list-option.mat-list-item-with-avatar{height:56px}.mat-list-base .mat-list-item.mat-2-line,.mat-list-base .mat-list-option.mat-2-line{height:72px}.mat-list-base .mat-list-item.mat-3-line,.mat-list-base .mat-list-option.mat-3-line{height:88px}.mat-list-base .mat-list-item.mat-multi-line,.mat-list-base .mat-list-option.mat-multi-line{height:auto}.mat-list-base .mat-list-item.mat-multi-line .mat-list-item-content,.mat-list-base .mat-list-option.mat-multi-line .mat-list-item-content{padding-top:16px;padding-bottom:16px}.mat-list-base .mat-list-item .mat-list-text,.mat-list-base .mat-list-option .mat-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden;padding:0}.mat-list-base .mat-list-item .mat-list-text>*,.mat-list-base .mat-list-option .mat-list-text>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-list-base .mat-list-item .mat-list-text:empty,.mat-list-base .mat-list-option .mat-list-text:empty{display:none}.mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:0;padding-left:16px}[dir=rtl] .mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:16px;padding-left:0}.mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-left:0;padding-right:16px}[dir=rtl] .mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:0;padding-left:16px}.mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:16px;padding-left:16px}.mat-list-base .mat-list-item .mat-list-avatar,.mat-list-base .mat-list-option .mat-list-avatar{flex-shrink:0;width:40px;height:40px;border-radius:50%;object-fit:cover}.mat-list-base .mat-list-item .mat-list-avatar~.mat-divider-inset,.mat-list-base .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:72px;width:calc(100% - 72px)}[dir=rtl] .mat-list-base .mat-list-item .mat-list-avatar~.mat-divider-inset,[dir=rtl] .mat-list-base .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:auto;margin-right:72px}.mat-list-base .mat-list-item .mat-list-icon,.mat-list-base .mat-list-option .mat-list-icon{flex-shrink:0;width:24px;height:24px;font-size:24px;box-sizing:content-box;border-radius:50%;padding:4px}.mat-list-base .mat-list-item .mat-list-icon~.mat-divider-inset,.mat-list-base .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:64px;width:calc(100% - 64px)}[dir=rtl] .mat-list-base .mat-list-item .mat-list-icon~.mat-divider-inset,[dir=rtl] .mat-list-base .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:auto;margin-right:64px}.mat-list-base .mat-list-item .mat-divider,.mat-list-base .mat-list-option .mat-divider{position:absolute;bottom:0;left:0;width:100%;margin:0}[dir=rtl] .mat-list-base .mat-list-item .mat-divider,[dir=rtl] .mat-list-base .mat-list-option .mat-divider{margin-left:auto;margin-right:0}.mat-list-base .mat-list-item .mat-divider.mat-divider-inset,.mat-list-base .mat-list-option .mat-divider.mat-divider-inset{position:absolute}.mat-list-base[dense]{padding-top:4px;display:block}.mat-list-base[dense] .mat-subheader{height:40px;line-height:8px}.mat-list-base[dense] .mat-subheader:first-child{margin-top:-4px}.mat-list-base[dense] .mat-list-item,.mat-list-base[dense] .mat-list-option{display:block;height:40px;-webkit-tap-highlight-color:transparent;width:100%;padding:0}.mat-list-base[dense] .mat-list-item .mat-list-item-content,.mat-list-base[dense] .mat-list-option .mat-list-item-content{display:flex;flex-direction:row;align-items:center;box-sizing:border-box;padding:0 16px;position:relative;height:inherit}.mat-list-base[dense] .mat-list-item .mat-list-item-content-reverse,.mat-list-base[dense] .mat-list-option .mat-list-item-content-reverse{display:flex;align-items:center;padding:0 16px;flex-direction:row-reverse;justify-content:space-around}.mat-list-base[dense] .mat-list-item .mat-list-item-ripple,.mat-list-base[dense] .mat-list-option .mat-list-item-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar{height:48px}.mat-list-base[dense] .mat-list-item.mat-2-line,.mat-list-base[dense] .mat-list-option.mat-2-line{height:60px}.mat-list-base[dense] .mat-list-item.mat-3-line,.mat-list-base[dense] .mat-list-option.mat-3-line{height:76px}.mat-list-base[dense] .mat-list-item.mat-multi-line,.mat-list-base[dense] .mat-list-option.mat-multi-line{height:auto}.mat-list-base[dense] .mat-list-item.mat-multi-line .mat-list-item-content,.mat-list-base[dense] .mat-list-option.mat-multi-line .mat-list-item-content{padding-top:16px;padding-bottom:16px}.mat-list-base[dense] .mat-list-item .mat-list-text,.mat-list-base[dense] .mat-list-option .mat-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden;padding:0}.mat-list-base[dense] .mat-list-item .mat-list-text>*,.mat-list-base[dense] .mat-list-option .mat-list-text>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-list-base[dense] .mat-list-item .mat-list-text:empty,.mat-list-base[dense] .mat-list-option .mat-list-text:empty{display:none}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:0;padding-left:16px}[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:16px;padding-left:0}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-left:0;padding-right:16px}[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:0;padding-left:16px}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:16px;padding-left:16px}.mat-list-base[dense] .mat-list-item .mat-list-avatar,.mat-list-base[dense] .mat-list-option .mat-list-avatar{flex-shrink:0;width:36px;height:36px;border-radius:50%;object-fit:cover}.mat-list-base[dense] .mat-list-item .mat-list-avatar~.mat-divider-inset,.mat-list-base[dense] .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:68px;width:calc(100% - 68px)}[dir=rtl] .mat-list-base[dense] .mat-list-item .mat-list-avatar~.mat-divider-inset,[dir=rtl] .mat-list-base[dense] .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:auto;margin-right:68px}.mat-list-base[dense] .mat-list-item .mat-list-icon,.mat-list-base[dense] .mat-list-option .mat-list-icon{flex-shrink:0;width:20px;height:20px;font-size:20px;box-sizing:content-box;border-radius:50%;padding:4px}.mat-list-base[dense] .mat-list-item .mat-list-icon~.mat-divider-inset,.mat-list-base[dense] .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:60px;width:calc(100% - 60px)}[dir=rtl] .mat-list-base[dense] .mat-list-item .mat-list-icon~.mat-divider-inset,[dir=rtl] .mat-list-base[dense] .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:auto;margin-right:60px}.mat-list-base[dense] .mat-list-item .mat-divider,.mat-list-base[dense] .mat-list-option .mat-divider{position:absolute;bottom:0;left:0;width:100%;margin:0}[dir=rtl] .mat-list-base[dense] .mat-list-item .mat-divider,[dir=rtl] .mat-list-base[dense] .mat-list-option .mat-divider{margin-left:auto;margin-right:0}.mat-list-base[dense] .mat-list-item .mat-divider.mat-divider-inset,.mat-list-base[dense] .mat-list-option .mat-divider.mat-divider-inset{position:absolute}.mat-nav-list a{text-decoration:none;color:inherit}.mat-nav-list .mat-list-item{cursor:pointer;outline:0}mat-action-list button{background:0 0;color:inherit;border:none;font:inherit;outline:inherit;-webkit-tap-highlight-color:transparent;text-align:left}[dir=rtl] mat-action-list button{text-align:right}mat-action-list button::-moz-focus-inner{border:0}mat-action-list .mat-list-item{cursor:pointer;outline:inherit}.mat-list-option:not(.mat-list-item-disabled){cursor:pointer;outline:0}@media (-ms-high-contrast:active){.mat-selection-list:focus{outline-style:dotted}.mat-list-option:focus,.mat-list-option:hover,.mat-nav-list .mat-list-item:focus,.mat-nav-list .mat-list-item:hover,mat-action-list .mat-list-item:focus,mat-action-list .mat-list-item:hover{outline:dotted 1px}}@media (hover:none){.mat-action-list .mat-list-item:not(.mat-list-item-disabled):hover,.mat-list-option:not(.mat-list-item-disabled):hover,.mat-nav-list .mat-list-item:not(.mat-list-item-disabled):hover{background:0 0}}"];
 
-    var RenderType_MatNavList = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatNavList = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatNavList,
       data: {}
@@ -737,13 +22886,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 1, "mat-nav-list", [["class", "mat-nav-list mat-list-base"], ["role", "navigation"]], null, null, null, View_MatNavList_0, RenderType_MatNavList)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](1, 704512, null, 0, _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatNavList"], [], null, null)], null, null);
     }
 
-    var MatNavListNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-nav-list", _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatNavList"], View_MatNavList_Host_0, {
+    var MatNavListNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-nav-list", _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatNavList"], View_MatNavList_Host_0, {
       disableRipple: "disableRipple"
     }, {}, ["*"]);
 
     var styles_MatList = [".mat-subheader{display:flex;box-sizing:border-box;padding:16px;align-items:center}.mat-list-base .mat-subheader{margin:0}.mat-list-base{padding-top:8px;display:block;-webkit-tap-highlight-color:transparent}.mat-list-base .mat-subheader{height:48px;line-height:16px}.mat-list-base .mat-subheader:first-child{margin-top:-8px}.mat-list-base .mat-list-item,.mat-list-base .mat-list-option{display:block;height:48px;-webkit-tap-highlight-color:transparent;width:100%;padding:0}.mat-list-base .mat-list-item .mat-list-item-content,.mat-list-base .mat-list-option .mat-list-item-content{display:flex;flex-direction:row;align-items:center;box-sizing:border-box;padding:0 16px;position:relative;height:inherit}.mat-list-base .mat-list-item .mat-list-item-content-reverse,.mat-list-base .mat-list-option .mat-list-item-content-reverse{display:flex;align-items:center;padding:0 16px;flex-direction:row-reverse;justify-content:space-around}.mat-list-base .mat-list-item .mat-list-item-ripple,.mat-list-base .mat-list-option .mat-list-item-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-list-base .mat-list-item.mat-list-item-with-avatar,.mat-list-base .mat-list-option.mat-list-item-with-avatar{height:56px}.mat-list-base .mat-list-item.mat-2-line,.mat-list-base .mat-list-option.mat-2-line{height:72px}.mat-list-base .mat-list-item.mat-3-line,.mat-list-base .mat-list-option.mat-3-line{height:88px}.mat-list-base .mat-list-item.mat-multi-line,.mat-list-base .mat-list-option.mat-multi-line{height:auto}.mat-list-base .mat-list-item.mat-multi-line .mat-list-item-content,.mat-list-base .mat-list-option.mat-multi-line .mat-list-item-content{padding-top:16px;padding-bottom:16px}.mat-list-base .mat-list-item .mat-list-text,.mat-list-base .mat-list-option .mat-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden;padding:0}.mat-list-base .mat-list-item .mat-list-text>*,.mat-list-base .mat-list-option .mat-list-text>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-list-base .mat-list-item .mat-list-text:empty,.mat-list-base .mat-list-option .mat-list-text:empty{display:none}.mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:0;padding-left:16px}[dir=rtl] .mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:16px;padding-left:0}.mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-left:0;padding-right:16px}[dir=rtl] .mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:0;padding-left:16px}.mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:16px;padding-left:16px}.mat-list-base .mat-list-item .mat-list-avatar,.mat-list-base .mat-list-option .mat-list-avatar{flex-shrink:0;width:40px;height:40px;border-radius:50%;object-fit:cover}.mat-list-base .mat-list-item .mat-list-avatar~.mat-divider-inset,.mat-list-base .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:72px;width:calc(100% - 72px)}[dir=rtl] .mat-list-base .mat-list-item .mat-list-avatar~.mat-divider-inset,[dir=rtl] .mat-list-base .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:auto;margin-right:72px}.mat-list-base .mat-list-item .mat-list-icon,.mat-list-base .mat-list-option .mat-list-icon{flex-shrink:0;width:24px;height:24px;font-size:24px;box-sizing:content-box;border-radius:50%;padding:4px}.mat-list-base .mat-list-item .mat-list-icon~.mat-divider-inset,.mat-list-base .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:64px;width:calc(100% - 64px)}[dir=rtl] .mat-list-base .mat-list-item .mat-list-icon~.mat-divider-inset,[dir=rtl] .mat-list-base .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:auto;margin-right:64px}.mat-list-base .mat-list-item .mat-divider,.mat-list-base .mat-list-option .mat-divider{position:absolute;bottom:0;left:0;width:100%;margin:0}[dir=rtl] .mat-list-base .mat-list-item .mat-divider,[dir=rtl] .mat-list-base .mat-list-option .mat-divider{margin-left:auto;margin-right:0}.mat-list-base .mat-list-item .mat-divider.mat-divider-inset,.mat-list-base .mat-list-option .mat-divider.mat-divider-inset{position:absolute}.mat-list-base[dense]{padding-top:4px;display:block}.mat-list-base[dense] .mat-subheader{height:40px;line-height:8px}.mat-list-base[dense] .mat-subheader:first-child{margin-top:-4px}.mat-list-base[dense] .mat-list-item,.mat-list-base[dense] .mat-list-option{display:block;height:40px;-webkit-tap-highlight-color:transparent;width:100%;padding:0}.mat-list-base[dense] .mat-list-item .mat-list-item-content,.mat-list-base[dense] .mat-list-option .mat-list-item-content{display:flex;flex-direction:row;align-items:center;box-sizing:border-box;padding:0 16px;position:relative;height:inherit}.mat-list-base[dense] .mat-list-item .mat-list-item-content-reverse,.mat-list-base[dense] .mat-list-option .mat-list-item-content-reverse{display:flex;align-items:center;padding:0 16px;flex-direction:row-reverse;justify-content:space-around}.mat-list-base[dense] .mat-list-item .mat-list-item-ripple,.mat-list-base[dense] .mat-list-option .mat-list-item-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar{height:48px}.mat-list-base[dense] .mat-list-item.mat-2-line,.mat-list-base[dense] .mat-list-option.mat-2-line{height:60px}.mat-list-base[dense] .mat-list-item.mat-3-line,.mat-list-base[dense] .mat-list-option.mat-3-line{height:76px}.mat-list-base[dense] .mat-list-item.mat-multi-line,.mat-list-base[dense] .mat-list-option.mat-multi-line{height:auto}.mat-list-base[dense] .mat-list-item.mat-multi-line .mat-list-item-content,.mat-list-base[dense] .mat-list-option.mat-multi-line .mat-list-item-content{padding-top:16px;padding-bottom:16px}.mat-list-base[dense] .mat-list-item .mat-list-text,.mat-list-base[dense] .mat-list-option .mat-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden;padding:0}.mat-list-base[dense] .mat-list-item .mat-list-text>*,.mat-list-base[dense] .mat-list-option .mat-list-text>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-list-base[dense] .mat-list-item .mat-list-text:empty,.mat-list-base[dense] .mat-list-option .mat-list-text:empty{display:none}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:0;padding-left:16px}[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:16px;padding-left:0}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-left:0;padding-right:16px}[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:0;padding-left:16px}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:16px;padding-left:16px}.mat-list-base[dense] .mat-list-item .mat-list-avatar,.mat-list-base[dense] .mat-list-option .mat-list-avatar{flex-shrink:0;width:36px;height:36px;border-radius:50%;object-fit:cover}.mat-list-base[dense] .mat-list-item .mat-list-avatar~.mat-divider-inset,.mat-list-base[dense] .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:68px;width:calc(100% - 68px)}[dir=rtl] .mat-list-base[dense] .mat-list-item .mat-list-avatar~.mat-divider-inset,[dir=rtl] .mat-list-base[dense] .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:auto;margin-right:68px}.mat-list-base[dense] .mat-list-item .mat-list-icon,.mat-list-base[dense] .mat-list-option .mat-list-icon{flex-shrink:0;width:20px;height:20px;font-size:20px;box-sizing:content-box;border-radius:50%;padding:4px}.mat-list-base[dense] .mat-list-item .mat-list-icon~.mat-divider-inset,.mat-list-base[dense] .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:60px;width:calc(100% - 60px)}[dir=rtl] .mat-list-base[dense] .mat-list-item .mat-list-icon~.mat-divider-inset,[dir=rtl] .mat-list-base[dense] .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:auto;margin-right:60px}.mat-list-base[dense] .mat-list-item .mat-divider,.mat-list-base[dense] .mat-list-option .mat-divider{position:absolute;bottom:0;left:0;width:100%;margin:0}[dir=rtl] .mat-list-base[dense] .mat-list-item .mat-divider,[dir=rtl] .mat-list-base[dense] .mat-list-option .mat-divider{margin-left:auto;margin-right:0}.mat-list-base[dense] .mat-list-item .mat-divider.mat-divider-inset,.mat-list-base[dense] .mat-list-option .mat-divider.mat-divider-inset{position:absolute}.mat-nav-list a{text-decoration:none;color:inherit}.mat-nav-list .mat-list-item{cursor:pointer;outline:0}mat-action-list button{background:0 0;color:inherit;border:none;font:inherit;outline:inherit;-webkit-tap-highlight-color:transparent;text-align:left}[dir=rtl] mat-action-list button{text-align:right}mat-action-list button::-moz-focus-inner{border:0}mat-action-list .mat-list-item{cursor:pointer;outline:inherit}.mat-list-option:not(.mat-list-item-disabled){cursor:pointer;outline:0}@media (-ms-high-contrast:active){.mat-selection-list:focus{outline-style:dotted}.mat-list-option:focus,.mat-list-option:hover,.mat-nav-list .mat-list-item:focus,.mat-nav-list .mat-list-item:hover,mat-action-list .mat-list-item:focus,mat-action-list .mat-list-item:hover{outline:dotted 1px}}@media (hover:none){.mat-action-list .mat-list-item:not(.mat-list-item-disabled):hover,.mat-list-option:not(.mat-list-item-disabled):hover,.mat-nav-list .mat-list-item:not(.mat-list-item-disabled):hover{background:0 0}}"];
 
-    var RenderType_MatList = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatList = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatList,
       data: {}
@@ -757,13 +22906,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 1, "mat-list", [["class", "mat-list mat-list-base"]], null, null, null, View_MatList_0, RenderType_MatList)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](1, 704512, null, 0, _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatList"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]], null, null)], null, null);
     }
 
-    var MatListNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-list, mat-action-list", _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatList"], View_MatList_Host_0, {
+    var MatListNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-list, mat-action-list", _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatList"], View_MatList_Host_0, {
       disableRipple: "disableRipple"
     }, {}, ["*"]);
 
     var styles_MatListItem = [];
 
-    var RenderType_MatListItem = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatListItem = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatListItem,
       data: {}
@@ -804,13 +22953,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatListItemNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-list-item, a[mat-list-item], button[mat-list-item]", _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatListItem"], View_MatListItem_Host_0, {
+    var MatListItemNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-list-item, a[mat-list-item], button[mat-list-item]", _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatListItem"], View_MatListItem_Host_0, {
       disableRipple: "disableRipple"
     }, {}, ["[mat-list-avatar], [mat-list-icon], [matListAvatar], [matListIcon]", "[mat-line], [matLine]", "*"]);
 
     var styles_MatListOption = [];
 
-    var RenderType_MatListOption = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatListOption = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatListOption,
       data: {}
@@ -904,7 +23053,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatListOptionNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-list-option", _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatListOption"], View_MatListOption_Host_0, {
+    var MatListOptionNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-list-option", _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatListOption"], View_MatListOption_Host_0, {
       disableRipple: "disableRipple",
       checkboxPosition: "checkboxPosition",
       color: "color",
@@ -915,7 +23064,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_MatSelectionList = [".mat-subheader{display:flex;box-sizing:border-box;padding:16px;align-items:center}.mat-list-base .mat-subheader{margin:0}.mat-list-base{padding-top:8px;display:block;-webkit-tap-highlight-color:transparent}.mat-list-base .mat-subheader{height:48px;line-height:16px}.mat-list-base .mat-subheader:first-child{margin-top:-8px}.mat-list-base .mat-list-item,.mat-list-base .mat-list-option{display:block;height:48px;-webkit-tap-highlight-color:transparent;width:100%;padding:0}.mat-list-base .mat-list-item .mat-list-item-content,.mat-list-base .mat-list-option .mat-list-item-content{display:flex;flex-direction:row;align-items:center;box-sizing:border-box;padding:0 16px;position:relative;height:inherit}.mat-list-base .mat-list-item .mat-list-item-content-reverse,.mat-list-base .mat-list-option .mat-list-item-content-reverse{display:flex;align-items:center;padding:0 16px;flex-direction:row-reverse;justify-content:space-around}.mat-list-base .mat-list-item .mat-list-item-ripple,.mat-list-base .mat-list-option .mat-list-item-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-list-base .mat-list-item.mat-list-item-with-avatar,.mat-list-base .mat-list-option.mat-list-item-with-avatar{height:56px}.mat-list-base .mat-list-item.mat-2-line,.mat-list-base .mat-list-option.mat-2-line{height:72px}.mat-list-base .mat-list-item.mat-3-line,.mat-list-base .mat-list-option.mat-3-line{height:88px}.mat-list-base .mat-list-item.mat-multi-line,.mat-list-base .mat-list-option.mat-multi-line{height:auto}.mat-list-base .mat-list-item.mat-multi-line .mat-list-item-content,.mat-list-base .mat-list-option.mat-multi-line .mat-list-item-content{padding-top:16px;padding-bottom:16px}.mat-list-base .mat-list-item .mat-list-text,.mat-list-base .mat-list-option .mat-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden;padding:0}.mat-list-base .mat-list-item .mat-list-text>*,.mat-list-base .mat-list-option .mat-list-text>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-list-base .mat-list-item .mat-list-text:empty,.mat-list-base .mat-list-option .mat-list-text:empty{display:none}.mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:0;padding-left:16px}[dir=rtl] .mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:16px;padding-left:0}.mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-left:0;padding-right:16px}[dir=rtl] .mat-list-base .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:0;padding-left:16px}.mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:16px;padding-left:16px}.mat-list-base .mat-list-item .mat-list-avatar,.mat-list-base .mat-list-option .mat-list-avatar{flex-shrink:0;width:40px;height:40px;border-radius:50%;object-fit:cover}.mat-list-base .mat-list-item .mat-list-avatar~.mat-divider-inset,.mat-list-base .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:72px;width:calc(100% - 72px)}[dir=rtl] .mat-list-base .mat-list-item .mat-list-avatar~.mat-divider-inset,[dir=rtl] .mat-list-base .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:auto;margin-right:72px}.mat-list-base .mat-list-item .mat-list-icon,.mat-list-base .mat-list-option .mat-list-icon{flex-shrink:0;width:24px;height:24px;font-size:24px;box-sizing:content-box;border-radius:50%;padding:4px}.mat-list-base .mat-list-item .mat-list-icon~.mat-divider-inset,.mat-list-base .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:64px;width:calc(100% - 64px)}[dir=rtl] .mat-list-base .mat-list-item .mat-list-icon~.mat-divider-inset,[dir=rtl] .mat-list-base .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:auto;margin-right:64px}.mat-list-base .mat-list-item .mat-divider,.mat-list-base .mat-list-option .mat-divider{position:absolute;bottom:0;left:0;width:100%;margin:0}[dir=rtl] .mat-list-base .mat-list-item .mat-divider,[dir=rtl] .mat-list-base .mat-list-option .mat-divider{margin-left:auto;margin-right:0}.mat-list-base .mat-list-item .mat-divider.mat-divider-inset,.mat-list-base .mat-list-option .mat-divider.mat-divider-inset{position:absolute}.mat-list-base[dense]{padding-top:4px;display:block}.mat-list-base[dense] .mat-subheader{height:40px;line-height:8px}.mat-list-base[dense] .mat-subheader:first-child{margin-top:-4px}.mat-list-base[dense] .mat-list-item,.mat-list-base[dense] .mat-list-option{display:block;height:40px;-webkit-tap-highlight-color:transparent;width:100%;padding:0}.mat-list-base[dense] .mat-list-item .mat-list-item-content,.mat-list-base[dense] .mat-list-option .mat-list-item-content{display:flex;flex-direction:row;align-items:center;box-sizing:border-box;padding:0 16px;position:relative;height:inherit}.mat-list-base[dense] .mat-list-item .mat-list-item-content-reverse,.mat-list-base[dense] .mat-list-option .mat-list-item-content-reverse{display:flex;align-items:center;padding:0 16px;flex-direction:row-reverse;justify-content:space-around}.mat-list-base[dense] .mat-list-item .mat-list-item-ripple,.mat-list-base[dense] .mat-list-option .mat-list-item-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar{height:48px}.mat-list-base[dense] .mat-list-item.mat-2-line,.mat-list-base[dense] .mat-list-option.mat-2-line{height:60px}.mat-list-base[dense] .mat-list-item.mat-3-line,.mat-list-base[dense] .mat-list-option.mat-3-line{height:76px}.mat-list-base[dense] .mat-list-item.mat-multi-line,.mat-list-base[dense] .mat-list-option.mat-multi-line{height:auto}.mat-list-base[dense] .mat-list-item.mat-multi-line .mat-list-item-content,.mat-list-base[dense] .mat-list-option.mat-multi-line .mat-list-item-content{padding-top:16px;padding-bottom:16px}.mat-list-base[dense] .mat-list-item .mat-list-text,.mat-list-base[dense] .mat-list-option .mat-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden;padding:0}.mat-list-base[dense] .mat-list-item .mat-list-text>*,.mat-list-base[dense] .mat-list-option .mat-list-text>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-list-base[dense] .mat-list-item .mat-list-text:empty,.mat-list-base[dense] .mat-list-option .mat-list-text:empty{display:none}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:0;padding-left:16px}[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content .mat-list-text{padding-right:16px;padding-left:0}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-left:0;padding-right:16px}[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-item.mat-list-option .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar .mat-list-item-content-reverse .mat-list-text,[dir=rtl] .mat-list-base[dense] .mat-list-option.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:0;padding-left:16px}.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-item.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content .mat-list-text,.mat-list-base[dense] .mat-list-option.mat-list-item-with-avatar.mat-list-option .mat-list-item-content-reverse .mat-list-text{padding-right:16px;padding-left:16px}.mat-list-base[dense] .mat-list-item .mat-list-avatar,.mat-list-base[dense] .mat-list-option .mat-list-avatar{flex-shrink:0;width:36px;height:36px;border-radius:50%;object-fit:cover}.mat-list-base[dense] .mat-list-item .mat-list-avatar~.mat-divider-inset,.mat-list-base[dense] .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:68px;width:calc(100% - 68px)}[dir=rtl] .mat-list-base[dense] .mat-list-item .mat-list-avatar~.mat-divider-inset,[dir=rtl] .mat-list-base[dense] .mat-list-option .mat-list-avatar~.mat-divider-inset{margin-left:auto;margin-right:68px}.mat-list-base[dense] .mat-list-item .mat-list-icon,.mat-list-base[dense] .mat-list-option .mat-list-icon{flex-shrink:0;width:20px;height:20px;font-size:20px;box-sizing:content-box;border-radius:50%;padding:4px}.mat-list-base[dense] .mat-list-item .mat-list-icon~.mat-divider-inset,.mat-list-base[dense] .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:60px;width:calc(100% - 60px)}[dir=rtl] .mat-list-base[dense] .mat-list-item .mat-list-icon~.mat-divider-inset,[dir=rtl] .mat-list-base[dense] .mat-list-option .mat-list-icon~.mat-divider-inset{margin-left:auto;margin-right:60px}.mat-list-base[dense] .mat-list-item .mat-divider,.mat-list-base[dense] .mat-list-option .mat-divider{position:absolute;bottom:0;left:0;width:100%;margin:0}[dir=rtl] .mat-list-base[dense] .mat-list-item .mat-divider,[dir=rtl] .mat-list-base[dense] .mat-list-option .mat-divider{margin-left:auto;margin-right:0}.mat-list-base[dense] .mat-list-item .mat-divider.mat-divider-inset,.mat-list-base[dense] .mat-list-option .mat-divider.mat-divider-inset{position:absolute}.mat-nav-list a{text-decoration:none;color:inherit}.mat-nav-list .mat-list-item{cursor:pointer;outline:0}mat-action-list button{background:0 0;color:inherit;border:none;font:inherit;outline:inherit;-webkit-tap-highlight-color:transparent;text-align:left}[dir=rtl] mat-action-list button{text-align:right}mat-action-list button::-moz-focus-inner{border:0}mat-action-list .mat-list-item{cursor:pointer;outline:inherit}.mat-list-option:not(.mat-list-item-disabled){cursor:pointer;outline:0}@media (-ms-high-contrast:active){.mat-selection-list:focus{outline-style:dotted}.mat-list-option:focus,.mat-list-option:hover,.mat-nav-list .mat-list-item:focus,.mat-nav-list .mat-list-item:hover,mat-action-list .mat-list-item:focus,mat-action-list .mat-list-item:hover{outline:dotted 1px}}@media (hover:none){.mat-action-list .mat-list-item:not(.mat-list-item-disabled):hover,.mat-list-option:not(.mat-list-item-disabled):hover,.mat-nav-list .mat-list-item:not(.mat-list-item-disabled):hover{background:0 0}}"];
 
-    var RenderType_MatSelectionList = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatSelectionList = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatSelectionList,
       data: {}
@@ -953,7 +23102,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatSelectionListNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-selection-list", _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatSelectionList"], View_MatSelectionList_Host_0, {
+    var MatSelectionListNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-selection-list", _angular_material_list__WEBPACK_IMPORTED_MODULE_1__["MatSelectionList"], View_MatSelectionList_Host_0, {
       disableRipple: "disableRipple",
       tabIndex: "tabIndex",
       color: "color",
@@ -1119,17 +23268,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var _MatMenuDirectivesModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["_MatMenuDirectivesModule"], [], function (_l) {
+    var _MatMenuDirectivesModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["_MatMenuDirectivesModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["MAT_MENU_SCROLL_STRATEGY"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["ɵb22"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["_MatMenuDirectivesModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["_MatMenuDirectivesModule"], [])]);
     });
 
-    var MatMenuModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["MatMenuModule"], [], function (_l) {
+    var MatMenuModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["MatMenuModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_6__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["Overlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["Overlay"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["ScrollStrategyOptions"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["OverlayContainer"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["OverlayPositionBuilder"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["OverlayKeyboardDispatcher"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["DOCUMENT"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["Directionality"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["ɵc"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["ɵd"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["MAT_MENU_SCROLL_STRATEGY"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["ɵb22"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["PlatformModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_7__["PlatformModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatRippleModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatRippleModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_8__["PortalModule"], _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_8__["PortalModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ScrollingModule"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ScrollingModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["OverlayModule"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_2__["OverlayModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["_MatMenuDirectivesModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["_MatMenuDirectivesModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["MatMenuModule"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["MatMenuModule"], [])]);
     });
 
     var styles__MatMenu = [".mat-menu-panel{min-width:112px;max-width:280px;overflow:auto;-webkit-overflow-scrolling:touch;max-height:calc(100vh - 48px);border-radius:4px;outline:0;min-height:64px}.mat-menu-panel.ng-animating{pointer-events:none}@media (-ms-high-contrast:active){.mat-menu-panel{outline:solid 1px}}.mat-menu-content:not(:empty){padding-top:8px;padding-bottom:8px}.mat-menu-item{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative}.mat-menu-item::-moz-focus-inner{border:0}.mat-menu-item[disabled]{cursor:default}[dir=rtl] .mat-menu-item{text-align:right}.mat-menu-item .mat-icon{margin-right:16px;vertical-align:middle}.mat-menu-item .mat-icon svg{vertical-align:top}[dir=rtl] .mat-menu-item .mat-icon{margin-left:16px;margin-right:0}.mat-menu-item[disabled]{pointer-events:none}@media (-ms-high-contrast:active){.mat-menu-item-highlighted,.mat-menu-item.cdk-keyboard-focused,.mat-menu-item.cdk-program-focused{outline:dotted 1px}}.mat-menu-item-submenu-trigger{padding-right:32px}.mat-menu-item-submenu-trigger::after{width:0;height:0;border-style:solid;border-width:5px 0 5px 5px;border-color:transparent transparent transparent currentColor;content:'';display:inline-block;position:absolute;top:50%;right:16px;transform:translateY(-50%)}[dir=rtl] .mat-menu-item-submenu-trigger{padding-right:16px;padding-left:32px}[dir=rtl] .mat-menu-item-submenu-trigger::after{right:auto;left:16px;transform:rotateY(180deg) translateY(-50%)}button.mat-menu-item{width:100%}.mat-menu-item .mat-menu-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}"];
 
-    var RenderType__MatMenu = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType__MatMenu = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles__MatMenu,
       data: {
@@ -1295,7 +23444,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var _MatMenuNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-menu", _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["_MatMenu"], View__MatMenu_Host_0, {
+    var _MatMenuNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-menu", _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["_MatMenu"], View__MatMenu_Host_0, {
       backdropClass: "backdropClass",
       xPosition: "xPosition",
       yPosition: "yPosition",
@@ -1310,7 +23459,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_MatMenuItem = [];
 
-    var RenderType_MatMenuItem = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatMenuItem = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatMenuItem,
       data: {}
@@ -1366,7 +23515,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatMenuItemNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("[mat-menu-item]", _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["MatMenuItem"], View_MatMenuItem_Host_0, {
+    var MatMenuItemNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("[mat-menu-item]", _angular_material_menu__WEBPACK_IMPORTED_MODULE_1__["MatMenuItem"], View_MatMenuItem_Host_0, {
       disabled: "disabled",
       disableRipple: "disableRipple",
       role: "role"
@@ -1606,13 +23755,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var MatSidenavModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatSidenavModule"], [], function (_l) {
+    var MatSidenavModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatSidenavModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_4__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_7__["ScrollingModule"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_7__["ScrollingModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatSidenavModule"], _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatSidenavModule"], [])]);
     });
 
     var styles_MatDrawerContent = [];
 
-    var RenderType_MatDrawerContent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatDrawerContent = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatDrawerContent,
       data: {}
@@ -1634,11 +23783,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatDrawerContentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-drawer-content", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatDrawerContent"], View_MatDrawerContent_Host_0, {}, {}, ["*"]);
+    var MatDrawerContentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-drawer-content", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatDrawerContent"], View_MatDrawerContent_Host_0, {}, {}, ["*"]);
 
     var styles_MatDrawer = [];
 
-    var RenderType_MatDrawer = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatDrawer = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatDrawer,
       data: {
@@ -1727,7 +23876,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatDrawerNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-drawer", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatDrawer"], View_MatDrawer_Host_0, {
+    var MatDrawerNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-drawer", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatDrawer"], View_MatDrawer_Host_0, {
       position: "position",
       mode: "mode",
       disableClose: "disableClose",
@@ -1744,7 +23893,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_MatDrawerContainer = [".mat-drawer-container{position:relative;z-index:1;box-sizing:border-box;-webkit-overflow-scrolling:touch;display:block;overflow:hidden}.mat-drawer-container[fullscreen]{top:0;left:0;right:0;bottom:0;position:absolute}.mat-drawer-container[fullscreen].mat-drawer-container-has-open{overflow:hidden}.mat-drawer-container.mat-drawer-container-explicit-backdrop .mat-drawer-side{z-index:3}.mat-drawer-container.ng-animate-disabled .mat-drawer-backdrop,.mat-drawer-container.ng-animate-disabled .mat-drawer-content,.ng-animate-disabled .mat-drawer-container .mat-drawer-backdrop,.ng-animate-disabled .mat-drawer-container .mat-drawer-content{transition:none}.mat-drawer-backdrop{top:0;left:0;right:0;bottom:0;position:absolute;display:block;z-index:3;visibility:hidden}.mat-drawer-backdrop.mat-drawer-shown{visibility:visible}.mat-drawer-transition .mat-drawer-backdrop{transition-duration:.4s;transition-timing-function:cubic-bezier(.25,.8,.25,1);transition-property:background-color,visibility}@media (-ms-high-contrast:active){.mat-drawer-backdrop{opacity:.5}}.mat-drawer-content{position:relative;z-index:1;display:block;height:100%;overflow:auto}.mat-drawer-transition .mat-drawer-content{transition-duration:.4s;transition-timing-function:cubic-bezier(.25,.8,.25,1);transition-property:transform,margin-left,margin-right}.mat-drawer{position:relative;z-index:4;display:block;position:absolute;top:0;bottom:0;z-index:3;outline:0;box-sizing:border-box;overflow-y:auto;transform:translate3d(-100%,0,0)}@media (-ms-high-contrast:active){.mat-drawer,[dir=rtl] .mat-drawer.mat-drawer-end{border-right:solid 1px currentColor}}@media (-ms-high-contrast:active){.mat-drawer.mat-drawer-end,[dir=rtl] .mat-drawer{border-left:solid 1px currentColor;border-right:none}}.mat-drawer.mat-drawer-side{z-index:2}.mat-drawer.mat-drawer-end{right:0;transform:translate3d(100%,0,0)}[dir=rtl] .mat-drawer{transform:translate3d(100%,0,0)}[dir=rtl] .mat-drawer.mat-drawer-end{left:0;right:auto;transform:translate3d(-100%,0,0)}.mat-drawer-inner-container{width:100%;height:100%;overflow:auto;-webkit-overflow-scrolling:touch}.mat-sidenav-fixed{position:fixed}"];
 
-    var RenderType_MatDrawerContainer = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatDrawerContainer = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatDrawerContainer,
       data: {}
@@ -1815,7 +23964,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatDrawerContainerNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-drawer-container", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatDrawerContainer"], View_MatDrawerContainer_Host_0, {
+    var MatDrawerContainerNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-drawer-container", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatDrawerContainer"], View_MatDrawerContainer_Host_0, {
       autosize: "autosize",
       hasBackdrop: "hasBackdrop"
     }, {
@@ -1824,7 +23973,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_MatSidenavContent = [];
 
-    var RenderType_MatSidenavContent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatSidenavContent = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatSidenavContent,
       data: {}
@@ -1846,11 +23995,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatSidenavContentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-sidenav-content", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatSidenavContent"], View_MatSidenavContent_Host_0, {}, {}, ["*"]);
+    var MatSidenavContentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-sidenav-content", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatSidenavContent"], View_MatSidenavContent_Host_0, {}, {}, ["*"]);
 
     var styles_MatSidenav = [];
 
-    var RenderType_MatSidenav = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatSidenav = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatSidenav,
       data: {
@@ -1944,7 +24093,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatSidenavNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-sidenav", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatSidenav"], View_MatSidenav_Host_0, {
+    var MatSidenavNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-sidenav", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatSidenav"], View_MatSidenav_Host_0, {
       position: "position",
       mode: "mode",
       disableClose: "disableClose",
@@ -1964,7 +24113,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_MatSidenavContainer = [".mat-drawer-container{position:relative;z-index:1;box-sizing:border-box;-webkit-overflow-scrolling:touch;display:block;overflow:hidden}.mat-drawer-container[fullscreen]{top:0;left:0;right:0;bottom:0;position:absolute}.mat-drawer-container[fullscreen].mat-drawer-container-has-open{overflow:hidden}.mat-drawer-container.mat-drawer-container-explicit-backdrop .mat-drawer-side{z-index:3}.mat-drawer-container.ng-animate-disabled .mat-drawer-backdrop,.mat-drawer-container.ng-animate-disabled .mat-drawer-content,.ng-animate-disabled .mat-drawer-container .mat-drawer-backdrop,.ng-animate-disabled .mat-drawer-container .mat-drawer-content{transition:none}.mat-drawer-backdrop{top:0;left:0;right:0;bottom:0;position:absolute;display:block;z-index:3;visibility:hidden}.mat-drawer-backdrop.mat-drawer-shown{visibility:visible}.mat-drawer-transition .mat-drawer-backdrop{transition-duration:.4s;transition-timing-function:cubic-bezier(.25,.8,.25,1);transition-property:background-color,visibility}@media (-ms-high-contrast:active){.mat-drawer-backdrop{opacity:.5}}.mat-drawer-content{position:relative;z-index:1;display:block;height:100%;overflow:auto}.mat-drawer-transition .mat-drawer-content{transition-duration:.4s;transition-timing-function:cubic-bezier(.25,.8,.25,1);transition-property:transform,margin-left,margin-right}.mat-drawer{position:relative;z-index:4;display:block;position:absolute;top:0;bottom:0;z-index:3;outline:0;box-sizing:border-box;overflow-y:auto;transform:translate3d(-100%,0,0)}@media (-ms-high-contrast:active){.mat-drawer,[dir=rtl] .mat-drawer.mat-drawer-end{border-right:solid 1px currentColor}}@media (-ms-high-contrast:active){.mat-drawer.mat-drawer-end,[dir=rtl] .mat-drawer{border-left:solid 1px currentColor;border-right:none}}.mat-drawer.mat-drawer-side{z-index:2}.mat-drawer.mat-drawer-end{right:0;transform:translate3d(100%,0,0)}[dir=rtl] .mat-drawer{transform:translate3d(100%,0,0)}[dir=rtl] .mat-drawer.mat-drawer-end{left:0;right:auto;transform:translate3d(-100%,0,0)}.mat-drawer-inner-container{width:100%;height:100%;overflow:auto;-webkit-overflow-scrolling:touch}.mat-sidenav-fixed{position:fixed}"];
 
-    var RenderType_MatSidenavContainer = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatSidenavContainer = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatSidenavContainer,
       data: {}
@@ -2037,7 +24186,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatSidenavContainerNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-sidenav-container", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatSidenavContainer"], View_MatSidenavContainer_Host_0, {
+    var MatSidenavContainerNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-sidenav-container", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_1__["MatSidenavContainer"], View_MatSidenavContainer_Host_0, {
       autosize: "autosize",
       hasBackdrop: "hasBackdrop"
     }, {
@@ -2242,13 +24391,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var MatTableModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableModule"], [], function (_l) {
+    var MatTableModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_table__WEBPACK_IMPORTED_MODULE_3__["CdkTableModule"], _angular_cdk_table__WEBPACK_IMPORTED_MODULE_3__["CdkTableModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_4__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_5__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_5__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_5__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableModule"], [])]);
     });
 
     var styles_MatTable = ["mat-table{display:block}mat-header-row{min-height:56px}mat-footer-row,mat-row{min-height:48px}mat-footer-row,mat-header-row,mat-row{display:flex;border-width:0;border-bottom-width:1px;border-style:solid;align-items:center;box-sizing:border-box}mat-footer-row::after,mat-header-row::after,mat-row::after{display:inline-block;min-height:inherit;content:''}mat-cell:first-of-type,mat-footer-cell:first-of-type,mat-header-cell:first-of-type{padding-left:24px}[dir=rtl] mat-cell:first-of-type,[dir=rtl] mat-footer-cell:first-of-type,[dir=rtl] mat-header-cell:first-of-type{padding-left:0;padding-right:24px}mat-cell:last-of-type,mat-footer-cell:last-of-type,mat-header-cell:last-of-type{padding-right:24px}[dir=rtl] mat-cell:last-of-type,[dir=rtl] mat-footer-cell:last-of-type,[dir=rtl] mat-header-cell:last-of-type{padding-right:0;padding-left:24px}mat-cell,mat-footer-cell,mat-header-cell{flex:1;display:flex;align-items:center;overflow:hidden;word-wrap:break-word;min-height:inherit}table.mat-table{border-spacing:0}tr.mat-header-row{height:56px}tr.mat-footer-row,tr.mat-row{height:48px}th.mat-header-cell{text-align:left}[dir=rtl] th.mat-header-cell{text-align:right}td.mat-cell,td.mat-footer-cell,th.mat-header-cell{padding:0;border-bottom-width:1px;border-bottom-style:solid}td.mat-cell:first-of-type,td.mat-footer-cell:first-of-type,th.mat-header-cell:first-of-type{padding-left:24px}[dir=rtl] td.mat-cell:first-of-type,[dir=rtl] td.mat-footer-cell:first-of-type,[dir=rtl] th.mat-header-cell:first-of-type{padding-left:0;padding-right:24px}td.mat-cell:last-of-type,td.mat-footer-cell:last-of-type,th.mat-header-cell:last-of-type{padding-right:24px}[dir=rtl] td.mat-cell:last-of-type,[dir=rtl] td.mat-footer-cell:last-of-type,[dir=rtl] th.mat-header-cell:last-of-type{padding-right:0;padding-left:24px}"];
 
-    var RenderType_MatTable = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatTable = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatTable,
       data: {}
@@ -2278,7 +24427,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var MatTableNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-table, table[mat-table]", _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTable"], View_MatTable_Host_0, {
+    var MatTableNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-table, table[mat-table]", _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTable"], View_MatTable_Host_0, {
       trackBy: "trackBy",
       dataSource: "dataSource",
       multiTemplateDataRows: "multiTemplateDataRows"
@@ -2286,7 +24435,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_MatHeaderRow = [];
 
-    var RenderType_MatHeaderRow = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatHeaderRow = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatHeaderRow,
       data: {}
@@ -2300,11 +24449,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 2, "mat-header-row", [["class", "mat-header-row"], ["role", "row"]], null, null, null, View_MatHeaderRow_0, RenderType_MatHeaderRow)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵprd"](6144, null, _angular_cdk_table__WEBPACK_IMPORTED_MODULE_3__["CdkHeaderRow"], null, [_angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatHeaderRow"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](2, 49152, null, 0, _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatHeaderRow"], [], null, null)], null, null);
     }
 
-    var MatHeaderRowNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-header-row, tr[mat-header-row]", _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatHeaderRow"], View_MatHeaderRow_Host_0, {}, {}, []);
+    var MatHeaderRowNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-header-row, tr[mat-header-row]", _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatHeaderRow"], View_MatHeaderRow_Host_0, {}, {}, []);
 
     var styles_MatFooterRow = [];
 
-    var RenderType_MatFooterRow = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatFooterRow = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatFooterRow,
       data: {}
@@ -2318,11 +24467,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 2, "mat-footer-row", [["class", "mat-footer-row"], ["role", "row"]], null, null, null, View_MatFooterRow_0, RenderType_MatFooterRow)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵprd"](6144, null, _angular_cdk_table__WEBPACK_IMPORTED_MODULE_3__["CdkFooterRow"], null, [_angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatFooterRow"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](2, 49152, null, 0, _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatFooterRow"], [], null, null)], null, null);
     }
 
-    var MatFooterRowNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-footer-row, tr[mat-footer-row]", _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatFooterRow"], View_MatFooterRow_Host_0, {}, {}, []);
+    var MatFooterRowNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-footer-row, tr[mat-footer-row]", _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatFooterRow"], View_MatFooterRow_Host_0, {}, {}, []);
 
     var styles_MatRow = [];
 
-    var RenderType_MatRow = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatRow = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatRow,
       data: {}
@@ -2336,11 +24485,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 2, "mat-row", [["class", "mat-row"], ["role", "row"]], null, null, null, View_MatRow_0, RenderType_MatRow)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵprd"](6144, null, _angular_cdk_table__WEBPACK_IMPORTED_MODULE_3__["CdkRow"], null, [_angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatRow"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](2, 49152, null, 0, _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatRow"], [], null, null)], null, null);
     }
 
-    var MatRowNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-row, tr[mat-row]", _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatRow"], View_MatRow_Host_0, {}, {}, []);
+    var MatRowNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-row, tr[mat-row]", _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatRow"], View_MatRow_Host_0, {}, {}, []);
 
     var styles_MatTextColumn = [];
 
-    var RenderType_MatTextColumn = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatTextColumn = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatTextColumn,
       data: {}
@@ -2400,7 +24549,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var MatTextColumnNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-text-column", _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTextColumn"], View_MatTextColumn_Host_0, {
+    var MatTextColumnNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-text-column", _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTextColumn"], View_MatTextColumn_Host_0, {
       name: "name",
       headerText: "headerText",
       dataAccessor: "dataAccessor",
@@ -2503,13 +24652,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var MatToolbarModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_toolbar__WEBPACK_IMPORTED_MODULE_1__["MatToolbarModule"], [], function (_l) {
+    var MatToolbarModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_toolbar__WEBPACK_IMPORTED_MODULE_1__["MatToolbarModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_1__["MatToolbarModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_1__["MatToolbarModule"], [])]);
     });
 
     var styles_MatToolbar = ["@media (-ms-high-contrast:active){.mat-toolbar{outline:solid 1px}}.mat-toolbar-row,.mat-toolbar-single-row{display:flex;box-sizing:border-box;padding:0 16px;width:100%;flex-direction:row;align-items:center;white-space:nowrap}.mat-toolbar-multiple-rows{display:flex;box-sizing:border-box;flex-direction:column;width:100%}.mat-toolbar-multiple-rows{min-height:64px}.mat-toolbar-row,.mat-toolbar-single-row{height:64px}@media (max-width:599px){.mat-toolbar-multiple-rows{min-height:56px}.mat-toolbar-row,.mat-toolbar-single-row{height:56px}}"];
 
-    var RenderType_MatToolbar = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
+    var RenderType_MatToolbar = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({
       encapsulation: 2,
       styles: styles_MatToolbar,
       data: {}
@@ -2530,7 +24679,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     }
 
-    var MatToolbarNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-toolbar", _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_1__["MatToolbar"], View_MatToolbar_Host_0, {
+    var MatToolbarNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-toolbar", _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_1__["MatToolbar"], View_MatToolbar_Host_0, {
       color: "color"
     }, {}, ["*", "mat-toolbar-row"]);
     /***/
@@ -3320,7 +25469,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_MenubarComponent = [_menubar_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 
-    var RenderType_MenubarComponent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
+    var RenderType_MenubarComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
       encapsulation: 0,
       styles: styles_MenubarComponent,
       data: {}
@@ -3564,7 +25713,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var MenubarComponentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-menubar", _menubar_component__WEBPACK_IMPORTED_MODULE_19__["MenubarComponent"], View_MenubarComponent_Host_0, {}, {}, []);
+    var MenubarComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-menubar", _menubar_component__WEBPACK_IMPORTED_MODULE_19__["MenubarComponent"], View_MenubarComponent_Host_0, {}, {}, []);
     /***/
 
   },
@@ -3619,6 +25768,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "MenubarComponent", function () {
       return MenubarComponent;
     });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
 
     var MenubarComponent = /*#__PURE__*/function () {
       function MenubarComponent(userService, authService) {
@@ -3783,7 +25938,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_SessionbarComponent = [_sessionbar_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 
-    var RenderType_SessionbarComponent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
+    var RenderType_SessionbarComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
       encapsulation: 0,
       styles: styles_SessionbarComponent,
       data: {}
@@ -3950,7 +26105,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var SessionbarComponentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-sessionbar", _sessionbar_component__WEBPACK_IMPORTED_MODULE_13__["SessionbarComponent"], View_SessionbarComponent_Host_0, {}, {}, []);
+    var SessionbarComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-sessionbar", _sessionbar_component__WEBPACK_IMPORTED_MODULE_13__["SessionbarComponent"], View_SessionbarComponent_Host_0, {}, {}, []);
     /***/
 
   },
@@ -4005,6 +26160,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "SessionbarComponent", function () {
       return SessionbarComponent;
     });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
 
     var SessionbarComponent = /*#__PURE__*/function () {
       function SessionbarComponent(userService) {
@@ -4016,11 +26177,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(SessionbarComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          var _this85 = this;
 
           this.user$ = this.userService.user$;
           this.user$.subscribe(function (resp) {
-            _this.balanceTotal = resp.accounts.reduce(function (accum, account) {
+            _this85.balanceTotal = resp.accounts.reduce(function (accum, account) {
               if (account.status === 'Pending') return accum;
               return accum + account.balance;
             }, 0);
@@ -4177,7 +26338,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_SidebarComponent = [_sidebar_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 
-    var RenderType_SidebarComponent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
+    var RenderType_SidebarComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
       encapsulation: 0,
       styles: styles_SidebarComponent,
       data: {}
@@ -4403,7 +26564,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var SidebarComponentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-sidebar", _sidebar_component__WEBPACK_IMPORTED_MODULE_15__["SidebarComponent"], View_SidebarComponent_Host_0, {}, {}, []);
+    var SidebarComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-sidebar", _sidebar_component__WEBPACK_IMPORTED_MODULE_15__["SidebarComponent"], View_SidebarComponent_Host_0, {}, {}, []);
     /***/
 
   },
@@ -4458,6 +26619,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "SidebarComponent", function () {
       return SidebarComponent;
     });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
 
     var SidebarComponent = /*#__PURE__*/function () {
       function SidebarComponent() {
@@ -4654,7 +26821,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_AccountSumaryComponent = [_account_sumary_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 
-    var RenderType_AccountSumaryComponent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
+    var RenderType_AccountSumaryComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
       encapsulation: 0,
       styles: styles_AccountSumaryComponent,
       data: {}
@@ -4931,7 +27098,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var AccountSumaryComponentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-account-sumary", _account_sumary_component__WEBPACK_IMPORTED_MODULE_13__["AccountSumaryComponent"], View_AccountSumaryComponent_Host_0, {}, {}, []);
+    var AccountSumaryComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-account-sumary", _account_sumary_component__WEBPACK_IMPORTED_MODULE_13__["AccountSumaryComponent"], View_AccountSumaryComponent_Host_0, {}, {}, []);
     /***/
 
   },
@@ -4986,6 +27153,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "AccountSumaryComponent", function () {
       return AccountSumaryComponent;
     });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
 
     var AccountSumaryComponent = /*#__PURE__*/function () {
       function AccountSumaryComponent(userService, transactionService) {
@@ -4999,11 +27172,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(AccountSumaryComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this2 = this;
+          var _this86 = this;
 
           this.user$ = this.userService.user$;
           this.subscript = this.user$.subscribe(function (user) {
-            if (user.identity !== '') _this2.transactionService.accountsForId(user.identity);
+            if (user.identity !== '') _this86.transactionService.accountsForId(user.identity);
           });
         }
       }, {
@@ -5052,25 +27225,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var src_app_shared_guards_AuthGuard_auth_guard_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_shared_guards_AuthGuard_auth_guard_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! src/app/shared/guards/AuthGuard/auth-guard.service */
     "./src/app/shared/guards/AuthGuard/auth-guard.service.ts");
     /* harmony import */
 
 
-    var _account_sumary_account_sumary_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var _account_sumary_account_sumary_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../account-sumary/account-sumary.component */
     "./src/app/pages/account-sumary/account-sumary.component.ts");
     /* harmony import */
 
 
-    var _transactions_transactions_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _transactions_transactions_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ../transactions/transactions.component */
     "./src/app/pages/transactions/transactions.component.ts");
     /* harmony import */
 
 
-    var _dashboard_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _dashboard_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ./dashboard.component */
     "./src/app/pages/dashboard/dashboard.component.ts");
 
@@ -5086,14 +27265,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var routes = [{
       path: '',
-      component: _dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"],
-      canActivate: [src_app_shared_guards_AuthGuard_auth_guard_service__WEBPACK_IMPORTED_MODULE_0__["AuthGuardService"]],
+      component: _dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"],
+      canActivate: [src_app_shared_guards_AuthGuard_auth_guard_service__WEBPACK_IMPORTED_MODULE_1__["AuthGuardService"]],
       children: [{
         path: 'accountSummary',
-        component: _account_sumary_account_sumary_component__WEBPACK_IMPORTED_MODULE_1__["AccountSumaryComponent"]
+        component: _account_sumary_account_sumary_component__WEBPACK_IMPORTED_MODULE_2__["AccountSumaryComponent"]
       }, {
         path: 'transactions',
-        component: _transactions_transactions_component__WEBPACK_IMPORTED_MODULE_2__["TransactionsComponent"]
+        component: _transactions_transactions_component__WEBPACK_IMPORTED_MODULE_3__["TransactionsComponent"]
       }]
     }, {
       path: "newProduct",
@@ -5226,7 +27405,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_DashboardComponent = [_dashboard_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 
-    var RenderType_DashboardComponent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
+    var RenderType_DashboardComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
       encapsulation: 0,
       styles: styles_DashboardComponent,
       data: {}
@@ -5250,7 +27429,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var DashboardComponentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-dashboard", _dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"], View_DashboardComponent_Host_0, {}, {}, []);
+    var DashboardComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-dashboard", _dashboard_component__WEBPACK_IMPORTED_MODULE_11__["DashboardComponent"], View_DashboardComponent_Host_0, {}, {}, []);
     /***/
 
   },
@@ -5305,6 +27484,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "DashboardComponent", function () {
       return DashboardComponent;
     });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
 
     var DashboardComponent = /*#__PURE__*/function () {
       function DashboardComponent(userService, authService) {
@@ -5722,7 +27907,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
      */
 
 
-    var DashboardModuleNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_dashboard_module__WEBPACK_IMPORTED_MODULE_1__["DashboardModule"], [], function (_l) {
+    var DashboardModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_dashboard_module__WEBPACK_IMPORTED_MODULE_1__["DashboardModule"], [], function (_l) {
       return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, [_node_modules_angular_material_snack_bar_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_2__["MatSnackBarContainerNgFactory"], _node_modules_angular_material_snack_bar_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_2__["SimpleSnackBarNgFactory"], _node_modules_angular_material_dialog_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_3__["MatDialogContainerNgFactory"], _node_modules_angular_material_datepicker_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_4__["MatDatepickerContentNgFactory"], _node_modules_angular_material_datepicker_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_4__["MatCalendarHeaderNgFactory"], _node_modules_angular_material_tooltip_typings_index_ngfactory__WEBPACK_IMPORTED_MODULE_5__["TooltipComponentNgFactory"], _node_modules_angular_router_router_ngfactory__WEBPACK_IMPORTED_MODULE_6__["ɵangular_packages_router_router_lNgFactory"], _dashboard_component_ngfactory__WEBPACK_IMPORTED_MODULE_7__["DashboardComponentNgFactory"], _account_sumary_account_sumary_component_ngfactory__WEBPACK_IMPORTED_MODULE_8__["AccountSumaryComponentNgFactory"], _transactions_transactions_component_ngfactory__WEBPACK_IMPORTED_MODULE_9__["TransactionsComponentNgFactory"]]], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_common__WEBPACK_IMPORTED_MODULE_10__["NgLocalization"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["NgLocaleLocalization"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_common_common_a"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_core__WEBPACK_IMPORTED_MODULE_0__["APP_BOOTSTRAP_LISTENER"], function (p0_0, p0_1) {
         return [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_11__["removeStyles"](p0_0, p0_1)];
       }, [_angular_common__WEBPACK_IMPORTED_MODULE_10__["DOCUMENT"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_12__["MutationObserverFactory"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_12__["MutationObserverFactory"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["ErrorStateMatcher"], _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["ErrorStateMatcher"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["ScrollStrategyOptions"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["OverlayContainer"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["OverlayPositionBuilder"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["OverlayKeyboardDispatcher"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["DOCUMENT"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_15__["Directionality"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_10__["Location"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["ɵc"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["ɵd"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_select__WEBPACK_IMPORTED_MODULE_16__["MAT_SELECT_SCROLL_STRATEGY"], _angular_material_select__WEBPACK_IMPORTED_MODULE_16__["MAT_SELECT_SCROLL_STRATEGY_PROVIDER_FACTORY"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_menu__WEBPACK_IMPORTED_MODULE_17__["MAT_MENU_SCROLL_STRATEGY"], _angular_material_menu__WEBPACK_IMPORTED_MODULE_17__["ɵb22"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MAT_DIALOG_SCROLL_STRATEGY"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](135680, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MatDialog"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MatDialog"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"], [2, _angular_common__WEBPACK_IMPORTED_MODULE_10__["Location"]], [2, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MAT_DIALOG_DEFAULT_OPTIONS"]], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MAT_DIALOG_SCROLL_STRATEGY"], [3, _angular_material_dialog__WEBPACK_IMPORTED_MODULE_18__["MatDialog"]], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["OverlayContainer"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_19__["MatDatepickerIntl"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_19__["MatDatepickerIntl"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_19__["MAT_DATEPICKER_SCROLL_STRATEGY"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_19__["MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["DateAdapter"], _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["NativeDateAdapter"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["MAT_DATE_LOCALE"]], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_20__["Platform"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_21__["MAT_TOOLTIP_SCROLL_STRATEGY"], _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_21__["MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY"], [_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_14__["Overlay"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](4608, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_22__["HAMMER_GESTURE_CONFIG"], _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["GestureConfig"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["MAT_HAMMER_OPTIONS"]], [2, _angular_material_core__WEBPACK_IMPORTED_MODULE_13__["MatCommonModule"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_23__["MatPaginatorIntl"], _angular_material_paginator__WEBPACK_IMPORTED_MODULE_23__["MAT_PAGINATOR_INTL_PROVIDER_FACTORY"], [[3, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_23__["MatPaginatorIntl"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _shared_stateful_model_model__WEBPACK_IMPORTED_MODULE_24__["ModelFactory"], _shared_stateful_model_model__WEBPACK_IMPORTED_MODULE_24__["useModelFactory"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](5120, _angular_common_http__WEBPACK_IMPORTED_MODULE_25__["HTTP_INTERCEPTORS"], function (p0_0, p1_0) {
@@ -5945,7 +28130,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var styles_TransactionsComponent = [_transactions_component_scss_shim_ngstyle__WEBPACK_IMPORTED_MODULE_0__["styles"]];
 
-    var RenderType_TransactionsComponent = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
+    var RenderType_TransactionsComponent = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵcrt"]({
       encapsulation: 0,
       styles: styles_TransactionsComponent,
       data: {}
@@ -6255,7 +28440,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, null);
     }
 
-    var TransactionsComponentNgFactory = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-transactions", _transactions_component__WEBPACK_IMPORTED_MODULE_18__["TransactionsComponent"], View_TransactionsComponent_Host_0, {}, {}, []);
+    var TransactionsComponentNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵccf"]("app-transactions", _transactions_component__WEBPACK_IMPORTED_MODULE_18__["TransactionsComponent"], View_TransactionsComponent_Host_0, {}, {}, []);
     /***/
 
   },
@@ -6310,6 +28495,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "TransactionsComponent", function () {
       return TransactionsComponent;
     });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/material */
+    "./node_modules/@angular/material/esm2015/material.js");
 
     var TransactionsComponent = /*#__PURE__*/function () {
       function TransactionsComponent(router, userService) {
@@ -6323,16 +28520,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(TransactionsComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this3 = this;
+          var _this87 = this;
 
           this.user$ = this.userService.user$;
           this.user$.subscribe(function (resp) {
-            _this3.account = resp.accounts.find(function (element) {
+            _this87.account = resp.accounts.find(function (element) {
               return element.transactions.length !== 0;
             });
-            if (!_this3.account) return _this3.router.navigate(['/dashboard/accountSummary']);
+            if (!_this87.account) return _this87.router.navigate(['/dashboard/accountSummary']);
 
-            _this3.account.transactions.sort(function (a, b) {
+            _this87.account.transactions.sort(function (a, b) {
               return new Date(b.date).getTime() - new Date(a.date).getTime();
             });
           });
@@ -6400,68 +28597,64 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../../shared/stateful-model/user-model.service */
     "./src/app/shared/stateful-model/user-model.service.ts");
 
-    var TransactionsService = /*@__PURE__*/function () {
-      var TransactionsService = /*#__PURE__*/function () {
-        function TransactionsService(router, http, userService) {
-          _classCallCheck(this, TransactionsService);
+    var TransactionsService = /*#__PURE__*/function () {
+      function TransactionsService(router, http, userService) {
+        _classCallCheck(this, TransactionsService);
 
-          this.router = router;
-          this.http = http;
-          this.userService = userService;
-          this.uri = 'http://localhost:1000/api';
+        this.router = router;
+        this.http = http;
+        this.userService = userService;
+        this.uri = 'http://localhost:1000/api';
+      }
+
+      _createClass(TransactionsService, [{
+        key: "accountsForId",
+        value: function accountsForId(identity) {
+          var _this88 = this;
+
+          this.http.post(this.uri + '/accounts', {
+            identity: identity
+          }).subscribe(function (resp) {
+            var user = _this88.userService.getUser();
+
+            user.accounts = resp;
+
+            _this88.userService.setUser(user);
+          });
         }
+      }, {
+        key: "transactionForAccount",
+        value: function transactionForAccount(idAccount) {
+          var _this89 = this;
 
-        _createClass(TransactionsService, [{
-          key: "accountsForId",
-          value: function accountsForId(identity) {
-            var _this4 = this;
+          this.http.post(this.uri + '/accounts/transactions', {
+            idAccount: idAccount
+          }).subscribe(function (resp) {
+            var user = _this89.userService.getUser();
 
-            this.http.post(this.uri + '/accounts', {
-              identity: identity
-            }).subscribe(function (resp) {
-              var user = _this4.userService.getUser();
-
-              user.accounts = resp;
-
-              _this4.userService.setUser(user);
+            var account = user.accounts.find(function (element) {
+              return element.id == idAccount;
             });
-          }
-        }, {
-          key: "transactionForAccount",
-          value: function transactionForAccount(idAccount) {
-            var _this5 = this;
+            account.transactions = resp;
 
-            this.http.post(this.uri + '/accounts/transactions', {
-              idAccount: idAccount
-            }).subscribe(function (resp) {
-              var user = _this5.userService.getUser();
+            _this89.userService.setUser(user);
 
-              var account = user.accounts.find(function (element) {
-                return element.id == idAccount;
-              });
-              account.transactions = resp;
+            _this89.router.navigate(['/dashboard/transactions']);
+          });
+        }
+      }]);
 
-              _this5.userService.setUser(user);
-
-              _this5.router.navigate(['/dashboard/transactions']);
-            });
-          }
-        }]);
-
-        return TransactionsService;
-      }();
-
-      TransactionsService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
-        factory: function TransactionsService_Factory() {
-          return new TransactionsService(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_shared_stateful_model_user_model_service__WEBPACK_IMPORTED_MODULE_3__["UserModelService"]));
-        },
-        token: TransactionsService,
-        providedIn: "root"
-      });
       return TransactionsService;
     }();
-    /***/
 
+    TransactionsService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      factory: function TransactionsService_Factory() {
+        return new TransactionsService(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_shared_stateful_model_user_model_service__WEBPACK_IMPORTED_MODULE_3__["UserModelService"]));
+      },
+      token: TransactionsService,
+      providedIn: "root"
+    });
+    /***/
   },
 
   /***/
@@ -6508,65 +28701,61 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
-    var AuthGuardService = /*@__PURE__*/function () {
-      var AuthGuardService = /*#__PURE__*/function () {
-        function AuthGuardService(authService, router) {
-          _classCallCheck(this, AuthGuardService);
+    var AuthGuardService = /*#__PURE__*/function () {
+      function AuthGuardService(authService, router) {
+        _classCallCheck(this, AuthGuardService);
 
-          this.authService = authService;
-          this.router = router;
-        }
+        this.authService = authService;
+        this.router = router;
+      }
 
-        _createClass(AuthGuardService, [{
-          key: "canActivate",
-          value: function canActivate(route, state) {
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              return regeneratorRuntime.wrap(function _callee$(_context) {
-                while (1) {
-                  switch (_context.prev = _context.next) {
-                    case 0:
-                      _context.next = 2;
-                      return this.authService.checkAuthenticated();
+      _createClass(AuthGuardService, [{
+        key: "canActivate",
+        value: function canActivate(route, state) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.authService.checkAuthenticated();
 
-                    case 2:
-                      if (_context.sent) {
-                        _context.next = 6;
-                        break;
-                      }
+                  case 2:
+                    if (_context.sent) {
+                      _context.next = 6;
+                      break;
+                    }
 
-                      _context.next = 5;
-                      return this.router.navigate(['login']);
+                    _context.next = 5;
+                    return this.router.navigate(['login']);
 
-                    case 5:
-                      return _context.abrupt("return", false);
+                  case 5:
+                    return _context.abrupt("return", false);
 
-                    case 6:
-                      return _context.abrupt("return", true);
+                  case 6:
+                    return _context.abrupt("return", true);
 
-                    case 7:
-                    case "end":
-                      return _context.stop();
-                  }
+                  case 7:
+                  case "end":
+                    return _context.stop();
                 }
-              }, _callee, this);
-            }));
-          }
-        }]);
+              }
+            }, _callee, this);
+          }));
+        }
+      }]);
 
-        return AuthGuardService;
-      }();
-
-      AuthGuardService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
-        factory: function AuthGuardService_Factory() {
-          return new AuthGuardService(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_services_authenticator_authenticator_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticatorService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]));
-        },
-        token: AuthGuardService,
-        providedIn: "root"
-      });
       return AuthGuardService;
     }();
-    /***/
 
+    AuthGuardService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({
+      factory: function AuthGuardService_Factory() {
+        return new AuthGuardService(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_services_authenticator_authenticator_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticatorService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]));
+      },
+      token: AuthGuardService,
+      providedIn: "root"
+    });
+    /***/
   },
 
   /***/
@@ -6588,6 +28777,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "PasswordPipe", function () {
       return PasswordPipe;
     });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
 
     var PasswordPipe = /*#__PURE__*/function () {
       function PasswordPipe() {

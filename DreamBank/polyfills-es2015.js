@@ -630,6 +630,7 @@ const Zone$1 = (function (global) {
     performanceMeasure('Zone', 'Zone');
     return global['Zone'] = Zone;
 })(typeof window !== 'undefined' && window || typeof self !== 'undefined' && self || global);
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -1070,6 +1071,7 @@ Zone.__load_patch('ZoneAwarePromise', (global, Zone, api) => {
     Promise[Zone.__symbol__('uncaughtPromiseErrors')] = _uncaughtPromiseErrors;
     return ZoneAwarePromise;
 });
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -1412,6 +1414,7 @@ function copySymbolProperties(src, dest) {
     });
 }
 let shouldCopySymbolProperties = false;
+
 function patchMethod(target, name, patchFn) {
     let proto = target;
     while (proto && !proto.hasOwnProperty(name)) {
@@ -1463,6 +1466,7 @@ function patchMacroTask(obj, funcName, metaCreator) {
         }
     });
 }
+
 function attachOriginToPatched(patched, original) {
     patched[zoneSymbol('OriginalDelegate')] = original;
 }
@@ -1494,6 +1498,7 @@ function isIEOrEdge() {
     }
     return ieOrEdge;
 }
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -1547,6 +1552,7 @@ Zone.__load_patch('toString', (global) => {
         return originalObjectToString.call(this);
     };
 });
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2115,6 +2121,7 @@ function patchEventPrototype(global, api) {
         });
     }
 }
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2152,6 +2159,7 @@ function patchCallbacks(api, target, targetName, method, callbacks) {
     };
     api.attachOriginToPatched(target[method], nativeDelegate);
 }
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2259,6 +2267,7 @@ function _tryDefineProperty(obj, prop, desc, originalConfigurableFlag) {
         }
     }
 }
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2561,6 +2570,7 @@ function propertyDescriptorPatch(api, _global) {
         patchFilteredProperties(WebSocket.prototype, websocketEventNames, ignoreProperties);
     }
 }
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2615,6 +2625,7 @@ Zone.__load_patch('util', (global, Zone, api) => {
         REMOVE_EVENT_LISTENER_STR
     });
 });
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2622,6 +2633,7 @@ Zone.__load_patch('util', (global, Zone, api) => {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2748,6 +2760,7 @@ function patchTimer(window, setName, cancelName, nameSuffix) {
             }
         });
 }
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2763,6 +2776,7 @@ function patchCustomElements(_global, api) {
     const callbacks = ['connectedCallback', 'disconnectedCallback', 'adoptedCallback', 'attributeChangedCallback'];
     api.patchCallbacks(api, _global.customElements, 'customElements', 'define', callbacks);
 }
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -2797,6 +2811,7 @@ function eventTargetPatch(_global, api) {
 function patchEvent(global, api) {
     api.patchEventPrototype(global, api);
 }
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -3037,6 +3052,7 @@ Zone.__load_patch('PromiseRejectionEvent', (global, Zone) => {
             findPromiseRejectionHandler('rejectionhandled');
     }
 });
+
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -3044,7 +3060,6 @@ Zone.__load_patch('PromiseRejectionEvent', (global, Zone) => {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-
 
 
 /***/ }),
@@ -3116,7 +3131,6 @@ __webpack_require__.r(__webpack_exports__);
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-
 
 
 /***/ }),

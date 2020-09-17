@@ -55,6 +55,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -68,9 +69,10 @@ __webpack_require__.r(__webpack_exports__);
  * @return {?}
  */
 function removeStyles(_document, platformId) {
-    return ( /**
+    return (/**
      * @return {?}
-     */() => {
+     */
+    () => {
         if (Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(platformId)) {
             /** @type {?} */
             const elements = Array.from(_document.querySelectorAll(`[class*=${CLASS_NAME}]`));
@@ -80,13 +82,11 @@ function removeStyles(_document, platformId) {
             // https://stackoverflow.com/questions/37919802 for more discussion.
             /** @type {?} */
             const classRegex = /\bflex-layout-.+?\b/g;
-            elements.forEach(( /**
+            elements.forEach((/**
              * @param {?} el
              * @return {?}
-             *//**
-             * @param {?} el
-             * @return {?}
-             */ el => {
+             */
+            el => {
                 el.classList.contains(`${CLASS_NAME}ssr`) && el.parentNode ?
                     el.parentNode.removeChild(el) : el.className.replace(classRegex, '');
             }));
@@ -98,13 +98,14 @@ function removeStyles(_document, platformId) {
  * @type {?}
  */
 const BROWSER_PROVIDER = {
-    provide: ( /** @type {?} */(_angular_core__WEBPACK_IMPORTED_MODULE_0__["APP_BOOTSTRAP_LISTENER"])),
+    provide: (/** @type {?} */ (_angular_core__WEBPACK_IMPORTED_MODULE_0__["APP_BOOTSTRAP_LISTENER"])),
     useFactory: removeStyles,
     deps: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]],
     multi: true
 };
 /** @type {?} */
 const CLASS_NAME = 'flex-layout-';
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -116,6 +117,12 @@ const CLASS_NAME = 'flex-layout-';
  */
 class CoreModule {
 }
+CoreModule.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
+                providers: [BROWSER_PROVIDER]
+            },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -147,63 +154,76 @@ class MediaChange {
         return new MediaChange(this.matches, this.mediaQuery, this.mqAlias, this.suffix);
     }
 }
-let StylesheetMap = /*@__PURE__*/ (() => {
-    class StylesheetMap {
-        constructor() {
-            this.stylesheet = new Map();
-        }
-        /**
-         * Add an individual style to an HTML element
-         * @param {?} element
-         * @param {?} style
-         * @param {?} value
-         * @return {?}
-         */
-        addStyleToElement(element, style, value) {
-            /** @type {?} */
-            const stylesheet = this.stylesheet.get(element);
-            if (stylesheet) {
-                stylesheet.set(style, value);
-            }
-            else {
-                this.stylesheet.set(element, new Map([[style, value]]));
-            }
-        }
-        /**
-         * Clear the virtual stylesheet
-         * @return {?}
-         */
-        clearStyles() {
-            this.stylesheet.clear();
-        }
-        /**
-         * Retrieve a given style for an HTML element
-         * @param {?} el
-         * @param {?} styleName
-         * @return {?}
-         */
-        getStyleForElement(el, styleName) {
-            /** @type {?} */
-            const styles = this.stylesheet.get(el);
-            /** @type {?} */
-            let value = '';
-            if (styles) {
-                /** @type {?} */
-                const style = styles.get(styleName);
-                if (typeof style === 'number' || typeof style === 'string') {
-                    value = style + '';
-                }
-            }
-            return value;
-        }
-    }
-    /** @nocollapse */ StylesheetMap.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function StylesheetMap_Factory() { return new StylesheetMap(); }, token: StylesheetMap, providedIn: "root" });
-    return StylesheetMap;
-})();
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+/**
+ * Utility to emulate a CSS stylesheet
+ *
+ * This utility class stores all of the styles for a given HTML element
+ * as a readonly `stylesheet` map.
+ */
+class StylesheetMap {
+    constructor() {
+        this.stylesheet = new Map();
+    }
+    /**
+     * Add an individual style to an HTML element
+     * @param {?} element
+     * @param {?} style
+     * @param {?} value
+     * @return {?}
+     */
+    addStyleToElement(element, style, value) {
+        /** @type {?} */
+        const stylesheet = this.stylesheet.get(element);
+        if (stylesheet) {
+            stylesheet.set(style, value);
+        }
+        else {
+            this.stylesheet.set(element, new Map([[style, value]]));
+        }
+    }
+    /**
+     * Clear the virtual stylesheet
+     * @return {?}
+     */
+    clearStyles() {
+        this.stylesheet.clear();
+    }
+    /**
+     * Retrieve a given style for an HTML element
+     * @param {?} el
+     * @param {?} styleName
+     * @return {?}
+     */
+    getStyleForElement(el, styleName) {
+        /** @type {?} */
+        const styles = this.stylesheet.get(el);
+        /** @type {?} */
+        let value = '';
+        if (styles) {
+            /** @type {?} */
+            const style = styles.get(styleName);
+            if (typeof style === 'number' || typeof style === 'string') {
+                value = style + '';
+            }
+        }
+        return value;
+    }
+}
+StylesheetMap.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ StylesheetMap.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function StylesheetMap_Factory() { return new StylesheetMap(); }, token: StylesheetMap, providedIn: "root" });
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -223,10 +243,12 @@ const DEFAULT_CONFIG = {
 /** @type {?} */
 const LAYOUT_CONFIG = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('Flex Layout token, config options for the library', {
     providedIn: 'root',
-    factory: ( /**
+    factory: (/**
      * @return {?}
-     */() => DEFAULT_CONFIG)
+     */
+    () => DEFAULT_CONFIG)
 });
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -240,10 +262,12 @@ const LAYOUT_CONFIG = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionT
  */
 const SERVER_TOKEN = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('FlexLayoutServerLoaded', {
     providedIn: 'root',
-    factory: ( /**
+    factory: (/**
      * @return {?}
-     */() => false)
+     */
+    () => false)
 });
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -251,14 +275,17 @@ const SERVER_TOKEN = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionTo
 /** @type {?} */
 const BREAKPOINT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('Flex Layout token, collect all breakpoints into one provider', {
     providedIn: 'root',
-    factory: ( /**
+    factory: (/**
      * @return {?}
-     */() => null)
+     */
+    () => null)
 });
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -275,11 +302,12 @@ function mergeAlias(dest, source) {
     if (source) {
         dest.mqAlias = source.alias;
         dest.mediaQuery = source.mediaQuery;
-        dest.suffix = ( /** @type {?} */(source.suffix));
-        dest.priority = ( /** @type {?} */(source.priority));
+        dest.suffix = (/** @type {?} */ (source.suffix));
+        dest.priority = (/** @type {?} */ (source.priority));
     }
     return dest;
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -314,13 +342,11 @@ function validateValue(value) {
     value = value ? value.toLowerCase() : '';
     let [direction, wrap, inline] = value.split(' ');
     // First value must be the `flex-direction`
-    if (!LAYOUT_VALUES.find(( /**
+    if (!LAYOUT_VALUES.find((/**
      * @param {?} x
      * @return {?}
-     *//**
-     * @param {?} x
-     * @return {?}
-     */ x => x === direction))) {
+     */
+    x => x === direction))) {
         direction = LAYOUT_VALUES[0];
     }
     if (wrap === INLINE) {
@@ -376,6 +402,7 @@ function buildCSS(direction, wrap = null, inline = false) {
         'flex-wrap': !!wrap ? wrap : null
     };
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -444,13 +471,11 @@ class BaseDirective2 {
      * @return {?}
      */
     ngOnChanges(changes) {
-        Object.keys(changes).forEach(( /**
+        Object.keys(changes).forEach((/**
          * @param {?} key
          * @return {?}
-         *//**
-         * @param {?} key
-         * @return {?}
-         */ key => {
+         */
+        key => {
             if (this.inputs.indexOf(key) !== -1) {
                 /** @type {?} */
                 const bp = key.split('.').slice(1).join('.');
@@ -507,13 +532,11 @@ class BaseDirective2 {
      * @return {?}
      */
     clearStyles() {
-        Object.keys(this.mru).forEach(( /**
+        Object.keys(this.mru).forEach((/**
          * @param {?} k
          * @return {?}
-         *//**
-         * @param {?} k
-         * @return {?}
-         */ k => {
+         */
+        k => {
             this.mru[k] = '';
         }));
         this.applyStyleToElement(this.mru);
@@ -580,10 +603,12 @@ class BaseDirective2 {
         this.addStyles(input);
     }
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -666,10 +691,12 @@ const DEFAULT_BREAKPOINTS = [
         priority: -650,
     }
 ];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /* tslint:disable */
 /** @type {?} */
 const HANDSET_PORTRAIT = '(orientation: portrait) and (max-width: 599.9px)';
@@ -710,14 +737,17 @@ const ORIENTATION_BREAKPOINTS = [
     { 'alias': 'web.landscape', priority: 2200, 'mediaQuery': ScreenTypes.WEB_LANDSCAPE, overlapping: true },
     { 'alias': 'web.portrait', priority: 2200, 'mediaQuery': ScreenTypes.WEB_PORTRAIT, overlapping: true }
 ];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * Extends an object with the *enumerable* and *own* properties of one or more source objects,
  * similar to Object.assign.
@@ -741,6 +771,7 @@ function extendObject(dest, ...sources) {
     }
     return dest;
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -777,10 +808,11 @@ function camelCase(name) {
  * @return {?}
  */
 function validateSuffixes(list) {
-    list.forEach(( /**
+    list.forEach((/**
      * @param {?} bp
      * @return {?}
-     */(bp) => {
+     */
+    (bp) => {
         if (!bp.suffix) {
             bp.suffix = camelCase(bp.alias); // create Suffix value based on alias
             bp.overlapping = !!bp.overlapping; // ensure default value
@@ -799,20 +831,19 @@ function validateSuffixes(list) {
 function mergeByAlias(defaults, custom = []) {
     /** @type {?} */
     const dict = {};
-    defaults.forEach(( /**
+    defaults.forEach((/**
      * @param {?} bp
      * @return {?}
-     *//**
-     * @param {?} bp
-     * @return {?}
-     */ bp => {
+     */
+    bp => {
         dict[bp.alias] = bp;
     }));
     // Merge custom breakpoints
-    custom.forEach(( /**
+    custom.forEach((/**
      * @param {?} bp
      * @return {?}
-     */(bp) => {
+     */
+    (bp) => {
         if (dict[bp.alias]) {
             extendObject(dict[bp.alias], bp);
         }
@@ -820,14 +851,13 @@ function mergeByAlias(defaults, custom = []) {
             dict[bp.alias] = bp;
         }
     }));
-    return validateSuffixes(Object.keys(dict).map(( /**
+    return validateSuffixes(Object.keys(dict).map((/**
      * @param {?} k
      * @return {?}
-     *//**
-     * @param {?} k
-     * @return {?}
-     */ k => dict[k])));
+     */
+    k => dict[k])));
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -839,25 +869,28 @@ function mergeByAlias(defaults, custom = []) {
  */
 const BREAKPOINTS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('Token (@angular/flex-layout) Breakpoints', {
     providedIn: 'root',
-    factory: ( /**
+    factory: (/**
      * @return {?}
-     */() => {
+     */
+    () => {
         /** @type {?} */
         const breakpoints = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["inject"])(BREAKPOINT);
         /** @type {?} */
         const layoutConfig = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["inject"])(LAYOUT_CONFIG);
         /** @type {?} */
         const bpFlattenArray = [].concat.apply([], (breakpoints || [])
-            .map(( /**
-     * @param {?} v
-     * @return {?}
-     */(v) => Array.isArray(v) ? v : [v])));
+            .map((/**
+         * @param {?} v
+         * @return {?}
+         */
+        (v) => Array.isArray(v) ? v : [v])));
         /** @type {?} */
         const builtIns = (layoutConfig.disableDefaultBps ? [] : DEFAULT_BREAKPOINTS)
             .concat(layoutConfig.addOrientationBps ? ORIENTATION_BREAKPOINTS : []);
         return mergeByAlias(builtIns, bpFlattenArray);
     })
 });
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -890,245 +923,285 @@ function sortAscendingPriority(a, b) {
     const pB = b.priority || 0;
     return pA - pB;
 }
-let BreakPointRegistry = /*@__PURE__*/ (() => {
-    class BreakPointRegistry {
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Registry of 1..n MediaQuery breakpoint ranges
+ * This is published as a provider and may be overridden from custom, application-specific ranges
+ *
+ */
+class BreakPointRegistry {
+    /**
+     * @param {?} list
+     */
+    constructor(list) {
         /**
-         * @param {?} list
+         * Memoized BreakPoint Lookups
          */
-        constructor(list) {
-            /**
-             * Memoized BreakPoint Lookups
-             */
-            this.findByMap = new Map();
-            this.items = [...list].sort(sortAscendingPriority);
-        }
-        /**
-         * Search breakpoints by alias (e.g. gt-xs)
-         * @param {?} alias
+        this.findByMap = new Map();
+        this.items = [...list].sort(sortAscendingPriority);
+    }
+    /**
+     * Search breakpoints by alias (e.g. gt-xs)
+     * @param {?} alias
+     * @return {?}
+     */
+    findByAlias(alias) {
+        return !alias ? null : this.findWithPredicate(alias, (/**
+         * @param {?} bp
          * @return {?}
          */
-        findByAlias(alias) {
-            return !alias ? null : this.findWithPredicate(alias, ( /**
-             * @param {?} bp
-             * @return {?}
-             */(bp) => bp.alias == alias));
-        }
-        /**
-         * @param {?} query
+        (bp) => bp.alias == alias));
+    }
+    /**
+     * @param {?} query
+     * @return {?}
+     */
+    findByQuery(query) {
+        return this.findWithPredicate(query, (/**
+         * @param {?} bp
          * @return {?}
          */
-        findByQuery(query) {
-            return this.findWithPredicate(query, ( /**
-             * @param {?} bp
-             * @return {?}
-             */(bp) => bp.mediaQuery == query));
-        }
-        /**
-         * Get all the breakpoints whose ranges could overlapping `normal` ranges;
-         * e.g. gt-sm overlaps md, lg, and xl
+        (bp) => bp.mediaQuery == query));
+    }
+    /**
+     * Get all the breakpoints whose ranges could overlapping `normal` ranges;
+     * e.g. gt-sm overlaps md, lg, and xl
+     * @return {?}
+     */
+    get overlappings() {
+        return this.items.filter((/**
+         * @param {?} it
          * @return {?}
          */
-        get overlappings() {
-            return this.items.filter(( /**
-             * @param {?} it
-             * @return {?}
-             *//**
-             * @param {?} it
-             * @return {?}
-             */ it => it.overlapping == true));
-        }
-        /**
-         * Get list of all registered (non-empty) breakpoint aliases
+        it => it.overlapping == true));
+    }
+    /**
+     * Get list of all registered (non-empty) breakpoint aliases
+     * @return {?}
+     */
+    get aliases() {
+        return this.items.map((/**
+         * @param {?} it
          * @return {?}
          */
-        get aliases() {
-            return this.items.map(( /**
-             * @param {?} it
-             * @return {?}
-             *//**
-             * @param {?} it
-             * @return {?}
-             */ it => it.alias));
-        }
-        /**
-         * Aliases are mapped to properties using suffixes
-         * e.g.  'gt-sm' for property 'layout'  uses suffix 'GtSm'
-         * for property layoutGtSM.
+        it => it.alias));
+    }
+    /**
+     * Aliases are mapped to properties using suffixes
+     * e.g.  'gt-sm' for property 'layout'  uses suffix 'GtSm'
+     * for property layoutGtSM.
+     * @return {?}
+     */
+    get suffixes() {
+        return this.items.map((/**
+         * @param {?} it
          * @return {?}
          */
-        get suffixes() {
-            return this.items.map(( /**
-             * @param {?} it
-             * @return {?}
-             *//**
-             * @param {?} it
-             * @return {?}
-             */ it => !!it.suffix ? it.suffix : ''));
+        it => !!it.suffix ? it.suffix : ''));
+    }
+    /**
+     * Memoized lookup using custom predicate function
+     * @private
+     * @param {?} key
+     * @param {?} searchFn
+     * @return {?}
+     */
+    findWithPredicate(key, searchFn) {
+        /** @type {?} */
+        let response = this.findByMap.get(key);
+        if (!response) {
+            response = this.items.find(searchFn) || null;
+            this.findByMap.set(key, response);
         }
+        return response || null;
+    }
+}
+BreakPointRegistry.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */
+BreakPointRegistry.ctorParameters = () => [
+    { type: Array, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [BREAKPOINTS,] }] }
+];
+/** @nocollapse */ BreakPointRegistry.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function BreakPointRegistry_Factory() { return new BreakPointRegistry(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(BREAKPOINTS)); }, token: BreakPointRegistry, providedIn: "root" });
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * MediaMonitor configures listeners to mediaQuery changes and publishes an Observable facade to
+ * convert mediaQuery change callbacks to subscriber notifications. These notifications will be
+ * performed within the ng Zone to trigger change detections and component updates.
+ *
+ * NOTE: both mediaQuery activations and de-activations are announced in notifications
+ */
+class MatchMedia {
+    /**
+     * @param {?} _zone
+     * @param {?} _platformId
+     * @param {?} _document
+     */
+    constructor(_zone, _platformId, _document) {
+        this._zone = _zone;
+        this._platformId = _platformId;
+        this._document = _document;
         /**
-         * Memoized lookup using custom predicate function
-         * @private
+         * Initialize source with 'all' so all non-responsive APIs trigger style updates
+         */
+        this.source = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](new MediaChange(true));
+        this.registry = new Map();
+        this._observable$ = this.source.asObservable();
+    }
+    /**
+     * Publish list of all current activations
+     * @return {?}
+     */
+    get activations() {
+        /** @type {?} */
+        const results = [];
+        this.registry.forEach((/**
+         * @param {?} mql
          * @param {?} key
-         * @param {?} searchFn
          * @return {?}
          */
-        findWithPredicate(key, searchFn) {
-            /** @type {?} */
-            let response = this.findByMap.get(key);
-            if (!response) {
-                response = this.items.find(searchFn) || null;
-                this.findByMap.set(key, response);
+        (mql, key) => {
+            if (mql.matches) {
+                results.push(key);
             }
-            return response || null;
-        }
+        }));
+        return results;
     }
-    /** @nocollapse */ BreakPointRegistry.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function BreakPointRegistry_Factory() { return new BreakPointRegistry(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(BREAKPOINTS)); }, token: BreakPointRegistry, providedIn: "root" });
-    return BreakPointRegistry;
-})();
-let MatchMedia = /*@__PURE__*/ (() => {
-    class MatchMedia {
-        /**
-         * @param {?} _zone
-         * @param {?} _platformId
-         * @param {?} _document
-         */
-        constructor(_zone, _platformId, _document) {
-            this._zone = _zone;
-            this._platformId = _platformId;
-            this._document = _document;
-            /**
-             * Initialize source with 'all' so all non-responsive APIs trigger style updates
+    /**
+     * For the specified mediaQuery?
+     * @param {?} mediaQuery
+     * @return {?}
+     */
+    isActive(mediaQuery) {
+        /** @type {?} */
+        const mql = this.registry.get(mediaQuery);
+        return !!mql ? mql.matches : false;
+    }
+    /**
+     * External observers can watch for all (or a specific) mql changes.
+     * Typically used by the MediaQueryAdaptor; optionally available to components
+     * who wish to use the MediaMonitor as mediaMonitor$ observable service.
+     *
+     * Use deferred registration process to register breakpoints only on subscription
+     * This logic also enforces logic to register all mediaQueries BEFORE notify
+     * subscribers of notifications.
+     * @param {?=} mqList
+     * @param {?=} filterOthers
+     * @return {?}
+     */
+    observe(mqList, filterOthers = false) {
+        if (mqList && mqList.length) {
+            /** @type {?} */
+            const matchMedia$ = this._observable$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])((/**
+             * @param {?} change
+             * @return {?}
              */
-            this.source = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](new MediaChange(true));
-            this.registry = new Map();
-            this._observable$ = this.source.asObservable();
-        }
-        /**
-         * Publish list of all current activations
-         * @return {?}
-         */
-        get activations() {
+            (change) => {
+                return !filterOthers ? true : (mqList.indexOf(change.mediaQuery) > -1);
+            })));
             /** @type {?} */
-            const results = [];
-            this.registry.forEach(( /**
-             * @param {?} mql
-             * @param {?} key
+            const registration$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"]((/**
+             * @param {?} observer
              * @return {?}
-             */(mql, key) => {
-                if (mql.matches) {
-                    results.push(key);
-                }
-            }));
-            return results;
-        }
-        /**
-         * For the specified mediaQuery?
-         * @param {?} mediaQuery
-         * @return {?}
-         */
-        isActive(mediaQuery) {
-            /** @type {?} */
-            const mql = this.registry.get(mediaQuery);
-            return !!mql ? mql.matches : false;
-        }
-        /**
-         * External observers can watch for all (or a specific) mql changes.
-         * Typically used by the MediaQueryAdaptor; optionally available to components
-         * who wish to use the MediaMonitor as mediaMonitor$ observable service.
-         *
-         * Use deferred registration process to register breakpoints only on subscription
-         * This logic also enforces logic to register all mediaQueries BEFORE notify
-         * subscribers of notifications.
-         * @param {?=} mqList
-         * @param {?=} filterOthers
-         * @return {?}
-         */
-        observe(mqList, filterOthers = false) {
-            if (mqList && mqList.length) {
+             */
+            (observer) => {
+                // tslint:disable-line:max-line-length
                 /** @type {?} */
-                const matchMedia$ = this._observable$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(( /**
-                 * @param {?} change
-                 * @return {?}
-                 */(change) => {
-                    return !filterOthers ? true : (mqList.indexOf(change.mediaQuery) > -1);
-                })));
-                /** @type {?} */
-                const registration$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](( /**
-                 * @param {?} observer
-                 * @return {?}
-                 */(observer) => {
-                    // tslint:disable-line:max-line-length
+                const matches = this.registerQuery(mqList);
+                if (matches.length) {
                     /** @type {?} */
-                    const matches = this.registerQuery(mqList);
-                    if (matches.length) {
-                        /** @type {?} */
-                        const lastChange = ( /** @type {?} */(matches.pop()));
-                        matches.forEach(( /**
-                         * @param {?} e
-                         * @return {?}
-                         */(e) => {
-                            observer.next(e);
-                        }));
-                        this.source.next(lastChange); // last match is cached
-                    }
-                    observer.complete();
-                }));
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["merge"])(registration$, matchMedia$);
-            }
-            return this._observable$;
-        }
-        /**
-         * Based on the BreakPointRegistry provider, register internal listeners for each unique
-         * mediaQuery. Each listener emits specific MediaChange data to observers
-         * @param {?} mediaQuery
-         * @return {?}
-         */
-        registerQuery(mediaQuery) {
-            /** @type {?} */
-            const list = Array.isArray(mediaQuery) ? mediaQuery : [mediaQuery];
-            /** @type {?} */
-            const matches = [];
-            buildQueryCss(list, this._document);
-            list.forEach(( /**
-             * @param {?} query
-             * @return {?}
-             */(query) => {
-                /** @type {?} */
-                const onMQLEvent = ( /**
-                 * @param {?} e
-                 * @return {?}
-                 */(e) => {
-                    this._zone.run(( /**
+                    const lastChange = (/** @type {?} */ (matches.pop()));
+                    matches.forEach((/**
+                     * @param {?} e
                      * @return {?}
-                     */() => this.source.next(new MediaChange(e.matches, query))));
-                });
-                /** @type {?} */
-                let mql = this.registry.get(query);
-                if (!mql) {
-                    mql = this.buildMQL(query);
-                    mql.addListener(onMQLEvent);
-                    this.registry.set(query, mql);
+                     */
+                    (e) => {
+                        observer.next(e);
+                    }));
+                    this.source.next(lastChange); // last match is cached
                 }
-                if (mql.matches) {
-                    matches.push(new MediaChange(true, query));
-                }
+                observer.complete();
             }));
-            return matches;
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["merge"])(registration$, matchMedia$);
         }
-        /**
-         * Call window.matchMedia() to build a MediaQueryList; which
-         * supports 0..n listeners for activation/deactivation
-         * @protected
+        return this._observable$;
+    }
+    /**
+     * Based on the BreakPointRegistry provider, register internal listeners for each unique
+     * mediaQuery. Each listener emits specific MediaChange data to observers
+     * @param {?} mediaQuery
+     * @return {?}
+     */
+    registerQuery(mediaQuery) {
+        /** @type {?} */
+        const list = Array.isArray(mediaQuery) ? mediaQuery : [mediaQuery];
+        /** @type {?} */
+        const matches = [];
+        buildQueryCss(list, this._document);
+        list.forEach((/**
          * @param {?} query
          * @return {?}
          */
-        buildMQL(query) {
-            return constructMql(query, Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId));
-        }
+        (query) => {
+            /** @type {?} */
+            const onMQLEvent = (/**
+             * @param {?} e
+             * @return {?}
+             */
+            (e) => {
+                this._zone.run((/**
+                 * @return {?}
+                 */
+                () => this.source.next(new MediaChange(e.matches, query))));
+            });
+            /** @type {?} */
+            let mql = this.registry.get(query);
+            if (!mql) {
+                mql = this.buildMQL(query);
+                mql.addListener(onMQLEvent);
+                this.registry.set(query, mql);
+            }
+            if (mql.matches) {
+                matches.push(new MediaChange(true, query));
+            }
+        }));
+        return matches;
     }
-    /** @nocollapse */ MatchMedia.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function MatchMedia_Factory() { return new MatchMedia(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"])); }, token: MatchMedia, providedIn: "root" });
-    return MatchMedia;
-})();
+    /**
+     * Call window.matchMedia() to build a MediaQueryList; which
+     * supports 0..n listeners for activation/deactivation
+     * @protected
+     * @param {?} query
+     * @return {?}
+     */
+    buildMQL(query) {
+        return constructMql(query, Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId));
+    }
+}
+MatchMedia.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */
+MatchMedia.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] },
+    { type: Object, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"],] }] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"],] }] }
+];
+/** @nocollapse */ MatchMedia.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function MatchMedia_Factory() { return new MatchMedia(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"])); }, token: MatchMedia, providedIn: "root" });
 /**
  * Private global registry for all dynamically-created, injected style tags
  * @see prepare(query)
@@ -1145,13 +1218,11 @@ const ALL_STYLES = {};
  */
 function buildQueryCss(mediaQueries, _document) {
     /** @type {?} */
-    const list = mediaQueries.filter(( /**
+    const list = mediaQueries.filter((/**
      * @param {?} it
      * @return {?}
-     *//**
-     * @param {?} it
-     * @return {?}
-     */ it => !ALL_STYLES[it]));
+     */
+    it => !ALL_STYLES[it]));
     if (list.length > 0) {
         /** @type {?} */
         const query = list.join(', ');
@@ -1159,7 +1230,7 @@ function buildQueryCss(mediaQueries, _document) {
             /** @type {?} */
             const styleEl = _document.createElement('style');
             styleEl.setAttribute('type', 'text/css');
-            if (!(( /** @type {?} */(styleEl))).styleSheet) {
+            if (!((/** @type {?} */ (styleEl))).styleSheet) {
                 /** @type {?} */
                 const cssText = `
 /*
@@ -1170,15 +1241,13 @@ function buildQueryCss(mediaQueries, _document) {
 `;
                 styleEl.appendChild(_document.createTextNode(cssText));
             }
-            ( /** @type {?} */(_document.head)).appendChild(styleEl);
+            (/** @type {?} */ (_document.head)).appendChild(styleEl);
             // Store in private global registry
-            list.forEach(( /**
+            list.forEach((/**
              * @param {?} mq
              * @return {?}
-             *//**
-             * @param {?} mq
-             * @return {?}
-             */ mq => ALL_STYLES[mq] = styleEl));
+             */
+            mq => ALL_STYLES[mq] = styleEl));
         }
         catch (e) {
             console.error(e);
@@ -1192,20 +1261,23 @@ function buildQueryCss(mediaQueries, _document) {
  */
 function constructMql(query, isBrowser) {
     /** @type {?} */
-    const canListen = isBrowser && !!(( /** @type {?} */(window))).matchMedia('all').addListener;
-    return canListen ? (( /** @type {?} */(window))).matchMedia(query) : ( /** @type {?} */(( /** @type {?} */({
+    const canListen = isBrowser && !!((/** @type {?} */ (window))).matchMedia('all').addListener;
+    return canListen ? ((/** @type {?} */ (window))).matchMedia(query) : (/** @type {?} */ ((/** @type {?} */ ({
         matches: query === 'all' || query === '',
         media: query,
-        addListener: ( /**
+        addListener: (/**
          * @return {?}
-         */() => {
+         */
+        () => {
         }),
-        removeListener: ( /**
+        removeListener: (/**
          * @return {?}
-         */() => {
+         */
+        () => {
         })
     }))));
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -1235,11 +1307,12 @@ class MockMatchMedia extends MatchMedia {
      * @return {?}
      */
     clearAll() {
-        this.registry.forEach(( /**
+        this.registry.forEach((/**
          * @param {?} mql
          * @return {?}
-         */(mql) => {
-            (( /** @type {?} */(mql))).destroy();
+         */
+        (mql) => {
+            ((/** @type {?} */ (mql))).destroy();
         }));
         this.registry.clear();
         this.useOverlaps = false;
@@ -1326,21 +1399,20 @@ class MockMatchMedia extends MatchMedia {
      */
     _activateByAlias(aliases) {
         /** @type {?} */
-        const activate = ( /**
+        const activate = (/**
          * @param {?} alias
          * @return {?}
-         */(alias) => {
+         */
+        (alias) => {
             /** @type {?} */
             const bp = this._breakpoints.findByAlias(alias);
             this._activateByQuery(bp ? bp.mediaQuery : alias);
         });
-        aliases.split(',').forEach(( /**
+        aliases.split(',').forEach((/**
          * @param {?} alias
          * @return {?}
-         *//**
-         * @param {?} alias
-         * @return {?}
-         */ alias => activate(alias.trim())));
+         */
+        alias => activate(alias.trim())));
     }
     /**
      *
@@ -1350,7 +1422,7 @@ class MockMatchMedia extends MatchMedia {
      */
     _activateByQuery(mediaQuery) {
         /** @type {?} */
-        const mql = ( /** @type {?} */(this.registry.get(mediaQuery)));
+        const mql = (/** @type {?} */ (this.registry.get(mediaQuery)));
         if (mql && !this.isActive(mediaQuery)) {
             this.registry.set(mediaQuery, mql.activate());
         }
@@ -1364,13 +1436,14 @@ class MockMatchMedia extends MatchMedia {
      * @return {THIS}
      */
     _deactivateAll() {
-        ( /** @type {?} */(this)).registry.forEach(( /**
+        (/** @type {?} */ (this)).registry.forEach((/**
          * @param {?} it
          * @return {?}
-         */(it) => {
-            (( /** @type {?} */(it))).deactivate();
+         */
+        (it) => {
+            ((/** @type {?} */ (it))).deactivate();
         }));
-        return ( /** @type {?} */(this));
+        return (/** @type {?} */ (this));
     }
     /**
      * Insure the mediaQuery is registered with MatchMedia
@@ -1401,6 +1474,16 @@ class MockMatchMedia extends MatchMedia {
         return this.activations.length > 0;
     }
 }
+MockMatchMedia.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"] },
+];
+/** @nocollapse */
+MockMatchMedia.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] },
+    { type: Object, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"],] }] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"],] }] },
+    { type: BreakPointRegistry }
+];
 /**
  * Special internal class to simulate a MediaQueryList and
  * - supports manual activation to simulate mediaQuery matching
@@ -1444,12 +1527,13 @@ class MockMediaQueryList {
     activate() {
         if (!this._isActive) {
             this._isActive = true;
-            this._listeners.forEach(( /**
+            this._listeners.forEach((/**
              * @param {?} callback
              * @return {?}
-             */(callback) => {
+             */
+            (callback) => {
                 /** @type {?} */
-                const cb = ( /** @type {?} */(callback));
+                const cb = (/** @type {?} */ (callback));
                 cb.call(null, this);
             }));
         }
@@ -1462,12 +1546,13 @@ class MockMediaQueryList {
     deactivate() {
         if (this._isActive) {
             this._isActive = false;
-            this._listeners.forEach(( /**
+            this._listeners.forEach((/**
              * @param {?} callback
              * @return {?}
-             */(callback) => {
+             */
+            (callback) => {
                 /** @type {?} */
-                const cb = ( /** @type {?} */(callback));
+                const cb = (/** @type {?} */ (callback));
                 cb.call(null, this);
             }));
         }
@@ -1484,7 +1569,7 @@ class MockMediaQueryList {
         }
         if (this._isActive) {
             /** @type {?} */
-            const cb = ( /** @type {?} */(listener));
+            const cb = (/** @type {?} */ (listener));
             cb.call(null, this);
         }
     }
@@ -1528,10 +1613,12 @@ const MockMatchMediaProvider = {
     provide: MatchMedia,
     useClass: MockMatchMedia
 };
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -1544,192 +1631,201 @@ const BREAKPOINT_PRINT = {
     mediaQuery: PRINT,
     priority: 1000
 };
-let PrintHook = /*@__PURE__*/ (() => {
-    class PrintHook {
+/**
+ * PrintHook - Use to intercept print MediaQuery activations and force
+ *             layouts to render with the specified print alias/breakpoint
+ *
+ * Used in MediaMarshaller and MediaObserver
+ */
+class PrintHook {
+    /**
+     * @param {?} breakpoints
+     * @param {?} layoutConfig
+     */
+    constructor(breakpoints, layoutConfig) {
+        this.breakpoints = breakpoints;
+        this.layoutConfig = layoutConfig;
         /**
-         * @param {?} breakpoints
-         * @param {?} layoutConfig
+         * Is this service currently in Print-mode ?
          */
-        constructor(breakpoints, layoutConfig) {
-            this.breakpoints = breakpoints;
-            this.layoutConfig = layoutConfig;
-            /**
-             * Is this service currently in Print-mode ?
-             */
-            this.isPrinting = false;
-            this.queue = new PrintQueue();
-            this.deactivations = [];
-        }
-        /**
-         * Add 'print' mediaQuery: to listen for matchMedia activations
-         * @param {?} queries
-         * @return {?}
-         */
-        withPrintQuery(queries) {
-            return [...queries, PRINT];
-        }
-        /**
-         * Is the MediaChange event for any 'print' \@media
-         * @param {?} e
-         * @return {?}
-         */
-        isPrintEvent(e) {
-            return e.mediaQuery.startsWith(PRINT);
-        }
-        /**
-         * What is the desired mqAlias to use while printing?
-         * @return {?}
-         */
-        get printAlias() {
-            return this.layoutConfig.printWithBreakpoints || [];
-        }
-        /**
-         * Lookup breakpoints associated with print aliases.
-         * @return {?}
-         */
-        get printBreakPoints() {
-            return ( /** @type {?} */(this.printAlias
-                .map(( /**
+        this.isPrinting = false;
+        this.queue = new PrintQueue();
+        this.deactivations = [];
+    }
+    /**
+     * Add 'print' mediaQuery: to listen for matchMedia activations
+     * @param {?} queries
+     * @return {?}
+     */
+    withPrintQuery(queries) {
+        return [...queries, PRINT];
+    }
+    /**
+     * Is the MediaChange event for any 'print' \@media
+     * @param {?} e
+     * @return {?}
+     */
+    isPrintEvent(e) {
+        return e.mediaQuery.startsWith(PRINT);
+    }
+    /**
+     * What is the desired mqAlias to use while printing?
+     * @return {?}
+     */
+    get printAlias() {
+        return this.layoutConfig.printWithBreakpoints || [];
+    }
+    /**
+     * Lookup breakpoints associated with print aliases.
+     * @return {?}
+     */
+    get printBreakPoints() {
+        return (/** @type {?} */ (this.printAlias
+            .map((/**
          * @param {?} alias
          * @return {?}
-         *//**
-         * @param {?} alias
-         * @return {?}
-         */ alias => this.breakpoints.findByAlias(alias)))
-                .filter(( /**
+         */
+        alias => this.breakpoints.findByAlias(alias)))
+            .filter((/**
          * @param {?} bp
-         * @return {?}
-         *//**
-         * @param {?} bp
-         * @return {?}
-         */ bp => bp !== null))));
-        }
-        /**
-         * Lookup breakpoint associated with mediaQuery
-         * @param {?} __0
          * @return {?}
          */
-        getEventBreakpoints({ mediaQuery }) {
-            /** @type {?} */
-            const bp = this.breakpoints.findByQuery(mediaQuery);
-            /** @type {?} */
-            const list = bp ? [...this.printBreakPoints, bp] : this.printBreakPoints;
-            return list.sort(sortDescendingPriority);
+        bp => bp !== null))));
+    }
+    /**
+     * Lookup breakpoint associated with mediaQuery
+     * @param {?} __0
+     * @return {?}
+     */
+    getEventBreakpoints({ mediaQuery }) {
+        /** @type {?} */
+        const bp = this.breakpoints.findByQuery(mediaQuery);
+        /** @type {?} */
+        const list = bp ? [...this.printBreakPoints, bp] : this.printBreakPoints;
+        return list.sort(sortDescendingPriority);
+    }
+    /**
+     * Update event with printAlias mediaQuery information
+     * @param {?} event
+     * @return {?}
+     */
+    updateEvent(event) {
+        /** @type {?} */
+        let bp = this.breakpoints.findByQuery(event.mediaQuery);
+        if (this.isPrintEvent(event)) {
+            // Reset from 'print' to first (highest priority) print breakpoint
+            bp = this.getEventBreakpoints(event)[0];
+            event.mediaQuery = bp ? bp.mediaQuery : '';
         }
-        /**
-         * Update event with printAlias mediaQuery information
+        return mergeAlias(event, bp);
+    }
+    /**
+     * Prepare RxJs filter operator with partial application
+     * @param {?} target
+     * @return {?} pipeable filter predicate
+     */
+    interceptEvents(target) {
+        return (/**
          * @param {?} event
          * @return {?}
          */
-        updateEvent(event) {
-            /** @type {?} */
-            let bp = this.breakpoints.findByQuery(event.mediaQuery);
+        (event) => {
             if (this.isPrintEvent(event)) {
-                // Reset from 'print' to first (highest priority) print breakpoint
-                bp = this.getEventBreakpoints(event)[0];
-                event.mediaQuery = bp ? bp.mediaQuery : '';
+                if (event.matches && !this.isPrinting) {
+                    this.startPrinting(target, this.getEventBreakpoints(event));
+                    target.updateStyles();
+                }
+                else if (!event.matches && this.isPrinting) {
+                    this.stopPrinting(target);
+                    target.updateStyles();
+                }
             }
-            return mergeAlias(event, bp);
-        }
-        /**
-         * Prepare RxJs filter operator with partial application
-         * @param {?} target
-         * @return {?} pipeable filter predicate
-         */
-        interceptEvents(target) {
-            return ( /**
-             * @param {?} event
-             * @return {?}
-             */(event) => {
-                if (this.isPrintEvent(event)) {
-                    if (event.matches && !this.isPrinting) {
-                        this.startPrinting(target, this.getEventBreakpoints(event));
-                        target.updateStyles();
-                    }
-                    else if (!event.matches && this.isPrinting) {
-                        this.stopPrinting(target);
-                        target.updateStyles();
-                    }
-                }
-                else {
-                    this.collectActivations(event);
-                }
-            });
-        }
-        /**
-         * Stop mediaChange event propagation in event streams
-         * @return {?}
-         */
-        blockPropagation() {
-            return ( /**
-             * @param {?} event
-             * @return {?}
-             */(event) => {
-                return !(this.isPrinting || this.isPrintEvent(event));
-            });
-        }
-        /**
-         * Save current activateBreakpoints (for later restore)
-         * and substitute only the printAlias breakpoint
-         * @protected
-         * @param {?} target
-         * @param {?} bpList
-         * @return {?}
-         */
-        startPrinting(target, bpList) {
-            this.isPrinting = true;
-            target.activatedBreakpoints = this.queue.addPrintBreakpoints(bpList);
-        }
-        /**
-         * For any print de-activations, reset the entire print queue
-         * @protected
-         * @param {?} target
-         * @return {?}
-         */
-        stopPrinting(target) {
-            target.activatedBreakpoints = this.deactivations;
-            this.deactivations = [];
-            this.queue.clear();
-            this.isPrinting = false;
-        }
-        /**
-         * To restore pre-Print Activations, we must capture the proper
-         * list of breakpoint activations BEFORE print starts. OnBeforePrint()
-         * is not supported; so 'print' mediaQuery activations must be used.
-         *
-         * >  But activated breakpoints are deactivated BEFORE 'print' activation.
-         *
-         * Let's capture all de-activations using the following logic:
-         *
-         *  When not printing:
-         *    - clear cache when activating non-print breakpoint
-         *    - update cache (and sort) when deactivating
-         *
-         *  When printing:
-         *    - sort and save when starting print
-         *    - restore as activatedTargets and clear when stop printing
+            else {
+                this.collectActivations(event);
+            }
+        });
+    }
+    /**
+     * Stop mediaChange event propagation in event streams
+     * @return {?}
+     */
+    blockPropagation() {
+        return (/**
          * @param {?} event
          * @return {?}
          */
-        collectActivations(event) {
-            if (!this.isPrinting) {
-                if (!event.matches) {
-                    /** @type {?} */
-                    const bp = this.breakpoints.findByQuery(event.mediaQuery);
-                    if (bp) { // Deactivating a breakpoint
-                        this.deactivations.push(bp);
-                        this.deactivations.sort(sortDescendingPriority);
-                    }
+        (event) => {
+            return !(this.isPrinting || this.isPrintEvent(event));
+        });
+    }
+    /**
+     * Save current activateBreakpoints (for later restore)
+     * and substitute only the printAlias breakpoint
+     * @protected
+     * @param {?} target
+     * @param {?} bpList
+     * @return {?}
+     */
+    startPrinting(target, bpList) {
+        this.isPrinting = true;
+        target.activatedBreakpoints = this.queue.addPrintBreakpoints(bpList);
+    }
+    /**
+     * For any print de-activations, reset the entire print queue
+     * @protected
+     * @param {?} target
+     * @return {?}
+     */
+    stopPrinting(target) {
+        target.activatedBreakpoints = this.deactivations;
+        this.deactivations = [];
+        this.queue.clear();
+        this.isPrinting = false;
+    }
+    /**
+     * To restore pre-Print Activations, we must capture the proper
+     * list of breakpoint activations BEFORE print starts. OnBeforePrint()
+     * is not supported; so 'print' mediaQuery activations must be used.
+     *
+     * >  But activated breakpoints are deactivated BEFORE 'print' activation.
+     *
+     * Let's capture all de-activations using the following logic:
+     *
+     *  When not printing:
+     *    - clear cache when activating non-print breakpoint
+     *    - update cache (and sort) when deactivating
+     *
+     *  When printing:
+     *    - sort and save when starting print
+     *    - restore as activatedTargets and clear when stop printing
+     * @param {?} event
+     * @return {?}
+     */
+    collectActivations(event) {
+        if (!this.isPrinting) {
+            if (!event.matches) {
+                /** @type {?} */
+                const bp = this.breakpoints.findByQuery(event.mediaQuery);
+                if (bp) { // Deactivating a breakpoint
+                    this.deactivations.push(bp);
+                    this.deactivations.sort(sortDescendingPriority);
                 }
-                else {
-                    this.deactivations = [];
-                }
+            }
+            else {
+                this.deactivations = [];
             }
         }
     }
-    /** @nocollapse */ PrintHook.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function PrintHook_Factory() { return new PrintHook(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(BreakPointRegistry), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(LAYOUT_CONFIG)); }, token: PrintHook, providedIn: "root" });
-    return PrintHook;
-})();
+}
+PrintHook.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */
+PrintHook.ctorParameters = () => [
+    { type: BreakPointRegistry },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [LAYOUT_CONFIG,] }] }
+];
+/** @nocollapse */ PrintHook.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function PrintHook_Factory() { return new PrintHook(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(BreakPointRegistry), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(LAYOUT_CONFIG)); }, token: PrintHook, providedIn: "root" });
 // ************************************************************************
 // Internal Utility class 'PrintQueue'
 // ************************************************************************
@@ -1751,13 +1847,11 @@ class PrintQueue {
     addPrintBreakpoints(bpList) {
         bpList.push(BREAKPOINT_PRINT);
         bpList.sort(sortDescendingPriority);
-        bpList.forEach(( /**
+        bpList.forEach((/**
          * @param {?} bp
          * @return {?}
-         *//**
-         * @param {?} bp
-         * @return {?}
-         */ bp => this.addBreakpoint(bp)));
+         */
+        bp => this.addBreakpoint(bp)));
         return this.printBreakpoints;
     }
     /**
@@ -1768,13 +1862,11 @@ class PrintQueue {
     addBreakpoint(bp) {
         if (!!bp) {
             /** @type {?} */
-            const bpInList = this.printBreakpoints.find(( /**
+            const bpInList = this.printBreakpoints.find((/**
              * @param {?} it
              * @return {?}
-             *//**
-             * @param {?} it
-             * @return {?}
-             */ it => it.mediaQuery === bp.mediaQuery));
+             */
+            it => it.mediaQuery === bp.mediaQuery));
             if (bpInList === undefined) {
                 // If this is a `printAlias` breakpoint, then append. If a true 'print' breakpoint,
                 // register as highest priority in the queue
@@ -1802,10 +1894,12 @@ class PrintQueue {
 function isPrintBreakPoint(bp) {
     return bp ? bp.mediaQuery.startsWith(PRINT) : false;
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * Wraps the provided value in an array, unless the provided value is an array.
  * @template T
@@ -1815,194 +1909,244 @@ function isPrintBreakPoint(bp) {
 function coerceArray(value) {
     return Array.isArray(value) ? value : [value];
 }
-let MediaObserver = /*@__PURE__*/ (() => {
-    class MediaObserver {
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * MediaObserver enables applications to listen for 1..n mediaQuery activations and to determine
+ * if a mediaQuery is currently activated.
+ *
+ * Since a breakpoint change will first deactivate 1...n mediaQueries and then possibly activate
+ * 1..n mediaQueries, the MediaObserver will debounce notifications and report ALL *activations*
+ * in 1 event notification. The reported activations will be sorted in descending priority order.
+ *
+ * This class uses the BreakPoint Registry to inject alias information into the raw MediaChange
+ * notification. For custom mediaQuery notifications, alias information will not be injected and
+ * those fields will be ''.
+ *
+ * Note: Developers should note that only mediaChange activations (not de-activations)
+ *       are announced by the MediaObserver.
+ *
+ * \@usage
+ *
+ *  // RxJS
+ *  import { filter } from 'rxjs/operators';
+ *  import { MediaObserver } from '\@angular/flex-layout';
+ *
+ * \@Component({ ... })
+ *  export class AppComponent {
+ *    status: string = '';
+ *
+ *    constructor(mediaObserver: MediaObserver) {
+ *      const media$ = mediaObserver.asObservable().pipe(
+ *        filter((changes: MediaChange[]) => true)   // silly noop filter
+ *      );
+ *
+ *      media$.subscribe((changes: MediaChange[]) => {
+ *        let status = '';
+ *        changes.forEach( change => {
+ *          status += `'${change.mqAlias}' = (${change.mediaQuery}) <br/>` ;
+ *        });
+ *        this.status = status;
+ *     });
+ *
+ *    }
+ *  }
+ */
+class MediaObserver {
+    /**
+     * @param {?} breakpoints
+     * @param {?} matchMedia
+     * @param {?} hook
+     */
+    constructor(breakpoints, matchMedia, hook) {
+        this.breakpoints = breakpoints;
+        this.matchMedia = matchMedia;
+        this.hook = hook;
         /**
-         * @param {?} breakpoints
-         * @param {?} matchMedia
-         * @param {?} hook
+         * Filter MediaChange notifications for overlapping breakpoints
          */
-        constructor(breakpoints, matchMedia, hook) {
-            this.breakpoints = breakpoints;
-            this.matchMedia = matchMedia;
-            this.hook = hook;
-            /**
-             * Filter MediaChange notifications for overlapping breakpoints
-             */
-            this.filterOverlaps = false;
-            this.destroyed$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-            this._media$ = this.watchActivations();
-            this.media$ = this._media$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(( /**
-             * @param {?} changes
-             * @return {?}
-             */(changes) => changes.length > 0)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(( /**
-             * @param {?} changes
-             * @return {?}
-             */(changes) => changes[0])));
-        }
-        /**
-         * Completes the active subject, signalling to all complete for all
-         * MediaObserver subscribers
+        this.filterOverlaps = false;
+        this.destroyed$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this._media$ = this.watchActivations();
+        this.media$ = this._media$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])((/**
+         * @param {?} changes
          * @return {?}
          */
-        ngOnDestroy() {
-            this.destroyed$.next();
-            this.destroyed$.complete();
-        }
-        // ************************************************
-        // Public Methods
-        // ************************************************
-        /**
-         * Observe changes to current activation 'list'
+        (changes) => changes.length > 0)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((/**
+         * @param {?} changes
          * @return {?}
          */
-        asObservable() {
-            return this._media$;
-        }
-        /**
-         * Allow programmatic query to determine if one or more media query/alias match
-         * the current viewport size.
-         * @param {?} value One or more media queries (or aliases) to check.
-         * @return {?} Whether any of the media queries match.
+        (changes) => changes[0])));
+    }
+    /**
+     * Completes the active subject, signalling to all complete for all
+     * MediaObserver subscribers
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this.destroyed$.next();
+        this.destroyed$.complete();
+    }
+    // ************************************************
+    // Public Methods
+    // ************************************************
+    /**
+     * Observe changes to current activation 'list'
+     * @return {?}
+     */
+    asObservable() {
+        return this._media$;
+    }
+    /**
+     * Allow programmatic query to determine if one or more media query/alias match
+     * the current viewport size.
+     * @param {?} value One or more media queries (or aliases) to check.
+     * @return {?} Whether any of the media queries match.
+     */
+    isActive(value) {
+        /** @type {?} */
+        const aliases = splitQueries(coerceArray(value));
+        return aliases.some((/**
+         * @param {?} alias
+         * @return {?}
          */
-        isActive(value) {
+        alias => {
             /** @type {?} */
-            const aliases = splitQueries(coerceArray(value));
-            return aliases.some(( /**
-             * @param {?} alias
+            const query = toMediaQuery(alias, this.breakpoints);
+            return this.matchMedia.isActive(query);
+        }));
+    }
+    // ************************************************
+    // Internal Methods
+    // ************************************************
+    /**
+     * Register all the mediaQueries registered in the BreakPointRegistry
+     * This is needed so subscribers can be auto-notified of all standard, registered
+     * mediaQuery activations
+     * @private
+     * @return {?}
+     */
+    watchActivations() {
+        /** @type {?} */
+        const queries = this.breakpoints.items.map((/**
+         * @param {?} bp
+         * @return {?}
+         */
+        bp => bp.mediaQuery));
+        return this.buildObservable(queries);
+    }
+    /**
+     * Only pass/announce activations (not de-activations)
+     *
+     * Since multiple-mediaQueries can be activation in a cycle,
+     * gather all current activations into a single list of changes to observers
+     *
+     * Inject associated (if any) alias information into the MediaChange event
+     * - Exclude mediaQuery activations for overlapping mQs. List bounded mQ ranges only
+     * - Exclude print activations that do not have an associated mediaQuery
+     *
+     * NOTE: the raw MediaChange events [from MatchMedia] do not
+     *       contain important alias information; as such this info
+     *       must be injected into the MediaChange
+     * @private
+     * @param {?} mqList
+     * @return {?}
+     */
+    buildObservable(mqList) {
+        /** @type {?} */
+        const hasChanges = (/**
+         * @param {?} changes
+         * @return {?}
+         */
+        (changes) => {
+            /** @type {?} */
+            const isValidQuery = (/**
+             * @param {?} change
              * @return {?}
-             *//**
-             * @param {?} alias
+             */
+            (change) => (change.mediaQuery.length > 0));
+            return (changes.filter(isValidQuery).length > 0);
+        });
+        /** @type {?} */
+        const excludeOverlaps = (/**
+         * @param {?} changes
+         * @return {?}
+         */
+        (changes) => {
+            return !this.filterOverlaps ? changes : changes.filter((/**
+             * @param {?} change
              * @return {?}
-             */ alias => {
+             */
+            change => {
                 /** @type {?} */
-                const query = toMediaQuery(alias, this.breakpoints);
-                return this.matchMedia.isActive(query);
+                const bp = this.breakpoints.findByQuery(change.mediaQuery);
+                return !bp ? true : !bp.overlapping;
             }));
-        }
-        // ************************************************
-        // Internal Methods
-        // ************************************************
+        });
         /**
-         * Register all the mediaQueries registered in the BreakPointRegistry
-         * This is needed so subscribers can be auto-notified of all standard, registered
-         * mediaQuery activations
-         * @private
-         * @return {?}
          */
-        watchActivations() {
-            /** @type {?} */
-            const queries = this.breakpoints.items.map(( /**
-             * @param {?} bp
-             * @return {?}
-             *//**
-             * @param {?} bp
-             * @return {?}
-             */ bp => bp.mediaQuery));
-            return this.buildObservable(queries);
-        }
-        /**
-         * Only pass/announce activations (not de-activations)
-         *
-         * Since multiple-mediaQueries can be activation in a cycle,
-         * gather all current activations into a single list of changes to observers
-         *
-         * Inject associated (if any) alias information into the MediaChange event
-         * - Exclude mediaQuery activations for overlapping mQs. List bounded mQ ranges only
-         * - Exclude print activations that do not have an associated mediaQuery
-         *
-         * NOTE: the raw MediaChange events [from MatchMedia] do not
-         *       contain important alias information; as such this info
-         *       must be injected into the MediaChange
-         * @private
-         * @param {?} mqList
-         * @return {?}
-         */
-        buildObservable(mqList) {
-            /** @type {?} */
-            const hasChanges = ( /**
-             * @param {?} changes
-             * @return {?}
-             */(changes) => {
-                /** @type {?} */
-                const isValidQuery = ( /**
-                 * @param {?} change
-                 * @return {?}
-                 */(change) => (change.mediaQuery.length > 0));
-                return (changes.filter(isValidQuery).length > 0);
-            });
-            /** @type {?} */
-            const excludeOverlaps = ( /**
-             * @param {?} changes
-             * @return {?}
-             */(changes) => {
-                return !this.filterOverlaps ? changes : changes.filter(( /**
-                 * @param {?} change
-                 * @return {?}
-                 *//**
-                 * @param {?} change
-                 * @return {?}
-                 */ change => {
-                    /** @type {?} */
-                    const bp = this.breakpoints.findByQuery(change.mediaQuery);
-                    return !bp ? true : !bp.overlapping;
-                }));
-            });
-            /**
-             */
-            return this.matchMedia
-                .observe(this.hook.withPrintQuery(mqList))
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(( /**
+        return this.matchMedia
+            .observe(this.hook.withPrintQuery(mqList))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])((/**
          * @param {?} change
          * @return {?}
-         */(change) => change.matches)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(0, rxjs__WEBPACK_IMPORTED_MODULE_2__["asapScheduler"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(( /**
-             * @param {?} _
-             * @return {?}
-             *//**
-             * @param {?} _
-             * @return {?}
-             */ _ => Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.findAllActivations()))), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(excludeOverlaps), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(hasChanges), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.destroyed$));
-        }
-        /**
-         * Find all current activations and prepare single list of activations
-         * sorted by descending priority.
-         * @private
+         */
+        (change) => change.matches)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["debounceTime"])(0, rxjs__WEBPACK_IMPORTED_MODULE_2__["asapScheduler"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])((/**
+         * @param {?} _
          * @return {?}
          */
-        findAllActivations() {
-            /** @type {?} */
-            const mergeMQAlias = ( /**
-             * @param {?} change
-             * @return {?}
-             */(change) => {
-                /** @type {?} */
-                let bp = this.breakpoints.findByQuery(change.mediaQuery);
-                return mergeAlias(change, bp);
-            });
-            /** @type {?} */
-            const replaceWithPrintAlias = ( /**
-             * @param {?} change
-             * @return {?}
-             */(change) => {
-                return this.hook.isPrintEvent(change) ? this.hook.updateEvent(change) : change;
-            });
-            return this.matchMedia
-                .activations
-                .map(( /**
-         * @param {?} query
-         * @return {?}
-         *//**
-         * @param {?} query
-         * @return {?}
-         */ query => new MediaChange(true, query)))
-                .map(replaceWithPrintAlias)
-                .map(mergeMQAlias)
-                .sort(sortDescendingPriority);
-        }
+        _ => Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.findAllActivations()))), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(excludeOverlaps), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(hasChanges), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.destroyed$));
     }
-    /** @nocollapse */ MediaObserver.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function MediaObserver_Factory() { return new MediaObserver(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(BreakPointRegistry), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(MatchMedia), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(PrintHook)); }, token: MediaObserver, providedIn: "root" });
-    return MediaObserver;
-})();
+    /**
+     * Find all current activations and prepare single list of activations
+     * sorted by descending priority.
+     * @private
+     * @return {?}
+     */
+    findAllActivations() {
+        /** @type {?} */
+        const mergeMQAlias = (/**
+         * @param {?} change
+         * @return {?}
+         */
+        (change) => {
+            /** @type {?} */
+            let bp = this.breakpoints.findByQuery(change.mediaQuery);
+            return mergeAlias(change, bp);
+        });
+        /** @type {?} */
+        const replaceWithPrintAlias = (/**
+         * @param {?} change
+         * @return {?}
+         */
+        (change) => {
+            return this.hook.isPrintEvent(change) ? this.hook.updateEvent(change) : change;
+        });
+        return this.matchMedia
+            .activations
+            .map((/**
+         * @param {?} query
+         * @return {?}
+         */
+        query => new MediaChange(true, query)))
+            .map(replaceWithPrintAlias)
+            .map(mergeMQAlias)
+            .sort(sortDescendingPriority);
+    }
+}
+MediaObserver.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */
+MediaObserver.ctorParameters = () => [
+    { type: BreakPointRegistry },
+    { type: MatchMedia },
+    { type: PrintHook }
+];
+/** @nocollapse */ MediaObserver.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function MediaObserver_Factory() { return new MediaObserver(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(BreakPointRegistry), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(MatchMedia), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(PrintHook)); }, token: MediaObserver, providedIn: "root" });
 /**
  * Find associated breakpoint (if any)
  * @param {?} query
@@ -2021,279 +2165,307 @@ function toMediaQuery(query, locator) {
  * @return {?}
  */
 function splitQueries(queries) {
-    return queries.map(( /**
+    return queries.map((/**
      * @param {?} query
      * @return {?}
-     */(query) => query.split(',')))
-        .reduce(( /**
- * @param {?} a1
- * @param {?} a2
- * @return {?}
- */(a1, a2) => a1.concat(a2)))
-        .map(( /**
- * @param {?} query
- * @return {?}
- *//**
- * @param {?} query
- * @return {?}
- */ query => query.trim()));
+     */
+    (query) => query.split(',')))
+        .reduce((/**
+     * @param {?} a1
+     * @param {?} a2
+     * @return {?}
+     */
+    (a1, a2) => a1.concat(a2)))
+        .map((/**
+     * @param {?} query
+     * @return {?}
+     */
+    query => query.trim()));
 }
-let MediaTrigger = /*@__PURE__*/ (() => {
-    class MediaTrigger {
-        /**
-         * @param {?} breakpoints
-         * @param {?} matchMedia
-         * @param {?} layoutConfig
-         * @param {?} _platformId
-         * @param {?} _document
-         */
-        constructor(breakpoints, matchMedia, layoutConfig, _platformId, _document) {
-            this.breakpoints = breakpoints;
-            this.matchMedia = matchMedia;
-            this.layoutConfig = layoutConfig;
-            this._platformId = _platformId;
-            this._document = _document;
-            this.hasCachedRegistryMatches = false;
-            this.originalActivations = [];
-            this.originalRegistry = new Map();
-        }
-        /**
-         * Manually activate range of breakpoints
-         * @param {?} list array of mediaQuery or alias strings
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Class
+ */
+class MediaTrigger {
+    /**
+     * @param {?} breakpoints
+     * @param {?} matchMedia
+     * @param {?} layoutConfig
+     * @param {?} _platformId
+     * @param {?} _document
+     */
+    constructor(breakpoints, matchMedia, layoutConfig, _platformId, _document) {
+        this.breakpoints = breakpoints;
+        this.matchMedia = matchMedia;
+        this.layoutConfig = layoutConfig;
+        this._platformId = _platformId;
+        this._document = _document;
+        this.hasCachedRegistryMatches = false;
+        this.originalActivations = [];
+        this.originalRegistry = new Map();
+    }
+    /**
+     * Manually activate range of breakpoints
+     * @param {?} list array of mediaQuery or alias strings
+     * @return {?}
+     */
+    activate(list) {
+        list = list.map((/**
+         * @param {?} it
          * @return {?}
          */
-        activate(list) {
-            list = list.map(( /**
-             * @param {?} it
+        it => it.trim())); // trim queries
+        this.saveActivations();
+        this.deactivateAll();
+        this.setActivations(list);
+        this.prepareAutoRestore();
+    }
+    /**
+     * Restore original, 'real' breakpoints and emit events
+     * to trigger stream notification
+     * @return {?}
+     */
+    restore() {
+        if (this.hasCachedRegistryMatches) {
+            /** @type {?} */
+            const extractQuery = (/**
+             * @param {?} change
              * @return {?}
-             *//**
-             * @param {?} it
-             * @return {?}
-             */ it => it.trim())); // trim queries
-            this.saveActivations();
-            this.deactivateAll();
-            this.setActivations(list);
-            this.prepareAutoRestore();
-        }
-        /**
-         * Restore original, 'real' breakpoints and emit events
-         * to trigger stream notification
-         * @return {?}
-         */
-        restore() {
-            if (this.hasCachedRegistryMatches) {
-                /** @type {?} */
-                const extractQuery = ( /**
-                 * @param {?} change
-                 * @return {?}
-                 */(change) => change.mediaQuery);
-                /** @type {?} */
-                const list = this.originalActivations.map(extractQuery);
-                try {
-                    this.deactivateAll();
-                    this.restoreRegistryMatches();
-                    this.setActivations(list);
-                }
-                finally {
-                    this.originalActivations = [];
-                    if (this.resizeSubscription) {
-                        this.resizeSubscription.unsubscribe();
-                    }
+             */
+            (change) => change.mediaQuery);
+            /** @type {?} */
+            const list = this.originalActivations.map(extractQuery);
+            try {
+                this.deactivateAll();
+                this.restoreRegistryMatches();
+                this.setActivations(list);
+            }
+            finally {
+                this.originalActivations = [];
+                if (this.resizeSubscription) {
+                    this.resizeSubscription.unsubscribe();
                 }
             }
         }
-        // ************************************************
-        // Internal Methods
-        // ************************************************
-        /**
-         * Whenever window resizes, immediately auto-restore original
-         * activations (if we are simulating activations)
-         * @private
-         * @return {?}
-         */
-        prepareAutoRestore() {
+    }
+    // ************************************************
+    // Internal Methods
+    // ************************************************
+    /**
+     * Whenever window resizes, immediately auto-restore original
+     * activations (if we are simulating activations)
+     * @private
+     * @return {?}
+     */
+    prepareAutoRestore() {
+        /** @type {?} */
+        const isBrowser = Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId) && this._document;
+        /** @type {?} */
+        const enableAutoRestore = isBrowser && this.layoutConfig.mediaTriggerAutoRestore;
+        if (enableAutoRestore) {
             /** @type {?} */
-            const isBrowser = Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId) && this._document;
+            const resize$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["fromEvent"])(window, 'resize').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1));
+            this.resizeSubscription = resize$.subscribe(this.restore.bind(this));
+        }
+    }
+    /**
+     * Notify all matchMedia subscribers of de-activations
+     *
+     * Note: we must force 'matches' updates for
+     *       future matchMedia::activation lookups
+     * @private
+     * @return {?}
+     */
+    deactivateAll() {
+        /** @type {?} */
+        const list = this.currentActivations;
+        this.forceRegistryMatches(list, false);
+        this.simulateMediaChanges(list, false);
+    }
+    /**
+     * Cache current activations as sorted, prioritized list of MediaChanges
+     * @private
+     * @return {?}
+     */
+    saveActivations() {
+        if (!this.hasCachedRegistryMatches) {
             /** @type {?} */
-            const enableAutoRestore = isBrowser && this.layoutConfig.mediaTriggerAutoRestore;
-            if (enableAutoRestore) {
-                /** @type {?} */
-                const resize$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["fromEvent"])(window, 'resize').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["take"])(1));
-                this.resizeSubscription = resize$.subscribe(this.restore.bind(this));
-            }
-        }
-        /**
-         * Notify all matchMedia subscribers of de-activations
-         *
-         * Note: we must force 'matches' updates for
-         *       future matchMedia::activation lookups
-         * @private
-         * @return {?}
-         */
-        deactivateAll() {
-            /** @type {?} */
-            const list = this.currentActivations;
-            this.forceRegistryMatches(list, false);
-            this.simulateMediaChanges(list, false);
-        }
-        /**
-         * Cache current activations as sorted, prioritized list of MediaChanges
-         * @private
-         * @return {?}
-         */
-        saveActivations() {
-            if (!this.hasCachedRegistryMatches) {
-                /** @type {?} */
-                const toMediaChange = ( /**
-                 * @param {?} query
-                 * @return {?}
-                 */(query) => new MediaChange(true, query));
-                /** @type {?} */
-                const mergeMQAlias = ( /**
-                 * @param {?} change
-                 * @return {?}
-                 */(change) => {
-                    /** @type {?} */
-                    const bp = this.breakpoints.findByQuery(change.mediaQuery);
-                    return mergeAlias(change, bp);
-                });
-                this.originalActivations = this.currentActivations
-                    .map(toMediaChange)
-                    .map(mergeMQAlias)
-                    .sort(sortDescendingPriority);
-                this.cacheRegistryMatches();
-            }
-        }
-        /**
-         * Force set manual activations for specified mediaQuery list
-         * @private
-         * @param {?} list
-         * @return {?}
-         */
-        setActivations(list) {
-            if (!!this.originalRegistry) {
-                this.forceRegistryMatches(list, true);
-            }
-            this.simulateMediaChanges(list);
-        }
-        /**
-         * For specified mediaQuery list manually simulate activations or deactivations
-         * @private
-         * @param {?} queries
-         * @param {?=} matches
-         * @return {?}
-         */
-        simulateMediaChanges(queries, matches = true) {
-            /** @type {?} */
-            const toMediaQuery = ( /**
+            const toMediaChange = (/**
              * @param {?} query
              * @return {?}
-             */(query) => {
+             */
+            (query) => new MediaChange(true, query));
+            /** @type {?} */
+            const mergeMQAlias = (/**
+             * @param {?} change
+             * @return {?}
+             */
+            (change) => {
                 /** @type {?} */
-                const locator = this.breakpoints;
-                /** @type {?} */
-                const bp = locator.findByAlias(query) || locator.findByQuery(query);
-                return bp ? bp.mediaQuery : query;
+                const bp = this.breakpoints.findByQuery(change.mediaQuery);
+                return mergeAlias(change, bp);
             });
-            /** @type {?} */
-            const emitChangeEvent = ( /**
-             * @param {?} query
-             * @return {?}
-             */(query) => this.emitChangeEvent(matches, query));
-            queries.map(toMediaQuery).forEach(emitChangeEvent);
+            this.originalActivations = this.currentActivations
+                .map(toMediaChange)
+                .map(mergeMQAlias)
+                .sort(sortDescendingPriority);
+            this.cacheRegistryMatches();
         }
-        /**
-         * Replace current registry with simulated registry...
-         * Note: this is required since MediaQueryList::matches is 'readOnly'
-         * @private
-         * @param {?} queries
-         * @param {?} matches
-         * @return {?}
-         */
-        forceRegistryMatches(queries, matches) {
-            /** @type {?} */
-            const registry = new Map();
-            queries.forEach(( /**
-             * @param {?} query
-             * @return {?}
-             *//**
-             * @param {?} query
-             * @return {?}
-             */ query => {
-                registry.set(query, ( /** @type {?} */({ matches: matches })));
-            }));
-            this.matchMedia.registry = registry;
+    }
+    /**
+     * Force set manual activations for specified mediaQuery list
+     * @private
+     * @param {?} list
+     * @return {?}
+     */
+    setActivations(list) {
+        if (!!this.originalRegistry) {
+            this.forceRegistryMatches(list, true);
         }
-        /**
-         * Save current MatchMedia::registry items.
-         * @private
-         * @return {?}
-         */
-        cacheRegistryMatches() {
-            /** @type {?} */
-            const target = this.originalRegistry;
-            target.clear();
-            this.matchMedia.registry.forEach(( /**
-             * @param {?} value
-             * @param {?} key
-             * @return {?}
-             */(value, key) => {
-                target.set(key, value);
-            }));
-            this.hasCachedRegistryMatches = true;
-        }
-        /**
-         * Restore original, 'true' registry
-         * @private
-         * @return {?}
-         */
-        restoreRegistryMatches() {
-            /** @type {?} */
-            const target = this.matchMedia.registry;
-            target.clear();
-            this.originalRegistry.forEach(( /**
-             * @param {?} value
-             * @param {?} key
-             * @return {?}
-             */(value, key) => {
-                target.set(key, value);
-            }));
-            this.originalRegistry.clear();
-            this.hasCachedRegistryMatches = false;
-        }
-        /**
-         * Manually emit a MediaChange event via the MatchMedia to MediaMarshaller and MediaObserver
-         * @private
-         * @param {?} matches
+        this.simulateMediaChanges(list);
+    }
+    /**
+     * For specified mediaQuery list manually simulate activations or deactivations
+     * @private
+     * @param {?} queries
+     * @param {?=} matches
+     * @return {?}
+     */
+    simulateMediaChanges(queries, matches = true) {
+        /** @type {?} */
+        const toMediaQuery = (/**
          * @param {?} query
          * @return {?}
          */
-        emitChangeEvent(matches, query) {
-            this.matchMedia.source.next(new MediaChange(matches, query));
-        }
-        /**
-         * @private
+        (query) => {
+            /** @type {?} */
+            const locator = this.breakpoints;
+            /** @type {?} */
+            const bp = locator.findByAlias(query) || locator.findByQuery(query);
+            return bp ? bp.mediaQuery : query;
+        });
+        /** @type {?} */
+        const emitChangeEvent = (/**
+         * @param {?} query
          * @return {?}
          */
-        get currentActivations() {
-            return this.matchMedia.activations;
-        }
+        (query) => this.emitChangeEvent(matches, query));
+        queries.map(toMediaQuery).forEach(emitChangeEvent);
     }
-    /** @nocollapse */ MediaTrigger.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function MediaTrigger_Factory() { return new MediaTrigger(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(BreakPointRegistry), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(MatchMedia), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(LAYOUT_CONFIG), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"])); }, token: MediaTrigger, providedIn: "root" });
-    return MediaTrigger;
-})();
+    /**
+     * Replace current registry with simulated registry...
+     * Note: this is required since MediaQueryList::matches is 'readOnly'
+     * @private
+     * @param {?} queries
+     * @param {?} matches
+     * @return {?}
+     */
+    forceRegistryMatches(queries, matches) {
+        /** @type {?} */
+        const registry = new Map();
+        queries.forEach((/**
+         * @param {?} query
+         * @return {?}
+         */
+        query => {
+            registry.set(query, (/** @type {?} */ ({ matches: matches })));
+        }));
+        this.matchMedia.registry = registry;
+    }
+    /**
+     * Save current MatchMedia::registry items.
+     * @private
+     * @return {?}
+     */
+    cacheRegistryMatches() {
+        /** @type {?} */
+        const target = this.originalRegistry;
+        target.clear();
+        this.matchMedia.registry.forEach((/**
+         * @param {?} value
+         * @param {?} key
+         * @return {?}
+         */
+        (value, key) => {
+            target.set(key, value);
+        }));
+        this.hasCachedRegistryMatches = true;
+    }
+    /**
+     * Restore original, 'true' registry
+     * @private
+     * @return {?}
+     */
+    restoreRegistryMatches() {
+        /** @type {?} */
+        const target = this.matchMedia.registry;
+        target.clear();
+        this.originalRegistry.forEach((/**
+         * @param {?} value
+         * @param {?} key
+         * @return {?}
+         */
+        (value, key) => {
+            target.set(key, value);
+        }));
+        this.originalRegistry.clear();
+        this.hasCachedRegistryMatches = false;
+    }
+    /**
+     * Manually emit a MediaChange event via the MatchMedia to MediaMarshaller and MediaObserver
+     * @private
+     * @param {?} matches
+     * @param {?} query
+     * @return {?}
+     */
+    emitChangeEvent(matches, query) {
+        this.matchMedia.source.next(new MediaChange(matches, query));
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    get currentActivations() {
+        return this.matchMedia.activations;
+    }
+}
+MediaTrigger.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */
+MediaTrigger.ctorParameters = () => [
+    { type: BreakPointRegistry },
+    { type: MatchMedia },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [LAYOUT_CONFIG,] }] },
+    { type: Object, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"],] }] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"],] }] }
+];
+/** @nocollapse */ MediaTrigger.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function MediaTrigger_Factory() { return new MediaTrigger(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(BreakPointRegistry), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(MatchMedia), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(LAYOUT_CONFIG), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"])); }, token: MediaTrigger, providedIn: "root" });
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * Applies CSS prefixes to appropriate style keys.
  *
@@ -2354,234 +2526,243 @@ function applyCssPrefixes(target) {
     }
     return target;
 }
-let StyleUtils = /*@__PURE__*/ (() => {
-    class StyleUtils {
-        /**
-         * @param {?} _serverStylesheet
-         * @param {?} _serverModuleLoaded
-         * @param {?} _platformId
-         * @param {?} layoutConfig
-         */
-        constructor(_serverStylesheet, _serverModuleLoaded, _platformId, layoutConfig) {
-            this._serverStylesheet = _serverStylesheet;
-            this._serverModuleLoaded = _serverModuleLoaded;
-            this._platformId = _platformId;
-            this.layoutConfig = layoutConfig;
-        }
-        /**
-         * Applies styles given via string pair or object map to the directive element
-         * @param {?} element
-         * @param {?} style
-         * @param {?=} value
-         * @return {?}
-         */
-        applyStyleToElement(element, style, value = null) {
-            /** @type {?} */
-            let styles = {};
-            if (typeof style === 'string') {
-                styles[style] = value;
-                style = styles;
-            }
-            styles = this.layoutConfig.disableVendorPrefixes ? style : applyCssPrefixes(style);
-            this._applyMultiValueStyleToElement(styles, element);
-        }
-        /**
-         * Applies styles given via string pair or object map to the directive's element
-         * @param {?} style
-         * @param {?=} elements
-         * @return {?}
-         */
-        applyStyleToElements(style, elements = []) {
-            /** @type {?} */
-            const styles = this.layoutConfig.disableVendorPrefixes ? style : applyCssPrefixes(style);
-            elements.forEach(( /**
-             * @param {?} el
-             * @return {?}
-             *//**
-             * @param {?} el
-             * @return {?}
-             */ el => {
-                this._applyMultiValueStyleToElement(styles, el);
-            }));
-        }
-        /**
-         * Determine the DOM element's Flexbox flow (flex-direction)
-         *
-         * Check inline style first then check computed (stylesheet) style
-         * @param {?} target
-         * @return {?}
-         */
-        getFlowDirection(target) {
-            /** @type {?} */
-            const query = 'flex-direction';
-            /** @type {?} */
-            let value = this.lookupStyle(target, query);
-            /** @type {?} */
-            const hasInlineValue = this.lookupInlineStyle(target, query) ||
-                (Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformServer"])(this._platformId) && this._serverModuleLoaded) ? value : '';
-            return [value || 'row', hasInlineValue];
-        }
-        /**
-         * Find the DOM element's raw attribute value (if any)
-         * @param {?} element
-         * @param {?} attribute
-         * @return {?}
-         */
-        lookupAttributeValue(element, attribute) {
-            return element.getAttribute(attribute) || '';
-        }
-        /**
-         * Find the DOM element's inline style value (if any)
-         * @param {?} element
-         * @param {?} styleName
-         * @return {?}
-         */
-        lookupInlineStyle(element, styleName) {
-            return Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId) ?
-                element.style.getPropertyValue(styleName) : this._getServerStyle(element, styleName);
-        }
-        /**
-         * Determine the inline or inherited CSS style
-         * NOTE: platform-server has no implementation for getComputedStyle
-         * @param {?} element
-         * @param {?} styleName
-         * @param {?=} inlineOnly
-         * @return {?}
-         */
-        lookupStyle(element, styleName, inlineOnly = false) {
-            /** @type {?} */
-            let value = '';
-            if (element) {
-                /** @type {?} */
-                let immediateValue = value = this.lookupInlineStyle(element, styleName);
-                if (!immediateValue) {
-                    if (Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId)) {
-                        if (!inlineOnly) {
-                            value = getComputedStyle(element).getPropertyValue(styleName);
-                        }
-                    }
-                    else {
-                        if (this._serverModuleLoaded) {
-                            value = this._serverStylesheet.getStyleForElement(element, styleName);
-                        }
-                    }
-                }
-            }
-            // Note: 'inline' is the default of all elements, unless UA stylesheet overrides;
-            //       in which case getComputedStyle() should determine a valid value.
-            return value ? value.trim() : '';
-        }
-        /**
-         * Applies the styles to the element. The styles object map may contain an array of values
-         * Each value will be added as element style
-         * Keys are sorted to add prefixed styles (like -webkit-x) first, before the standard ones
-         * @private
-         * @param {?} styles
-         * @param {?} element
-         * @return {?}
-         */
-        _applyMultiValueStyleToElement(styles, element) {
-            Object.keys(styles).sort().forEach(( /**
-             * @param {?} key
-             * @return {?}
-             *//**
-             * @param {?} key
-             * @return {?}
-             */ key => {
-                /** @type {?} */
-                const el = styles[key];
-                /** @type {?} */
-                const values = Array.isArray(el) ? el : [el];
-                values.sort();
-                for (let value of values) {
-                    value = value ? value + '' : '';
-                    if (Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId) || !this._serverModuleLoaded) {
-                        Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId) ?
-                            element.style.setProperty(key, value) : this._setServerStyle(element, key, value);
-                    }
-                    else {
-                        this._serverStylesheet.addStyleToElement(element, key, value);
-                    }
-                }
-            }));
-        }
-        /**
-         * @private
-         * @param {?} element
-         * @param {?} styleName
-         * @param {?=} styleValue
-         * @return {?}
-         */
-        _setServerStyle(element, styleName, styleValue) {
-            styleName = styleName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-            /** @type {?} */
-            const styleMap = this._readStyleAttribute(element);
-            styleMap[styleName] = styleValue || '';
-            this._writeStyleAttribute(element, styleMap);
-        }
-        /**
-         * @private
-         * @param {?} element
-         * @param {?} styleName
-         * @return {?}
-         */
-        _getServerStyle(element, styleName) {
-            /** @type {?} */
-            const styleMap = this._readStyleAttribute(element);
-            return styleMap[styleName] || '';
-        }
-        /**
-         * @private
-         * @param {?} element
-         * @return {?}
-         */
-        _readStyleAttribute(element) {
-            /** @type {?} */
-            const styleMap = {};
-            /** @type {?} */
-            const styleAttribute = element.getAttribute('style');
-            if (styleAttribute) {
-                /** @type {?} */
-                const styleList = styleAttribute.split(/;+/g);
-                for (let i = 0; i < styleList.length; i++) {
-                    /** @type {?} */
-                    const style = styleList[i].trim();
-                    if (style.length > 0) {
-                        /** @type {?} */
-                        const colonIndex = style.indexOf(':');
-                        if (colonIndex === -1) {
-                            throw new Error(`Invalid CSS style: ${style}`);
-                        }
-                        /** @type {?} */
-                        const name = style.substr(0, colonIndex).trim();
-                        styleMap[name] = style.substr(colonIndex + 1).trim();
-                    }
-                }
-            }
-            return styleMap;
-        }
-        /**
-         * @private
-         * @param {?} element
-         * @param {?} styleMap
-         * @return {?}
-         */
-        _writeStyleAttribute(element, styleMap) {
-            /** @type {?} */
-            let styleAttrValue = '';
-            for (const key in styleMap) {
-                /** @type {?} */
-                const newValue = styleMap[key];
-                if (newValue) {
-                    styleAttrValue += key + ':' + styleMap[key] + ';';
-                }
-            }
-            element.setAttribute('style', styleAttrValue);
-        }
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class StyleUtils {
+    /**
+     * @param {?} _serverStylesheet
+     * @param {?} _serverModuleLoaded
+     * @param {?} _platformId
+     * @param {?} layoutConfig
+     */
+    constructor(_serverStylesheet, _serverModuleLoaded, _platformId, layoutConfig) {
+        this._serverStylesheet = _serverStylesheet;
+        this._serverModuleLoaded = _serverModuleLoaded;
+        this._platformId = _platformId;
+        this.layoutConfig = layoutConfig;
     }
-    /** @nocollapse */ StyleUtils.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function StyleUtils_Factory() { return new StyleUtils(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(StylesheetMap, 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(SERVER_TOKEN, 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(LAYOUT_CONFIG)); }, token: StyleUtils, providedIn: "root" });
-    return StyleUtils;
-})();
+    /**
+     * Applies styles given via string pair or object map to the directive element
+     * @param {?} element
+     * @param {?} style
+     * @param {?=} value
+     * @return {?}
+     */
+    applyStyleToElement(element, style, value = null) {
+        /** @type {?} */
+        let styles = {};
+        if (typeof style === 'string') {
+            styles[style] = value;
+            style = styles;
+        }
+        styles = this.layoutConfig.disableVendorPrefixes ? style : applyCssPrefixes(style);
+        this._applyMultiValueStyleToElement(styles, element);
+    }
+    /**
+     * Applies styles given via string pair or object map to the directive's element
+     * @param {?} style
+     * @param {?=} elements
+     * @return {?}
+     */
+    applyStyleToElements(style, elements = []) {
+        /** @type {?} */
+        const styles = this.layoutConfig.disableVendorPrefixes ? style : applyCssPrefixes(style);
+        elements.forEach((/**
+         * @param {?} el
+         * @return {?}
+         */
+        el => {
+            this._applyMultiValueStyleToElement(styles, el);
+        }));
+    }
+    /**
+     * Determine the DOM element's Flexbox flow (flex-direction)
+     *
+     * Check inline style first then check computed (stylesheet) style
+     * @param {?} target
+     * @return {?}
+     */
+    getFlowDirection(target) {
+        /** @type {?} */
+        const query = 'flex-direction';
+        /** @type {?} */
+        let value = this.lookupStyle(target, query);
+        /** @type {?} */
+        const hasInlineValue = this.lookupInlineStyle(target, query) ||
+            (Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformServer"])(this._platformId) && this._serverModuleLoaded) ? value : '';
+        return [value || 'row', hasInlineValue];
+    }
+    /**
+     * Find the DOM element's raw attribute value (if any)
+     * @param {?} element
+     * @param {?} attribute
+     * @return {?}
+     */
+    lookupAttributeValue(element, attribute) {
+        return element.getAttribute(attribute) || '';
+    }
+    /**
+     * Find the DOM element's inline style value (if any)
+     * @param {?} element
+     * @param {?} styleName
+     * @return {?}
+     */
+    lookupInlineStyle(element, styleName) {
+        return Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId) ?
+            element.style.getPropertyValue(styleName) : this._getServerStyle(element, styleName);
+    }
+    /**
+     * Determine the inline or inherited CSS style
+     * NOTE: platform-server has no implementation for getComputedStyle
+     * @param {?} element
+     * @param {?} styleName
+     * @param {?=} inlineOnly
+     * @return {?}
+     */
+    lookupStyle(element, styleName, inlineOnly = false) {
+        /** @type {?} */
+        let value = '';
+        if (element) {
+            /** @type {?} */
+            let immediateValue = value = this.lookupInlineStyle(element, styleName);
+            if (!immediateValue) {
+                if (Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId)) {
+                    if (!inlineOnly) {
+                        value = getComputedStyle(element).getPropertyValue(styleName);
+                    }
+                }
+                else {
+                    if (this._serverModuleLoaded) {
+                        value = this._serverStylesheet.getStyleForElement(element, styleName);
+                    }
+                }
+            }
+        }
+        // Note: 'inline' is the default of all elements, unless UA stylesheet overrides;
+        //       in which case getComputedStyle() should determine a valid value.
+        return value ? value.trim() : '';
+    }
+    /**
+     * Applies the styles to the element. The styles object map may contain an array of values
+     * Each value will be added as element style
+     * Keys are sorted to add prefixed styles (like -webkit-x) first, before the standard ones
+     * @private
+     * @param {?} styles
+     * @param {?} element
+     * @return {?}
+     */
+    _applyMultiValueStyleToElement(styles, element) {
+        Object.keys(styles).sort().forEach((/**
+         * @param {?} key
+         * @return {?}
+         */
+        key => {
+            /** @type {?} */
+            const el = styles[key];
+            /** @type {?} */
+            const values = Array.isArray(el) ? el : [el];
+            values.sort();
+            for (let value of values) {
+                value = value ? value + '' : '';
+                if (Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId) || !this._serverModuleLoaded) {
+                    Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformBrowser"])(this._platformId) ?
+                        element.style.setProperty(key, value) : this._setServerStyle(element, key, value);
+                }
+                else {
+                    this._serverStylesheet.addStyleToElement(element, key, value);
+                }
+            }
+        }));
+    }
+    /**
+     * @private
+     * @param {?} element
+     * @param {?} styleName
+     * @param {?=} styleValue
+     * @return {?}
+     */
+    _setServerStyle(element, styleName, styleValue) {
+        styleName = styleName.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+        /** @type {?} */
+        const styleMap = this._readStyleAttribute(element);
+        styleMap[styleName] = styleValue || '';
+        this._writeStyleAttribute(element, styleMap);
+    }
+    /**
+     * @private
+     * @param {?} element
+     * @param {?} styleName
+     * @return {?}
+     */
+    _getServerStyle(element, styleName) {
+        /** @type {?} */
+        const styleMap = this._readStyleAttribute(element);
+        return styleMap[styleName] || '';
+    }
+    /**
+     * @private
+     * @param {?} element
+     * @return {?}
+     */
+    _readStyleAttribute(element) {
+        /** @type {?} */
+        const styleMap = {};
+        /** @type {?} */
+        const styleAttribute = element.getAttribute('style');
+        if (styleAttribute) {
+            /** @type {?} */
+            const styleList = styleAttribute.split(/;+/g);
+            for (let i = 0; i < styleList.length; i++) {
+                /** @type {?} */
+                const style = styleList[i].trim();
+                if (style.length > 0) {
+                    /** @type {?} */
+                    const colonIndex = style.indexOf(':');
+                    if (colonIndex === -1) {
+                        throw new Error(`Invalid CSS style: ${style}`);
+                    }
+                    /** @type {?} */
+                    const name = style.substr(0, colonIndex).trim();
+                    styleMap[name] = style.substr(colonIndex + 1).trim();
+                }
+            }
+        }
+        return styleMap;
+    }
+    /**
+     * @private
+     * @param {?} element
+     * @param {?} styleMap
+     * @return {?}
+     */
+    _writeStyleAttribute(element, styleMap) {
+        /** @type {?} */
+        let styleAttrValue = '';
+        for (const key in styleMap) {
+            /** @type {?} */
+            const newValue = styleMap[key];
+            if (newValue) {
+                styleAttrValue += key + ':' + styleMap[key] + ';';
+            }
+        }
+        element.setAttribute('style', styleAttrValue);
+    }
+}
+StyleUtils.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */
+StyleUtils.ctorParameters = () => [
+    { type: StylesheetMap, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: Boolean, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [SERVER_TOKEN,] }] },
+    { type: Object, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"],] }] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [LAYOUT_CONFIG,] }] }
+];
+/** @nocollapse */ StyleUtils.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function StyleUtils_Factory() { return new StyleUtils(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(StylesheetMap, 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(SERVER_TOKEN, 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(LAYOUT_CONFIG)); }, token: StyleUtils, providedIn: "root" });
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -2609,10 +2790,12 @@ class StyleBuilder {
     sideEffect(_input, _styles, _parent) {
     }
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * The flex API permits 3 or 1 parts of the value:
  *    - `flex-grow flex-shrink flex-basis`, or
@@ -2663,396 +2846,408 @@ function validateBasis(basis, grow = '1', shrink = '1') {
 function _validateCalcValue(calc) {
     return calc.replace(/[\s]/g, '').replace(/[\/\*\+\-]/g, ' $& ');
 }
-let MediaMarshaller = /*@__PURE__*/ (() => {
-    class MediaMarshaller {
-        /**
-         * @param {?} matchMedia
-         * @param {?} breakpoints
-         * @param {?} hook
-         */
-        constructor(matchMedia, breakpoints, hook) {
-            this.matchMedia = matchMedia;
-            this.breakpoints = breakpoints;
-            this.hook = hook;
-            this.activatedBreakpoints = [];
-            this.elementMap = new Map();
-            this.elementKeyMap = new WeakMap();
-            this.watcherMap = new WeakMap(); // special triggers to update elements
-            // special triggers to update elements
-            this.updateMap = new WeakMap(); // callback functions to update styles
-            // callback functions to update styles
-            this.clearMap = new WeakMap(); // callback functions to clear styles
-            // callback functions to clear styles
-            this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-            this.observeActivations();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * MediaMarshaller - register responsive values from directives and
+ *                   trigger them based on media query events
+ */
+class MediaMarshaller {
+    /**
+     * @param {?} matchMedia
+     * @param {?} breakpoints
+     * @param {?} hook
+     */
+    constructor(matchMedia, breakpoints, hook) {
+        this.matchMedia = matchMedia;
+        this.breakpoints = breakpoints;
+        this.hook = hook;
+        this.activatedBreakpoints = [];
+        this.elementMap = new Map();
+        this.elementKeyMap = new WeakMap();
+        this.watcherMap = new WeakMap(); // special triggers to update elements
+        // special triggers to update elements
+        this.updateMap = new WeakMap(); // callback functions to update styles
+        // callback functions to update styles
+        this.clearMap = new WeakMap(); // callback functions to clear styles
+        // callback functions to clear styles
+        this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.observeActivations();
+    }
+    /**
+     * @return {?}
+     */
+    get activatedAlias() {
+        return this.activatedBreakpoints[0] ? this.activatedBreakpoints[0].alias : '';
+    }
+    /**
+     * Update styles on breakpoint activates or deactivates
+     * @param {?} mc
+     * @return {?}
+     */
+    onMediaChange(mc) {
+        /** @type {?} */
+        const bp = this.findByQuery(mc.mediaQuery);
+        if (bp) {
+            mc = mergeAlias(mc, bp);
+            if (mc.matches && this.activatedBreakpoints.indexOf(bp) === -1) {
+                this.activatedBreakpoints.push(bp);
+                this.activatedBreakpoints.sort(sortDescendingPriority);
+                this.updateStyles();
+            }
+            else if (!mc.matches && this.activatedBreakpoints.indexOf(bp) !== -1) {
+                // Remove the breakpoint when it's deactivated
+                this.activatedBreakpoints.splice(this.activatedBreakpoints.indexOf(bp), 1);
+                this.activatedBreakpoints.sort(sortDescendingPriority);
+                this.updateStyles();
+            }
         }
-        /**
-         * @return {?}
-         */
-        get activatedAlias() {
-            return this.activatedBreakpoints[0] ? this.activatedBreakpoints[0].alias : '';
-        }
-        /**
-         * Update styles on breakpoint activates or deactivates
-         * @param {?} mc
-         * @return {?}
-         */
-        onMediaChange(mc) {
+    }
+    /**
+     * initialize the marshaller with necessary elements for delegation on an element
+     * @param {?} element
+     * @param {?} key
+     * @param {?=} updateFn optional callback so that custom bp directives don't have to re-provide this
+     * @param {?=} clearFn optional callback so that custom bp directives don't have to re-provide this
+     * @param {?=} extraTriggers other triggers to force style updates (e.g. layout, directionality, etc)
+     * @return {?}
+     */
+    init(element, key, updateFn, clearFn, extraTriggers = []) {
+        initBuilderMap(this.updateMap, element, key, updateFn);
+        initBuilderMap(this.clearMap, element, key, clearFn);
+        this.buildElementKeyMap(element, key);
+        this.watchExtraTriggers(element, key, extraTriggers);
+    }
+    /**
+     * get the value for an element and key and optionally a given breakpoint
+     * @param {?} element
+     * @param {?} key
+     * @param {?=} bp
+     * @return {?}
+     */
+    getValue(element, key, bp) {
+        /** @type {?} */
+        const bpMap = this.elementMap.get(element);
+        if (bpMap) {
             /** @type {?} */
-            const bp = this.findByQuery(mc.mediaQuery);
-            if (bp) {
-                mc = mergeAlias(mc, bp);
-                if (mc.matches && this.activatedBreakpoints.indexOf(bp) === -1) {
-                    this.activatedBreakpoints.push(bp);
-                    this.activatedBreakpoints.sort(sortDescendingPriority);
-                    this.updateStyles();
-                }
-                else if (!mc.matches && this.activatedBreakpoints.indexOf(bp) !== -1) {
-                    // Remove the breakpoint when it's deactivated
-                    this.activatedBreakpoints.splice(this.activatedBreakpoints.indexOf(bp), 1);
-                    this.activatedBreakpoints.sort(sortDescendingPriority);
-                    this.updateStyles();
-                }
+            const values = bp !== undefined ? bpMap.get(bp) : this.getActivatedValues(bpMap, key);
+            if (values) {
+                return values.get(key);
             }
         }
-        /**
-         * initialize the marshaller with necessary elements for delegation on an element
-         * @param {?} element
-         * @param {?} key
-         * @param {?=} updateFn optional callback so that custom bp directives don't have to re-provide this
-         * @param {?=} clearFn optional callback so that custom bp directives don't have to re-provide this
-         * @param {?=} extraTriggers other triggers to force style updates (e.g. layout, directionality, etc)
-         * @return {?}
-         */
-        init(element, key, updateFn, clearFn, extraTriggers = []) {
-            initBuilderMap(this.updateMap, element, key, updateFn);
-            initBuilderMap(this.clearMap, element, key, clearFn);
-            this.buildElementKeyMap(element, key);
-            this.watchExtraTriggers(element, key, extraTriggers);
-        }
-        /**
-         * get the value for an element and key and optionally a given breakpoint
-         * @param {?} element
-         * @param {?} key
-         * @param {?=} bp
-         * @return {?}
-         */
-        getValue(element, key, bp) {
+        return undefined;
+    }
+    /**
+     * whether the element has values for a given key
+     * @param {?} element
+     * @param {?} key
+     * @return {?}
+     */
+    hasValue(element, key) {
+        /** @type {?} */
+        const bpMap = this.elementMap.get(element);
+        if (bpMap) {
             /** @type {?} */
-            const bpMap = this.elementMap.get(element);
-            if (bpMap) {
-                /** @type {?} */
-                const values = bp !== undefined ? bpMap.get(bp) : this.getActivatedValues(bpMap, key);
-                if (values) {
-                    return values.get(key);
-                }
-            }
-            return undefined;
-        }
-        /**
-         * whether the element has values for a given key
-         * @param {?} element
-         * @param {?} key
-         * @return {?}
-         */
-        hasValue(element, key) {
-            /** @type {?} */
-            const bpMap = this.elementMap.get(element);
-            if (bpMap) {
-                /** @type {?} */
-                const values = this.getActivatedValues(bpMap, key);
-                if (values) {
-                    return values.get(key) !== undefined || false;
-                }
-            }
-            return false;
-        }
-        /**
-         * Set the value for an input on a directive
-         * @param {?} element the element in question
-         * @param {?} key the type of the directive (e.g. flex, layout-gap, etc)
-         * @param {?} val the value for the breakpoint
-         * @param {?} bp the breakpoint suffix (empty string = default)
-         * @return {?}
-         */
-        setValue(element, key, val, bp) {
-            /** @type {?} */
-            let bpMap = this.elementMap.get(element);
-            if (!bpMap) {
-                bpMap = new Map().set(bp, new Map().set(key, val));
-                this.elementMap.set(element, bpMap);
-            }
-            else {
-                /** @type {?} */
-                const values = (bpMap.get(bp) || new Map()).set(key, val);
-                bpMap.set(bp, values);
-                this.elementMap.set(element, bpMap);
-            }
-            /** @type {?} */
-            const value = this.getValue(element, key);
-            if (value !== undefined) {
-                this.updateElement(element, key, value);
+            const values = this.getActivatedValues(bpMap, key);
+            if (values) {
+                return values.get(key) !== undefined || false;
             }
         }
-        /**
-         * Track element value changes for a specific key
-         * @param {?} element
-         * @param {?} key
-         * @return {?}
-         */
-        trackValue(element, key) {
-            return this.subject
-                .asObservable()
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(( /**
+        return false;
+    }
+    /**
+     * Set the value for an input on a directive
+     * @param {?} element the element in question
+     * @param {?} key the type of the directive (e.g. flex, layout-gap, etc)
+     * @param {?} val the value for the breakpoint
+     * @param {?} bp the breakpoint suffix (empty string = default)
+     * @return {?}
+     */
+    setValue(element, key, val, bp) {
+        /** @type {?} */
+        let bpMap = this.elementMap.get(element);
+        if (!bpMap) {
+            bpMap = new Map().set(bp, new Map().set(key, val));
+            this.elementMap.set(element, bpMap);
+        }
+        else {
+            /** @type {?} */
+            const values = (bpMap.get(bp) || new Map()).set(key, val);
+            bpMap.set(bp, values);
+            this.elementMap.set(element, bpMap);
+        }
+        /** @type {?} */
+        const value = this.getValue(element, key);
+        if (value !== undefined) {
+            this.updateElement(element, key, value);
+        }
+    }
+    /**
+     * Track element value changes for a specific key
+     * @param {?} element
+     * @param {?} key
+     * @return {?}
+     */
+    trackValue(element, key) {
+        return this.subject
+            .asObservable()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])((/**
          * @param {?} v
          * @return {?}
-         *//**
-         * @param {?} v
-         * @return {?}
-         */ v => v.element === element && v.key === key)));
-        }
-        /**
-         * update all styles for all elements on the current breakpoint
+         */
+        v => v.element === element && v.key === key)));
+    }
+    /**
+     * update all styles for all elements on the current breakpoint
+     * @return {?}
+     */
+    updateStyles() {
+        this.elementMap.forEach((/**
+         * @param {?} bpMap
+         * @param {?} el
          * @return {?}
          */
-        updateStyles() {
-            this.elementMap.forEach(( /**
-             * @param {?} bpMap
-             * @param {?} el
+        (bpMap, el) => {
+            /** @type {?} */
+            const keyMap = new Set((/** @type {?} */ (this.elementKeyMap.get(el))));
+            /** @type {?} */
+            let valueMap = this.getActivatedValues(bpMap);
+            if (valueMap) {
+                valueMap.forEach((/**
+                 * @param {?} v
+                 * @param {?} k
+                 * @return {?}
+                 */
+                (v, k) => {
+                    this.updateElement(el, k, v);
+                    keyMap.delete(k);
+                }));
+            }
+            keyMap.forEach((/**
+             * @param {?} k
              * @return {?}
-             */(bpMap, el) => {
-                /** @type {?} */
-                const keyMap = new Set(( /** @type {?} */(this.elementKeyMap.get(el))));
-                /** @type {?} */
-                let valueMap = this.getActivatedValues(bpMap);
+             */
+            k => {
+                valueMap = this.getActivatedValues(bpMap, k);
                 if (valueMap) {
-                    valueMap.forEach(( /**
+                    /** @type {?} */
+                    const value = valueMap.get(k);
+                    this.updateElement(el, k, value);
+                }
+                else {
+                    this.clearElement(el, k);
+                }
+            }));
+        }));
+    }
+    /**
+     * clear the styles for a given element
+     * @param {?} element
+     * @param {?} key
+     * @return {?}
+     */
+    clearElement(element, key) {
+        /** @type {?} */
+        const builders = this.clearMap.get(element);
+        if (builders) {
+            /** @type {?} */
+            const clearFn = (/** @type {?} */ (builders.get(key)));
+            if (!!clearFn) {
+                clearFn();
+                this.subject.next({ element, key, value: '' });
+            }
+        }
+    }
+    /**
+     * update a given element with the activated values for a given key
+     * @param {?} element
+     * @param {?} key
+     * @param {?} value
+     * @return {?}
+     */
+    updateElement(element, key, value) {
+        /** @type {?} */
+        const builders = this.updateMap.get(element);
+        if (builders) {
+            /** @type {?} */
+            const updateFn = (/** @type {?} */ (builders.get(key)));
+            if (!!updateFn) {
+                updateFn(value);
+                this.subject.next({ element, key, value });
+            }
+        }
+    }
+    /**
+     * release all references to a given element
+     * @param {?} element
+     * @return {?}
+     */
+    releaseElement(element) {
+        /** @type {?} */
+        const watcherMap = this.watcherMap.get(element);
+        if (watcherMap) {
+            watcherMap.forEach((/**
+             * @param {?} s
+             * @return {?}
+             */
+            s => s.unsubscribe()));
+            this.watcherMap.delete(element);
+        }
+        /** @type {?} */
+        const elementMap = this.elementMap.get(element);
+        if (elementMap) {
+            elementMap.forEach((/**
+             * @param {?} _
+             * @param {?} s
+             * @return {?}
+             */
+            (_, s) => elementMap.delete(s)));
+            this.elementMap.delete(element);
+        }
+    }
+    /**
+     * trigger an update for a given element and key (e.g. layout)
+     * @param {?} element
+     * @param {?=} key
+     * @return {?}
+     */
+    triggerUpdate(element, key) {
+        /** @type {?} */
+        const bpMap = this.elementMap.get(element);
+        if (bpMap) {
+            /** @type {?} */
+            const valueMap = this.getActivatedValues(bpMap, key);
+            if (valueMap) {
+                if (key) {
+                    this.updateElement(element, key, valueMap.get(key));
+                }
+                else {
+                    valueMap.forEach((/**
                      * @param {?} v
                      * @param {?} k
                      * @return {?}
-                     */(v, k) => {
-                        this.updateElement(el, k, v);
-                        keyMap.delete(k);
-                    }));
-                }
-                keyMap.forEach(( /**
-                 * @param {?} k
-                 * @return {?}
-                 *//**
-                 * @param {?} k
-                 * @return {?}
-                 */ k => {
-                    valueMap = this.getActivatedValues(bpMap, k);
-                    if (valueMap) {
-                        /** @type {?} */
-                        const value = valueMap.get(k);
-                        this.updateElement(el, k, value);
-                    }
-                    else {
-                        this.clearElement(el, k);
-                    }
-                }));
-            }));
-        }
-        /**
-         * clear the styles for a given element
-         * @param {?} element
-         * @param {?} key
-         * @return {?}
-         */
-        clearElement(element, key) {
-            /** @type {?} */
-            const builders = this.clearMap.get(element);
-            if (builders) {
-                /** @type {?} */
-                const clearFn = ( /** @type {?} */(builders.get(key)));
-                if (!!clearFn) {
-                    clearFn();
-                    this.subject.next({ element, key, value: '' });
+                     */
+                    (v, k) => this.updateElement(element, k, v)));
                 }
             }
-        }
-        /**
-         * update a given element with the activated values for a given key
-         * @param {?} element
-         * @param {?} key
-         * @param {?} value
-         * @return {?}
-         */
-        updateElement(element, key, value) {
-            /** @type {?} */
-            const builders = this.updateMap.get(element);
-            if (builders) {
-                /** @type {?} */
-                const updateFn = ( /** @type {?} */(builders.get(key)));
-                if (!!updateFn) {
-                    updateFn(value);
-                    this.subject.next({ element, key, value });
-                }
-            }
-        }
-        /**
-         * release all references to a given element
-         * @param {?} element
-         * @return {?}
-         */
-        releaseElement(element) {
-            /** @type {?} */
-            const watcherMap = this.watcherMap.get(element);
-            if (watcherMap) {
-                watcherMap.forEach(( /**
-                 * @param {?} s
-                 * @return {?}
-                 *//**
-                 * @param {?} s
-                 * @return {?}
-                 */ s => s.unsubscribe()));
-                this.watcherMap.delete(element);
-            }
-            /** @type {?} */
-            const elementMap = this.elementMap.get(element);
-            if (elementMap) {
-                elementMap.forEach(( /**
-                 * @param {?} _
-                 * @param {?} s
-                 * @return {?}
-                 */(_, s) => elementMap.delete(s)));
-                this.elementMap.delete(element);
-            }
-        }
-        /**
-         * trigger an update for a given element and key (e.g. layout)
-         * @param {?} element
-         * @param {?=} key
-         * @return {?}
-         */
-        triggerUpdate(element, key) {
-            /** @type {?} */
-            const bpMap = this.elementMap.get(element);
-            if (bpMap) {
-                /** @type {?} */
-                const valueMap = this.getActivatedValues(bpMap, key);
-                if (valueMap) {
-                    if (key) {
-                        this.updateElement(element, key, valueMap.get(key));
-                    }
-                    else {
-                        valueMap.forEach(( /**
-                         * @param {?} v
-                         * @param {?} k
-                         * @return {?}
-                         */(v, k) => this.updateElement(element, k, v)));
-                    }
-                }
-            }
-        }
-        /**
-         * Cross-reference for HTMLElement with directive key
-         * @private
-         * @param {?} element
-         * @param {?} key
-         * @return {?}
-         */
-        buildElementKeyMap(element, key) {
-            /** @type {?} */
-            let keyMap = this.elementKeyMap.get(element);
-            if (!keyMap) {
-                keyMap = new Set();
-                this.elementKeyMap.set(element, keyMap);
-            }
-            keyMap.add(key);
-        }
-        /**
-         * Other triggers that should force style updates:
-         * - directionality
-         * - layout changes
-         * - mutationobserver updates
-         * @private
-         * @param {?} element
-         * @param {?} key
-         * @param {?} triggers
-         * @return {?}
-         */
-        watchExtraTriggers(element, key, triggers) {
-            if (triggers && triggers.length) {
-                /** @type {?} */
-                let watchers = this.watcherMap.get(element);
-                if (!watchers) {
-                    watchers = new Map();
-                    this.watcherMap.set(element, watchers);
-                }
-                /** @type {?} */
-                const subscription = watchers.get(key);
-                if (!subscription) {
-                    /** @type {?} */
-                    const newSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["merge"])(...triggers).subscribe(( /**
-                     * @return {?}
-                     */() => {
-                        /** @type {?} */
-                        const currentValue = this.getValue(element, key);
-                        this.updateElement(element, key, currentValue);
-                    }));
-                    watchers.set(key, newSubscription);
-                }
-            }
-        }
-        /**
-         * Breakpoint locator by mediaQuery
-         * @private
-         * @param {?} query
-         * @return {?}
-         */
-        findByQuery(query) {
-            return this.breakpoints.findByQuery(query);
-        }
-        /**
-         * get the fallback breakpoint for a given element, starting with the current breakpoint
-         * @private
-         * @param {?} bpMap
-         * @param {?=} key
-         * @return {?}
-         */
-        getActivatedValues(bpMap, key) {
-            for (let i = 0; i < this.activatedBreakpoints.length; i++) {
-                /** @type {?} */
-                const activatedBp = this.activatedBreakpoints[i];
-                /** @type {?} */
-                const valueMap = bpMap.get(activatedBp.alias);
-                if (valueMap) {
-                    if (key === undefined || valueMap.has(key)) {
-                        return valueMap;
-                    }
-                }
-            }
-            /** @type {?} */
-            const lastHope = bpMap.get('');
-            return (key === undefined || lastHope && lastHope.has(key)) ? lastHope : undefined;
-        }
-        /**
-         * Watch for mediaQuery breakpoint activations
-         * @private
-         * @return {?}
-         */
-        observeActivations() {
-            /** @type {?} */
-            const target = ( /** @type {?} */(( /** @type {?} */(this))));
-            /** @type {?} */
-            const queries = this.breakpoints.items.map(( /**
-             * @param {?} bp
-             * @return {?}
-             *//**
-             * @param {?} bp
-             * @return {?}
-             */ bp => bp.mediaQuery));
-            this.matchMedia
-                .observe(this.hook.withPrintQuery(queries))
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(this.hook.interceptEvents(target)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(this.hook.blockPropagation()))
-                .subscribe(this.onMediaChange.bind(this));
         }
     }
-    /** @nocollapse */ MediaMarshaller.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function MediaMarshaller_Factory() { return new MediaMarshaller(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(MatchMedia), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(BreakPointRegistry), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(PrintHook)); }, token: MediaMarshaller, providedIn: "root" });
-    return MediaMarshaller;
-})();
+    /**
+     * Cross-reference for HTMLElement with directive key
+     * @private
+     * @param {?} element
+     * @param {?} key
+     * @return {?}
+     */
+    buildElementKeyMap(element, key) {
+        /** @type {?} */
+        let keyMap = this.elementKeyMap.get(element);
+        if (!keyMap) {
+            keyMap = new Set();
+            this.elementKeyMap.set(element, keyMap);
+        }
+        keyMap.add(key);
+    }
+    /**
+     * Other triggers that should force style updates:
+     * - directionality
+     * - layout changes
+     * - mutationobserver updates
+     * @private
+     * @param {?} element
+     * @param {?} key
+     * @param {?} triggers
+     * @return {?}
+     */
+    watchExtraTriggers(element, key, triggers) {
+        if (triggers && triggers.length) {
+            /** @type {?} */
+            let watchers = this.watcherMap.get(element);
+            if (!watchers) {
+                watchers = new Map();
+                this.watcherMap.set(element, watchers);
+            }
+            /** @type {?} */
+            const subscription = watchers.get(key);
+            if (!subscription) {
+                /** @type {?} */
+                const newSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["merge"])(...triggers).subscribe((/**
+                 * @return {?}
+                 */
+                () => {
+                    /** @type {?} */
+                    const currentValue = this.getValue(element, key);
+                    this.updateElement(element, key, currentValue);
+                }));
+                watchers.set(key, newSubscription);
+            }
+        }
+    }
+    /**
+     * Breakpoint locator by mediaQuery
+     * @private
+     * @param {?} query
+     * @return {?}
+     */
+    findByQuery(query) {
+        return this.breakpoints.findByQuery(query);
+    }
+    /**
+     * get the fallback breakpoint for a given element, starting with the current breakpoint
+     * @private
+     * @param {?} bpMap
+     * @param {?=} key
+     * @return {?}
+     */
+    getActivatedValues(bpMap, key) {
+        for (let i = 0; i < this.activatedBreakpoints.length; i++) {
+            /** @type {?} */
+            const activatedBp = this.activatedBreakpoints[i];
+            /** @type {?} */
+            const valueMap = bpMap.get(activatedBp.alias);
+            if (valueMap) {
+                if (key === undefined || valueMap.has(key)) {
+                    return valueMap;
+                }
+            }
+        }
+        /** @type {?} */
+        const lastHope = bpMap.get('');
+        return (key === undefined || lastHope && lastHope.has(key)) ? lastHope : undefined;
+    }
+    /**
+     * Watch for mediaQuery breakpoint activations
+     * @private
+     * @return {?}
+     */
+    observeActivations() {
+        /** @type {?} */
+        const target = (/** @type {?} */ ((/** @type {?} */ (this))));
+        /** @type {?} */
+        const queries = this.breakpoints.items.map((/**
+         * @param {?} bp
+         * @return {?}
+         */
+        bp => bp.mediaQuery));
+        this.matchMedia
+            .observe(this.hook.withPrintQuery(queries))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(this.hook.interceptEvents(target)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(this.hook.blockPropagation()))
+            .subscribe(this.onMediaChange.bind(this));
+    }
+}
+MediaMarshaller.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */
+MediaMarshaller.ctorParameters = () => [
+    { type: MatchMedia },
+    { type: BreakPointRegistry },
+    { type: PrintHook }
+];
+/** @nocollapse */ MediaMarshaller.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function MediaMarshaller_Factory() { return new MediaMarshaller(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(MatchMedia), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(BreakPointRegistry), Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(PrintHook)); }, token: MediaMarshaller, providedIn: "root" });
 /**
  * @param {?} map
  * @param {?} element
@@ -3071,18 +3266,19 @@ function initBuilderMap(map$$1, element, key, input) {
         oldMap.set(key, input);
     }
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 
-
-
+//# sourceMappingURL=core.js.map
 
 
 /***/ }),
@@ -3128,19 +3324,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let ImgSrcStyleBuilder = /*@__PURE__*/ (() => {
-    class ImgSrcStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["StyleBuilder"] {
-        /**
-         * @param {?} url
-         * @return {?}
-         */
-        buildStyles(url) {
-            return { 'content': url ? `url(${url})` : '' };
-        }
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class ImgSrcStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["StyleBuilder"] {
+    /**
+     * @param {?} url
+     * @return {?}
+     */
+    buildStyles(url) {
+        return { 'content': url ? `url(${url})` : '' };
     }
-    /** @nocollapse */ ImgSrcStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function ImgSrcStyleBuilder_Factory() { return new ImgSrcStyleBuilder(); }, token: ImgSrcStyleBuilder, providedIn: "root" });
-    return ImgSrcStyleBuilder;
-})();
+}
+ImgSrcStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ ImgSrcStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function ImgSrcStyleBuilder_Factory() { return new ImgSrcStyleBuilder(); }, token: ImgSrcStyleBuilder, providedIn: "root" });
 class ImgSrcDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["BaseDirective2"] {
     /**
      * @param {?} elementRef
@@ -3197,6 +3398,21 @@ class ImgSrcDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE
         }
     }
 }
+ImgSrcDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'img-src-directive' },] },
+];
+/** @nocollapse */
+ImgSrcDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: ImgSrcStyleBuilder },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["MediaMarshaller"] },
+    { type: Object, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"],] }] },
+    { type: Boolean, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["SERVER_TOKEN"],] }] }
+];
+ImgSrcDirective.propDecorators = {
+    src: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['src',] }]
+};
 /** @type {?} */
 const imgSrcCache = new Map();
 /** @type {?} */
@@ -3226,6 +3442,10 @@ class DefaultImgSrcDirective extends ImgSrcDirective {
         this.inputs = inputs;
     }
 }
+DefaultImgSrcDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector, inputs },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -3239,7 +3459,7 @@ class ClassDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_
      * @param {?} ngClassInstance
      */
     constructor(elementRef, styler, marshal, delegate, ngClassInstance) {
-        super(elementRef, ( /** @type {?} */(null)), styler, marshal);
+        super(elementRef, (/** @type {?} */ (null)), styler, marshal);
         this.elementRef = elementRef;
         this.styler = styler;
         this.marshal = marshal;
@@ -3284,6 +3504,20 @@ class ClassDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_
         this.ngClassInstance.ngDoCheck();
     }
 }
+ClassDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'class-directive' },] },
+];
+/** @nocollapse */
+ClassDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["MediaMarshaller"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_1__["ɵNgClassImpl"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_1__["NgClass"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Self"] }] }
+];
+ClassDirective.propDecorators = {
+    klass: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['class',] }]
+};
 /** @type {?} */
 const inputs$1 = [
     'ngClass', 'ngClass.xs', 'ngClass.sm', 'ngClass.md', 'ngClass.lg', 'ngClass.xl',
@@ -3313,22 +3547,30 @@ class DefaultClassDirective extends ClassDirective {
         this.inputs = inputs$1;
     }
 }
-let ShowHideStyleBuilder = /*@__PURE__*/ (() => {
-    class ShowHideStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["StyleBuilder"] {
-        /**
-         * @param {?} show
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(show, parent) {
-            /** @type {?} */
-            const shouldShow = show === 'true';
-            return { 'display': shouldShow ? parent.display : 'none' };
-        }
+DefaultClassDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$1, inputs: inputs$1, providers: [LayoutNgClassImplProvider] },] },
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class ShowHideStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["StyleBuilder"] {
+    /**
+     * @param {?} show
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(show, parent) {
+        /** @type {?} */
+        const shouldShow = show === 'true';
+        return { 'display': shouldShow ? parent.display : 'none' };
     }
-    /** @nocollapse */ ShowHideStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function ShowHideStyleBuilder_Factory() { return new ShowHideStyleBuilder(); }, token: ShowHideStyleBuilder, providedIn: "root" });
-    return ShowHideStyleBuilder;
-})();
+}
+ShowHideStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ ShowHideStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function ShowHideStyleBuilder_Factory() { return new ShowHideStyleBuilder(); }, token: ShowHideStyleBuilder, providedIn: "root" });
 class ShowHideDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["BaseDirective2"] {
     /**
      * @param {?} elementRef
@@ -3367,13 +3609,13 @@ class ShowHideDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODU
         /** @type {?} */
         const children = Array.from(this.nativeElement.children);
         for (let i = 0; i < children.length; i++) {
-            if (this.marshal.hasValue(( /** @type {?} */(children[i])), 'flex')) {
+            if (this.marshal.hasValue((/** @type {?} */ (children[i])), 'flex')) {
                 this.hasFlexChild = true;
                 break;
             }
         }
         if (DISPLAY_MAP.has(this.nativeElement)) {
-            this.display = ( /** @type {?} */(DISPLAY_MAP.get(this.nativeElement)));
+            this.display = (/** @type {?} */ (DISPLAY_MAP.get(this.nativeElement)));
         }
         else {
             this.display = this.getDisplayStyle();
@@ -3398,13 +3640,11 @@ class ShowHideDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODU
      * @return {?}
      */
     ngOnChanges(changes) {
-        Object.keys(changes).forEach(( /**
+        Object.keys(changes).forEach((/**
          * @param {?} key
          * @return {?}
-         *//**
-         * @param {?} key
-         * @return {?}
-         */ key => {
+         */
+        key => {
             if (this.inputs.indexOf(key) !== -1) {
                 /** @type {?} */
                 const inputKey = key.split('.');
@@ -3433,13 +3673,11 @@ class ShowHideDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODU
      */
     trackExtraTriggers() {
         this.hasLayout = this.marshal.hasValue(this.nativeElement, 'layout');
-        ['layout', 'layout-align'].forEach(( /**
+        ['layout', 'layout-align'].forEach((/**
          * @param {?} key
          * @return {?}
-         *//**
-         * @param {?} key
-         * @return {?}
-         */ key => {
+         */
+        key => {
             this.marshal
                 .trackValue(this.nativeElement, key)
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.destroySubject))
@@ -3471,9 +3709,22 @@ class ShowHideDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODU
         if (Object(_angular_common__WEBPACK_IMPORTED_MODULE_1__["isPlatformServer"])(this.platformId) && this.serverModuleLoaded) {
             this.nativeElement.style.setProperty('display', '');
         }
-        this.marshal.triggerUpdate(( /** @type {?} */(this.parentElement)), 'layout-gap');
+        this.marshal.triggerUpdate((/** @type {?} */ (this.parentElement)), 'layout-gap');
     }
 }
+ShowHideDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'show-hide-directive' },] },
+];
+/** @nocollapse */
+ShowHideDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: ShowHideStyleBuilder },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["MediaMarshaller"] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["LAYOUT_CONFIG"],] }] },
+    { type: Object, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"],] }] },
+    { type: Boolean, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["SERVER_TOKEN"],] }] }
+];
 /** @type {?} */
 const DISPLAY_MAP = new WeakMap();
 /** @type {?} */
@@ -3507,10 +3758,15 @@ class DefaultShowHideDirective extends ShowHideDirective {
         this.inputs = inputs$2;
     }
 }
+DefaultShowHideDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$2, inputs: inputs$2 },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * NgStyle allowed inputs
  */
@@ -3552,17 +3808,16 @@ function buildRawList(source, delimiter = ';') {
     return String(source)
         .trim()
         .split(delimiter)
-        .map(( /**
- * @param {?} val
- * @return {?}
- */(val) => val.trim()))
-        .filter(( /**
- * @param {?} val
- * @return {?}
- *//**
- * @param {?} val
- * @return {?}
- */ val => val !== ''));
+        .map((/**
+     * @param {?} val
+     * @return {?}
+     */
+    (val) => val.trim()))
+        .filter((/**
+     * @param {?} val
+     * @return {?}
+     */
+    val => val !== ''));
 }
 /**
  * Convert array of key:value strings to a iterable map object
@@ -3572,10 +3827,11 @@ function buildRawList(source, delimiter = ';') {
  */
 function buildMapFromList(styles, sanitize) {
     /** @type {?} */
-    const sanitizeValue = ( /**
+    const sanitizeValue = (/**
      * @param {?} it
      * @return {?}
-     */(it) => {
+     */
+    (it) => {
         if (sanitize) {
             it.value = sanitize(it.value);
         }
@@ -3583,15 +3839,13 @@ function buildMapFromList(styles, sanitize) {
     });
     return styles
         .map(stringToKeyValue)
-        .filter(( /**
- * @param {?} entry
- * @return {?}
- *//**
- * @param {?} entry
- * @return {?}
- */ entry => !!entry))
+        .filter((/**
+     * @param {?} entry
+     * @return {?}
+     */
+    entry => !!entry))
         .map(sanitizeValue)
-        .reduce(keyValuesToMap, ( /** @type {?} */({})));
+        .reduce(keyValuesToMap, (/** @type {?} */ ({})));
 }
 /**
  * Convert Set<string> or raw Object to an iterable NgStyleMap
@@ -3603,20 +3857,19 @@ function buildMapFromSet(source, sanitize) {
     /** @type {?} */
     let list = [];
     if (getType(source) === 'set') {
-        (( /** @type {?} */(source))).forEach(( /**
+        ((/** @type {?} */ (source))).forEach((/**
          * @param {?} entry
          * @return {?}
-         *//**
-         * @param {?} entry
-         * @return {?}
-         */ entry => list.push(entry)));
+         */
+        entry => list.push(entry)));
     }
     else {
-        Object.keys(source).forEach(( /**
+        Object.keys(source).forEach((/**
          * @param {?} key
          * @return {?}
-         */(key) => {
-            list.push(`${key}:${(( /** @type {?} */(source)))[key]}`);
+         */
+        (key) => {
+            list.push(`${key}:${((/** @type {?} */ (source)))[key]}`);
         }));
     }
     return buildMapFromList(list, sanitize);
@@ -3642,6 +3895,7 @@ function keyValuesToMap(map, entry) {
     }
     return map;
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -3658,7 +3912,7 @@ class StyleDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_
      * @param {?} platformId
      */
     constructor(elementRef, styler, marshal, delegate, sanitizer, ngStyleInstance, serverLoaded, platformId) {
-        super(elementRef, ( /** @type {?} */(null)), styler, marshal);
+        super(elementRef, (/** @type {?} */ (null)), styler, marshal);
         this.elementRef = elementRef;
         this.styler = styler;
         this.marshal = marshal;
@@ -3713,14 +3967,15 @@ class StyleDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_
     buildStyleMap(styles) {
         // Always safe-guard (aka sanitize) style property values
         /** @type {?} */
-        const sanitizer = ( /**
+        const sanitizer = (/**
          * @param {?} val
          * @return {?}
-         */(val) => this.sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].STYLE, val) || '');
+         */
+        (val) => this.sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].STYLE, val) || '');
         if (styles) {
             switch (getType(styles)) {
                 case 'string': return buildMapFromList$1(buildRawList(styles), sanitizer);
-                case 'array': return buildMapFromList$1(( /** @type {?} */(styles)), sanitizer);
+                case 'array': return buildMapFromList$1((/** @type {?} */ (styles)), sanitizer);
                 case 'set': return buildMapFromSet(styles, sanitizer);
                 default: return buildMapFromSet(styles, sanitizer);
             }
@@ -3738,6 +3993,20 @@ class StyleDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_
         this.ngStyleInstance.ngDoCheck();
     }
 }
+StyleDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'style-directive' },] },
+];
+/** @nocollapse */
+StyleDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["MediaMarshaller"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_1__["ɵNgStyleImpl"] },
+    { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_1__["NgStyle"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Self"] }] },
+    { type: Boolean, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["SERVER_TOKEN"],] }] },
+    { type: Object, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"],] }] }
+];
 /** @type {?} */
 const inputs$3 = [
     'ngStyle',
@@ -3768,6 +4037,9 @@ class DefaultStyleDirective extends StyleDirective {
         this.inputs = inputs$3;
     }
 }
+DefaultStyleDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$3, inputs: inputs$3, providers: [LayoutNgStyleImplProvider] },] },
+];
 /**
  * Build a styles map from a list of styles, while sanitizing bad values first
  * @param {?} styles
@@ -3776,10 +4048,11 @@ class DefaultStyleDirective extends StyleDirective {
  */
 function buildMapFromList$1(styles, sanitize) {
     /** @type {?} */
-    const sanitizeValue = ( /**
+    const sanitizeValue = (/**
      * @param {?} it
      * @return {?}
-     */(it) => {
+     */
+    (it) => {
         if (sanitize) {
             it.value = sanitize(it.value);
         }
@@ -3787,16 +4060,15 @@ function buildMapFromList$1(styles, sanitize) {
     });
     return styles
         .map(stringToKeyValue)
-        .filter(( /**
- * @param {?} entry
- * @return {?}
- *//**
- * @param {?} entry
- * @return {?}
- */ entry => !!entry))
+        .filter((/**
+     * @param {?} entry
+     * @return {?}
+     */
+    entry => !!entry))
         .map(sanitizeValue)
-        .reduce(keyValuesToMap, ( /** @type {?} */({})));
+        .reduce(keyValuesToMap, (/** @type {?} */ ({})));
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -3819,18 +4091,26 @@ const ALL_DIRECTIVES = [
  */
 class ExtendedModule {
 }
+ExtendedModule.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
+                imports: [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["CoreModule"]],
+                declarations: [...ALL_DIRECTIVES],
+                exports: [...ALL_DIRECTIVES]
+            },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 
-
-
+//# sourceMappingURL=extended.js.map
 
 
 /***/ }),
@@ -4073,6 +4353,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -4082,6 +4363,7 @@ __webpack_require__.r(__webpack_exports__);
  * @type {?}
  */
 const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('8.0.0-beta.27');
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -4124,18 +4406,30 @@ class FlexLayoutModule {
         };
     }
 }
+FlexLayoutModule.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
+                imports: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["FlexModule"], _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_3__["ExtendedModule"], _angular_flex_layout_grid__WEBPACK_IMPORTED_MODULE_5__["GridModule"]],
+                exports: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["FlexModule"], _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_3__["ExtendedModule"], _angular_flex_layout_grid__WEBPACK_IMPORTED_MODULE_5__["GridModule"]]
+            },] },
+];
+/** @nocollapse */
+FlexLayoutModule.ctorParameters = () => [
+    { type: Boolean, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_2__["SERVER_TOKEN"],] }] },
+    { type: Object, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["PLATFORM_ID"],] }] }
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 
-
-
+//# sourceMappingURL=flex-layout.js.map
 
 
 /***/ }),
@@ -4190,6 +4484,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -4224,13 +4519,11 @@ function validateValue(value) {
     value = value ? value.toLowerCase() : '';
     let [direction, wrap, inline] = value.split(' ');
     // First value must be the `flex-direction`
-    if (!LAYOUT_VALUES.find(( /**
+    if (!LAYOUT_VALUES.find((/**
      * @param {?} x
      * @return {?}
-     *//**
-     * @param {?} x
-     * @return {?}
-     */ x => x === direction))) {
+     */
+    x => x === direction))) {
         direction = LAYOUT_VALUES[0];
     }
     if (wrap === INLINE) {
@@ -4296,19 +4589,24 @@ function buildCSS(direction, wrap = null, inline = false) {
         'flex-wrap': !!wrap ? wrap : null
     };
 }
-let LayoutStyleBuilder = /*@__PURE__*/ (() => {
-    class LayoutStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @return {?}
-         */
-        buildStyles(input) {
-            return buildLayoutCSS(input);
-        }
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class LayoutStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @return {?}
+     */
+    buildStyles(input) {
+        return buildLayoutCSS(input);
     }
-    /** @nocollapse */ LayoutStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function LayoutStyleBuilder_Factory() { return new LayoutStyleBuilder(); }, token: LayoutStyleBuilder, providedIn: "root" });
-    return LayoutStyleBuilder;
-})();
+}
+LayoutStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ LayoutStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function LayoutStyleBuilder_Factory() { return new LayoutStyleBuilder(); }, token: LayoutStyleBuilder, providedIn: "root" });
 /** @type {?} */
 const inputs = [
     'fxLayout', 'fxLayout.xs', 'fxLayout.sm', 'fxLayout.md',
@@ -4348,14 +4646,28 @@ class LayoutDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE
         this.init();
     }
 }
+LayoutDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'layout-directive' },] },
+];
+/** @nocollapse */
+LayoutDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: LayoutStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
 class DefaultLayoutDirective extends LayoutDirective {
     constructor() {
         super(...arguments);
         this.inputs = inputs;
     }
 }
+DefaultLayoutDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector, inputs },] },
+];
 /** @type {?} */
 const layoutCache = new Map();
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -4367,62 +4679,66 @@ const CLEAR_MARGIN_CSS = {
     'margin-top': null,
     'margin-bottom': null
 };
-let LayoutGapStyleBuilder = /*@__PURE__*/ (() => {
-    class LayoutGapStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} _styler
-         */
-        constructor(_styler) {
-            super();
-            this._styler = _styler;
+class LayoutGapStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} _styler
+     */
+    constructor(_styler) {
+        super();
+        this._styler = _styler;
+    }
+    /**
+     * @param {?} gapValue
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(gapValue, parent) {
+        if (gapValue.endsWith(GRID_SPECIFIER)) {
+            gapValue = gapValue.slice(0, gapValue.indexOf(GRID_SPECIFIER));
+            // Add the margin to the host element
+            return buildGridMargin(gapValue, parent.directionality);
         }
-        /**
-         * @param {?} gapValue
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(gapValue, parent) {
-            if (gapValue.endsWith(GRID_SPECIFIER)) {
-                gapValue = gapValue.slice(0, gapValue.indexOf(GRID_SPECIFIER));
-                // Add the margin to the host element
-                return buildGridMargin(gapValue, parent.directionality);
-            }
-            else {
-                return {};
-            }
-        }
-        /**
-         * @param {?} gapValue
-         * @param {?} _styles
-         * @param {?} parent
-         * @return {?}
-         */
-        sideEffect(gapValue, _styles, parent) {
-            /** @type {?} */
-            const items = parent.items;
-            if (gapValue.endsWith(GRID_SPECIFIER)) {
-                gapValue = gapValue.slice(0, gapValue.indexOf(GRID_SPECIFIER));
-                // For each `element` children, set the padding
-                /** @type {?} */
-                const paddingStyles = buildGridPadding(gapValue, parent.directionality);
-                this._styler.applyStyleToElements(paddingStyles, parent.items);
-            }
-            else {
-                /** @type {?} */
-                const lastItem = ( /** @type {?} */(items.pop()));
-                // For each `element` children EXCEPT the last,
-                // set the margin right/bottom styles...
-                /** @type {?} */
-                const gapCss = buildGapCSS(gapValue, parent);
-                this._styler.applyStyleToElements(gapCss, items);
-                // Clear all gaps for all visible elements
-                this._styler.applyStyleToElements(CLEAR_MARGIN_CSS, [lastItem]);
-            }
+        else {
+            return {};
         }
     }
-    /** @nocollapse */ LayoutGapStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function LayoutGapStyleBuilder_Factory() { return new LayoutGapStyleBuilder(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"])); }, token: LayoutGapStyleBuilder, providedIn: "root" });
-    return LayoutGapStyleBuilder;
-})();
+    /**
+     * @param {?} gapValue
+     * @param {?} _styles
+     * @param {?} parent
+     * @return {?}
+     */
+    sideEffect(gapValue, _styles, parent) {
+        /** @type {?} */
+        const items = parent.items;
+        if (gapValue.endsWith(GRID_SPECIFIER)) {
+            gapValue = gapValue.slice(0, gapValue.indexOf(GRID_SPECIFIER));
+            // For each `element` children, set the padding
+            /** @type {?} */
+            const paddingStyles = buildGridPadding(gapValue, parent.directionality);
+            this._styler.applyStyleToElements(paddingStyles, parent.items);
+        }
+        else {
+            /** @type {?} */
+            const lastItem = (/** @type {?} */ (items.pop()));
+            // For each `element` children EXCEPT the last,
+            // set the margin right/bottom styles...
+            /** @type {?} */
+            const gapCss = buildGapCSS(gapValue, parent);
+            this._styler.applyStyleToElements(gapCss, items);
+            // Clear all gaps for all visible elements
+            this._styler.applyStyleToElements(CLEAR_MARGIN_CSS, [lastItem]);
+        }
+    }
+}
+LayoutGapStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */
+LayoutGapStyleBuilder.ctorParameters = () => [
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] }
+];
+/** @nocollapse */ LayoutGapStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function LayoutGapStyleBuilder_Factory() { return new LayoutGapStyleBuilder(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"])); }, token: LayoutGapStyleBuilder, providedIn: "root" });
 /** @type {?} */
 const inputs$1 = [
     'fxLayoutGap', 'fxLayoutGap.xs', 'fxLayoutGap.sm', 'fxLayoutGap.md',
@@ -4521,13 +4837,11 @@ class LayoutGapDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MOD
         /** @type {?} */
         const direction = layout.split(' ');
         this.layout = direction[0];
-        if (!LAYOUT_VALUES.find(( /**
+        if (!LAYOUT_VALUES.find((/**
          * @param {?} x
          * @return {?}
-         *//**
-         * @param {?} x
-         * @return {?}
-         */ x => x === this.layout))) {
+         */
+        x => x === this.layout))) {
             this.layout = 'row';
         }
         this.triggerUpdate();
@@ -4542,18 +4856,17 @@ class LayoutGapDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MOD
         // Gather all non-hidden Element nodes
         /** @type {?} */
         const items = this.childrenNodes
-            .filter(( /**
-     * @param {?} el
-     * @return {?}
-     *//**
-     * @param {?} el
-     * @return {?}
-     */ el => el.nodeType === 1 && this.willDisplay(el)))
-            .sort(( /**
-     * @param {?} a
-     * @param {?} b
-     * @return {?}
-     */(a, b) => {
+            .filter((/**
+         * @param {?} el
+         * @return {?}
+         */
+        el => el.nodeType === 1 && this.willDisplay(el)))
+            .sort((/**
+         * @param {?} a
+         * @param {?} b
+         * @return {?}
+         */
+        (a, b) => {
             /** @type {?} */
             const orderA = +this.styler.lookupStyle(a, 'order');
             /** @type {?} */
@@ -4620,19 +4933,22 @@ class LayoutGapDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MOD
      * @return {?}
      */
     buildChildObservable() {
-        this.zone.runOutsideAngular(( /**
+        this.zone.runOutsideAngular((/**
          * @return {?}
-         */() => {
+         */
+        () => {
             if (typeof MutationObserver !== 'undefined') {
-                this.observer = new MutationObserver(( /**
+                this.observer = new MutationObserver((/**
                  * @param {?} mutations
                  * @return {?}
-                 */(mutations) => {
+                 */
+                (mutations) => {
                     /** @type {?} */
-                    const validatedChanges = ( /**
+                    const validatedChanges = (/**
                      * @param {?} it
                      * @return {?}
-                     */(it) => {
+                     */
+                    (it) => {
                         return (it.addedNodes && it.addedNodes.length > 0) ||
                             (it.removedNodes && it.removedNodes.length > 0);
                     });
@@ -4646,12 +4962,27 @@ class LayoutGapDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MOD
         }));
     }
 }
+LayoutGapDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'layout-gap-directive' },] },
+];
+/** @nocollapse */
+LayoutGapDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] },
+    { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["Directionality"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: LayoutGapStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
 class DefaultLayoutGapDirective extends LayoutGapDirective {
     constructor() {
         super(...arguments);
         this.inputs = inputs$1;
     }
 }
+DefaultLayoutGapDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$1, inputs: inputs$1 },] },
+];
 /** @type {?} */
 const layoutGapCacheRowRtl = new Map();
 /** @type {?} */
@@ -4738,10 +5069,12 @@ function buildGapCSS(gapValue, parent) {
     margins[key] = gapValue;
     return margins;
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * Extends an object with the *enumerable* and *own* properties of one or more source objects,
  * similar to Object.assign.
@@ -4765,170 +5098,179 @@ function extendObject(dest, ...sources) {
     }
     return dest;
 }
-let FlexStyleBuilder = /*@__PURE__*/ (() => {
-    class FlexStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} layoutConfig
-         */
-        constructor(layoutConfig) {
-            super();
-            this.layoutConfig = layoutConfig;
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class FlexStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} layoutConfig
+     */
+    constructor(layoutConfig) {
+        super();
+        this.layoutConfig = layoutConfig;
+    }
+    /**
+     * @param {?} input
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(input, parent) {
+        let [grow, shrink, ...basisParts] = input.split(' ');
+        /** @type {?} */
+        let basis = basisParts.join(' ');
+        // The flex-direction of this element's flex container. Defaults to 'row'.
+        /** @type {?} */
+        const direction = (parent.direction.indexOf('column') > -1) ? 'column' : 'row';
+        /** @type {?} */
+        const max = isFlowHorizontal(direction) ? 'max-width' : 'max-height';
+        /** @type {?} */
+        const min = isFlowHorizontal(direction) ? 'min-width' : 'min-height';
+        /** @type {?} */
+        const hasCalc = String(basis).indexOf('calc') > -1;
+        /** @type {?} */
+        const usingCalc = hasCalc || (basis === 'auto');
+        /** @type {?} */
+        const isPercent = String(basis).indexOf('%') > -1 && !hasCalc;
+        /** @type {?} */
+        const hasUnits = String(basis).indexOf('px') > -1 || String(basis).indexOf('rem') > -1 ||
+            String(basis).indexOf('em') > -1 || String(basis).indexOf('vw') > -1 ||
+            String(basis).indexOf('vh') > -1;
+        /** @type {?} */
+        let isValue = (hasCalc || hasUnits);
+        grow = (grow == '0') ? 0 : grow;
+        shrink = (shrink == '0') ? 0 : shrink;
+        // make box inflexible when shrink and grow are both zero
+        // should not set a min when the grow is zero
+        // should not set a max when the shrink is zero
+        /** @type {?} */
+        const isFixed = !grow && !shrink;
+        /** @type {?} */
+        let css = {};
+        // flex-basis allows you to specify the initial/starting main-axis size of the element,
+        // before anything else is computed. It can either be a percentage or an absolute value.
+        // It is, however, not the breaking point for flex-grow/shrink properties
+        //
+        // flex-grow can be seen as this:
+        //   0: Do not stretch. Either size to element's content width, or obey 'flex-basis'.
+        //   1: (Default value). Stretch; will be the same size to all other flex items on
+        //       the same row since they have a default value of 1.
+        //   ≥2 (integer n): Stretch. Will be n times the size of other elements
+        //      with 'flex-grow: 1' on the same row.
+        // Use `null` to clear existing styles.
+        /** @type {?} */
+        const clearStyles = {
+            'max-width': null,
+            'max-height': null,
+            'min-width': null,
+            'min-height': null
+        };
+        switch (basis || '') {
+            case '':
+                /** @type {?} */
+                const useColumnBasisZero = this.layoutConfig.useColumnBasisZero !== false;
+                basis = direction === 'row' ? '0%' : (useColumnBasisZero ? '0.000000001px' : 'auto');
+                break;
+            case 'initial': // default
+            case 'nogrow':
+                grow = 0;
+                basis = 'auto';
+                break;
+            case 'grow':
+                basis = '100%';
+                break;
+            case 'noshrink':
+                shrink = 0;
+                basis = 'auto';
+                break;
+            case 'auto':
+                break;
+            case 'none':
+                grow = 0;
+                shrink = 0;
+                basis = 'auto';
+                break;
+            default:
+                // Defaults to percentage sizing unless `px` is explicitly set
+                if (!isValue && !isPercent && !isNaN((/** @type {?} */ (basis)))) {
+                    basis = basis + '%';
+                }
+                // Fix for issue 280
+                if (basis === '0%') {
+                    isValue = true;
+                }
+                if (basis === '0px') {
+                    basis = '0%';
+                }
+                // fix issue #5345
+                if (hasCalc) {
+                    css = extendObject(clearStyles, {
+                        'flex-grow': grow,
+                        'flex-shrink': shrink,
+                        'flex-basis': isValue ? basis : '100%'
+                    });
+                }
+                else {
+                    css = extendObject(clearStyles, {
+                        'flex': `${grow} ${shrink} ${isValue ? basis : '100%'}`
+                    });
+                }
+                break;
         }
-        /**
-         * @param {?} input
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(input, parent) {
-            let [grow, shrink, ...basisParts] = input.split(' ');
-            /** @type {?} */
-            let basis = basisParts.join(' ');
-            // The flex-direction of this element's flex container. Defaults to 'row'.
-            /** @type {?} */
-            const direction = (parent.direction.indexOf('column') > -1) ? 'column' : 'row';
-            /** @type {?} */
-            const max = isFlowHorizontal(direction) ? 'max-width' : 'max-height';
-            /** @type {?} */
-            const min = isFlowHorizontal(direction) ? 'min-width' : 'min-height';
-            /** @type {?} */
-            const hasCalc = String(basis).indexOf('calc') > -1;
-            /** @type {?} */
-            const usingCalc = hasCalc || (basis === 'auto');
-            /** @type {?} */
-            const isPercent = String(basis).indexOf('%') > -1 && !hasCalc;
-            /** @type {?} */
-            const hasUnits = String(basis).indexOf('px') > -1 || String(basis).indexOf('rem') > -1 ||
-                String(basis).indexOf('em') > -1 || String(basis).indexOf('vw') > -1 ||
-                String(basis).indexOf('vh') > -1;
-            /** @type {?} */
-            let isValue = (hasCalc || hasUnits);
-            grow = (grow == '0') ? 0 : grow;
-            shrink = (shrink == '0') ? 0 : shrink;
-            // make box inflexible when shrink and grow are both zero
-            // should not set a min when the grow is zero
-            // should not set a max when the shrink is zero
-            /** @type {?} */
-            const isFixed = !grow && !shrink;
-            /** @type {?} */
-            let css = {};
-            // flex-basis allows you to specify the initial/starting main-axis size of the element,
-            // before anything else is computed. It can either be a percentage or an absolute value.
-            // It is, however, not the breaking point for flex-grow/shrink properties
-            //
-            // flex-grow can be seen as this:
-            //   0: Do not stretch. Either size to element's content width, or obey 'flex-basis'.
-            //   1: (Default value). Stretch; will be the same size to all other flex items on
-            //       the same row since they have a default value of 1.
-            //   ≥2 (integer n): Stretch. Will be n times the size of other elements
-            //      with 'flex-grow: 1' on the same row.
-            // Use `null` to clear existing styles.
-            /** @type {?} */
-            const clearStyles = {
-                'max-width': null,
-                'max-height': null,
-                'min-width': null,
-                'min-height': null
-            };
-            switch (basis || '') {
-                case '':
-                    /** @type {?} */
-                    const useColumnBasisZero = this.layoutConfig.useColumnBasisZero !== false;
-                    basis = direction === 'row' ? '0%' : (useColumnBasisZero ? '0.000000001px' : 'auto');
-                    break;
-                case 'initial': // default
-                case 'nogrow':
-                    grow = 0;
-                    basis = 'auto';
-                    break;
-                case 'grow':
-                    basis = '100%';
-                    break;
-                case 'noshrink':
-                    shrink = 0;
-                    basis = 'auto';
-                    break;
-                case 'auto':
-                    break;
-                case 'none':
-                    grow = 0;
-                    shrink = 0;
-                    basis = 'auto';
-                    break;
-                default:
-                    // Defaults to percentage sizing unless `px` is explicitly set
-                    if (!isValue && !isPercent && !isNaN(( /** @type {?} */(basis)))) {
-                        basis = basis + '%';
-                    }
-                    // Fix for issue 280
-                    if (basis === '0%') {
-                        isValue = true;
-                    }
-                    if (basis === '0px') {
-                        basis = '0%';
-                    }
-                    // fix issue #5345
-                    if (hasCalc) {
-                        css = extendObject(clearStyles, {
-                            'flex-grow': grow,
-                            'flex-shrink': shrink,
-                            'flex-basis': isValue ? basis : '100%'
-                        });
-                    }
-                    else {
-                        css = extendObject(clearStyles, {
-                            'flex': `${grow} ${shrink} ${isValue ? basis : '100%'}`
-                        });
-                    }
-                    break;
-            }
-            if (!(css['flex'] || css['flex-grow'])) {
-                if (hasCalc) {
-                    css = extendObject(clearStyles, {
-                        'flex-grow': grow,
-                        'flex-shrink': shrink,
-                        'flex-basis': basis
-                    });
-                }
-                else {
-                    css = extendObject(clearStyles, {
-                        'flex': `${grow} ${shrink} ${basis}`
-                    });
-                }
-            }
-            // Fix for issues 277, 534, and 728
-            if (basis !== '0%' && basis !== '0px' && basis !== '0.000000001px' && basis !== 'auto') {
-                css[min] = isFixed || (isValue && grow) ? basis : null;
-                css[max] = isFixed || (!usingCalc && shrink) ? basis : null;
-            }
-            // Fix for issue 528
-            if (!css[min] && !css[max]) {
-                if (hasCalc) {
-                    css = extendObject(clearStyles, {
-                        'flex-grow': grow,
-                        'flex-shrink': shrink,
-                        'flex-basis': basis
-                    });
-                }
-                else {
-                    css = extendObject(clearStyles, {
-                        'flex': `${grow} ${shrink} ${basis}`
-                    });
-                }
+        if (!(css['flex'] || css['flex-grow'])) {
+            if (hasCalc) {
+                css = extendObject(clearStyles, {
+                    'flex-grow': grow,
+                    'flex-shrink': shrink,
+                    'flex-basis': basis
+                });
             }
             else {
-                // Fix for issue 660
-                if (parent.hasWrap) {
-                    css[hasCalc ? 'flex-basis' : 'flex'] = css[max] ?
-                        (hasCalc ? css[max] : `${grow} ${shrink} ${css[max]}`) :
-                        (hasCalc ? css[min] : `${grow} ${shrink} ${css[min]}`);
-                }
+                css = extendObject(clearStyles, {
+                    'flex': `${grow} ${shrink} ${basis}`
+                });
             }
-            return ( /** @type {?} */(extendObject(css, { 'box-sizing': 'border-box' })));
         }
+        // Fix for issues 277, 534, and 728
+        if (basis !== '0%' && basis !== '0px' && basis !== '0.000000001px' && basis !== 'auto') {
+            css[min] = isFixed || (isValue && grow) ? basis : null;
+            css[max] = isFixed || (!usingCalc && shrink) ? basis : null;
+        }
+        // Fix for issue 528
+        if (!css[min] && !css[max]) {
+            if (hasCalc) {
+                css = extendObject(clearStyles, {
+                    'flex-grow': grow,
+                    'flex-shrink': shrink,
+                    'flex-basis': basis
+                });
+            }
+            else {
+                css = extendObject(clearStyles, {
+                    'flex': `${grow} ${shrink} ${basis}`
+                });
+            }
+        }
+        else {
+            // Fix for issue 660
+            if (parent.hasWrap) {
+                css[hasCalc ? 'flex-basis' : 'flex'] = css[max] ?
+                    (hasCalc ? css[max] : `${grow} ${shrink} ${css[max]}`) :
+                    (hasCalc ? css[min] : `${grow} ${shrink} ${css[min]}`);
+            }
+        }
+        return (/** @type {?} */ (extendObject(css, { 'box-sizing': 'border-box' })));
     }
-    /** @nocollapse */ FlexStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function FlexStyleBuilder_Factory() { return new FlexStyleBuilder(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["LAYOUT_CONFIG"])); }, token: FlexStyleBuilder, providedIn: "root" });
-    return FlexStyleBuilder;
-})();
+}
+FlexStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */
+FlexStyleBuilder.ctorParameters = () => [
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["LAYOUT_CONFIG"],] }] }
+];
+/** @nocollapse */ FlexStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function FlexStyleBuilder_Factory() { return new FlexStyleBuilder(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["LAYOUT_CONFIG"])); }, token: FlexStyleBuilder, providedIn: "root" });
 /** @type {?} */
 const inputs$2 = [
     'fxFlex', 'fxFlex.xs', 'fxFlex.sm', 'fxFlex.md',
@@ -5029,7 +5371,7 @@ class FlexDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1
         /** @type {?} */
         const addFlexToParent = this.layoutConfig.addFlexToParent !== false;
         if (!this.direction) {
-            this.direction = this.getFlexFlowDirection(( /** @type {?} */(this.parentElement)), addFlexToParent);
+            this.direction = this.getFlexFlowDirection((/** @type {?} */ (this.parentElement)), addFlexToParent);
         }
         /** @type {?} */
         const direction = this.direction;
@@ -5070,12 +5412,30 @@ class FlexDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1
         }
     }
 }
+FlexDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'flex-directive' },] },
+];
+/** @nocollapse */
+FlexDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["LAYOUT_CONFIG"],] }] },
+    { type: FlexStyleBuilder },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
+FlexDirective.propDecorators = {
+    shrink: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['fxShrink',] }],
+    grow: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['fxGrow',] }]
+};
 class DefaultFlexDirective extends FlexDirective {
     constructor() {
         super(...arguments);
         this.inputs = inputs$2;
     }
 }
+DefaultFlexDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ inputs: inputs$2, selector: selector$2 },] },
+];
 /** @type {?} */
 const flexRowCache = new Map();
 /** @type {?} */
@@ -5084,19 +5444,24 @@ const flexColumnCache = new Map();
 const flexRowWrapCache = new Map();
 /** @type {?} */
 const flexColumnWrapCache = new Map();
-let FlexOrderStyleBuilder = /*@__PURE__*/ (() => {
-    class FlexOrderStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} value
-         * @return {?}
-         */
-        buildStyles(value) {
-            return { order: (value && parseInt(value, 10)) || '' };
-        }
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class FlexOrderStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    buildStyles(value) {
+        return { order: (value && parseInt(value, 10)) || '' };
     }
-    /** @nocollapse */ FlexOrderStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function FlexOrderStyleBuilder_Factory() { return new FlexOrderStyleBuilder(); }, token: FlexOrderStyleBuilder, providedIn: "root" });
-    return FlexOrderStyleBuilder;
-})();
+}
+FlexOrderStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ FlexOrderStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function FlexOrderStyleBuilder_Factory() { return new FlexOrderStyleBuilder(); }, token: FlexOrderStyleBuilder, providedIn: "root" });
 /** @type {?} */
 const inputs$3 = [
     'fxFlexOrder', 'fxFlexOrder.xs', 'fxFlexOrder.sm', 'fxFlexOrder.md',
@@ -5134,6 +5499,16 @@ class FlexOrderDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MOD
         this.init();
     }
 }
+FlexOrderDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'flex-order-directive' },] },
+];
+/** @nocollapse */
+FlexOrderDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: FlexOrderStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
 /** @type {?} */
 const flexOrderCache = new Map();
 class DefaultFlexOrderDirective extends FlexOrderDirective {
@@ -5142,35 +5517,43 @@ class DefaultFlexOrderDirective extends FlexOrderDirective {
         this.inputs = inputs$3;
     }
 }
-let FlexOffsetStyleBuilder = /*@__PURE__*/ (() => {
-    class FlexOffsetStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} offset
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(offset, parent) {
-            if (offset === '') {
-                offset = '0';
-            }
-            /** @type {?} */
-            const isPercent = String(offset).indexOf('%') > -1;
-            /** @type {?} */
-            const isPx = String(offset).indexOf('px') > -1;
-            if (!isPx && !isPercent && !isNaN(+offset)) {
-                offset = offset + '%';
-            }
-            /** @type {?} */
-            const horizontalLayoutKey = parent.isRtl ? 'margin-right' : 'margin-left';
-            /** @type {?} */
-            const styles = isFlowHorizontal(parent.layout) ?
-                { [horizontalLayoutKey]: `${offset}` } : { 'margin-top': `${offset}` };
-            return styles;
+DefaultFlexOrderDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$3, inputs: inputs$3 },] },
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class FlexOffsetStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} offset
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(offset, parent) {
+        if (offset === '') {
+            offset = '0';
         }
+        /** @type {?} */
+        const isPercent = String(offset).indexOf('%') > -1;
+        /** @type {?} */
+        const isPx = String(offset).indexOf('px') > -1;
+        if (!isPx && !isPercent && !isNaN(+offset)) {
+            offset = offset + '%';
+        }
+        /** @type {?} */
+        const horizontalLayoutKey = parent.isRtl ? 'margin-right' : 'margin-left';
+        /** @type {?} */
+        const styles = isFlowHorizontal(parent.layout) ?
+            { [horizontalLayoutKey]: `${offset}` } : { 'margin-top': `${offset}` };
+        return styles;
     }
-    /** @nocollapse */ FlexOffsetStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function FlexOffsetStyleBuilder_Factory() { return new FlexOffsetStyleBuilder(); }, token: FlexOffsetStyleBuilder, providedIn: "root" });
-    return FlexOffsetStyleBuilder;
-})();
+}
+FlexOffsetStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ FlexOffsetStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function FlexOffsetStyleBuilder_Factory() { return new FlexOffsetStyleBuilder(); }, token: FlexOffsetStyleBuilder, providedIn: "root" });
 /** @type {?} */
 const inputs$4 = [
     'fxFlexOffset', 'fxFlexOffset.xs', 'fxFlexOffset.sm', 'fxFlexOffset.md',
@@ -5228,7 +5611,7 @@ class FlexOffsetDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MO
     updateWithValue(value = '') {
         // The flex-direction of this element's flex container. Defaults to 'row'.
         /** @type {?} */
-        const layout = this.getFlexFlowDirection(( /** @type {?} */(this.parentElement)), true);
+        const layout = this.getFlexFlowDirection((/** @type {?} */ (this.parentElement)), true);
         /** @type {?} */
         const isRtl = this.directionality.value === 'rtl';
         if (layout === 'row' && isRtl) {
@@ -5246,12 +5629,26 @@ class FlexOffsetDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MO
         this.addStyles(value + '', { layout, isRtl });
     }
 }
+FlexOffsetDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'flex-offset-directive' },] },
+];
+/** @nocollapse */
+FlexOffsetDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["Directionality"] },
+    { type: FlexOffsetStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] }
+];
 class DefaultFlexOffsetDirective extends FlexOffsetDirective {
     constructor() {
         super(...arguments);
         this.inputs = inputs$4;
     }
 }
+DefaultFlexOffsetDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$4, inputs: inputs$4 },] },
+];
 /** @type {?} */
 const flexOffsetCacheRowRtl = new Map();
 /** @type {?} */
@@ -5260,34 +5657,39 @@ const flexOffsetCacheColumnRtl = new Map();
 const flexOffsetCacheRowLtr = new Map();
 /** @type {?} */
 const flexOffsetCacheColumnLtr = new Map();
-let FlexAlignStyleBuilder = /*@__PURE__*/ (() => {
-    class FlexAlignStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @return {?}
-         */
-        buildStyles(input) {
-            input = input || 'stretch';
-            /** @type {?} */
-            const styles = {};
-            // Cross-axis
-            switch (input) {
-                case 'start':
-                    styles['align-self'] = 'flex-start';
-                    break;
-                case 'end':
-                    styles['align-self'] = 'flex-end';
-                    break;
-                default:
-                    styles['align-self'] = input;
-                    break;
-            }
-            return styles;
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class FlexAlignStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @return {?}
+     */
+    buildStyles(input) {
+        input = input || 'stretch';
+        /** @type {?} */
+        const styles = {};
+        // Cross-axis
+        switch (input) {
+            case 'start':
+                styles['align-self'] = 'flex-start';
+                break;
+            case 'end':
+                styles['align-self'] = 'flex-end';
+                break;
+            default:
+                styles['align-self'] = input;
+                break;
         }
+        return styles;
     }
-    /** @nocollapse */ FlexAlignStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function FlexAlignStyleBuilder_Factory() { return new FlexAlignStyleBuilder(); }, token: FlexAlignStyleBuilder, providedIn: "root" });
-    return FlexAlignStyleBuilder;
-})();
+}
+FlexAlignStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ FlexAlignStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function FlexAlignStyleBuilder_Factory() { return new FlexAlignStyleBuilder(); }, token: FlexAlignStyleBuilder, providedIn: "root" });
 /** @type {?} */
 const inputs$5 = [
     'fxFlexAlign', 'fxFlexAlign.xs', 'fxFlexAlign.sm', 'fxFlexAlign.md',
@@ -5325,6 +5727,16 @@ class FlexAlignDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MOD
         this.init();
     }
 }
+FlexAlignDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'flex-align-directive' },] },
+];
+/** @nocollapse */
+FlexAlignDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: FlexAlignStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
 /** @type {?} */
 const flexAlignCache = new Map();
 class DefaultFlexAlignDirective extends FlexAlignDirective {
@@ -5333,6 +5745,10 @@ class DefaultFlexAlignDirective extends FlexAlignDirective {
         this.inputs = inputs$5;
     }
 }
+DefaultFlexAlignDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$5, inputs: inputs$5 },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -5345,19 +5761,19 @@ const FLEX_FILL_CSS = {
     'min-width': '100%',
     'min-height': '100%'
 };
-let FlexFillStyleBuilder = /*@__PURE__*/ (() => {
-    class FlexFillStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} _input
-         * @return {?}
-         */
-        buildStyles(_input) {
-            return FLEX_FILL_CSS;
-        }
+class FlexFillStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} _input
+     * @return {?}
+     */
+    buildStyles(_input) {
+        return FLEX_FILL_CSS;
     }
-    /** @nocollapse */ FlexFillStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function FlexFillStyleBuilder_Factory() { return new FlexFillStyleBuilder(); }, token: FlexFillStyleBuilder, providedIn: "root" });
-    return FlexFillStyleBuilder;
-})();
+}
+FlexFillStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ FlexFillStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function FlexFillStyleBuilder_Factory() { return new FlexFillStyleBuilder(); }, token: FlexFillStyleBuilder, providedIn: "root" });
 /**
  * 'fxFill' flexbox styling directive
  *  Maximizes width and height of element in a layout container
@@ -5381,87 +5797,102 @@ class FlexFillDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODU
         this.addStyles('');
     }
 }
+FlexFillDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: `[fxFill], [fxFlexFill]` },] },
+];
+/** @nocollapse */
+FlexFillDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: FlexFillStyleBuilder },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
 /** @type {?} */
 const flexFillCache = new Map();
-let LayoutAlignStyleBuilder = /*@__PURE__*/ (() => {
-    class LayoutAlignStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} align
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(align, parent) {
-            /** @type {?} */
-            const css = {};
-            const [mainAxis, crossAxis] = align.split(' ');
-            // Main axis
-            switch (mainAxis) {
-                case 'center':
-                    css['justify-content'] = 'center';
-                    break;
-                case 'space-around':
-                    css['justify-content'] = 'space-around';
-                    break;
-                case 'space-between':
-                    css['justify-content'] = 'space-between';
-                    break;
-                case 'space-evenly':
-                    css['justify-content'] = 'space-evenly';
-                    break;
-                case 'end':
-                case 'flex-end':
-                    css['justify-content'] = 'flex-end';
-                    break;
-                case 'start':
-                case 'flex-start':
-                default:
-                    css['justify-content'] = 'flex-start'; // default main axis
-                    break;
-            }
-            // Cross-axis
-            switch (crossAxis) {
-                case 'start':
-                case 'flex-start':
-                    css['align-items'] = css['align-content'] = 'flex-start';
-                    break;
-                case 'center':
-                    css['align-items'] = css['align-content'] = 'center';
-                    break;
-                case 'end':
-                case 'flex-end':
-                    css['align-items'] = css['align-content'] = 'flex-end';
-                    break;
-                case 'space-between':
-                    css['align-content'] = 'space-between';
-                    css['align-items'] = 'stretch';
-                    break;
-                case 'space-around':
-                    css['align-content'] = 'space-around';
-                    css['align-items'] = 'stretch';
-                    break;
-                case 'baseline':
-                    css['align-content'] = 'stretch';
-                    css['align-items'] = 'baseline';
-                    break;
-                case 'stretch':
-                default: // 'stretch'
-                    css['align-items'] = css['align-content'] = 'stretch'; // default cross axis
-                    break;
-            }
-            return ( /** @type {?} */(extendObject(css, {
-                'display': parent.inline ? 'inline-flex' : 'flex',
-                'flex-direction': parent.layout,
-                'box-sizing': 'border-box',
-                'max-width': crossAxis === 'stretch' ?
-                    !isFlowHorizontal(parent.layout) ? '100%' : null : null,
-                'max-height': crossAxis === 'stretch' ?
-                    isFlowHorizontal(parent.layout) ? '100%' : null : null,
-            })));
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class LayoutAlignStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} align
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(align, parent) {
+        /** @type {?} */
+        const css = {};
+        const [mainAxis, crossAxis] = align.split(' ');
+        // Main axis
+        switch (mainAxis) {
+            case 'center':
+                css['justify-content'] = 'center';
+                break;
+            case 'space-around':
+                css['justify-content'] = 'space-around';
+                break;
+            case 'space-between':
+                css['justify-content'] = 'space-between';
+                break;
+            case 'space-evenly':
+                css['justify-content'] = 'space-evenly';
+                break;
+            case 'end':
+            case 'flex-end':
+                css['justify-content'] = 'flex-end';
+                break;
+            case 'start':
+            case 'flex-start':
+            default:
+                css['justify-content'] = 'flex-start'; // default main axis
+                break;
         }
+        // Cross-axis
+        switch (crossAxis) {
+            case 'start':
+            case 'flex-start':
+                css['align-items'] = css['align-content'] = 'flex-start';
+                break;
+            case 'center':
+                css['align-items'] = css['align-content'] = 'center';
+                break;
+            case 'end':
+            case 'flex-end':
+                css['align-items'] = css['align-content'] = 'flex-end';
+                break;
+            case 'space-between':
+                css['align-content'] = 'space-between';
+                css['align-items'] = 'stretch';
+                break;
+            case 'space-around':
+                css['align-content'] = 'space-around';
+                css['align-items'] = 'stretch';
+                break;
+            case 'baseline':
+                css['align-content'] = 'stretch';
+                css['align-items'] = 'baseline';
+                break;
+            case 'stretch':
+            default: // 'stretch'
+                css['align-items'] = css['align-content'] = 'stretch'; // default cross axis
+                break;
+        }
+        return (/** @type {?} */ (extendObject(css, {
+            'display': parent.inline ? 'inline-flex' : 'flex',
+            'flex-direction': parent.layout,
+            'box-sizing': 'border-box',
+            'max-width': crossAxis === 'stretch' ?
+                !isFlowHorizontal(parent.layout) ? '100%' : null : null,
+            'max-height': crossAxis === 'stretch' ?
+                isFlowHorizontal(parent.layout) ? '100%' : null : null,
+        })));
     }
-    /** @nocollapse */ LayoutAlignStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function LayoutAlignStyleBuilder_Factory() { return new LayoutAlignStyleBuilder(); }, token: LayoutAlignStyleBuilder, providedIn: "root" });
-    return LayoutAlignStyleBuilder;
-})();
+}
+LayoutAlignStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ LayoutAlignStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function LayoutAlignStyleBuilder_Factory() { return new LayoutAlignStyleBuilder(); }, token: LayoutAlignStyleBuilder, providedIn: "root" });
 /** @type {?} */
 const inputs$6 = [
     'fxLayoutAlign', 'fxLayoutAlign.xs', 'fxLayoutAlign.sm', 'fxLayoutAlign.md',
@@ -5559,24 +5990,35 @@ class LayoutAlignDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_M
         const layoutKeys = matcher.value.split(' ');
         this.layout = layoutKeys[0];
         this.inline = matcher.value.includes('inline');
-        if (!LAYOUT_VALUES.find(( /**
+        if (!LAYOUT_VALUES.find((/**
          * @param {?} x
          * @return {?}
-         *//**
-         * @param {?} x
-         * @return {?}
-         */ x => x === this.layout))) {
+         */
+        x => x === this.layout))) {
             this.layout = 'row';
         }
         this.triggerUpdate();
     }
 }
+LayoutAlignDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'layout-align-directive' },] },
+];
+/** @nocollapse */
+LayoutAlignDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: LayoutAlignStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
 class DefaultLayoutAlignDirective extends LayoutAlignDirective {
     constructor() {
         super(...arguments);
         this.inputs = inputs$6;
     }
 }
+DefaultLayoutAlignDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$6, inputs: inputs$6 },] },
+];
 /** @type {?} */
 const layoutAlignHorizontalCache = new Map();
 /** @type {?} */
@@ -5593,6 +6035,7 @@ const layoutAlignVerticalInlineCache = new Map();
 const layoutAlignHorizontalRevInlineCache = new Map();
 /** @type {?} */
 const layoutAlignVerticalRevInlineCache = new Map();
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -5622,18 +6065,26 @@ const ALL_DIRECTIVES = [
  */
 class FlexModule {
 }
+FlexModule.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
+                imports: [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["CoreModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]],
+                declarations: [...ALL_DIRECTIVES],
+                exports: [...ALL_DIRECTIVES]
+            },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 
-
-
+//# sourceMappingURL=flex.js.map
 
 
 /***/ }),
@@ -5694,6 +6145,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -5702,19 +6154,19 @@ __webpack_require__.r(__webpack_exports__);
 const ROW_DEFAULT = 'stretch';
 /** @type {?} */
 const COL_DEFAULT = 'stretch';
-let GridAlignStyleBuilder = /*@__PURE__*/ (() => {
-    class GridAlignStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @return {?}
-         */
-        buildStyles(input) {
-            return buildCss(input || ROW_DEFAULT);
-        }
+class GridAlignStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @return {?}
+     */
+    buildStyles(input) {
+        return buildCss(input || ROW_DEFAULT);
     }
-    /** @nocollapse */ GridAlignStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAlignStyleBuilder_Factory() { return new GridAlignStyleBuilder(); }, token: GridAlignStyleBuilder, providedIn: "root" });
-    return GridAlignStyleBuilder;
-})();
+}
+GridAlignStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridAlignStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAlignStyleBuilder_Factory() { return new GridAlignStyleBuilder(); }, token: GridAlignStyleBuilder, providedIn: "root" });
 class GridAlignDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elementRef
@@ -5733,6 +6185,16 @@ class GridAlignDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MOD
         this.init();
     }
 }
+GridAlignDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'grid-align-directive' },] },
+];
+/** @nocollapse */
+GridAlignDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: GridAlignStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
 /** @type {?} */
 const alignCache = new Map();
 /** @type {?} */
@@ -5763,6 +6225,9 @@ class DefaultGridAlignDirective extends GridAlignDirective {
         this.inputs = inputs;
     }
 }
+DefaultGridAlignDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector, inputs },] },
+];
 /**
  * @param {?=} align
  * @return {?}
@@ -5809,6 +6274,7 @@ function buildCss(align = '') {
     }
     return css;
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -5817,20 +6283,20 @@ function buildCss(align = '') {
 const DEFAULT_MAIN = 'start';
 /** @type {?} */
 const DEFAULT_CROSS = 'stretch';
-let GridAlignColumnsStyleBuilder = /*@__PURE__*/ (() => {
-    class GridAlignColumnsStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(input, parent) {
-            return buildCss$1(input || `${DEFAULT_MAIN} ${DEFAULT_CROSS}`, parent.inline);
-        }
+class GridAlignColumnsStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(input, parent) {
+        return buildCss$1(input || `${DEFAULT_MAIN} ${DEFAULT_CROSS}`, parent.inline);
     }
-    /** @nocollapse */ GridAlignColumnsStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAlignColumnsStyleBuilder_Factory() { return new GridAlignColumnsStyleBuilder(); }, token: GridAlignColumnsStyleBuilder, providedIn: "root" });
-    return GridAlignColumnsStyleBuilder;
-})();
+}
+GridAlignColumnsStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridAlignColumnsStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAlignColumnsStyleBuilder_Factory() { return new GridAlignColumnsStyleBuilder(); }, token: GridAlignColumnsStyleBuilder, providedIn: "root" });
 class GridAlignColumnsDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elementRef
@@ -5870,6 +6336,19 @@ class GridAlignColumnsDirective extends _angular_flex_layout_core__WEBPACK_IMPOR
         this.addStyles(value, { inline: this.inline });
     }
 }
+GridAlignColumnsDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'grid-align-columns-directive' },] },
+];
+/** @nocollapse */
+GridAlignColumnsDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: GridAlignColumnsStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
+GridAlignColumnsDirective.propDecorators = {
+    inline: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['gdInline',] }]
+};
 /** @type {?} */
 const alignColumnsCache = new Map();
 /** @type {?} */
@@ -5904,6 +6383,9 @@ class DefaultGridAlignColumnsDirective extends GridAlignColumnsDirective {
         this.inputs = inputs$1;
     }
 }
+DefaultGridAlignColumnsDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$1, inputs: inputs$1 },] },
+];
 /**
  * @param {?} align
  * @param {?} inline
@@ -5961,6 +6443,7 @@ function buildCss$1(align, inline) {
     css['display'] = inline ? 'inline-grid' : 'grid';
     return css;
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -5969,20 +6452,20 @@ function buildCss$1(align, inline) {
 const DEFAULT_MAIN$1 = 'start';
 /** @type {?} */
 const DEFAULT_CROSS$1 = 'stretch';
-let GridAlignRowsStyleBuilder = /*@__PURE__*/ (() => {
-    class GridAlignRowsStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(input, parent) {
-            return buildCss$2(input || `${DEFAULT_MAIN$1} ${DEFAULT_CROSS$1}`, parent.inline);
-        }
+class GridAlignRowsStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(input, parent) {
+        return buildCss$2(input || `${DEFAULT_MAIN$1} ${DEFAULT_CROSS$1}`, parent.inline);
     }
-    /** @nocollapse */ GridAlignRowsStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAlignRowsStyleBuilder_Factory() { return new GridAlignRowsStyleBuilder(); }, token: GridAlignRowsStyleBuilder, providedIn: "root" });
-    return GridAlignRowsStyleBuilder;
-})();
+}
+GridAlignRowsStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridAlignRowsStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAlignRowsStyleBuilder_Factory() { return new GridAlignRowsStyleBuilder(); }, token: GridAlignRowsStyleBuilder, providedIn: "root" });
 class GridAlignRowsDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elementRef
@@ -6022,6 +6505,19 @@ class GridAlignRowsDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED
         this.addStyles(value, { inline: this.inline });
     }
 }
+GridAlignRowsDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'grid-align-rows-directive' },] },
+];
+/** @nocollapse */
+GridAlignRowsDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: GridAlignRowsStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
+GridAlignRowsDirective.propDecorators = {
+    inline: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['gdInline',] }]
+};
 /** @type {?} */
 const alignRowsCache = new Map();
 /** @type {?} */
@@ -6056,6 +6552,9 @@ class DefaultGridAlignRowsDirective extends GridAlignRowsDirective {
         this.inputs = inputs$2;
     }
 }
+DefaultGridAlignRowsDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$2, inputs: inputs$2 },] },
+];
 /**
  * @param {?} align
  * @param {?} inline
@@ -6095,25 +6594,26 @@ function buildCss$2(align, inline) {
     css['display'] = inline ? 'inline-grid' : 'grid';
     return css;
 }
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const DEFAULT_VALUE = 'auto';
-let GridAreaStyleBuilder = /*@__PURE__*/ (() => {
-    class GridAreaStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @return {?}
-         */
-        buildStyles(input) {
-            return { 'grid-area': input || DEFAULT_VALUE };
-        }
+class GridAreaStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @return {?}
+     */
+    buildStyles(input) {
+        return { 'grid-area': input || DEFAULT_VALUE };
     }
-    /** @nocollapse */ GridAreaStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAreaStyleBuilder_Factory() { return new GridAreaStyleBuilder(); }, token: GridAreaStyleBuilder, providedIn: "root" });
-    return GridAreaStyleBuilder;
-})();
+}
+GridAreaStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridAreaStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAreaStyleBuilder_Factory() { return new GridAreaStyleBuilder(); }, token: GridAreaStyleBuilder, providedIn: "root" });
 class GridAreaDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elRef
@@ -6132,6 +6632,16 @@ class GridAreaDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODU
         this.init();
     }
 }
+GridAreaDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'grid-area-directive' },] },
+];
+/** @nocollapse */
+GridAreaDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: GridAreaStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
 /** @type {?} */
 const gridAreaCache = new Map();
 /** @type {?} */
@@ -6159,6 +6669,10 @@ class DefaultGridAreaDirective extends GridAreaDirective {
         this.inputs = inputs$3;
     }
 }
+DefaultGridAreaDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$3, inputs: inputs$3 },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -6167,31 +6681,29 @@ class DefaultGridAreaDirective extends GridAreaDirective {
 const DEFAULT_VALUE$1 = 'none';
 /** @type {?} */
 const DELIMETER = '|';
-let GridAreasStyleBuiler = /*@__PURE__*/ (() => {
-    class GridAreasStyleBuiler extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @param {?} parent
+class GridAreasStyleBuiler extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(input, parent) {
+        /** @type {?} */
+        const areas = (input || DEFAULT_VALUE$1).split(DELIMETER).map((/**
+         * @param {?} v
          * @return {?}
          */
-        buildStyles(input, parent) {
-            /** @type {?} */
-            const areas = (input || DEFAULT_VALUE$1).split(DELIMETER).map(( /**
-             * @param {?} v
-             * @return {?}
-             *//**
-             * @param {?} v
-             * @return {?}
-             */ v => `"${v.trim()}"`));
-            return {
-                'display': parent.inline ? 'inline-grid' : 'grid',
-                'grid-template-areas': areas.join(' ')
-            };
-        }
+        v => `"${v.trim()}"`));
+        return {
+            'display': parent.inline ? 'inline-grid' : 'grid',
+            'grid-template-areas': areas.join(' ')
+        };
     }
-    /** @nocollapse */ GridAreasStyleBuiler.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAreasStyleBuiler_Factory() { return new GridAreasStyleBuiler(); }, token: GridAreasStyleBuiler, providedIn: "root" });
-    return GridAreasStyleBuiler;
-})();
+}
+GridAreasStyleBuiler.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridAreasStyleBuiler.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAreasStyleBuiler_Factory() { return new GridAreasStyleBuiler(); }, token: GridAreasStyleBuiler, providedIn: "root" });
 class GridAreasDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elRef
@@ -6231,6 +6743,19 @@ class GridAreasDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MOD
         this.addStyles(value, { inline: this.inline });
     }
 }
+GridAreasDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'grid-areas-directive' },] },
+];
+/** @nocollapse */
+GridAreasDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: GridAreasStyleBuiler, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
+GridAreasDirective.propDecorators = {
+    inline: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['gdInline',] }]
+};
 /** @type {?} */
 const areasCache = new Map();
 /** @type {?} */
@@ -6260,34 +6785,38 @@ class DefaultGridAreasDirective extends GridAreasDirective {
         this.inputs = inputs$4;
     }
 }
+DefaultGridAreasDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$4, inputs: inputs$4 },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const DEFAULT_VALUE$2 = 'initial';
-let GridAutoStyleBuilder = /*@__PURE__*/ (() => {
-    class GridAutoStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(input, parent) {
-            let [direction, dense] = (input || DEFAULT_VALUE$2).split(' ');
-            if (direction !== 'column' && direction !== 'row' && direction !== 'dense') {
-                direction = 'row';
-            }
-            dense = (dense === 'dense' && direction !== 'dense') ? ' dense' : '';
-            return {
-                'display': parent.inline ? 'inline-grid' : 'grid',
-                'grid-auto-flow': direction + dense
-            };
+class GridAutoStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(input, parent) {
+        let [direction, dense] = (input || DEFAULT_VALUE$2).split(' ');
+        if (direction !== 'column' && direction !== 'row' && direction !== 'dense') {
+            direction = 'row';
         }
+        dense = (dense === 'dense' && direction !== 'dense') ? ' dense' : '';
+        return {
+            'display': parent.inline ? 'inline-grid' : 'grid',
+            'grid-auto-flow': direction + dense
+        };
     }
-    /** @nocollapse */ GridAutoStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAutoStyleBuilder_Factory() { return new GridAutoStyleBuilder(); }, token: GridAutoStyleBuilder, providedIn: "root" });
-    return GridAutoStyleBuilder;
-})();
+}
+GridAutoStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridAutoStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridAutoStyleBuilder_Factory() { return new GridAutoStyleBuilder(); }, token: GridAutoStyleBuilder, providedIn: "root" });
 class GridAutoDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elementRef
@@ -6327,6 +6856,19 @@ class GridAutoDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODU
         this.addStyles(value, { inline: this.inline });
     }
 }
+GridAutoDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: `grid-auto-directive` },] },
+];
+/** @nocollapse */
+GridAutoDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: GridAutoStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
+GridAutoDirective.propDecorators = {
+    inline: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['gdInline',] }]
+};
 /** @type {?} */
 const autoCache = new Map();
 /** @type {?} */
@@ -6356,25 +6898,29 @@ class DefaultGridAutoDirective extends GridAutoDirective {
         this.inputs = inputs$5;
     }
 }
+DefaultGridAutoDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$5, inputs: inputs$5 },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const DEFAULT_VALUE$3 = 'auto';
-let GridColumnStyleBuilder = /*@__PURE__*/ (() => {
-    class GridColumnStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @return {?}
-         */
-        buildStyles(input) {
-            return { 'grid-column': input || DEFAULT_VALUE$3 };
-        }
+class GridColumnStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @return {?}
+     */
+    buildStyles(input) {
+        return { 'grid-column': input || DEFAULT_VALUE$3 };
     }
-    /** @nocollapse */ GridColumnStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridColumnStyleBuilder_Factory() { return new GridColumnStyleBuilder(); }, token: GridColumnStyleBuilder, providedIn: "root" });
-    return GridColumnStyleBuilder;
-})();
+}
+GridColumnStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridColumnStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridColumnStyleBuilder_Factory() { return new GridColumnStyleBuilder(); }, token: GridColumnStyleBuilder, providedIn: "root" });
 class GridColumnDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elementRef
@@ -6393,6 +6939,16 @@ class GridColumnDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MO
         this.init();
     }
 }
+GridColumnDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'grid-column-directive' },] },
+];
+/** @nocollapse */
+GridColumnDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: GridColumnStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
 /** @type {?} */
 const columnCache = new Map();
 /** @type {?} */
@@ -6420,6 +6976,10 @@ class DefaultGridColumnDirective extends GridColumnDirective {
         this.inputs = inputs$6;
     }
 }
+DefaultGridColumnDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$6, inputs: inputs$6 },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -6428,36 +6988,36 @@ class DefaultGridColumnDirective extends GridColumnDirective {
 const DEFAULT_VALUE$4 = 'none';
 /** @type {?} */
 const AUTO_SPECIFIER = '!';
-let GridColumnsStyleBuilder = /*@__PURE__*/ (() => {
-    class GridColumnsStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(input, parent) {
-            input = input || DEFAULT_VALUE$4;
-            /** @type {?} */
-            let auto = false;
-            if (input.endsWith(AUTO_SPECIFIER)) {
-                input = input.substring(0, input.indexOf(AUTO_SPECIFIER));
-                auto = true;
-            }
-            /** @type {?} */
-            const css = {
-                'display': parent.inline ? 'inline-grid' : 'grid',
-                'grid-auto-columns': '',
-                'grid-template-columns': '',
-            };
-            /** @type {?} */
-            const key = (auto ? 'grid-auto-columns' : 'grid-template-columns');
-            css[key] = input;
-            return css;
+class GridColumnsStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(input, parent) {
+        input = input || DEFAULT_VALUE$4;
+        /** @type {?} */
+        let auto = false;
+        if (input.endsWith(AUTO_SPECIFIER)) {
+            input = input.substring(0, input.indexOf(AUTO_SPECIFIER));
+            auto = true;
         }
+        /** @type {?} */
+        const css = {
+            'display': parent.inline ? 'inline-grid' : 'grid',
+            'grid-auto-columns': '',
+            'grid-template-columns': '',
+        };
+        /** @type {?} */
+        const key = (auto ? 'grid-auto-columns' : 'grid-template-columns');
+        css[key] = input;
+        return css;
     }
-    /** @nocollapse */ GridColumnsStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridColumnsStyleBuilder_Factory() { return new GridColumnsStyleBuilder(); }, token: GridColumnsStyleBuilder, providedIn: "root" });
-    return GridColumnsStyleBuilder;
-})();
+}
+GridColumnsStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridColumnsStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridColumnsStyleBuilder_Factory() { return new GridColumnsStyleBuilder(); }, token: GridColumnsStyleBuilder, providedIn: "root" });
 class GridColumnsDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elementRef
@@ -6497,6 +7057,19 @@ class GridColumnsDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_M
         this.addStyles(value, { inline: this.inline });
     }
 }
+GridColumnsDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'grid-columns-directive' },] },
+];
+/** @nocollapse */
+GridColumnsDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: GridColumnsStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
+GridColumnsDirective.propDecorators = {
+    inline: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['gdInline',] }]
+};
 /** @type {?} */
 const columnsCache = new Map();
 /** @type {?} */
@@ -6527,29 +7100,33 @@ class DefaultGridColumnsDirective extends GridColumnsDirective {
         this.inputs = inputs$7;
     }
 }
+DefaultGridColumnsDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$7, inputs: inputs$7 },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const DEFAULT_VALUE$5 = '0';
-let GridGapStyleBuilder = /*@__PURE__*/ (() => {
-    class GridGapStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(input, parent) {
-            return {
-                'display': parent.inline ? 'inline-grid' : 'grid',
-                'grid-gap': input || DEFAULT_VALUE$5
-            };
-        }
+class GridGapStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(input, parent) {
+        return {
+            'display': parent.inline ? 'inline-grid' : 'grid',
+            'grid-gap': input || DEFAULT_VALUE$5
+        };
     }
-    /** @nocollapse */ GridGapStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridGapStyleBuilder_Factory() { return new GridGapStyleBuilder(); }, token: GridGapStyleBuilder, providedIn: "root" });
-    return GridGapStyleBuilder;
-})();
+}
+GridGapStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridGapStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridGapStyleBuilder_Factory() { return new GridGapStyleBuilder(); }, token: GridGapStyleBuilder, providedIn: "root" });
 class GridGapDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elRef
@@ -6589,6 +7166,19 @@ class GridGapDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODUL
         this.addStyles(value, { inline: this.inline });
     }
 }
+GridGapDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'grid-gap-directive' },] },
+];
+/** @nocollapse */
+GridGapDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: GridGapStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
+GridGapDirective.propDecorators = {
+    inline: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['gdInline',] }]
+};
 /** @type {?} */
 const gapCache = new Map();
 /** @type {?} */
@@ -6619,25 +7209,29 @@ class DefaultGridGapDirective extends GridGapDirective {
         this.inputs = inputs$8;
     }
 }
+DefaultGridGapDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$8, inputs: inputs$8 },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const DEFAULT_VALUE$6 = 'auto';
-let GridRowStyleBuilder = /*@__PURE__*/ (() => {
-    class GridRowStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @return {?}
-         */
-        buildStyles(input) {
-            return { 'grid-row': input || DEFAULT_VALUE$6 };
-        }
+class GridRowStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @return {?}
+     */
+    buildStyles(input) {
+        return { 'grid-row': input || DEFAULT_VALUE$6 };
     }
-    /** @nocollapse */ GridRowStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridRowStyleBuilder_Factory() { return new GridRowStyleBuilder(); }, token: GridRowStyleBuilder, providedIn: "root" });
-    return GridRowStyleBuilder;
-})();
+}
+GridRowStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridRowStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridRowStyleBuilder_Factory() { return new GridRowStyleBuilder(); }, token: GridRowStyleBuilder, providedIn: "root" });
 class GridRowDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elementRef
@@ -6656,6 +7250,16 @@ class GridRowDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODUL
         this.init();
     }
 }
+GridRowDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'grid-row-directive' },] },
+];
+/** @nocollapse */
+GridRowDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: GridRowStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
 /** @type {?} */
 const rowCache = new Map();
 /** @type {?} */
@@ -6683,6 +7287,10 @@ class DefaultGridRowDirective extends GridRowDirective {
         this.inputs = inputs$9;
     }
 }
+DefaultGridRowDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$9, inputs: inputs$9 },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -6691,36 +7299,36 @@ class DefaultGridRowDirective extends GridRowDirective {
 const DEFAULT_VALUE$7 = 'none';
 /** @type {?} */
 const AUTO_SPECIFIER$1 = '!';
-let GridRowsStyleBuilder = /*@__PURE__*/ (() => {
-    class GridRowsStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
-        /**
-         * @param {?} input
-         * @param {?} parent
-         * @return {?}
-         */
-        buildStyles(input, parent) {
-            input = input || DEFAULT_VALUE$7;
-            /** @type {?} */
-            let auto = false;
-            if (input.endsWith(AUTO_SPECIFIER$1)) {
-                input = input.substring(0, input.indexOf(AUTO_SPECIFIER$1));
-                auto = true;
-            }
-            /** @type {?} */
-            const css = {
-                'display': parent.inline ? 'inline-grid' : 'grid',
-                'grid-auto-rows': '',
-                'grid-template-rows': '',
-            };
-            /** @type {?} */
-            const key = (auto ? 'grid-auto-rows' : 'grid-template-rows');
-            css[key] = input;
-            return css;
+class GridRowsStyleBuilder extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleBuilder"] {
+    /**
+     * @param {?} input
+     * @param {?} parent
+     * @return {?}
+     */
+    buildStyles(input, parent) {
+        input = input || DEFAULT_VALUE$7;
+        /** @type {?} */
+        let auto = false;
+        if (input.endsWith(AUTO_SPECIFIER$1)) {
+            input = input.substring(0, input.indexOf(AUTO_SPECIFIER$1));
+            auto = true;
         }
+        /** @type {?} */
+        const css = {
+            'display': parent.inline ? 'inline-grid' : 'grid',
+            'grid-auto-rows': '',
+            'grid-template-rows': '',
+        };
+        /** @type {?} */
+        const key = (auto ? 'grid-auto-rows' : 'grid-template-rows');
+        css[key] = input;
+        return css;
     }
-    /** @nocollapse */ GridRowsStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridRowsStyleBuilder_Factory() { return new GridRowsStyleBuilder(); }, token: GridRowsStyleBuilder, providedIn: "root" });
-    return GridRowsStyleBuilder;
-})();
+}
+GridRowsStyleBuilder.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"], args: [{ providedIn: 'root' },] },
+];
+/** @nocollapse */ GridRowsStyleBuilder.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function GridRowsStyleBuilder_Factory() { return new GridRowsStyleBuilder(); }, token: GridRowsStyleBuilder, providedIn: "root" });
 class GridRowsDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["BaseDirective2"] {
     /**
      * @param {?} elementRef
@@ -6760,6 +7368,19 @@ class GridRowsDirective extends _angular_flex_layout_core__WEBPACK_IMPORTED_MODU
         this.addStyles(value, { inline: this.inline });
     }
 }
+GridRowsDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: 'grid-rows-directive' },] },
+];
+/** @nocollapse */
+GridRowsDirective.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
+    { type: GridRowsStyleBuilder, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["StyleUtils"] },
+    { type: _angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["MediaMarshaller"] }
+];
+GridRowsDirective.propDecorators = {
+    inline: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['gdInline',] }]
+};
 /** @type {?} */
 const rowsCache = new Map();
 /** @type {?} */
@@ -6790,6 +7411,10 @@ class DefaultGridRowsDirective extends GridRowsDirective {
         this.inputs = inputs$10;
     }
 }
+DefaultGridRowsDirective.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{ selector: selector$10, inputs: inputs$10 },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
@@ -6826,18 +7451,26 @@ const ALL_DIRECTIVES = [
  */
 class GridModule {
 }
+GridModule.decorators = [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
+                imports: [_angular_flex_layout_core__WEBPACK_IMPORTED_MODULE_1__["CoreModule"]],
+                declarations: [...ALL_DIRECTIVES],
+                exports: [...ALL_DIRECTIVES]
+            },] },
+];
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 
-
-
+//# sourceMappingURL=grid.js.map
 
 
 /***/ }),
@@ -6875,36 +7508,35 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
  * tslint:disable
- */
+ */ 
 
 
 
 
 
 
-var MatCardModuleNgFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardModule"], [], function (_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardModule"], _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardModule"], [])]); });
+var MatCardModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardModule"], [], function (_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardModule"], _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardModule"], [])]); });
 
 var styles_MatCard = [".mat-card{transition:box-shadow 280ms cubic-bezier(.4,0,.2,1);display:block;position:relative;padding:16px;border-radius:4px}._mat-animation-noopable.mat-card{transition:none;animation:none}.mat-card .mat-divider-horizontal{position:absolute;left:0;width:100%}[dir=rtl] .mat-card .mat-divider-horizontal{left:auto;right:0}.mat-card .mat-divider-horizontal.mat-divider-inset{position:static;margin:0}[dir=rtl] .mat-card .mat-divider-horizontal.mat-divider-inset{margin-right:0}@media (-ms-high-contrast:active){.mat-card{outline:solid 1px}}.mat-card-actions,.mat-card-content,.mat-card-subtitle{display:block;margin-bottom:16px}.mat-card-title{display:block;margin-bottom:8px}.mat-card-actions{margin-left:-8px;margin-right:-8px;padding:8px 0}.mat-card-actions-align-end{display:flex;justify-content:flex-end}.mat-card-image{width:calc(100% + 32px);margin:0 -16px 16px -16px}.mat-card-footer{display:block;margin:0 -16px -16px -16px}.mat-card-actions .mat-button,.mat-card-actions .mat-raised-button,.mat-card-actions .mat-stroked-button{margin:0 8px}.mat-card-header{display:flex;flex-direction:row}.mat-card-header .mat-card-title{margin-bottom:12px}.mat-card-header-text{margin:0 16px}.mat-card-avatar{height:40px;width:40px;border-radius:50%;flex-shrink:0;object-fit:cover}.mat-card-title-group{display:flex;justify-content:space-between}.mat-card-sm-image{width:80px;height:80px}.mat-card-md-image{width:112px;height:112px}.mat-card-lg-image{width:152px;height:152px}.mat-card-xl-image{width:240px;height:240px;margin:-8px}.mat-card-title-group>.mat-card-xl-image{margin:-8px 0 8px}@media (max-width:599px){.mat-card-title-group{margin:0}.mat-card-xl-image{margin-left:0;margin-right:0}}.mat-card-content>:first-child,.mat-card>:first-child{margin-top:0}.mat-card-content>:last-child:not(.mat-card-footer),.mat-card>:last-child:not(.mat-card-footer){margin-bottom:0}.mat-card-image:first-child{margin-top:-16px;border-top-left-radius:inherit;border-top-right-radius:inherit}.mat-card>.mat-card-actions:last-child{margin-bottom:-8px;padding-bottom:0}.mat-card-actions .mat-button:first-child,.mat-card-actions .mat-raised-button:first-child,.mat-card-actions .mat-stroked-button:first-child{margin-left:0;margin-right:0}.mat-card-subtitle:not(:first-child),.mat-card-title:not(:first-child){margin-top:-4px}.mat-card-header .mat-card-subtitle:not(:first-child){margin-top:-8px}.mat-card>.mat-card-xl-image:first-child{margin-top:-8px}.mat-card>.mat-card-xl-image:last-child{margin-bottom:-8px}"];
-var RenderType_MatCard = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({ encapsulation: 2, styles: styles_MatCard, data: {} });
+var RenderType_MatCard = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({ encapsulation: 2, styles: styles_MatCard, data: {} });
 
 function View_MatCard_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](2, [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵncd"](null, 0), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵncd"](null, 1)], null, null); }
 function View_MatCard_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 1, "mat-card", [["class", "mat-card"]], [[2, "_mat-animation-noopable", null]], null, null, View_MatCard_0, RenderType_MatCard)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](1, 49152, null, 0, _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCard"], [[2, _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["ANIMATION_MODULE_TYPE"]]], null, null)], null, function (_ck, _v) { var currVal_0 = (_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵnov"](_v, 1)._animationMode === "NoopAnimations"); _ck(_v, 0, 0, currVal_0); }); }
-var MatCardNgFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-card", _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCard"], View_MatCard_Host_0, {}, {}, ["*", "mat-card-footer"]);
+var MatCardNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-card", _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCard"], View_MatCard_Host_0, {}, {}, ["*", "mat-card-footer"]);
 
 var styles_MatCardHeader = [];
-var RenderType_MatCardHeader = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({ encapsulation: 2, styles: styles_MatCardHeader, data: {} });
+var RenderType_MatCardHeader = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({ encapsulation: 2, styles: styles_MatCardHeader, data: {} });
 
 function View_MatCardHeader_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](2, [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵncd"](null, 0), (_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](1, 0, null, null, 1, "div", [["class", "mat-card-header-text"]], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵncd"](null, 1), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵncd"](null, 2)], null, null); }
 function View_MatCardHeader_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 1, "mat-card-header", [["class", "mat-card-header"]], null, null, null, View_MatCardHeader_0, RenderType_MatCardHeader)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](1, 49152, null, 0, _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardHeader"], [], null, null)], null, null); }
-var MatCardHeaderNgFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-card-header", _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardHeader"], View_MatCardHeader_Host_0, {}, {}, ["[mat-card-avatar], [matCardAvatar]", "mat-card-title, mat-card-subtitle,\n      [mat-card-title], [mat-card-subtitle],\n      [matCardTitle], [matCardSubtitle]", "*"]);
+var MatCardHeaderNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-card-header", _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardHeader"], View_MatCardHeader_Host_0, {}, {}, ["[mat-card-avatar], [matCardAvatar]", "mat-card-title, mat-card-subtitle,\n      [mat-card-title], [mat-card-subtitle],\n      [matCardTitle], [matCardSubtitle]", "*"]);
 
 var styles_MatCardTitleGroup = [];
-var RenderType_MatCardTitleGroup = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({ encapsulation: 2, styles: styles_MatCardTitleGroup, data: {} });
+var RenderType_MatCardTitleGroup = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({ encapsulation: 2, styles: styles_MatCardTitleGroup, data: {} });
 
 function View_MatCardTitleGroup_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](2, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 1, "div", [], null, null, null, null, null)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵncd"](null, 0), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵncd"](null, 1), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵncd"](null, 2)], null, null); }
 function View_MatCardTitleGroup_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 1, "mat-card-title-group", [["class", "mat-card-title-group"]], null, null, null, View_MatCardTitleGroup_0, RenderType_MatCardTitleGroup)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](1, 49152, null, 0, _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardTitleGroup"], [], null, null)], null, null); }
-var MatCardTitleGroupNgFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-card-title-group", _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardTitleGroup"], View_MatCardTitleGroup_Host_0, {}, {}, ["mat-card-title, mat-card-subtitle,\n      [mat-card-title], [mat-card-subtitle],\n      [matCardTitle], [matCardSubtitle]", "img", "*"]);
-
+var MatCardTitleGroupNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-card-title-group", _angular_material_card__WEBPACK_IMPORTED_MODULE_1__["MatCardTitleGroup"], View_MatCardTitleGroup_Host_0, {}, {}, ["mat-card-title, mat-card-subtitle,\n      [mat-card-title], [mat-card-subtitle],\n      [matCardTitle], [matCardSubtitle]", "img", "*"]);
 
 
 
@@ -6934,21 +7566,20 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
  * tslint:disable
- */
+ */ 
 
 
 
 
 
-var MatIconModuleNgFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MatIconModule"], [], function (_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MatIconModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MatIconModule"], [])]); });
+var MatIconModuleNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcmf"](_angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MatIconModule"], [], function (_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmod"]([_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](512, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵCodegenComponentFactoryResolver"], [[8, []], [3, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]], _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModuleRef"]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"], []), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"], [[2, _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MATERIAL_SANITY_CHECKS"]], [2, _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["HAMMER_LOADER"]]]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵmpd"](1073742336, _angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MatIconModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MatIconModule"], [])]); });
 
 var styles_MatIcon = [".mat-icon{background-repeat:no-repeat;display:inline-block;fill:currentColor;height:24px;width:24px}.mat-icon.mat-icon-inline{font-size:inherit;height:inherit;line-height:inherit;width:inherit}[dir=rtl] .mat-icon-rtl-mirror{transform:scale(-1,1)}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon{display:block}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-icon,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-icon{margin:auto}"];
-var RenderType_MatIcon = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({ encapsulation: 2, styles: styles_MatIcon, data: {} });
+var RenderType_MatIcon = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵcrt"]({ encapsulation: 2, styles: styles_MatIcon, data: {} });
 
 function View_MatIcon_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](2, [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵncd"](null, 0)], null, null); }
 function View_MatIcon_Host_0(_l) { return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵvid"](0, [(_l()(), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵeld"](0, 0, null, null, 1, "mat-icon", [["class", "mat-icon notranslate"], ["role", "img"]], [[2, "mat-icon-inline", null], [2, "mat-icon-no-color", null]], null, null, View_MatIcon_0, RenderType_MatIcon)), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵdid"](1, 9158656, null, 0, _angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MatIcon"], [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MatIconRegistry"], [8, null], [2, _angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MAT_ICON_LOCATION"]], [2, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ErrorHandler"]]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, function (_ck, _v) { var currVal_0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵnov"](_v, 1).inline; var currVal_1 = (((_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵnov"](_v, 1).color !== "primary") && (_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵnov"](_v, 1).color !== "accent")) && (_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵnov"](_v, 1).color !== "warn")); _ck(_v, 0, 0, currVal_0, currVal_1); }); }
-var MatIconNgFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-icon", _angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MatIcon"], View_MatIcon_Host_0, { color: "color", inline: "inline", svgIcon: "svgIcon", fontSet: "fontSet", fontIcon: "fontIcon" }, {}, ["*"]);
-
+var MatIconNgFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵccf"]("mat-icon", _angular_material_icon__WEBPACK_IMPORTED_MODULE_1__["MatIcon"], View_MatIcon_Host_0, { color: "color", inline: "inline", svgIcon: "svgIcon", fontSet: "fontSet", fontIcon: "fontIcon" }, {}, ["*"]);
 
 
 
@@ -6972,49 +7603,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-let AuthenticatorService = /*@__PURE__*/ (() => {
-    class AuthenticatorService {
-        constructor(router, http, userService) {
-            this.router = router;
-            this.http = http;
-            this.userService = userService;
-            this.uri = 'http://localhost:1000/api';
-        }
-        login(username, password) {
-            this.http.post(this.uri + '/authenticate', { username, password })
-                .subscribe((resp) => {
-                this.router.navigate(['dashboard']);
-                this.userService.setUser(resp);
-                sessionStorage.setItem('token', resp.jwt);
-            });
-        }
-        validateJwt() {
-            this.http.get(this.uri + '/jwt/authenticate')
-                .subscribe((resp) => {
-                this.userService.setUser(resp);
-                sessionStorage.setItem('token', resp.jwt);
-            }, (err) => {
-                this.logout('/login');
-            });
-        }
-        checkAuthenticated() {
-            if (!this.logIn) {
-                return false;
-            }
-            return true;
-        }
-        logout(redirect) {
-            sessionStorage.removeItem('token');
-            this.router.navigate([redirect]);
-        }
-        get logIn() {
-            return (sessionStorage.getItem('token') !== null);
-        }
+class AuthenticatorService {
+    constructor(router, http, userService) {
+        this.router = router;
+        this.http = http;
+        this.userService = userService;
+        this.uri = 'http://localhost:1000/api';
     }
-    AuthenticatorService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ factory: function AuthenticatorService_Factory() { return new AuthenticatorService(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_shared_stateful_model_user_model_service__WEBPACK_IMPORTED_MODULE_3__["UserModelService"])); }, token: AuthenticatorService, providedIn: "root" });
-    return AuthenticatorService;
-})();
-
+    login(username, password) {
+        this.http.post(this.uri + '/authenticate', { username, password })
+            .subscribe((resp) => {
+            this.router.navigate(['dashboard']);
+            this.userService.setUser(resp);
+            sessionStorage.setItem('token', resp.jwt);
+        });
+    }
+    validateJwt() {
+        this.http.get(this.uri + '/jwt/authenticate')
+            .subscribe((resp) => {
+            this.userService.setUser(resp);
+            sessionStorage.setItem('token', resp.jwt);
+        }, (err) => {
+            this.logout('/login');
+        });
+    }
+    checkAuthenticated() {
+        if (!this.logIn) {
+            return false;
+        }
+        return true;
+    }
+    logout(redirect) {
+        sessionStorage.removeItem('token');
+        this.router.navigate([redirect]);
+    }
+    get logIn() {
+        return (sessionStorage.getItem('token') !== null);
+    }
+}
+AuthenticatorService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ factory: function AuthenticatorService_Factory() { return new AuthenticatorService(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_shared_stateful_model_user_model_service__WEBPACK_IMPORTED_MODULE_3__["UserModelService"])); }, token: AuthenticatorService, providedIn: "root" });
 
 
 /***/ }),
@@ -7033,34 +7660,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./model */ "./src/app/shared/stateful-model/model.ts");
 
 
-let UserModelService = /*@__PURE__*/ (() => {
-    class UserModelService {
-        constructor(modelFactory) {
-            this.modelFactory = modelFactory;
-            this.model = this.modelFactory.create({
-                identity: '',
-                avatar: '',
-                name: '',
-                lastLogin: new Date(),
-                accounts: [],
-                wallets: [],
-                notifications: [],
-                messages: [],
-                jwt: ''
-            });
-            this.user$ = this.model.data$;
-        }
-        setUser(newUser) {
-            this.model.set(newUser);
-        }
-        getUser() {
-            return this.model.get();
-        }
+class UserModelService {
+    constructor(modelFactory) {
+        this.modelFactory = modelFactory;
+        this.model = this.modelFactory.create({
+            identity: '',
+            avatar: '',
+            name: '',
+            lastLogin: new Date(),
+            accounts: [],
+            wallets: [],
+            notifications: [],
+            messages: [],
+            jwt: ''
+        });
+        this.user$ = this.model.data$;
     }
-    UserModelService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ factory: function UserModelService_Factory() { return new UserModelService(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_model__WEBPACK_IMPORTED_MODULE_1__["ModelFactory"])); }, token: UserModelService, providedIn: "root" });
-    return UserModelService;
-})();
-
+    setUser(newUser) {
+        this.model.set(newUser);
+    }
+    getUser() {
+        return this.model.get();
+    }
+}
+UserModelService.ngInjectableDef = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ factory: function UserModelService_Factory() { return new UserModelService(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_model__WEBPACK_IMPORTED_MODULE_1__["ModelFactory"])); }, token: UserModelService, providedIn: "root" });
 
 
 /***/ })
