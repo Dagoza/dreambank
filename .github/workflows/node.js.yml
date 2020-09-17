@@ -44,5 +44,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          BRANCH: master
+          BRANCH: gh-pages
           FOLDER: deploy_dist/dreamBank
+          GIT_CONFIG_NAME: dagoza
+          GIT_CONFIG_EMAIL: dagoza01@gmail.com
