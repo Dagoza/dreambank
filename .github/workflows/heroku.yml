@@ -17,4 +17,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_KEY}}
           heroku_app_name: "dreambank-danielgz"
           heroku_email: "dagoza01@gmail.com"
-          buildpack: "https://github.com/devmynd/heroku-buildpack-angular-spa.git"
+          buildpack: "https://github.com/heroku/heroku-buildpack-static.git"
