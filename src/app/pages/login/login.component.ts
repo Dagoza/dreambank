@@ -23,7 +23,10 @@ export class LoginComponent implements OnInit {
       login: ['', [Validators.pattern('[0-9]+'), Validators.required, Validators.minLength(6)]],
       password: ['', Validators.required]
     });
-    particlesJS('particles-js', ParticlesConfig, function() {});
+    if(particlesJS){
+      particlesJS('particles-js', ParticlesConfig, function() {});
+    }
+   
   }
 
   submit(){

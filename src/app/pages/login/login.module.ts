@@ -19,7 +19,6 @@ import { MODEL_PROVIDER } from 'src/app/shared/stateful-model/model';
     AngularMaterialModule,
     FormsModule, 
     ReactiveFormsModule
-    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

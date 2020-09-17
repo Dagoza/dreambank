@@ -22,7 +22,6 @@ let accountsForUser =  [{
             status: 'Active',
             currency: 'USD',
             balance: 525.1,
-            
             transactions: []
         },{
             id: '9991212',
@@ -143,7 +142,7 @@ let users = [{
     wallets: [],
     notifications: [],
     messages: [],
-    jwt: '',
+    jwt: 'fake-jwt-token',
 },{
     identity: '987654321',
     password: '1234',
@@ -154,7 +153,7 @@ let users = [{
     wallets: [],
     notifications: [],
     messages: [],
-    jwt: 'fake-jwt-token',
+    jwt: '',
 }];
 
 

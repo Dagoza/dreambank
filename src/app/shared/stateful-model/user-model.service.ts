@@ -21,7 +21,6 @@ export class UserModelService {
       notifications: [],
       messages: [],
       jwt: ''
-
     });
     this.user$ = this.model.data$;
   }
