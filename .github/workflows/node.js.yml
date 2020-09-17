@@ -45,6 +45,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           BRANCH: gh-pages
-          FOLDER: deploy_dist/dreamBank
-          GIT_CONFIG_NAME: dagoza
-          GIT_CONFIG_EMAIL: dagoza01@gmail.com
+          FOLDER: deploy_dist
