@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --aot --build-optimizer --base-href \"https://Githubdagoza.github.io/dreambank/\"",
+    "build": "ng build --aot --build-optimizer --base-href \"https://dagoza.github.io/dreambank/\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
